@@ -6,4 +6,6 @@ git status -> va utilizzato nella cartella condivisa e fa vedere lo stato di tut
 
 git add -A .  -> "impacchetta" i file e in questo modo sono pronti per essere inviati
 
-git commit -m "Commento" -> invia i file e aggiunge un commento.
+git commit -m "Commento" -> aggiunge un commento e rende i file pronti all'invio.
+
+git push  -> invia i file.
