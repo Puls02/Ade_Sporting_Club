@@ -13,3 +13,5 @@ git commit -m "Commento" -> aggiunge un commento e rende i file pronti all'invio
 git push  -> invia i file.
 
 git pull -> scarica i file.
+
+Per ulteriori comandi: https://gist.github.com/tesseslol/da62aabec74c4fed889ea39c95efc6cc
