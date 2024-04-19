@@ -3,20 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+
+    <title>Registration</title>
+
+    <link rel="StyleSheet" href="Style/style1.css">
 </head>
 <body>
-    <div class="toolbar">
-        <a class="logo" href="index.html"><img class="logo_header" src="/immagini/logo/OIG3.jpg"></a>
-        <a href="index.html">Home</a>
-        <a href="struttura">Struttura</a>
-        <a href="attivita"> Attività</a>
-        <a href="ristorante">Ristorante</a>
-        <a href="eventi">Eventi</a>
-        <a href="prenotacampo">Prenota un campo</a>
-        <a href="soci">Soci</a>
-        <a class="login" href="/login.html"><img class="login_header" src="immagini/login/login.jpg"></a>
-    </div>
+    <header> <!--This part must be the same for all pages-->
+        <nav>
+            <div class="logo"><img class="logo_header" src="immagini/logo/Ade.jpg"></div> <!--container for logo-->
+            <div class="toolbar"> <!--container for navbar -->
+                <a href="index.html">Home</a>
+                <a href="/">Struttura</a>
+                <a href="/"> Attività</a>
+                <a href="/">Ristorante</a>
+                <a href="/">Eventi</a>
+                <a href="/">Prenota un campo</a>
+                <a href="/">Soci</a>
+                <a class="login" href="login.html"><img class="login_header" src="immagini/login/login.jpg"></a> <!--conviene aggiungere un contenitore per il pulsante di login registrati?-->
+            </div>
+        </nav>
+    </header>
 
     <form action="" method="post" name="registr"> <!-- importante per i comportamenti automatici del form -->
         <label>Cognome: </label><input type="text" name="cognome" size="40" maxlength="40" required></br>

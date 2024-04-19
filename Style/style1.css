@@ -1,0 +1,54 @@
+* 
+{
+ box-sizing: border-box;
+ margin: 0;
+ padding: 0;
+ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+nav
+{
+    height: 80px;
+    background: #fdcc04;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0rem calc((100vw - 97vw) / 2); /*larghezza variabile della navbar in base alla finestra del browser*/
+}
+
+.logo_header
+{
+    width: 70px;
+    box-align: left
+}
+.name
+{
+
+}
+nav a /* sarebbero da mettere al centro della navbar alcune sezioni*/
+{
+    text-decoration: none;
+    color: black;
+    padding: 0 0.5rem;
+}
+
+.login_header
+{
+  width: 30px;
+  box-align: right;
+}
+/* da implementare... nascondere gli elementi: soci, prenota, eventi, ristorante, attivita, struttura
+    quando la larghezza della finestra è minore di 1300 px
+ Stili per la navbar quando la finestra è sufficientemente larga 
+.navbar {
+     Stili per la navbar quando la finestra è abbastanza grande 
+  }
+  
+  Stili per la navbar quando la finestra è abbastanza piccola 
+  @media screen and (max-width: 768px) {
+    Nascondi gli elementi che vuoi far scomparire quando la finestra è piccola 
+    .elemento-da-nascondere {
+      display: none;
+    }
+  }
+*/

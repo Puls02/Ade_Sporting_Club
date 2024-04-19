@@ -5,27 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- serve per inserire un'icona nel title. Ho generato l'icona dal sito https://www.favicon-generator.org/ -->
-    <link rel="icon" type="image/png" sizes="32x32" href="immagini/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/immagini/favicon.png">
     <title>Ade Sporting Club</title>
+
+    <!--Link to style folder-->
+    <link rel="StyleSheet" href="Style/style1.css">
+
 </head>
 <body>
-    <!-- Toolbar con logo.-->
-    <div class="toolbar">
-        <a class="logo" href="index.html"><img class="logo_header" src="/immagini/logo/OIG3.jpg"></a>
-        <a href="index.html">Home</a>
-        <a href="struttura">Struttura</a>
-        <a href="attivita"> Attività</a>
-        <a href="ristorante">Ristorante</a>
-        <a href="eventi">Eventi</a>
-        <a href="prenotacampo">Prenota un campo</a>
-        <a href="soci">Soci</a>
-        <a class="login" href="login.html"><img class="login_header" src="immagini/login/login.jpg"></a>
-    </div>
+    <header> <!--Header, there is the navbar menu and login-->
+        <nav>
+            <div class="logo"> <!--container for logo and name-->
+                <img class="logo_header" src="immagini/logo/Ade.jpg">
+                <a class="name">ADE Sporting Club</a>
+            </div>
+            <div class="toolbar"> <!--container for navbar -->
+                <a href="index.html">Home</a> |
+                <a href="Struttura.html">Struttura</a> |
+                <a href="Attività.html"> Attività</a> |
+                <a href="Ristorante.html">Ristorante</a> |
+                <a href="Eventi.html">Eventi</a> |
+                <a href="Prenota.html">Prenota un campo</a> |
+                <a href="Soci.html">Soci</a> 
+            </div>
+            <div class="login"> <!--container for login features--> <!--Inserire un link sign in, sign up e un bottone con l'immagine che se cliccato ti apre un menu con accedi e registrati-->
+            </div>
+        </nav>
+    </header>
+
     <div class="body">
-        
+        <h1>This is the home page</h1>
     </div>
 <!-- Footer -->		
-    <div id="footer">
+    <footer>
         <div class="icone">
             <a class="link-icon" href="https://www.instagram.com/_universosci_/" target="_blank">	<!-- con l'attributo target="_blank" apro il collegamento in un'altra finestra -->
                     <img src="immagini/footer/insta.jpg" class="left">
@@ -46,7 +58,7 @@
                     <img src="immagini/footer/tornasu.jpg" class="right">		<!-- ancora per tornare all'inizio della pagina -->
             </a>
         </div>
-    </div>
+    </footer>
     
 </body>
 </html>

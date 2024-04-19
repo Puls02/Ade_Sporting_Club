@@ -1,4 +1,4 @@
-	/* Navigazione principale */
+/* Navigazione principale */
 
 .toolbar {
     width: auto;
@@ -6,8 +6,7 @@
     background-color: #df840d;
     margin: 0 auto;	/* centra orizzontalmente */
 }
-    
-    /* css per gli elenchi puntati e ordinati */
+/* css per gli elenchi puntati e ordinati */
 
 ul {
     font-family: Arial;
