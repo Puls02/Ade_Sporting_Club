@@ -1,0 +1,116 @@
+	/* Navigazione principale */
+
+.toolbar {
+    width: auto;
+    height: 38px;
+    background-color: #df840d;
+    margin: 0 auto;	/* centra orizzontalmente */
+}
+    
+    /* css per gli elenchi puntati e ordinati */
+
+ul {
+    font-family: Arial;
+    text-align: justify;
+  }
+ol {
+    font-family: Arial;
+    text-align: justify;
+}
+  
+      
+ul#navigation {
+    margin: auto;
+    position:relative;	/* l'elemento viene posizionato in funzione del suo contenitore */
+    float:left;
+}
+       
+ul#navigation li {
+    display:inline;	/* allinea gli elementi, che di default sono dei blocchi e quindi visualizzati uno per riga, su una sola riga */
+    font-size:16px;
+    text-decoration: none; /* toglie il sottolineato */
+    margin:0;
+    padding:0;
+    float:left;
+    position:relative;
+    font-family: Arial;
+}
+       
+ul#navigation li a {
+    padding:10px 24px;
+    color: white;
+    text-decoration: none; /* toglie il sottolineato */
+    font-family: Arial;
+    display: inline-block;
+}
+       
+ul#navigation li a:hover {
+    background:#f8f8f8;
+    color:#282828;
+}
+      
+    /* Drop-Down Navigation */
+      
+ul#navigation li:hover > ul {
+    visibility:visible; /* rendono visibile al passaggio con il mouse il drop-down */
+    opacity:1;
+}
+       
+ul#navigation ul, ul#navigation ul li ul {
+    margin: 0;
+    padding: 0;
+      
+      /* fanno rimanere visibile il drop-down */
+    visibility:hidden;
+    opacity:0;
+      
+    position: absolute;	/* in funzione del contenitore */
+    width:180px;
+    background:#f8f8f8;
+    box-shadow:1px 1px 6px #ccc;	/* ombreggiatura */
+      
+    /* transizione per la dissolvenza */
+    -webkit-transition:opacity 0.2s linear, visibility 0.2s linear;
+    -moz-transition:opacity 0.2s linear, visibility 0.2s linear;
+    -o-transition:opacity 0.2s linear, visibility 0.2s linear;
+    transition:opacity 0.2s linear, visibility 0.2s linear;
+}
+       
+ul#navigation ul {
+    top: 46px;	/* distanza superiore dalla barra */
+    left: 0;
+}
+       
+ul#navigation ul li ul {
+    top: 0;
+    left: 186px; /* così il menù risulterà a destra del precedente */
+    text-align: left;
+}
+       
+ul#navigation ul li {
+    width:100%;
+    border:0 none;
+    border-bottom:1px solid #c9c9c9;
+}
+       
+ul#navigation ul li a {
+    background:none;
+    padding:7px 15px;
+    text-decoration: none; /* toglie il sottolineato */
+    font-family: Arial;
+    color:#616161;
+    display:inline-block;
+    border:0 none;
+    float:left;
+    width:150px;
+}
+/* contenuto della pagina */
+.cuore {
+    width: auto;
+    height: 400px;
+    margin: auto; /* centra il contenitore */
+    margin-top: 200px;	/* distanza dalla navbar */
+    padding: 50px;
+    background-color: rgb(231, 133, 3); 
+    color: black;
+}

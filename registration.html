@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <div class="toolbar">
+        <a class="logo" href="index.html"><img class="logo_header" src="/immagini/logo/OIG3.jpg"></a>
+        <a href="index.html">Home</a>
+        <a href="struttura">Struttura</a>
+        <a href="attivita"> Attività</a>
+        <a href="ristorante">Ristorante</a>
+        <a href="eventi">Eventi</a>
+        <a href="prenotacampo">Prenota un campo</a>
+        <a href="soci">Soci</a>
+        <a class="login" href="/login.html"><img class="login_header" src="immagini/login/login.jpg"></a>
+    </div>
+
+    <form action="" method="post" name="registr"> <!-- importante per i comportamenti automatici del form -->
+        <label>Cognome: </label><input type="text" name="cognome" size="40" maxlength="40" required></br>
+        <label>Nome: </label><input type="text" name="nome" size="30" maxlength="30" required></br>
+        <br/>Sesso:
+                <br/><input type="radio" name="sesso" />Maschio
+                <br/><input type="radio" name="sesso" />Femmina
+        <br/>
+        <label>Residenza: </label><input type="text" name="residenza" size="40" maxlength="40" required></br>
+        <label>Nato/a a: </label><input type="text" placeholder="luogo" name="utente" /> il <input type="date" name="nata"><br/>
+        <label>E-mail: </label><input type="email" name="indirizzomail" size="30" maxlength="30"></br>
+        <label>Telefono: </label><input type="tel" name="telefono" size="15" maxlength="15"></br>
+        <label>Status: </label><input type="text" name="status" list="listastatus" size="30" maxlength="30" autocomplete>
+        <datalist id="listastatus">
+            <option value="socio gold">
+            <option value="abbonato calcio">
+            <option value="abbonato tennis">
+            <option value="abbonato piscina">
+            <option value="abbonato basket">
+            <option value="abbonato paddle">
+            <option value="abbonato palestra">
+        </datalist></br>
+        <input type="submit" value="invia form">
+        <input type="reset" value="reset form">
+    </form>
+</body>
+</html>

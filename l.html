@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/toolbar.css" type="text/css">	
+    <title>Document</title>
+</head>
+<body>
+    <div class="toolbar">
+        <ul id="navigation">
+            <li><a class="logo" href="index.html"><img class="logo_header" src="immagini/logo/OIG3.jpg"></a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="struttura">Struttura</a></li>
+            <li><a href="attivita"> Attività &raquo;</a> <!-- il codice &raquo; inserisce le virgolette basse -->
+                <ul>
+                    <li>Calcio</li>
+                    <li>Paddle</li>
+                    <li>Tennis</li>
+                    <li>Basket</li>
+                    <li>Palestra</li>
+                    <li>Piscina</li>
+                </ul>
+            </li>
+            <li><a href="ristorante">Ristorante</a></li>
+            <li><a href="eventi">Eventi</a></li>
+            <li><a href="prenotacampo">Prenota un campo</a></li>
+            <li><a href="soci">Soci</a></li>
+            <li><a class="login" href="/login.html"><img class="login_header" src="immagini/login/login.jpg"></a>
+                <ul>
+                    <li>Accedi</li>
+                    <li>Registrati</li>
+                </ul>
+            </li>
+        </ul>    
+    </div>
+    <br>
+    <div class="cuore">
+        <form action="" method="post" name="log"> <!-- importante per i comportamenti automatici del form -->
+            <label>E-mail: </label><input type="email" name="indirizzomail" size="30" maxlength="30"></br>
+            <label>Password: </label><input type="password" name="password" size="15" maxlength="15"></br>        
+            <input type="submit" value="Accedi">
+        </form>
+    </div>
+</body>
+</html>
