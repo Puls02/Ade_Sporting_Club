@@ -8,6 +8,7 @@
     margin: 20px;
     top:-10px;
     cursor: pointer;
+    z-index: 1;
 }
 /*corpo della persona di login*/
 .person::after{
@@ -20,12 +21,14 @@
     left: -10px;
     border-radius: 50% 50% 0% 0%;
     cursor: pointer;
+    z-index: 1;
 }
 /*css menù a tendina*/
 .login_menu{
     position: absolute;
     left: -40px;
-    top: 60px;
+    top: 40px;
+    background-color: white;
     list-style: none;
     border: 1px solid black;
     border-bottom: none;
@@ -37,6 +40,7 @@
     display: block;
     width: 100px;
     top: -10px;
+    padding: 10px 10px;
     text-transform: uppercase;
     font-size: 14px;
     border-bottom: 1px solid black;
@@ -47,12 +51,14 @@
     display: block;
     text-decoration: none;
     transition: .3s;
-    
+}
+
+.login_menu li:hover{
+    background-color: rgb(13, 13, 91);
 }
 
 .login_menu a:hover{
     color: white;
-    background-color: rgb(13, 13, 91);
 }
 
 .person:hover .login_menu{
