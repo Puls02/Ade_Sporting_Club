@@ -1,66 +1,86 @@
-* 
-{
- box-sizing: border-box;
- margin: 0;
- padding: 0;
- font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
 nav
 {
-    height: 80px;
-    background: #358597;
-    /*flexbox code*/
+  height: 80px;
+  background: #358597;
+  /*flexbox code*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /*larghezza variabile della navbar in base alla finestra del browser*/
+  padding: 0rem calc((100vw - 97vw) / 2); 
+}
+
+/*------------debug----------*/
+/*
+ul.logo
+{
+  border: 1px solid rgb(0, 255, 0);
+}
+.logo_img
+{
+  border: 1px solid red;
+}
+.logo_name
+{
+  border: 1px solid red;
+}
+ul.toolbar
+{
+  border: 1px solid red;
+}
+ul.toolbar a
+{
+  border: 1px solid red;
+}
+*/
+/*--------------------------------------*/
+.logo
+{
+  display: flex;
+  text-decoration: none;
+  list-style: none;
+  align-items: center;
+  padding: 0;
+}
+.logo_img
+{
+  width: 70px;
+  box-align: left;
+}
+
+  div.logo_name
+  {
+    display: block;
+    font: 30px Raleway;
+  }
+
+  ul.toolbar
+  {  
     display: flex;
-    justify-content: space-between;
+    text-decoration: none;
     align-items: center;
-    /*larghezza variabile della navbar in base alla finestra del browser*/
-    padding: 0rem calc((100vw - 97vw) / 2); 
-}
+    list-style: none;
+    margin: 0 auto;
+  	padding: 3px;
+  	text-align: center;
+  }
 
-.logo_header
-{
-    width: 70px;
-    box-align: left
-}
-/*abbellire nome in alto a destra*/
-.logo_name 
-{
-
-}
-
-/* sarebbero da mettere al centro della navbar alcune sezioni*/
-nav a 
-{
-    text-decoration: none;
-    color: black;
-    padding: 0 0.5rem;
-}
-
-/*-----------Toolbar animation css code------------*/
-/*inspiration from https://tympanus.net/codrops/2013/08/06/creative-link-effects/ */
-div.toolbar
-{
-  font-family: Raleway;
-  margin: 0 auto;
-	padding: 10em 3em;
-	text-align: center;
-}
-
-div.toolbar a
-{
+  ul.toolbar a
+  {
     color: black;
     text-decoration: none;
-    font: 20px Raleway;
+    font: 15px Raleway;
     margin: 0px 10px;
     padding: 10px 10px;
     position: relative;
     z-index: 0;
     cursor: pointer;
-}
+  }
 
-div.topBotomBordersOut a:before, div.topBotomBordersOut a:after
-{
+  /*-----------Toolbar animation css code------------*/
+  /*inspiration from https://tympanus.net/codrops/2013/08/06/creative-link-effects/ */
+  ul.topBotomBordersOut a:before, ul.topBotomBordersOut a:after
+  {
     position: absolute;
     left: 0px;
     width: 100%;
@@ -69,31 +89,35 @@ div.topBotomBordersOut a:before, div.topBotomBordersOut a:after
     content: "";
     opacity: 0;
     transition: all 0.3s;
-}
+  }
 
-div.topBotomBordersOut a:before
-{
+  ul.topBotomBordersOut a:before
+  {
     top: 0px;
-    transform: translateY(10px);
-}
+   transform: translateY(10px);
+  }
 
-div.topBotomBordersOut a:after
-{
+  ul.topBotomBordersOut a:after
+  {
     bottom: 0px;
     transform: translateY(-10px);
-}
+  }
 
-div.topBotomBordersOut a:hover:before, div.topBotomBordersOut a:hover:after
-{
-    opacity: 1;
-    transform: translateY(0px);
-}
+  ul.topBotomBordersOut a:hover:before, ul.topBotomBordersOut a:hover:after
+  {
+   opacity: 1;
+   transform: translateY(0px);
+  }
+  /*-------------------------------------------------------*/
+
 
 body
 {
   background: #f4a896;
 }
-/*-------------------------------------------------------*/
+
+
+
 
 /* da implementare... nascondere gli elementi: soci, prenota, eventi, ristorante, attivita, struttura
     quando la larghezza della finestra è minore di 1300 px

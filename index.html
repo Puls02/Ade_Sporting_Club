@@ -9,8 +9,9 @@
     <title>Ade Sporting Club</title>
 
     <!--Link to style folder-->
+    <link rel="StyleSheet" href="Style/utility.css">
     <link rel="StyleSheet" href="Style/navbar.css">
-    <link rel="StyleSheet" href="Style/login/login.css">
+    <link rel="StyleSheet" href="Style/login.css">
 
 </head>
 <body>
@@ -18,20 +19,38 @@
     <header> 
         <nav>
             <!--container for logo and name-->
-            <div class="logo"> 
-                <img class="logo_header" src="immagini/logo/Ade.jpg">
-                <a class="logo_name">ADE Sporting Club</a>
-            </div>
+            <ul class="logo"> 
+                <li>
+                    <img class="logo_img" src="immagini/logo/Ade.jpg">
+                </li>
+                <li>
+                    <a class="logo_name">ADE Sporting Club</a>                
+                </li>
+            </ul>
             <!--container for navbar, topBotomBordersOut is the name of the toolbar animation-->
-            <div class="toolbar topBotomBordersOut"> 
-                <a href="index.html">Home</a> |
-                <a href="Struttura.html">Struttura</a> |
-                <a href="Attività.html"> Attività</a> |
-                <a href="Ristorante.html">Ristorante</a> |
-                <a href="Eventi.html">Eventi</a> |
-                <a href="Prenota.html">Prenota un campo</a> |
-                <a href="Soci.html">Soci</a> 
-            </div>
+            <ul class="toolbar topBotomBordersOut"> 
+                <li>
+                    <a class="toolbar_link_Home" href="index.html">Home</a>
+                </li>
+                <li>
+                    <a class="toolbar_link_Struttura" href="Struttura.html">Struttura</a>
+                </li>
+                <li>
+                    <a class="toolbar_link_Attivita" href="Attività.html"> Attività</a>
+                </li>
+                <li>
+                    <a class="toolbar_link_Ristorante" href="Ristorante.html">Ristorante</a>
+                </li>
+                <li>
+                    <a class="toolbar_link_Evenit" href="Eventi.html">Eventi</a>
+                </li>                
+                <li>
+                    <a class="toolbar_link_Prenota" href="Prenota.html">Prenota</a>
+                </li>
+                <li>
+                    <a class="toolbar_link_Soci" href="Soci.html">Soci</a> 
+                </li>
+            </ul>
 
             <!--container for login features--> <!--Inserire un link sign in, sign up e un bottone con l'immagine che se cliccato ti apre un menu con accedi e registrati-->
             <div class="person">
