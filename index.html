@@ -17,7 +17,7 @@
 <body>
     <!--Header, there is the navbar menu and login-->
     <header> 
-        <nav>
+        <nav class="nav">
             <!--container for logo and name-->
             <ul class="logo"> 
                 <li>
@@ -53,13 +53,23 @@
             </ul>
 
             <!--container for login features--> <!--Inserire un link sign in, sign up e un bottone con l'immagine che se cliccato ti apre un menu con accedi e registrati-->
-            <div class="person">
+            <div class="person flex">
                 <ul class="login_menu">
                     <li><a href="login_registrazione/login.html">Accedi</a></li>
                     <li><a href="login_registrazione/registration.html">Registrati</a></li>
                 </ul>
             </div>
+            
         </nav>
+        
+        <script>
+            const show_menu= document.querySelector('.person');
+            const nav=document.querySelector('.login_menu');
+
+            show_menu.onclick=()=>{
+                nav.classList.toggle('login_menu');
+            };
+        </script>
     </header>
 
 
