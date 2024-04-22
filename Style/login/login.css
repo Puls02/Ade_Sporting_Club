@@ -23,7 +23,40 @@
     cursor: pointer;
     z-index: 1;
 }
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login_menu{
+    background-color: white;
+    position: absolute;
+    list-style: none;
+    left: -30px;
+    top: 50px;
+    z-index: 99999;
+    border-radius: 6px;
+}
+
+.login_menu li{
+    padding: 10% 0%;
+    width: 100%;
+    border-bottom: 1px solid rgb(13, 13, 91);
+    display: none;
+}
+
+.login_menu li:last-child{
+    border-bottom: none;
+}
+
+.login_menu a{
+    color: rgb(13, 13, 91);
+}
+
 /*css menù a tendina*/
+/*
 .login_menu{
     position: absolute;
     left: -40px;
@@ -67,3 +100,4 @@
     opacity: 1;
     top: 45px;
 }
+*/
