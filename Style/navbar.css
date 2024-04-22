@@ -32,6 +32,10 @@ ul.toolbar a
 {
   border: 1px solid red;
 }
+li
+{
+  border: 1px solid orange;
+}
 */
 /*--------------------------------------*/
 .logo
@@ -48,67 +52,67 @@ ul.toolbar a
   box-align: left;
 }
 
-  div.logo_name
-  {
-    display: block;
-    font: 30px Raleway;
-  }
+div.logo_name
+{
+  display: block;
+  font: 30px Raleway;
+}
 
-  ul.toolbar
-  {  
-    display: flex;
-    text-decoration: none;
-    align-items: center;
-    list-style: none;
-    margin: 0 auto;
-  	padding: 3px;
-  	text-align: center;
-  }
+ul.toolbar
+{  
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  list-style: none;
+  margin: 0 auto;
+ 	padding: 3px;
+	text-align: center;
+}
 
-  ul.toolbar a
-  {
-    color: black;
-    text-decoration: none;
-    font: 15px Raleway;
-    margin: 0px 10px;
-    padding: 10px 10px;
-    position: relative;
-    z-index: 0;
-    cursor: pointer;
-  }
+ul.toolbar a
+{
+  color: black;
+  text-decoration: none;
+  font: 15px Raleway;
+  margin: 0px 10px;
+  padding: 10px 10px;
+  position: relative;
+  z-index: 0;
+  cursor: pointer;
+}
 
-  /*-----------Toolbar animation css code------------*/
-  /*inspiration from https://tympanus.net/codrops/2013/08/06/creative-link-effects/ */
-  ul.topBotomBordersOut a:before, ul.topBotomBordersOut a:after
-  {
-    position: absolute;
-    left: 0px;
-    width: 100%;
-    height: 2px;
-    background: #000;
-    content: "";
-    opacity: 0;
-    transition: all 0.3s;
-  }
+/*-----------Toolbar animation css code------------*/
+/*inspiration from https://tympanus.net/codrops/2013/08/06/creative-link-effects/ */
+ul.topBotomBordersOut a:before, ul.topBotomBordersOut a:after
+{
+  position: absolute;
+  left: 0px;
+  width: 100%;
+  height: 2px;
+  background: #000;
+  content: "";
+  opacity: 0;
+  transition: all 0.3s;
+}
 
-  ul.topBotomBordersOut a:before
-  {
-    top: 0px;
-   transform: translateY(10px);
-  }
+ul.topBotomBordersOut a:before
+{
+  top: 0px;
+  transform: translateY(10px);
+}
 
-  ul.topBotomBordersOut a:after
-  {
-    bottom: 0px;
-    transform: translateY(-10px);
-  }
+ul.topBotomBordersOut a:after
+{
+  bottom: 0px;
+  transform: translateY(-10px);
+}
 
-  ul.topBotomBordersOut a:hover:before, ul.topBotomBordersOut a:hover:after
-  {
-   opacity: 1;
-   transform: translateY(0px);
-  }
-  /*-------------------------------------------------------*/
+ul.topBotomBordersOut a:hover:before, ul.topBotomBordersOut a:hover:after
+{
+  opacity: 1;
+  transform: translateY(0px);
+}
+/*-------------------------------------------------------*/
 
 
 body
@@ -134,3 +138,59 @@ body
     }
   }
 */
+/* xs */
+@media (max-width: 500px)
+{
+  .toolbar_link_Home, .toolbar_link_Struttura
+  {
+    display: none;
+  }
+}
+
+/* sm */
+@media (max-width: 640px)
+{
+  .toolbar_link_Soci
+  {
+    display: none;
+  }
+}
+
+/* md */
+
+@media (max-width: 768px)
+{
+  .toolbar_link_Ristorante
+  {
+    display: none;
+  }
+} 
+
+
+/* lg */
+
+@media (max-width: 1024px) 
+{
+  .toolbar_link_Attivita
+  {
+    display: none;
+  }
+} 
+
+
+/* xl */
+
+@media (max-width: 1280px) 
+{
+  .toolbar_link_Eventi, .toolbar_link_Prenota
+  {
+    display: none;
+  }
+} 
+
+
+/* 2xl */
+@media (max-width: 1536px) 
+{
+
+}
