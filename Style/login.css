@@ -34,14 +34,21 @@
     background-color: white;
     position: absolute;
     list-style: none;
-    left: -30px;
+    left: -600%;
     top: 50px;
     z-index: 99999;
     border-radius: 6px;
+    display: none;
+    align-items: center;
+    width: 170px;
+    margin: 0 auto;
+    text-align: center;
+    height: 150px;
+    justify-content: center;
 }
 
 .login_menu li{
-    padding: 10% 0%;
+    padding: 10% 10%;
     width: 100%;
     border-bottom: 1px solid rgb(13, 13, 91);
    
@@ -51,10 +58,11 @@
     border-bottom: none;
 }
 
-.login_menu a{
+.reg{
+    padding: 1rem 2rem;
+    align-items: center;
     color: rgb(13, 13, 91);
 }
-
 .show {display:block;}
 
 /*css menù a tendina*/

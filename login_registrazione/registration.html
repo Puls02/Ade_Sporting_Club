@@ -7,34 +7,59 @@
     <title>Registration</title>
 
     <link rel="StyleSheet" href="../Style/navbar.css">
-    <link rel="StyleSheet" href="../Style/login/login.css">
+    <link rel="StyleSheet" href="../Style/login.css">
 </head>
 <body>
     <!--Header, there is the navbar menu and login-->
     <header> 
-        <nav>
+        <nav class="nav">
             <!--container for logo and name-->
-            <div class="logo"> 
-                <img class="logo_header" src="../immagini/logo/Ade.jpg">
-                <a class="name">ADE Sporting Club</a>
-            </div>
-            <!--container for navbar -->
-            <div class="toolbar topBotomBordersOut"> 
-                <a href="../index.html">Home</a> |
-                <a href="../Struttura.html">Struttura</a> |
-                <a href="../Attività.html"> Attività</a> |
-                <a href="../Ristorante.html">Ristorante</a> |
-                <a href="../Eventi.html">Eventi</a> |
-                <a href="../Prenota.html">Prenota un campo</a> |
-                <a href="../Soci.html">Soci</a> 
-            </div>
+            <ul class="logo container"> 
+                <li>
+                    <img class="logo_img" src="../immagini/logo/Ade.jpg">
+                </li>
+                <li>
+                    <a class="logo_name">ADE Sporting Club</a>                
+                </li>
+            </ul>
+            <!--container for navbar, topBotomBordersOut is the name of the toolbar animation-->
+            <ul class="toolbar container topBotomBordersOut"> 
+                <li>
+                    <a class="toolbar_link_Home" href="../index.html">Home</a>
+                </li>
+                <li>
+                    <a class="toolbar_link_Struttura" href="Struttura.html">Struttura</a>
+                </li>
+                <li>
+                    <a class="toolbar_link_Attivita" href="Attività.html"> Attività</a>
+                </li>
+                <li>
+                    <a class="toolbar_link_Ristorante" href="Ristorante.html">Ristorante</a>
+                </li>
+                <li>
+                    <a class="toolbar_link_Eventi" href="Eventi.html">Eventi</a>
+                </li>                
+                <li>
+                    <a class="toolbar_link_Prenota" href="Prenota.html">Prenota</a>
+                </li>
+                <li>
+                    <a class="toolbar_link_Soci" href="Soci.html">Soci</a> 
+                </li>
+            </ul>
 
             <!--container for login features--> <!--Inserire un link sign in, sign up e un bottone con l'immagine che se cliccato ti apre un menu con accedi e registrati-->
-            <div id="person">
+            <div class="person flex container">
+                <ul class="login_menu">
+                    <li><a href="login_registrazione/login.html">Accedi</a></li>
+                    <li><a href="login_registrazione/registration.html">Registrati</a></li>
+                </ul>
             </div>
+            
+            
         </nav>
+        
+        <script src="js/login.js"></script>
     </header>
-
     <form action="" method="post" name="registr"> <!-- importante per i comportamenti automatici del form -->
         <label>Cognome: </label><input type="text" name="cognome" size="40" maxlength="40" required></br>
         <label>Nome: </label><input type="text" name="nome" size="30" maxlength="30" required></br>
