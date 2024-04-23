@@ -1,99 +1,127 @@
-* 
-{
- box-sizing: border-box;
- margin: 0;
- padding: 0;
- font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
 nav
 {
-    height: 80px;
-    background: #358597;
-    /*flexbox code*/
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /*larghezza variabile della navbar in base alla finestra del browser*/
-    padding: 0rem calc((100vw - 97vw) / 2); 
+  height: 80px;
+  background: #358597;
+  /*flexbox code*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /*larghezza variabile della navbar in base alla finestra del browser*/
+  padding: 0rem calc((100vw - 97vw) / 2); 
 }
 
-.logo_header
+/*------------debug----------*/
+/*
+ul.logo
 {
-    width: 70px;
-    box-align: left
+  border: 1px solid rgb(0, 255, 0);
 }
-/*abbellire nome in alto a destra*/
-.logo_name 
+.logo_img
 {
-
+  border: 1px solid red;
+}
+.logo_name
+{
+  border: 1px solid red;
+}
+ul.toolbar
+{
+  border: 1px solid red;
+}
+ul.toolbar a
+{
+  border: 1px solid red;
+}
+li
+{
+  border: 1px solid orange;
+}
+*/
+/*--------------------------------------*/
+.logo
+{
+  display: flex;
+  text-decoration: none;
+  list-style: none;
+  align-items: center;
+  padding: 0;
+}
+.logo_img
+{
+  width: 70px;
+  box-align: left;
 }
 
-/* sarebbero da mettere al centro della navbar alcune sezioni*/
-nav a 
+div.logo_name
 {
-    text-decoration: none;
-    color: black;
-    padding: 0 0.5rem;
+  display: block;
+  font: 30px Raleway;
+}
+
+ul.toolbar
+{  
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  list-style: none;
+  margin: 0 auto;
+ 	padding: 3px;
+	text-align: center;
+}
+
+ul.toolbar a
+{
+  color: black;
+  text-decoration: none;
+  font: 15px Raleway;
+  margin: 0px 10px;
+  padding: 10px 10px;
+  position: relative;
+  z-index: 0;
+  cursor: pointer;
 }
 
 /*-----------Toolbar animation css code------------*/
 /*inspiration from https://tympanus.net/codrops/2013/08/06/creative-link-effects/ */
-div.toolbar
+ul.topBotomBordersOut a:before, ul.topBotomBordersOut a:after
 {
-  font-family: Raleway;
-  margin: 0 auto;
-	padding: 10em 3em;
-	text-align: center;
+  position: absolute;
+  left: 0px;
+  width: 100%;
+  height: 2px;
+  background: #000;
+  content: "";
+  opacity: 0;
+  transition: all 0.3s;
 }
 
-div.toolbar a
+ul.topBotomBordersOut a:before
 {
-    color: black;
-    text-decoration: none;
-    font: 20px Raleway;
-    margin: 0px 10px;
-    padding: 10px 10px;
-    position: relative;
-    z-index: 0;
-    cursor: pointer;
+  top: 0px;
+  transform: translateY(10px);
 }
 
-div.topBotomBordersOut a:before, div.topBotomBordersOut a:after
+ul.topBotomBordersOut a:after
 {
-    position: absolute;
-    left: 0px;
-    width: 100%;
-    height: 2px;
-    background: #000;
-    content: "";
-    opacity: 0;
-    transition: all 0.3s;
+  bottom: 0px;
+  transform: translateY(-10px);
 }
 
-div.topBotomBordersOut a:before
+ul.topBotomBordersOut a:hover:before, ul.topBotomBordersOut a:hover:after
 {
-    top: 0px;
-    transform: translateY(10px);
+  opacity: 1;
+  transform: translateY(0px);
 }
+/*-------------------------------------------------------*/
 
-div.topBotomBordersOut a:after
-{
-    bottom: 0px;
-    transform: translateY(-10px);
-}
-
-div.topBotomBordersOut a:hover:before, div.topBotomBordersOut a:hover:after
-{
-    opacity: 1;
-    transform: translateY(0px);
-}
 
 body
 {
   background: #f4a896;
 }
-/*-------------------------------------------------------*/
+
+
+
 
 /* da implementare... nascondere gli elementi: soci, prenota, eventi, ristorante, attivita, struttura
     quando la larghezza della finestra è minore di 1300 px
@@ -110,3 +138,59 @@ body
     }
   }
 */
+/* xs */
+@media (max-width: 500px)
+{
+  .toolbar_link_Home, .toolbar_link_Struttura
+  {
+    display: none;
+  }
+}
+
+/* sm */
+@media (max-width: 640px)
+{
+  .toolbar_link_Soci
+  {
+    display: none;
+  }
+}
+
+/* md */
+
+@media (max-width: 768px)
+{
+  .toolbar_link_Ristorante
+  {
+    display: none;
+  }
+} 
+
+
+/* lg */
+
+@media (max-width: 1024px) 
+{
+  .toolbar_link_Attivita
+  {
+    display: none;
+  }
+} 
+
+
+/* xl */
+
+@media (max-width: 1280px) 
+{
+  .toolbar_link_Eventi, .toolbar_link_Prenota
+  {
+    display: none;
+  }
+} 
+
+
+/* 2xl */
+@media (max-width: 1536px) 
+{
+
+}

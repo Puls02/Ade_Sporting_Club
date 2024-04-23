@@ -1,0 +1,72 @@
+/*da telefono a computer*/ 
+/*io uso un metodo da pc a telefono, cambio max-width*/
+/* xs */
+/* @media (min-width: 475px) {} */
+
+/* sm */
+/* @media (min-width: 640px) {} */
+
+/* md */
+/* @media (min-width: 768px) {} */
+
+/* lg */
+/* @media (min-width: 1024px) {} */
+
+/* xl */
+/* @media (min-width: 1280px) {} */
+
+/* 2xl */
+/* @media (min-width: 1536px) {} */
+
+:root {
+  /*color palette*/ 
+
+    --clr-dark: #070a13;
+    --clr-light: #f1f5f9;
+    --clr-slate400: #94a3b8;
+    --clr-slate600: #475569;
+    --clr-slate800: #1e293b;
+    --clr-rose: #e11d48;
+    --clr-indigo: #4f46e5;
+  
+    /* rose rgb(225, 29, 72) */
+    /* indigo rgb(79, 70, 229) */
+  
+    /* sizes */
+    --size-xxs: 0.5rem;
+    --size-xs: 0.75rem;
+    --size-sm: 0.875rem;
+    --size-base: 1rem;
+    --size-lg: 1.125rem;
+    --size-xl: 1.25rem;
+    --size-2xl: 1.5rem;
+    --size-3xl: 1.875rem;
+    --size-4xl: 2.25rem;
+    --size-5xl: 3rem;
+    --size-6xl: 3.75rem;
+    --size-7xl: 4.5rem;
+    --size-8xl: 6rem;
+    --size-9xl: 8rem;
+    --size-10xl: 10rem;
+  }
+  
+* 
+{
+  margin: 0;
+  line-height: calc(1em + 0.5rem);
+}
+  
+html 
+{
+  scroll-behavior: smooth;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block; /* Imposta gli elementi multimediali come elementi di tipo blocco */
+  max-width: 100%; /* Imposta la larghezza massima degli elementi multimediali al 100% del loro contenitore genitore */
+  user-select: none; /* Impedisce la selezione dell'elemento da parte dell'utente */
+}
