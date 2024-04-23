@@ -1,17 +1,21 @@
 nav
 {
   height: 80px;
-  background: #358597;
+  background: var(--nav-color);
   /*flexbox code*/
   display: flex;
   justify-content: space-between;
   align-items: center;
   /*larghezza variabile della navbar in base alla finestra del browser*/
-  padding: 0rem calc((100vw - 97vw) / 2); 
+  padding: 0 calc((100vw - 97vw) / 2); 
 }
 
 /*------------debug----------*/
 /*
+nav
+{
+  border: 1px solid purple;
+}
 ul.logo
 {
   border: 1px solid rgb(0, 255, 0);
@@ -52,13 +56,13 @@ li
   box-align: left;
 }
 
-div.logo_name
+.logo_name
 {
   display: block;
-  font: 30px Raleway;
+  font: 30px /*aggiungere nome font*/ ;
 }
 
-ul.toolbar
+.toolbar
 {  
   display: flex;
   text-decoration: none;
@@ -69,11 +73,11 @@ ul.toolbar
 	text-align: center;
 }
 
-ul.toolbar a
+.toolbar a
 {
   color: black;
   text-decoration: none;
-  font: 15px Raleway;
+  font: 10px /*aggiungere nome font*/ ;
   margin: 0px 10px;
   padding: 10px 10px;
   position: relative;
@@ -83,7 +87,8 @@ ul.toolbar a
 
 /*-----------Toolbar animation css code------------*/
 /*inspiration from https://tympanus.net/codrops/2013/08/06/creative-link-effects/ */
-ul.topBotomBordersOut a:before, ul.topBotomBordersOut a:after
+ul.topBotomBordersOut a:before, 
+ul.topBotomBordersOut a:after
 {
   position: absolute;
   left: 0px;
@@ -107,41 +112,20 @@ ul.topBotomBordersOut a:after
   transform: translateY(-10px);
 }
 
-ul.topBotomBordersOut a:hover:before, ul.topBotomBordersOut a:hover:after
+ul.topBotomBordersOut a:hover:before, 
+ul.topBotomBordersOut a:hover:after
 {
   opacity: 1;
   transform: translateY(0px);
 }
 /*-------------------------------------------------------*/
 
-
-body
-{
-  background: #f4a896;
-}
-
-
-
-
-/* da implementare... nascondere gli elementi: soci, prenota, eventi, ristorante, attivita, struttura
-    quando la larghezza della finestra è minore di 1300 px
- Stili per la navbar quando la finestra è sufficientemente larga 
-.navbar {
-     Stili per la navbar quando la finestra è abbastanza grande 
-  }
-  
-  Stili per la navbar quando la finestra è abbastanza piccola 
-  @media screen and (max-width: 768px) {
-    Nascondi gli elementi che vuoi far scomparire quando la finestra è piccola 
-    .elemento-da-nascondere {
-      display: none;
-    }
-  }
-*/
+/*Responsive navbar*/
 /* xs */
 @media (max-width: 500px)
 {
-  .toolbar_link_Home, .toolbar_link_Struttura
+  .toolbar_link_Home,
+  .toolbar_link_Struttura
   {
     display: none;
   }
@@ -157,7 +141,6 @@ body
 }
 
 /* md */
-
 @media (max-width: 768px)
 {
   .toolbar_link_Ristorante
@@ -168,29 +151,22 @@ body
 
 
 /* lg */
-
 @media (max-width: 1024px) 
 {
   .toolbar_link_Attivita
   {
     display: none;
   }
+  
 } 
 
 
 /* xl */
-
 @media (max-width: 1280px) 
 {
-  .toolbar_link_Eventi, .toolbar_link_Prenota
+  .toolbar_link_Eventi,
+  .toolbar_link_Prenota
   {
     display: none;
   }
 } 
-
-
-/* 2xl */
-@media (max-width: 1536px) 
-{
-
-}

@@ -20,18 +20,8 @@
 
 :root {
   /*color palette*/ 
-
-    --clr-dark: #070a13;
-    --clr-light: #f1f5f9;
-    --clr-slate400: #94a3b8;
-    --clr-slate600: #475569;
-    --clr-slate800: #1e293b;
-    --clr-rose: #e11d48;
-    --clr-indigo: #4f46e5;
-  
-    /* rose rgb(225, 29, 72) */
-    /* indigo rgb(79, 70, 229) */
-  
+  --nav-color: #358597;
+  --body-color: #f4a896;  
     /* sizes */
     --size-xxs: 0.5rem;
     --size-xs: 0.75rem;
@@ -69,4 +59,10 @@ svg {
   display: block; /* Imposta gli elementi multimediali come elementi di tipo blocco */
   max-width: 100%; /* Imposta la larghezza massima degli elementi multimediali al 100% del loro contenitore genitore */
   user-select: none; /* Impedisce la selezione dell'elemento da parte dell'utente */
+}
+
+
+body
+{
+  background: var(--body-color);
 }
