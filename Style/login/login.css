@@ -44,7 +44,7 @@
     padding: 10% 0%;
     width: 100%;
     border-bottom: 1px solid rgb(13, 13, 91);
-    display: none;
+   
 }
 
 .login_menu li:last-child{
@@ -54,6 +54,8 @@
 .login_menu a{
     color: rgb(13, 13, 91);
 }
+
+.show {display:block;}
 
 /*css menù a tendina*/
 /*
