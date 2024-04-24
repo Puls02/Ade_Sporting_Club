@@ -9,6 +9,9 @@
     <link rel="StyleSheet" href="../Style/utility.css">
     <link rel="StyleSheet" href="../Style/navbar.css">
     <link rel="StyleSheet" href="../Style/login.css">
+
+    <script src="../js/registration.js"></script>
+
 </head>
 <body>
     <!--Header, there is the navbar menu and login-->
@@ -72,18 +75,47 @@
         <label>Nato/a a: </label><input type="text" placeholder="luogo" name="utente" /> il <input type="date" name="nata"><br/>
         <label>E-mail: </label><input type="email" name="indirizzomail" size="30" maxlength="30"></br>
         <label>Telefono: </label><input type="tel" name="telefono" size="15" maxlength="15"></br>
-        <label>Status: </label><input type="text" name="status" list="listastatus" size="30" maxlength="30" autocomplete>
-        <datalist id="listastatus">
-            <option value="socio gold">
-            <option value="abbonato calcio">
-            <option value="abbonato tennis">
-            <option value="abbonato piscina">
-            <option value="abbonato basket">
-            <option value="abbonato paddle">
-            <option value="abbonato palestra">
-        </datalist></br>
+        <label>ABBONAMENTO</label><br>
+        Tipo di abbonamento:
+        <select name="type" id="abbonamento" required>
+            <option value="">Seleziona</option>
+            <option value="AM">Abbonamento mensile</option>
+            <option value="AT">Abbonamento trimestrale</option>
+            <option value="AS">Abbonamento semestrale</option>
+            <option value="AA">Abbonamento annuale</option>
+        </select><br>
+        <label>Livello: </label>
+        <select name="abbonamentospecifico" id="listastatus" onclick="checkType()" required>
+            <option value="">Seleziona</option>
+            <option value="single">Abbonamento singolo</option>
+            <option value="double">Abbonamento doppio</option>
+            <option value="gym">Abbonamento palestra</option>
+            <option value="opengym">Abbonamento palestra open</option>
+            <option value="gold">Socio gold</option>
+        </select></br>
+        Seleziona corsi:<br>
+                <label>
+                    <input type="checkbox" name="corso" value="calcio"  oninput="checkSubscription()">Calcio
+                </label>
+                <label>
+                    <input type="checkbox" name="corso" value="basket"  oninput="checkSubscription()">Basket
+                </label>
+                <label>
+                    <input type="checkbox" name="corso" value="tennis"  oninput="checkSubscription()">Tennis
+                </label>
+                <label>
+                    <input type="checkbox" name="corso" value="paddle"  oninput="checkSubscription()">Paddle
+                </label>
+                <label>
+                    <input type="checkbox" name="corso" value="nuoto" oninput="checkSubscription()">Nuoto
+                </label>
+                <label>
+                    <input type="checkbox" name="corso" value="palestra" oninput="checkSubscription()">Palestra
+                </label>
+        <br/>
         <input type="submit" value="invia form">
         <input type="reset" value="reset form">
     </form>
+    
 </body>
 </html>
