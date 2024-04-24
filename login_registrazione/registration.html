@@ -54,19 +54,19 @@
             <!--container for login features--> <!--Inserire un link sign in, sign up e un bottone con l'immagine che se cliccato ti apre un menu con accedi e registrati-->
             <div class="person flex container">
                 <ul class="login_menu">
-                    <li><a href="login_registrazione/login.html">Accedi</a></li>
-                    <li><a href="login_registrazione/registration.html">Registrati</a></li>
+                    <li><a href="login.html">Accedi</a></li>
+                    <li><a href="lregistration.html">Registrati</a></li>
                 </ul>
             </div>
             
             
         </nav>
         
-        <script src="js/login.js"></script>
+        <script src="../js/login.js"></script>
     </header>
     <form action="" method="post" name="registr"> <!-- importante per i comportamenti automatici del form -->
         <label>Cognome: </label><input type="text" name="cognome" size="40" maxlength="40" required></br>
-        <label>Nome: </label><input type="text" name="nome" size="30" maxlength="30" required></br>
+        <label>Nome: </label><input type="text" name="nome" size="30" maxlength="30" required>
         <br/>Sesso:
                 <br/><input type="radio" name="sesso" />Maschio
                 <br/><input type="radio" name="sesso" />Femmina
@@ -95,22 +95,22 @@
         </select></br>
         Seleziona corsi:<br>
                 <label>
-                    <input type="checkbox" name="corso" value="calcio"  oninput="checkSubscription()">Calcio
+                    <input type="checkbox" name="corso" value="calcio"  oninput="checkSubscription(event)">Calcio
                 </label>
                 <label>
-                    <input type="checkbox" name="corso" value="basket"  oninput="checkSubscription()">Basket
+                    <input type="checkbox" name="corso" value="basket"  oninput="checkSubscription(event)">Basket
                 </label>
                 <label>
-                    <input type="checkbox" name="corso" value="tennis"  oninput="checkSubscription()">Tennis
+                    <input type="checkbox" name="corso" value="tennis"  oninput="checkSubscription(event)">Tennis
                 </label>
                 <label>
-                    <input type="checkbox" name="corso" value="paddle"  oninput="checkSubscription()">Paddle
+                    <input type="checkbox" name="corso" value="paddle"  oninput="checkSubscription(event)">Paddle
                 </label>
                 <label>
-                    <input type="checkbox" name="corso" value="nuoto" oninput="checkSubscription()">Nuoto
+                    <input type="checkbox" name="corso" value="nuoto" oninput="checkSubscription(event)">Nuoto
                 </label>
                 <label>
-                    <input type="checkbox" name="corso" value="palestra" oninput="checkSubscription()">Palestra
+                    <input type="checkbox" name="corso" value="palestra" oninput="checkSubscription(event)">Palestra
                 </label>
         <br/>
         <input type="submit" value="invia form">
