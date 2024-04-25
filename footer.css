@@ -1,7 +1,6 @@
 /* Style for the footer */
 /* lo organizzo secondo una griglia: la prima riga avrà la mappa e i contatti, la seconda gli sponsor, l'ultima l'ancora per tornare a inizio pagina */
 footer {
-    margin-top: 800px;
     background-color: #c54141;
     color: white;
     text-align: center;

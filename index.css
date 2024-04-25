@@ -4,14 +4,14 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh; /* Adjust height as needed */
+    height: 700px; /* Adjust height as needed */
   }
 
   /* Styling for the content */
   .content {
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.7);
-    margin-top: 20vh; /* Ensure content is below the fixed image */
+    height: 200px;
+    background-color: rgba(255, 255, 255); /* last value for transparency */
   }
 
   /* Styling for other elements */
