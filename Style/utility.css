@@ -21,7 +21,7 @@
 :root {
   /*color palette*/ 
   --nav-color: #358597;
-  --body-color: #f4a896;  
+  --body-color: #ffffff;  
     /* sizes */
     --size-xxs: 0.5rem;
     --size-xs: 0.75rem;
@@ -65,4 +65,23 @@ svg {
 body
 {
   background: var(--body-color);
+}
+
+p {
+  padding: 2%;
+}
+
+.line-with-text {
+  position: relative;
+  height: 2px;
+  background-color: black;
+  text-align: center;
+}
+
+/* Stile per la parola */
+.line-text {
+  position: absolute;
+  top: -0.5em; /* Altezza del testo divisa per 2 per centrarlo verticalmente */
+  background-color: white; /* Per coprire la parte della linea sotto il testo */
+  padding: 0 10px; /* Padding per spaziare il testo dalla linea */
 }
