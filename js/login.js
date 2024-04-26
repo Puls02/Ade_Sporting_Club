@@ -29,3 +29,17 @@ function togglePasswordVisibility() {
       toggleIcon.src = "../eye.png"; // Cambia il percorso dell'immagine per l'occhio aperto
     }
 }
+
+// Aggiungi un ascoltatore di eventi per controllare se il campo è vuoto o meno
+document.addEventListener('DOMContentLoaded', function() {
+  var inputs = document.querySelectorAll('input');
+  inputs.forEach(function(input) {
+    input.addEventListener('input', function() {
+      if (this.value !== '') {
+        this.classList.add('filled');
+      } else {
+        this.classList.remove('filled');
+      }
+    });
+  });
+});

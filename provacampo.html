@@ -23,7 +23,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
     max-width: 100%;
-    position: relative; /* Aggiunto */
+    position: relative;
   }
 
   .form-group {
@@ -41,7 +41,7 @@
   }
 
   input {
-    width: calc(100% - 30px); /* Aggiunto */
+    width: calc(100% - 30px);
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ddd;
@@ -49,10 +49,13 @@
     transition: border-color 0.3s;
   }
 
- 
+  input:focus {
+    outline: none;
+    border-color: dodgerblue;
+  }
 
-  input:focus + label {
-    top: -20px;
+  input:focus + label, input:valid + label {
+    top: -10px;
     font-size: 12px;
     color: dodgerblue;
   }
@@ -64,10 +67,10 @@
     transform: translateY(-50%);
     cursor: pointer;
   }
-img {
+  img {
     width: 20px;
     height: 20px;
-}
+  }
 </style>
 </head>
 <body>
@@ -82,7 +85,7 @@ img {
     <div class="form-group">
       <input type="password" id="password" required>
       <label for="password">Password</label>
-      <img src="eye.png" alt="Mostra/Nascondi password" class="password-toggle" onclick="togglePasswordVisibility()">
+      <img src="hidden.png" alt="Mostra/Nascondi password" class="password-toggle" onclick="togglePasswordVisibility()">
     </div>
     <button type="submit">Accedi</button>
   </form>
@@ -101,6 +104,20 @@ img {
       toggleIcon.src = "eye.png"; // Cambia il percorso dell'immagine per l'occhio aperto
     }
   }
+
+  // Aggiungi un ascoltatore di eventi per controllare se il campo è vuoto o meno
+  document.addEventListener('DOMContentLoaded', function() {
+    var inputs = document.querySelectorAll('input');
+    inputs.forEach(function(input) {
+      input.addEventListener('input', function() {
+        if (this.value !== '') {
+          this.classList.add('filled');
+        } else {
+          this.classList.remove('filled');
+        }
+      });
+    });
+  });
 </script>
 
 </body>
