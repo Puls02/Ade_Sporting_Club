@@ -30,21 +30,18 @@
     align-items: center;
 }
 
-.login_menu{
-    background-color: white;
-    position: absolute;
+.login_menu {
+    background-color: rgb(252, 252, 252);
+    position: relative;
     list-style: none;
-    left: -600%;
-    top: 50px;
-    z-index: 99999;
-    border-radius: 6px;
     display: none;
     align-items: center;
-    width: 100px;
-    margin: 0 auto;
-    text-align: center;
-    height: 150px;
     justify-content: center;
+    border-radius: 6px;
+    width: 400px;
+    height: auto;
+    margin-top: 200px;
+    right: 70px;
 }
 
 .login_menu li{
