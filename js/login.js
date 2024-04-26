@@ -43,3 +43,37 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+// Funzione per mostrare il popup con una pagina web
+function mostraPopup() {
+  // Creazione dell'elemento iframe
+  var iframe = document.createElement('iframe');
+  iframe.src = '../login_registrazione/login.html'; // Sostituisci 'pagina_web_da_includere.html' con il percorso alla pagina web da includere
+  iframe.className = 'popup';
+
+  // Aggiunta dell'iframe al corpo del documento
+  document.body.appendChild(iframe);
+
+  // Aggiunta di un gestore per chiudere il popup al clic su di esso
+  iframe.addEventListener('click', function() {
+      document.body.removeChild(iframe);
+  });
+}
+
+
+// Funzione per collegare il bottone al popup
+function collegaBottoneAPopup() {
+  // Seleziona il bottone desiderato
+  var bottone = document.getElementById('mostraPopupButton');
+  
+  // Aggiungi un gestore per il clic sul bottone
+  bottone.addEventListener('click', function() {
+      // Mostra il popup al clic sul bottone
+      mostraPopup();
+  });
+}
+
+// Attivo la funzione
+window.onload = function() {
+  collegaBottoneAPopup();
+};

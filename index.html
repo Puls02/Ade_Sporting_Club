@@ -15,6 +15,10 @@
     <link rel="StyleSheet" href="Style/footer.css">
     <link rel="StyleSheet" href="Style/index.css">
 
+    <!-- POPUP DEL LOGIN -->
+    <link rel="stylesheet" href="PROVACSS.css"> <!-- staranno dentro login.css -->
+    <script src="js/login.js" defer></script>
+
 </head>
 
 <body>
@@ -58,14 +62,13 @@
             <!--container for login features--> <!--Inserire un link sign in, sign up e un bottone con l'immagine che se cliccato ti apre un menu con accedi e registrati-->
             <div class="person flex">
                 <ul class="login_menu">
-                    <li><a href="login_registrazione/login.html"><button>Accedi</button></a></li>
+                    <!-- POPUP DEL LOGIN -->
+                    <li><button id="mostraPopupButton">Accedi</button></li>
                     <li><a href="login_registrazione/registration.html"><button>Registrati</button></a></li>
                 </ul>
             </div>
             
         </nav>
-        
-        <script src="js/login.js"></script>
     </header>
 
     <div class="body responsive">

@@ -53,7 +53,7 @@
             <!--container for login features--> <!--Inserire un link sign in, sign up e un bottone con l'immagine che se cliccato ti apre un menu con accedi e registrati-->
             <div class="person flex container">
                 <ul class="login_menu">
-                    <li><button onclick="mostraPopUp()">Apri Pop-up</button></li>
+                    <li><button id="mostraPopupButton">Accedi</button></li>
                     <li><a href="registration.html">Registrati</a></li>
                 </ul>
             </div>            
@@ -61,8 +61,6 @@
         
         <script src="../js/login.js"></script>
     </header>
-
-    <button onclick="mostraPopUp()">Apri Pop-up</button>
 
     <form action="" method="post" name="log" id="popup" class="popup"> <!-- importante per i comportamenti automatici del form -->
         <img src="../immagini/login/close.png"  alt="x per chiudere" class="close" id="popup" onclick="nascondiPopUp()">
