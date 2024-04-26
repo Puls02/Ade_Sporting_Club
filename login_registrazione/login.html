@@ -65,17 +65,17 @@
     <button onclick="mostraPopUp()">Apri Pop-up</button>
 
     <form action="" method="post" name="log" id="popup" class="popup"> <!-- importante per i comportamenti automatici del form -->
-        <img src="../close.png"  alt="x per chiudere" class="close" id="popup" onclick="nascondiPopUp()">
+        <img src="../immagini/login/close.png"  alt="x per chiudere" class="close" id="popup" onclick="nascondiPopUp()">
         <h1 class="title">LOGIN</h1>
         <div class="box">
             <input id="mail" type="email" class="field" name="indirizzomail" size="30" maxlength="30" required>
             <label for="mail" class="labellogin">E-mail: </label>
-            <img class="imagelogin" src="../mail.png" alt="icona mail">
+            <img class="imagelogin" src="../immagini/login/mail.png" alt="icona mail">
         </div>
         <div class="box">
             <input type="password" id="password" class="field" name="password" size="15" maxlength="15" required>
             <label for="password" class="labellogin">Password: </label> 
-            <img src="../hidden.png" alt="Mostra/Nascondi password" class="password-toggle" onclick="togglePasswordVisibility()">
+            <img src="../immagini/login/hidden.png" alt="Mostra/Nascondi password" class="password-toggle" onclick="togglePasswordVisibility()">
         </div>
         <input class="loginbutton" type="submit" value="Accedi">
         <div>
