@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="icon" type="image/png" sizes="32x32" href="../immagini/logo/favicon.png">
     <title>Login</title>
 
     <link rel="StyleSheet" href="../Style/utility.css">
     <link rel="StyleSheet" href="../Style/navbar.css">
     <link rel="StyleSheet" href="../Style/login.css">
+
 </head>
 <body>
     <!--Header, there is the navbar menu and login-->
@@ -51,20 +53,34 @@
             <!--container for login features--> <!--Inserire un link sign in, sign up e un bottone con l'immagine che se cliccato ti apre un menu con accedi e registrati-->
             <div class="person flex container">
                 <ul class="login_menu">
-                    <li><a href="login.html">Accedi</a></li>
+                    <li><button onclick="mostraPopUp()">Apri Pop-up</button></li>
                     <li><a href="registration.html">Registrati</a></li>
                 </ul>
-            </div>
-            
+            </div>            
         </nav>
         
         <script src="../js/login.js"></script>
     </header>
 
-    <form action="" method="post" name="log"> <!-- importante per i comportamenti automatici del form -->
-        <label>E-mail: </label><input type="email" name="indirizzomail" size="30" maxlength="30"></br>
-        <label>Password: </label><input type="password" name="password" size="15" maxlength="15"></br>        
-        <input type="submit" value="Accedi">
+    <button onclick="mostraPopUp()">Apri Pop-up</button>
+
+    <form action="" method="post" name="log" id="popup" class="popup"> <!-- importante per i comportamenti automatici del form -->
+        <img src="../close.png"  alt="x per chiudere" class="close" id="popup" onclick="nascondiPopUp()">
+        <h1 class="title">LOGIN</h1>
+        <div class="box">
+            <label for="mail" class="labellogin">E-mail: </label><input id="mail" type="email" class="field" name="indirizzomail" size="30" maxlength="30" required></br>
+            <img class="imagelogin" src="../mail.png" alt="icona mail">
+        </div>
+        <div class="box">
+            <label for="password" class="labellogin">Password: </label><input type="password" id="password" class="field" name="password" size="15" maxlength="15" required></br> 
+            <img src="../hidden.png" alt="Mostra/Nascondi password" class="password-toggle" onclick="togglePasswordVisibility()">
+        </div>
+        <input class="loginbutton" type="submit" value="Accedi">
+        <div>
+            <p>Non hai ancora un account? <a href="registration.html">Registrati qui</a></p>    
+        </div>   
     </form>
+
+    
 </body>
 </html>

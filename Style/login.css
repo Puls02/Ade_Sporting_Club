@@ -40,7 +40,7 @@
     border-radius: 6px;
     display: none;
     align-items: center;
-    width: 170px;
+    width: 100px;
     margin: 0 auto;
     text-align: center;
     height: 150px;
@@ -111,3 +111,112 @@
     top: 45px;
 }
 */
+
+.popup {
+    padding: 2%;
+    border: none;
+    background-color: rgba(7, 133, 172, 0.4);
+    color: rgb(252, 252, 252); 
+    box-shadow: 0 0 15px rgb(13, 13, 91, 0.4);
+
+    justify-content: center; /*centra orizzontalmente */
+    margin: auto;
+    width: 50%;
+
+    align-items: center; /* centra verticalmente */
+    height: auto;
+}
+
+/* Stili per l'icona "x" */
+.close {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    /* la volevo sposta a destra ma lo sciocca non si muove */
+}
+
+.title {
+    display: inline-block;
+    position: relative;
+    color: rgb(252, 252, 252);
+    width: 30%;
+    font-size: 2rem;
+    font-weight: 100;
+    text-transform: uppercase;
+    margin-bottom: 2%;
+}
+
+.title::after {
+    content: '';
+    position: absolute;
+    align-self: auto;
+    left: 0;
+    bottom: -5px;
+    width: 70%;
+    height: 4px;
+    background: rgb(13, 13, 91);
+}
+
+.box {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.labellogin {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #ad0505;
+    font-size: 14px;
+    transition: top 0.3s, font-size 0.3s;
+}
+
+.field {
+    font-size: 1rem;
+    color: rgb(252, 252, 252);
+    padding: 0.2rem;
+    margin-bottom: 3rem;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid rgb(252, 252, 252);
+    background: transparent;
+    width: calc(100% - 30px); /* Aggiunto */
+    padding: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: rgb(0, 0, 0);
+}
+
+.field:focus + .labellogin {
+    top: -50px;
+    font-size: 12px;
+    color: dodgerblue;
+  }
+
+.loginbutton {
+    display: block;
+    text-transform: uppercase;
+    padding: 1%;
+    color: rgb(252, 252, 252);
+    font-size: 1.2rem;
+    background: rgb(13, 13, 91);
+    border: none;
+    cursor: pointer;
+    justify-content: center; /*centra orizzontalmente */
+    margin: auto;
+}
+
+.password-toggle, .imagelogin {
+    position: absolute;
+    top: 30%;
+    right: 4%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
