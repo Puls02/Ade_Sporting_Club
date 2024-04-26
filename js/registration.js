@@ -83,3 +83,25 @@ function resetCheckboxes(){
     })
 
 }
+
+function checkForm(event){
+    if(document.getElementsByName('sesso')[0].checked==false && document.getElementsByName('sesso')[1].checked==false){
+        event.preventDefault(); //blocca l'invio del modulo
+        alert("Sesso mancante");
+        return false;
+    }
+
+    checkboxes=document.querySelectorAll("input[type='checkbox'][name='corso']");
+    check=0;
+    checkboxes.forEach(checkbox => {
+        if(checkbox.checked==true){
+            check++;
+        }
+    })
+
+    if(check==0){
+        event.preventDefault();
+        alert("Non hai selezionato nessun corso");
+        return false;
+    }
+}
