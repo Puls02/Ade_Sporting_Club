@@ -77,7 +77,7 @@
         <label>Telefono: </label><input type="tel" name="telefono" size="15" maxlength="15"></br>
         <label>ABBONAMENTO</label><br>
         Tipo di abbonamento:
-        <select name="type" id="abbonamento" required>
+        <select name="type" id="abbonamento"  required>
             <option value="">Seleziona</option>
             <option value="AM">Abbonamento mensile</option>
             <option value="AT">Abbonamento trimestrale</option>
@@ -85,11 +85,11 @@
             <option value="AA">Abbonamento annuale</option>
         </select><br>
         <label>Livello: </label>
-        <select name="abbonamentospecifico" id="listastatus" onclick="checkType()" required>
+        <select name="abbonamentospecifico" id="listastatus" onclick="checkType()" onchange="resetCheckboxes(); checkSubscription()" required>
             <option value="">Seleziona</option>
             <option value="single">Abbonamento singolo</option>
             <option value="double">Abbonamento doppio</option>
-            <option value="gym">Abbonamento palestra</option>
+            <option value="gym" >Abbonamento palestra</option>
             <option value="opengym">Abbonamento palestra open</option>
             <option value="gold">Socio gold</option>
         </select></br>
@@ -110,7 +110,7 @@
                     <input type="checkbox" name="corso" value="nuoto" oninput="checkSubscription(event)">Nuoto
                 </label>
                 <label>
-                    <input type="checkbox" name="corso" value="palestra" oninput="checkSubscription(event)">Palestra
+                    <input type="checkbox" name="corso" value="palestra" >Palestra
                 </label>
         <br/>
         <input type="submit" value="invia form">

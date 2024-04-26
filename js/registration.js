@@ -1,4 +1,6 @@
 function checkType(){
+    checkboxes=document.querySelectorAll("input[type='checkbox'][name='corso']");
+    
     v=document.getElementById("abbonamento").value;
     if(v == ""){
         alert("Devi selezionare un tipo di abbonamento");
@@ -9,6 +11,7 @@ function checkType(){
 function checkSubscription(event){
     checkLevel=document.getElementById("listastatus").value;
     checkboxes=document.querySelectorAll("input[type='checkbox'][name='corso']");
+    checkboxes[5].disabled=true;
 
     if(checkLevel==""){
         box=event.target;
@@ -16,7 +19,7 @@ function checkSubscription(event){
         alert("Devi selezionare il livello di abbonamento");
         return false;
     }
-
+    
     let selected=0;
 
     checkboxes.forEach(checkbox => {
@@ -43,5 +46,40 @@ function checkSubscription(event){
         }
     }
 
+    if(checkLevel=="gym"){
+        checkboxes.forEach(checkbox => {
+            if(checkbox.value=="palestra"){
+                checkbox.checked=true;
+            }
+        })
+        box=event.target;
+        box.checked=false;
+        alert("Con l'abbonamento palestra non puoi accedere ai corsi");
+        return false;
+    }
+
+    if(checkLevel=="opengym"){
+        checkboxes.forEach(checkbox => {
+            if(checkbox.value=="palestra"){
+                checkbox.checked=true;
+            }
+        })
+        if(selected>2){
+            box=event.target;
+            box.checked=false;
+            alert("Con l'abbonamento palestra open puoi accedere solo ad un corso");
+            return false;
+        }
+        
+    }
     
+}
+
+function resetCheckboxes(){
+    checkboxes=document.querySelectorAll("input[type='checkbox'][name='corso']");
+    
+    checkboxes.forEach(checkbox => {
+        checkbox.checked=false;
+    })
+
 }
