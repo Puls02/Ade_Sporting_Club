@@ -13,57 +13,8 @@
 
 </head>
 <body>
-    <!--Header, there is the navbar menu and login-->
-    <header> 
-        <nav class="nav container">
-            <!--container for logo and name-->
-            <ul class="logo container"> 
-                <li>
-                    <img class="logo_img" src="../immagini/logo/Ade.jpg">
-                </li>
-                <li>
-                    <a class="logo_name">ADE Sporting Club</a>                
-                </li>
-            </ul>
-            <!--container for navbar, topBotomBordersOut is the name of the toolbar animation-->
-            <ul class="toolbar container topBotomBordersOut"> 
-                <li>
-                    <a class="toolbar_link_Home" href="../index.html">Home</a>
-                </li>
-                <li>
-                    <a class="toolbar_link_Struttura" href="Struttura.html">Struttura</a>
-                </li>
-                <li>
-                    <a class="toolbar_link_Attivita" href="Attività.html"> Attività</a>
-                </li>
-                <li>
-                    <a class="toolbar_link_Ristorante" href="Ristorante.html">Ristorante</a>
-                </li>
-                <li>
-                    <a class="toolbar_link_Eventi" href="Eventi.html">Eventi</a>
-                </li>                
-                <li>
-                    <a class="toolbar_link_Prenota" href="Prenota.html">Prenota</a>
-                </li>
-                <li>
-                    <a class="toolbar_link_Soci" href="Soci.html">Soci</a> 
-                </li>
-            </ul>
-
-            <!--container for login features--> <!--Inserire un link sign in, sign up e un bottone con l'immagine che se cliccato ti apre un menu con accedi e registrati-->
-            <div class="person flex container">
-                <ul class="login_menu">
-                    <li><button id="mostraPopupButton">Accedi</button></li>
-                    <li><a href="registration.html">Registrati</a></li>
-                </ul>
-            </div>            
-        </nav>
-        
-        <script src="../js/login.js"></script>
-    </header>
-
-    <form action="" method="post" name="log" id="popup" class="popup"> <!-- importante per i comportamenti automatici del form -->
-        <img src="../immagini/login/close.png"  alt="x per chiudere" class="close" id="popup" onclick="nascondiPopUp()">
+    <form action="" method="post" name="log" id="popup" class="formlogin"> <!-- importante per i comportamenti automatici del form -->
+        <img src="../immagini/login/close.png"  alt="x per chiudere" class="close" id="closeButton" onclick="nascondiPopUp()">
         <h1 class="title">LOGIN</h1>
         <div class="box">
             <input id="mail" type="email" class="field" name="indirizzomail" size="30" maxlength="30" required>

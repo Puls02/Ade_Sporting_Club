@@ -170,3 +170,67 @@ ul.topBotomBordersOut a:hover:after
     display: none;
   }
 } 
+
+/*testa della persona di login*/
+.person{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgb(13, 13, 91);
+  position: relative;
+  margin: 20px;
+  top:-10px;
+  cursor: pointer;
+  z-index: 1;
+}
+/*corpo della persona di login*/
+.person::after{
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 40px;
+  background-color: rgb(13, 13, 91);
+  top: 22px;
+  left: -10px;
+  border-radius: 50% 50% 0% 0%;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login_menu {
+  background-color: rgb(252, 252, 252);
+  position: relative;
+  list-style: none;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  width: 400px;
+  height: auto;
+  margin-top: 200px;
+  right: 70px;
+}
+
+.login_menu li{
+  padding: 10% 10%;
+  width: 100%;
+  border-bottom: 1px solid rgb(13, 13, 91);
+ 
+}
+
+.login_menu li:last-child{
+  border-bottom: none;
+}
+
+.reg{
+  padding: 1rem 2rem;
+  align-items: center;
+  color: rgb(13, 13, 91);
+}
+.show {display:block;}
