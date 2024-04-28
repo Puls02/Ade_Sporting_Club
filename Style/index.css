@@ -10,7 +10,7 @@
   /* Styling for the content */
   .content {
     padding: 20px;
-    height: 200px;
+    height: fit-content;
     background-color: rgba(255, 255, 255); /* last value for transparency */
   }
 
@@ -18,4 +18,10 @@
   body {
     margin: 0;
     font-family: Arial, sans-serif;
+  }
+
+  p {
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }

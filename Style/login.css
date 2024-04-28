@@ -1,25 +1,20 @@
 .formlogin {
-    padding: 2%;
+    padding: 3%;
     border: none;
     background-color: rgba(7, 133, 172, 0.4);
     color: rgb(252, 252, 252); 
-    box-shadow: 0 0 15px rgb(13, 13, 91, 0.4);
-
-    justify-content: center; /*centra orizzontalmente */
-    margin: auto;
-    width: 50%;
-
-    align-items: center; /* centra verticalmente */
+    width: auto;
     height: auto;
-    margin-top: 10%;
 }
 
 /* Stili per l'icona "x" */
 .close {
+    position: absolute;
     width: 30px;
     height: 30px;
     cursor: pointer;
-    /* la volevo sposta a destra ma lo sciocca non si muove */
+    top: 1%;
+    right: 1%;
 }
 
 /* Nasconde l'occhio di default: N.B. non funziona su tutti i browser */
@@ -37,6 +32,7 @@ input[type="password"]::-webkit-credentials-auto-fill-button {
     font-weight: 100;
     text-transform: uppercase;
     margin-bottom: 10%;
+    margin-top: 5%;
 }
 
 .title::after {
@@ -45,8 +41,8 @@ input[type="password"]::-webkit-credentials-auto-fill-button {
     align-self: auto;
     left: 0;
     bottom: -5px;
-    width: 70%;
-    height: 4px;
+    width: 100%;
+    height: 2px;
     background: rgb(13, 13, 91);
 }
 

@@ -39,6 +39,14 @@ function mostraPopup() {
     closeButton.addEventListener('click', function() {
       iframe.remove();
     });
+
+    // Per chiudere il popup e reindirizzare l'utente a un'altra pagina quando si fa clic su un link all'interno del popup, puoi aggiungere un gestore per l'evento di clic su quel link. Nel gestore dell'evento, puoi rimuovere l'iframe del popup e quindi reindirizzare l'utente alla pagina desiderata.
+    var paginaLink = iframe.contentDocument.getElementById('linkpagina');
+    paginaLink.addEventListener('click', function(event) {
+      event.preventDefault(); // Previeni l'azione predefinita del link (navigare alla pagina)
+      iframe.remove(); // Rimuovi il popup
+      window.location.href = paginaLink.href; // Reindirizza l'utente alla pagina specificata nel link
+    });
   };
 }
 
