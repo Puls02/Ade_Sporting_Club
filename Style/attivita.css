@@ -1,0 +1,110 @@
+.zona {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    background-color: rgba(177, 173, 173, 0.1);
+    border-radius: 10px;
+    padding: 2%;
+    margin: 2%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    position: absolute;
+    margin-top: -40px;
+}
+
+/* parte delle attività */
+.activity {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 300px;
+    text-align: center;
+    transition: transform 0.4s;
+}
+.activity:hover {
+    transform: translateY(-10px);
+}
+.activity img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.activity h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+.activity p {
+    color: #666;
+    margin-bottom: 15px;
+}
+.activity a {
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    padding: 8px 20px;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+.activity a:hover {
+    background-color: #555;
+}
+
+/* parte della tabella */
+.schedule {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+.schedule table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+}
+.schedule th, .schedule td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+.schedule th {
+    background-color: #333;
+    color: #fff;
+    font-weight: normal;
+}
+.field {
+    font-weight: bold;
+    color: #333;
+}
+
+/* parte della legenda */
+.legend {
+    width: 50%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+.legend-list {
+    padding: 20px;
+    margin: 0;
+    list-style-type: none;
+}
+.legend-item {
+    margin-bottom: 10px;
+}
+.legend-item span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
