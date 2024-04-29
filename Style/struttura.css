@@ -1,0 +1,72 @@
+/* Stile per la galleria */
+.gallery {
+    padding: 2%;
+    display: flex;
+    height: 55vh;
+    width: auto;
+    gap: 1%;
+}
+
+  /* Stile per le immagini */
+.gallery img {
+    width: 0px;
+    flex-grow: 1; /* occupa tutto lo spazio che puoi */ 
+    object-fit: cover;
+    filter: brightness(50%);
+    transition: .7s ease;
+}
+
+  /* Effetto di ingrandimento al passaggio del mouse */
+.gallery img:hover {
+    cursor: crosshair;
+    width: 30vw;
+    opacity: 1;
+    filter: brightness(100%);
+    filter: contrast(120%);
+}
+
+/* resto della pagina */
+.zonaccia {
+  margin: 2%;
+  position: relative;
+  width: 100%;
+  height: 800px;
+}
+.activity-bar {
+  width: 10px;
+  height: 80%;
+  background-color: #333;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.activity-label {
+  position: absolute;
+  width: 10%;
+  height: 2%;
+  padding: 2%;
+  text-align: center;
+  background-color: #0585ac;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden; /* nascondi l'immagine quando l'elemento è contratto */
+}
+.activity-label img,
+.activity-label p {
+  opacity: 0; /* nascondi l'immagine e la descrizione di default */
+  transition: opacity 0.3s ease;
+}
+.activity-label:hover {
+  width: 40%;
+  height: 40%;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #2980b9;
+}
+.activity-label:hover img,
+.activity-label:hover p {
+  opacity: 1; /* mostra l'immagine e la descrizione quando l'elemento è espanso */
+}

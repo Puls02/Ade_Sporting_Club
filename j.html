@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attività - Circolo Sportivo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #3498db;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+    h1 {
+      margin-top: 0;
+    }
+    .activity-bar {
+      width: 10px;
+      height: 80%;
+      background-color: #333;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .activity-label {
+      position: absolute;
+      width: 10%;
+      height: 2%;
+      padding: 2%;
+      text-align: center;
+      background-color: #0585ac;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      overflow: hidden; /* nascondi l'immagine quando l'elemento è contratto */
+    }
+    .activity-label img,
+    .activity-label p {
+      opacity: 0; /* nascondi l'immagine e la descrizione di default */
+      transition: opacity 0.3s ease;
+    }
+    .activity-label:hover {
+      width: 40%;
+      height: 40%;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #2980b9;
+    }
+    .activity-label:hover img,
+    .activity-label:hover p {
+      opacity: 1; /* mostra l'immagine e la descrizione quando l'elemento è espanso */
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Attività</h1>
+</header>
+
+<div class="activity-bar"></div>
+
+<div class="activity-label" style="left: 30%; top: 25%;">
+  Reception<br>
+  <img src="reception.jpg" alt="Reception">
+  <p>La nostra reception è aperta tutti i giorni per assistervi nelle prenotazioni e fornirvi informazioni su tutte le attività del circolo.</p>
+</div>
+
+<div class="activity-label" style="left: 55%; top: 50%;">
+  Bar<br>
+  <img src="bar.jpg" alt="Bar">
+  <p>Il nostro bar è il luogo ideale per rilassarsi dopo una partita o per gustare un drink con gli amici. Offriamo una selezione di cocktail, birre e vini.</p>
+</div>
+
+<div class="activity-label" style="left: 30%; top: 75%;">
+  Ristorante<br>
+  <img src="ristorante.jpg" alt="Ristorante">
+  <p>Il nostro ristorante offre una vasta selezione di piatti deliziosi, dai pasti leggeri alle pietanze gourmet, il tutto accompagnato da una varietà di bevande.</p>
+</div>
+
+<div class="activity-label" style="left: 55%; top: 100%;">
+  Piscina<br>
+  <img src="piscina.jpg" alt="Piscina">
+  <p>La nostra piscina è perfetta per rinfrescarsi durante le giornate calde estive. È sorvegliata da personale qualificato per garantire la sicurezza di tutti.</p>
+</div>
+
+</body>
+</html>
