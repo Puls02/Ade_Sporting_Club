@@ -1,0 +1,93 @@
+/* parte della tabella */
+.zona {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    background-color: rgba(177, 173, 173, 0.1);
+    border-radius: 10px;
+    padding: 2%;
+    margin: 2%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.schedule {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+.schedule table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+}
+.schedule th, .schedule td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+.schedule th {
+    background-color: #333;
+    color: #fff;
+    font-weight: normal;
+}
+.field {
+    font-weight: bold;
+    color: #333;
+}
+
+/* prenotazione attività */
+.toggle-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 2%;
+}
+
+.toggle-item {
+    margin-bottom: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-item > input[type="radio"] {
+    display: none; /* per nascondere la scelta dell'attività (bottone) */
+}
+
+.toggle-item > label {
+    cursor: pointer;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* lascia lo spazio in mezzo */
+    background-color: #057d92;
+    color: #fff;
+}
+.toggle-item input[type="radio"]:checked + label {
+    background-color: rgba(13, 130, 165, 0.6);
+}
+
+.content {
+    padding: 2%;
+    transition: display 0.5s ease;
+}
+
+/* Stile per la freccia e le sue evoluzioni */
+.arrow {
+    width: 10px;
+    height: 10px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transition: transform 0.3s ease;
+}
+.toggle-item input[type="radio"]:checked + label .arrow {
+      transform: rotate(-135deg);
+}
+.toggle-item input[type="radio"]:not(:checked) + label .arrow {
+    transform: rotate(-45deg); 
+}
+.toggle-item input[type="radio"]:checked ~ .content {
+    display: block;
+}
