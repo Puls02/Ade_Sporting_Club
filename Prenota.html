@@ -220,8 +220,30 @@
                     <form method="post" action="/upload">
                         <label for="nomePaddle">Nome:</label>
                         <input type="text" id="nomePaddle" name="nomePaddle"><br>
+                        <label for="cognomePaddle">Cognome:</label>
+                        <input type="text" id="cognomePaddle" name="cognomePaddle"><br>
                         <label for="dataPaddle">Data:</label>
                         <input type="date" id="dataPaddle" name="dataPaddle"><br>
+                        <label for="orario">Orario prenotazione:</label>
+                        <input type="time" id="orario" name="orario" required><br>
+                        <label for="campo">Seleziona campo:</label><br>
+                        <select id="campo" name="campo" required>
+                            <option value="campo1">Campo 1</option>
+                            <option value="campo2">Campo 2</option>
+                            <option value="campo3">Campo 3</option>
+                        </select><br>
+                        <label for="prenotazione">Tipo di prenotazione:</label><br>
+                        <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>
+                        <label for="interoCampo">Prenotazione dell'intero campo</label><br>
+                        <input type="radio" id="codaGioco" name="prenotazione" value="codaGioco">
+                        <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
+                        <div id="numPersoneWrapper">
+                            <label for="numeroPersone">Numero di persone:</label>
+                            <input type="number" id="numeroPersone" name="numeroPersone" min="1" required><br>
+                        </div>
+                        
+                        <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
+                        <input type="reset" value="Azzera i campi">
                     </form>
                 </div>
             </li>
@@ -232,8 +254,30 @@
                     <form method="post" action="/upload">
                         <label for="nomeTennis">Nome:</label>
                         <input type="text" id="nomeTennis" name="nomeTennis"><br>
+                        <label for="cognomeTennis">Cognome:</label>
+                        <input type="text" id="cognomeTennis" name="cognomeTennis"><br>
                         <label for="dataTennis">Data:</label>
                         <input type="date" id="dataTennis" name="dataTennis"><br>
+                        <label for="orario">Orario prenotazione:</label>
+                        <input type="time" id="orario" name="orario" required><br>
+                        <label for="campo">Seleziona campo:</label><br>
+                        <select id="campo" name="campo" required>
+                            <option value="campo1">Campo 1</option>
+                            <option value="campo2">Campo 2</option>
+                            <option value="campo3">Campo 3</option>
+                        </select><br>
+                        <label for="prenotazione">Tipo di prenotazione:</label><br>
+                        <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>
+                        <label for="interoCampo">Prenotazione dell'intero campo</label><br>
+                        <input type="radio" id="codaGioco" name="prenotazione" value="codaGioco">
+                        <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
+                        <div id="numPersoneWrapper">
+                            <label for="numeroPersone">Numero di persone:</label>
+                            <input type="number" id="numeroPersone" name="numeroPersone" min="1" required><br>
+                        </div>
+                        
+                        <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
+                        <input type="reset" value="Azzera i campi">
                     </form>
                 </div>
             </li>
@@ -244,8 +288,30 @@
                     <form method="post" action="/upload">
                         <label for="nomeBasket">Nome:</label>
                         <input type="text" id="nomeBasket" name="nomeBasket"><br>
+                        <label for="cognomeBasket">Cognome:</label>
+                        <input type="text" id="cognomeBasket" name="cognomeBasket"><br>
                         <label for="dataBasket">Data:</label>
                         <input type="date" id="dataBasket" name="dataBasket"><br>
+                        <label for="orario">Orario prenotazione:</label>
+                        <input type="time" id="orario" name="orario" required><br>
+                        <label for="campo">Seleziona campo:</label><br>
+                        <select id="campo" name="campo" required>
+                            <option value="campo1">Campo 1</option>
+                            <option value="campo2">Campo 2</option>
+                            <option value="campo3">Campo 3</option>
+                        </select><br>
+                        <label for="prenotazione">Tipo di prenotazione:</label><br>
+                        <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>
+                        <label for="interoCampo">Prenotazione dell'intero campo</label><br>
+                        <input type="radio" id="codaGioco" name="prenotazione" value="codaGioco">
+                        <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
+                        <div id="numPersoneWrapper">
+                            <label for="numeroPersone">Numero di persone:</label>
+                            <input type="number" id="numeroPersone" name="numeroPersone" min="1" required><br>
+                        </div>
+                        
+                        <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
+                        <input type="reset" value="Azzera i campi">
                     </form>
                 </div>
             </li>
@@ -256,8 +322,21 @@
                     <form method="post" action="/upload">
                         <label for="nomeNuoto">Nome:</label>
                         <input type="text" id="nomeNuoto" name="nomeNuoto"><br>
+                        <label for="cognomeNuoto">Cognome:</label>
+                        <input type="text" id="cognomeNuoto" name="cognomeNuoto"><br>
                         <label for="dataNuoto">Data:</label>
                         <input type="date" id="dataNuoto" name="dataNuoto"><br>
+                        <!-- se possibile mettiamo in elenco solo le fasce disponibili -->
+                        <label for="orarioNuoto">Scegli una fascia oraria:</label>
+                        <select name="type" id="orarioNuoto"  required>
+                            <option value="">Seleziona orario</option>
+                            <option value="1">9:00 - 10:00</option>
+                            <option value="2">10:00 - 11:00</option>
+                            <option value="3">11:00 - 12:00</option>
+                            <option value="4">12:00 - 13:00</option>
+                        </select><br>
+                        <input type="submit" value="Prenota"> 
+                        <input type="reset" value="Azzera i campi">
                     </form>
                 </div>
             </li>

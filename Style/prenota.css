@@ -71,6 +71,7 @@
 
 .content {
     padding: 2%;
+    display: none; /* nasconde il contenuto delle attività di default */ 
     transition: display 0.5s ease;
 }
 
