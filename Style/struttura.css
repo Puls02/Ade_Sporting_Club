@@ -70,6 +70,7 @@ p {
   transition: height 0.3s;
   height: 2em; /* Altezza iniziale pari all'altezza del titolo */
   /* border-left: 2px solid black;  Aggiunta della linea verticale nera */
+  cursor: pointer;
 }
 
 .service h2 {
@@ -91,11 +92,20 @@ p {
   padding: 10px;
 }
 
-.service:hover {
-  height: auto; /* Espansione al passaggio del mouse */
+/**/
+.description-container { 
+  flex-grow: 1;  
 }
-
-.service:hover p {
-  visibility: visible;
-  opacity: 1;
+  
+#description-box {
+  position: absolute;
+  right: 8%;
+  top: 140%;
+  transform: translateY(-50%);
+  background-color: #add8e6; /* Colore azzurro */
+  padding: 2%;
+  width: 50%; 
+  height: auto;
+  border: 1px solid #888;
+  display: none; /* Nascondi inizialmente il riquadro */
 }
