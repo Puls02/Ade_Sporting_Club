@@ -6,13 +6,13 @@
 
     <title>Registration</title>
     
-    <link rel="StyleSheet" href="../Style/utility.css">
-    <link rel="StyleSheet" href="../Style/navbar.css">
-    <link rel="StyleSheet" href="../Style/login.css">
+    <link rel="StyleSheet" href="Style/utility.css">
+    <link rel="StyleSheet" href="Style/navbar.css">
+    <link rel="StyleSheet" href="Style/login.css">
     
 
-    <script src="../js/registration.js"></script>
-    <script src="../js/navbar.js" defer></script>
+    <script src="js/registration.js"></script>
+    <script src="js/navbar.js" defer></script>
 
 </head>
 <body>
@@ -112,8 +112,8 @@
                     <input type="checkbox" name="corso" value="palestra" >Palestra
                 </label>
         <br/>
-        <input type="file" id="identity" value="Documento d'identità" accept=".pdf, .png, .jpeg" multiple>
-        <input type="file" id="certmed" value="Certificato medica" accept=".pdf, .png, .jpeg" multiple>
+        <input type="file" id="identity" name="identity" value="Documento d'identità" accept=".pdf, .png, .jpeg" multiple>
+        <input type="file" id="certmed" name="certmed" value="Certificato medica" accept=".pdf, .png, .jpeg" multiple>
         <br>
         <input type="submit" value="invia form" >
         <input type="reset" value="reset form">
