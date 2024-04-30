@@ -56,7 +56,7 @@
         
         <script src="../js/login.js"></script>
     </header>
-    <form action="/upload" method="post" name="registr" onsubmit="checkForm(event)"> <!-- importante per i comportamenti automatici del form -->
+    <form action="../php/registrazione.php" method="post" name="registr" onsubmit="checkForm(event)"> <!-- importante per i comportamenti automatici del form -->
         <label>Cognome: </label><input type="text" name="cognome" size="40" maxlength="40" required></br>
         <label>Nome: </label><input type="text" name="nome" size="30" maxlength="30" required>
         <br/>Sesso:
@@ -66,6 +66,7 @@
         <label>Residenza: </label><input type="text" name="residenza" size="40" maxlength="40" required></br>
         <label>Nato/a a: </label><input type="text" placeholder="luogo" name="nascita" required/> il <input type="date" name="nata" required><br/>
         <label>E-mail: </label><input type="email" name="indirizzomail" size="30" maxlength="30"></br>
+        <label>Password: </label><input type="password" name="password" size="30" maxlength="30" required></br>
         <label>Telefono: </label><input type="tel" name="telefono" size="15" maxlength="15" required></br>
         <label>ABBONAMENTO</label><br>
         <label>Tipo di abbonamento:</label>
