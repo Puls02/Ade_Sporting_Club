@@ -15,13 +15,6 @@ if(!$conn){
     echo "Connssione stabilita";
 }
 
-
-if ($result) {
-    echo "Corso registrato con successo!";
-} else {
-    echo "Errore durante la registrazione:"  . pg_last_error($conn);
-}
-
 $nome= $_POST['nome'];
 $cognome= $_POST['cognome'];
 

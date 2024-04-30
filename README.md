@@ -15,3 +15,5 @@ git push  -> invia i file.
 git pull -> scarica i file. IMPORTANTE: prima di iniziare a lavorare assicurarsi di avere fatto la pull per avere il progetto aggiornato all'ultima versione.
 
 Per ulteriori comandi: https://gist.github.com/tesseslol/da62aabec74c4fed889ea39c95efc6cc
+
+link del sito su xampp: http://localhost/dashboard/Ade_Sporting_Club/

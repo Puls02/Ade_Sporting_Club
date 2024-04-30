@@ -17,9 +17,12 @@
     <link rel="StyleSheet" href="Style/struttura.css">
     <link rel="stylesheet" href="Style/popup.css"> 
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- per le cione delle attivita -->
+
     <!-- Link ai file javascript -->
     <script src="js/login.js" defer></script>
     <script src="js/navbar.js" defer></script>
+    <script src="js/struttura.js" defer></script>
 </head>
 
 <body>
@@ -70,17 +73,14 @@
     </header>
 
     <div class="body responsive">
-        <p>
-            Benvenuti nel nostro centro sportivo di prim'ordine situato nel cuore di Via Nomentana, Roma! Immersa tra le vivaci strade di questa città storica, la nostra struttura offre un rifugio per gli appassionati di fitness, gli atleti e le famiglie.
-
+        <div class="scatola">
+            <p>Benvenuti nel nostro centro sportivo di prim'ordine situato nel cuore di Via Nomentana, Roma! Immersa tra le vivaci strade di questa città storica, la nostra struttura offre un rifugio per gli appassionati di fitness, gli atleti e le famiglie.
 Presso il nostro centro sportivo, ci impegniamo a fornire un ambiente dinamico e inclusivo in cui persone di tutte le età e abilità possono perseguire i propri obiettivi di fitness e scoprire la gioia di uno stile di vita attivo. Che tu sia un atleta esperto desideroso di perfezionare le tue abilità o qualcuno che intraprende un viaggio per migliorare la propria salute e il benessere, abbiamo qualcosa per tutti.
-
 Le nostre strutture all'avanguardia vantano attrezzature all'ultimo grido, servizi moderni e personale esperto impegnato ad aiutarti a raggiungere le tue aspirazioni di fitness. Dall'attrezzatura da palestra all'avanguardia a campi sportivi versatili e ampie aree di allenamento, offriamo una gamma diversificata di attività e programmi adattati alle tue esigenze.
-
 Ma il nostro impegno va oltre il semplice fitness. Crediamo nel favorire un senso di comunità e cameratismo tra i nostri membri, creando un ambiente di sostegno e motivazione in cui puoi prosperare sia dentro che fuori dalla palestra.
-
 Unisciti a noi presso il nostro centro sportivo in Via Nomentana e intraprendi un viaggio verso un te più sano e felice. Che tu voglia sudare, fare nuove amicizie o semplicemente rilassarti dopo una lunga giornata, ti invitiamo a vivere il massimo del fitness e del divertimento proprio qui nel cuore di Roma.
-        </p>
+            </p>
+        </div>
     </div>
 
 <!-- Linea con parola centrale -->
@@ -89,51 +89,55 @@ Unisciti a noi presso il nostro centro sportivo in Via Nomentana e intraprendi u
     </div>
 
 <!-- Galleria di Immagini: DA SCEGLIERE -->
-    <div class="gallery">
-        <img src="immagini/galleria/img5.jpg" alt="Immagine 5">
-        <img src="immagini/galleria/img6.jpeg" alt="Immagine 6">
-        <img src="immagini/galleria/img7.jpg" alt="Immagine 7">
-        <img src="immagini/galleria/img8.jpg" alt="Immagine 8">
-        <img src="immagini/galleria/img9.jpg" alt="Immagine 9">
-        <img src="immagini/galleria/img9.jpg" alt="Immagine 9">
-        <img src="immagini/galleria/img9.jpg" alt="Immagine 9">
-        <img src="immagini/galleria/img9.jpg" alt="Immagine 9">
-        <img src="immagini/galleria/img9.jpg" alt="Immagine 9">
-        <img src="immagini/galleria/img9.jpg" alt="Immagine 9">
-        <img src="immagini/galleria/img9.jpg" alt="Immagine 9">
-    </div>
+    
+        <div class="gallery">
+            <img src="immagini/galleria/img5.jpg" alt="Immagine 5">
+            <img src="immagini/galleria/img6.jpeg" alt="Immagine 6">
+            <img src="immagini/galleria/img7.jpg" alt="Immagine 7">
+            <img src="immagini/galleria/img8.jpg" alt="Immagine 8">
+            <img src="immagini/galleria/img9.jpg" alt="Immagine 9">
+            <img src="immagini/galleria/img9.jpg" alt="Immagine 9">
+            <img src="immagini/galleria/img9.jpg" alt="Immagine 9">
+            <img src="immagini/galleria/img9.jpg" alt="Immagine 9">
+            <img src="immagini/galleria/img9.jpg" alt="Immagine 9">
+            <img src="immagini/galleria/img9.jpg" alt="Immagine 9">
+            <img src="immagini/galleria/img9.jpg" alt="Immagine 9">
+        </div>
+    
 
 <!-- Linea con parola centrale -->
     <div class="line-with-text">
         <span class="line-text">I nostri servizi</span>
     </div>
 
-    <div class="zonaccia">
-        <div class="activity-bar"></div>
+    <div class="scatola">
+        <div class="cont">
+            <div class="service">
+                <h2 id="bar-title"><i class="fas fa-coffee"></i> Bar</h2>
+                <p id="bar-desc">Godetevi una varietà di bevande e snack nel nostro bar accogliente. Il nostro bar è il luogo ideale per rilassarsi dopo una partita o per gustare un drink con gli amici. Offriamo una selezione di cocktail, birre e vini.</p>
+            </div>
+            
+            <div class="service">
+                <h2 id="pool-title"><i class="fas fa-swimmer"></i> Piscina</h2>
+                <p id="pool-desc">Rilassatevi o fate qualche vasca nella nostra piscina all'aperto.La nostra piscina è perfetta per rinfrescarsi durante le giornate calde estive. È sorvegliata da personale qualificato per garantire la sicurezza di tutti.</p>
+            </div>
+            
+            <div class="service">
+                <h2 id="rec-title"><i class="fas fa-user"></i> Reception</h2>
+                <p id="rec-desc">Il nostro staff cordiale è qui per assistervi con qualsiasi richiesta o informazione.Il nostro staff cordiale è qui per assistervi con qualsiasi richiesta o informazione.Il nostro staff cordiale è qui per assistervi con qualsiasi richiesta o informazione.La nostra reception è aperta tutti i giorni per assistervi nelle prenotazioni e fornirvi informazioni su tutte le attività del circolo.</p>
+            </div>
+            
+            <div class="service">
+                <h2 id="rest-title"><i class="fas fa-utensils"></i> Ristorante</h2>
+                <p id="rest-desc">Assaporate piatti deliziosi preparati dai nostri chef nel ristorante del campo sportivo. Il nostro ristorante offre una vasta selezione di piatti deliziosi, dai pasti leggeri alle pietanze gourmet, il tutto accompagnato da una varietà di bevande.</p>
+            </div>
 
-        <div class="activity-label" id="reception" style="left: 30%; top: 25%;">
-            Reception<br>
-            <img src="reception.jpg" alt="Reception">
-            <p>La nostra reception è aperta tutti i giorni per assistervi nelle prenotazioni e fornirvi informazioni su tutte le attività del circolo.</p>
-        </div>
-
-        <div class="activity-label" id="Bar" style="left: 55%; top: 50%;">
-            Bar<br>
-            <img src="bar.jpg" alt="Bar">
-            <p>Il nostro bar è il luogo ideale per rilassarsi dopo una partita o per gustare un drink con gli amici. Offriamo una selezione di cocktail, birre e vini.</p>
-        </div>
-
-        <div class="activity-label" id="ristorante" style="left: 30%; top: 75%;">
-            Ristorante<br>
-            <img src="ristorante.jpg" alt="Ristorante">
-            <p>Il nostro ristorante offre una vasta selezione di piatti deliziosi, dai pasti leggeri alle pietanze gourmet, il tutto accompagnato da una varietà di bevande.</p>
-        </div>
-
-        <div class="activity-label" id="piscina" style="left: 55%; top: 100%;">
-            Piscina<br>
-            <img src="piscina.jpg" alt="Piscina">
-            <p>La nostra piscina è perfetta per rinfrescarsi durante le giornate calde estive. È sorvegliata da personale qualificato per garantire la sicurezza di tutti.</p>
-        </div>
+            <div class="description-container">
+                <div class="description-box" id="description-container">
+                </div>
+            </div>
+        </div> 
+        
     </div>
 
 <!-- Footer section with contacts -->	

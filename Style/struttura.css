@@ -1,3 +1,11 @@
+p {
+  padding: 2%;
+  text-align: justify;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333;
+}
+
 /* Stile per la galleria */
 .gallery {
     padding: 2%;
@@ -7,7 +15,6 @@
     gap: 1%;
 }
 
-  /* Stile per le immagini */
 .gallery img {
     width: 0px;
     flex-grow: 1; /* occupa tutto lo spazio che puoi */ 
@@ -16,7 +23,6 @@
     transition: .7s ease;
 }
 
-  /* Effetto di ingrandimento al passaggio del mouse */
 .gallery img:hover {
     cursor: crosshair;
     width: 30vw;
@@ -26,39 +32,55 @@
 }
 
 /* resto della pagina */
-.zonaccia {
+
+.scatola {
+    position: relative;
+    width: 90%;
+    height: fit-content;
+    background-color: rgba(177, 173, 173, 0.1);
+    border-radius: 10px;
+    padding: 2%;
+    margin: 2%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* attivita */
+.cont { 
+  max-width: 1200px; 
+  margin: auto; 
+  position: relative; /* Aggiunto per il posizionamento assoluto del pseudo-elemento */
+  margin-left: 0;
+}
+.cont::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px; /* Larghezza della linea */
+  background: black; /* Colore della linea */
+  z-index: -1; /* Assicura che la linea sia dietro i contenitori dei servizi */
+}
+.service {
   margin: 2%;
+  padding: 1%;
   position: relative;
-  width: 100%;
-  height: 800px;
-}
-.activity-bar {
-  width: 10px;
-  height: 80%;
-  background-color: #333;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-.activity-label {
-  position: absolute;
-  width: 10%;
-  height: 2%;
-  padding: 2%;
-  text-align: center;
-  background-color: #0585ac;
-  color: #fff;
-  border-radius: 5px;
+  overflow: hidden;
+  border: none;
+  transition: height 0.3s;
+  height: 2em; /* Altezza iniziale pari all'altezza del titolo */
+  /* border-left: 2px solid black;  Aggiunta della linea verticale nera */
   cursor: pointer;
-  transition: all 0.3s ease;
-  overflow: hidden; /* nascondi l'immagine quando l'elemento è contratto */
 }
-.activity-label img,
-.activity-label p {
-  opacity: 0; /* nascondi l'immagine e la descrizione di default */
-  transition: opacity 0.3s ease;
+
+.service h2 {
+  color: #333;
+  margin: 0;
+  border-bottom: 2px solid red;
+  display: inline-block;
+  padding-bottom: 3px; /* Aggiunge un po' di spazio tra il testo e la linea */
 }
+<<<<<<< HEAD
 .activity-label:hover {
   width: 40%;
   height: 40%;
@@ -71,3 +93,34 @@
 .activity-label:hover p {
   opacity: 1; /* mostra l'immagine e la descrizione quando l'elemento è espanso */
 }
+=======
+
+.service p {
+  color: #333;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s linear;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 1;
+  margin: 0;
+  padding: 10px;
+}
+
+/**/
+.description-container { 
+  flex-grow: 1;  
+}
+  
+#description-box {
+  position: absolute;
+  right: 8%;
+  top: 140%;
+  transform: translateY(-50%);
+  background-color: #add8e6; /* Colore azzurro */
+  padding: 2%;
+  width: 50%; 
+  height: auto;
+  border: 1px solid #888;
+  display: none; /* Nascondi inizialmente il riquadro */
+}
+>>>>>>> efece1740b80ea72eae1c1926b5366c78e5bc554

@@ -6,13 +6,13 @@
 
     <title>Registration</title>
     
-    <link rel="StyleSheet" href="Style/utility.css">
-    <link rel="StyleSheet" href="Style/navbar.css">
-    <link rel="StyleSheet" href="Style/login.css">
+    <link rel="StyleSheet" href="../Style/utility.css">
+    <link rel="StyleSheet" href="../Style/navbar.css">
+    <link rel="StyleSheet" href="../Style/login.css">
     
 
-    <script src="js/registration.js"></script>
-    <script src="js/navbar.js" defer></script>
+    <script src="../js/registration.js"></script>
+    <script src="../js/navbar.js" defer></script>
 
 </head>
 <body>
@@ -38,13 +38,7 @@
                 </li>
                 <li>
                     <a class="toolbar_link_Attivita" href="../Attivita.html"> Attività</a>
-                </li>
-                <li>
-                    <a class="toolbar_link_Ristorante" href="Ristorante.html">Ristorante</a>
-                </li>
-                <li>
-                    <a class="toolbar_link_Eventi" href="Eventi.html">Eventi</a>
-                </li>                
+                </li>             
                 <li>
                     <a class="toolbar_link_Prenota" href="../Prenota.html">Prenota</a>
                 </li>
@@ -62,7 +56,7 @@
         
         <script src="../js/login.js"></script>
     </header>
-    <form action="../php/registrazione.php" method="post" name="registr" onsubmit="checkForm(event)"> <!-- importante per i comportamenti automatici del form -->
+    <form action="../php/app.php" method="post" name="registr" onsubmit="checkForm(event)"> <!-- importante per i comportamenti automatici del form -->
         <label>Cognome: </label><input type="text" name="cognome" size="40" maxlength="40" required></br>
         <label>Nome: </label><input type="text" name="nome" size="30" maxlength="30" required>
         <br/>Sesso:
