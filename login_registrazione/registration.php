@@ -11,7 +11,7 @@
     <link rel="StyleSheet" href="../Style/login.css">
     
 
-    <script src="../js/registration.js"></script>
+    <script src="../js/reg.js" defer></script>
     <script src="../js/navbar.js" defer></script>
 
 </head>
@@ -56,12 +56,12 @@
         
         <script src="../js/login.js"></script>
     </header>
-    <form action="../php/databse.php" method="post" name="registr" onsubmit="checkForm(event)"> <!-- importante per i comportamenti automatici del form -->
+    <form action="../php/database.php" method="post" name="registr" onsubmit="checkForm(event)"> <!-- importante per i comportamenti automatici del form -->
         <label>Cognome: </label><input type="text" name="cognome" size="40" maxlength="40" required></br>
         <label>Nome: </label><input type="text" name="nome" size="30" maxlength="30" required>
         <br/>Sesso:
-                <br/><input type="radio" name="sesso" />Maschio
-                <br/><input type="radio" name="sesso" />Femmina
+                <br/><input type="radio" name="sesso" value="uomo"/>Maschio
+                <br/><input type="radio" name="sesso" value="donna"/>Femmina
         <br/>
         <label>Residenza: </label><input type="text" name="residenza" size="40" maxlength="40" required></br>
         <label>Nato/a a: </label><input type="text" placeholder="luogo" name="nascita" required/> il <input type="date" name="nata" required><br/>
@@ -88,22 +88,22 @@
         </select></br>
         Seleziona corsi:<br>
                 <label>
-                    <input type="checkbox" name="corso" value="calcio"  oninput="checkSubscription(event)">Calcio
+                    <input type="checkbox" name="corso[]" value="calcio"  oninput="checkSubscription(event)">Calcio
                 </label>
                 <label>
-                    <input type="checkbox" name="corso" value="basket"  oninput="checkSubscription(event)">Basket
+                    <input type="checkbox" name="corso[]" value="basket"  oninput="checkSubscription(event)">Basket
                 </label>
                 <label>
-                    <input type="checkbox" name="corso" value="tennis"  oninput="checkSubscription(event)">Tennis
+                    <input type="checkbox" name="corso[]" value="tennis"  oninput="checkSubscription(event)">Tennis
                 </label>
                 <label>
-                    <input type="checkbox" name="corso" value="paddle"  oninput="checkSubscription(event)">Paddle
+                    <input type="checkbox" name="corso[]" value="paddle"  oninput="checkSubscription(event)">Paddle
                 </label>
                 <label>
-                    <input type="checkbox" name="corso" value="nuoto" oninput="checkSubscription(event)">Nuoto
+                    <input type="checkbox" name="corso[]" value="nuoto" oninput="checkSubscription(event)">Nuoto
                 </label>
                 <label>
-                    <input type="checkbox" name="corso" value="palestra" >Palestra
+                    <input type="checkbox" name="corso[]" value="palestra" >Palestra
                 </label>
         <br/>
         <input type="file" id="identity" name="identity" value="Documento d'identità" accept=".pdf, .png, .jpeg" multiple>

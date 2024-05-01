@@ -1,16 +1,14 @@
-function checkType(){
-    checkboxes=document.querySelectorAll("input[type='checkbox'][name='corso']");
-    
+function checkType(){    
     v=document.getElementById("abbonamento").value;
     if(v == ""){
-        alert("Devi selezionare un tipo di abbonamento");
+        alert("Devi selezionaaare un tipo di abbonamento");
         return false
     }
 }
 
 function checkSubscription(event){
     checkLevel=document.getElementById("listastatus").value;
-    checkboxes=document.querySelectorAll("input[type='checkbox'][name='corso']");
+    checkboxes=document.querySelectorAll('input[name="corso[]"]');
     checkboxes[5].disabled=true;
 
     if(checkLevel==""){
@@ -72,11 +70,10 @@ function checkSubscription(event){
         }
         
     }
-    
 }
 
 function resetCheckboxes(){
-    checkboxes=document.querySelectorAll("input[type='checkbox'][name='corso']");
+    checkboxes=document.querySelectorAll('input[type="checkbox"]');
     
     checkboxes.forEach(checkbox => {
         checkbox.checked=false;
@@ -91,7 +88,7 @@ function checkForm(event){
         return false;
     }
 
-    checkboxes=document.querySelectorAll("input[type='checkbox'][name='corso']");
+    checkboxes=document.querySelectorAll('input[type="checkbox"]');
     check=0;
     checkboxes.forEach(checkbox => {
         if(checkbox.checked==true){
@@ -104,5 +101,6 @@ function checkForm(event){
         alert("Non hai selezionato nessun corso");
         return false;
     }
-}
 
+    checkboxes[5].disabled=false;
+}
