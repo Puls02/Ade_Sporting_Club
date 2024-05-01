@@ -56,7 +56,7 @@
         
         <script src="../js/login.js"></script>
     </header>
-    <form action="../php/app.php" method="post" name="registr" onsubmit="checkForm(event)"> <!-- importante per i comportamenti automatici del form -->
+    <form action="../php/databse.php" method="post" name="registr" onsubmit="checkForm(event)"> <!-- importante per i comportamenti automatici del form -->
         <label>Cognome: </label><input type="text" name="cognome" size="40" maxlength="40" required></br>
         <label>Nome: </label><input type="text" name="nome" size="30" maxlength="30" required>
         <br/>Sesso:
