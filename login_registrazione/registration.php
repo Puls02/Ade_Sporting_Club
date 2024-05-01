@@ -56,7 +56,7 @@
         
         <script src="../js/login.js"></script>
     </header>
-    <form action="../php/registrazione.php" method="post" name="registr" onsubmit="checkForm(event)"> <!-- importante per i comportamenti automatici del form -->
+    <form action="../php/app.php" method="post" name="registr" onsubmit="checkForm(event)"> <!-- importante per i comportamenti automatici del form -->
         <label>Cognome: </label><input type="text" name="cognome" size="40" maxlength="40" required></br>
         <label>Nome: </label><input type="text" name="nome" size="30" maxlength="30" required>
         <br/>Sesso:
@@ -106,8 +106,8 @@
                     <input type="checkbox" name="corso" value="palestra" >Palestra
                 </label>
         <br/>
-        <input type="file" id="identity" value="Documento d'identità" accept=".pdf, .png, .jpeg" multiple>
-        <input type="file" id="certmed" value="Certificato medica" accept=".pdf, .png, .jpeg" multiple>
+        <input type="file" id="identity" name="identity" value="Documento d'identità" accept=".pdf, .png, .jpeg" multiple>
+        <input type="file" id="certmed" name="certmed" value="Certificato medica" accept=".pdf, .png, .jpeg" multiple>
         <br>
         <input type="submit" value="invia form" >
         <input type="reset" value="reset form">

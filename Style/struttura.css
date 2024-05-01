@@ -80,6 +80,20 @@ p {
   display: inline-block;
   padding-bottom: 3px; /* Aggiunge un po' di spazio tra il testo e la linea */
 }
+<<<<<<< HEAD
+.activity-label:hover {
+  width: 40%;
+  height: 40%;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #2980b9;
+  z-index: 1;
+}
+.activity-label:hover img,
+.activity-label:hover p {
+  opacity: 1; /* mostra l'immagine e la descrizione quando l'elemento è espanso */
+}
+=======
 
 .service p {
   color: #333;
@@ -109,3 +123,4 @@ p {
   border: 1px solid #888;
   display: none; /* Nascondi inizialmente il riquadro */
 }
+>>>>>>> efece1740b80ea72eae1c1926b5366c78e5bc554
