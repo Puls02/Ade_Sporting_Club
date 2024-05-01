@@ -11,11 +11,12 @@
     <link rel="StyleSheet" href="../Style/navbar.css">
     <link rel="StyleSheet" href="../Style/login.css">
 
+    <script src="../js/login.js" defer></script>
+
 </head>
 <body>
     <!-- gestire login degli istruttori -->
     <form action="" method="post" name="log" id="popup" class="formlogin"> <!-- importante per i comportamenti automatici del form -->
-        <img src="../immagini/login/close.png"  alt="x per chiudere" class="close" id="closeButton" onclick="nascondiPopUp()">
         <h1 class="title">LOGIN</h1>
         <div class="box">
             <input id="mail" type="email" class="field" name="indirizzomail" size="30" maxlength="30" required>
@@ -27,10 +28,7 @@
             <label for="password" class="labellogin">Password: </label> 
             <img src="../immagini/login/hidden.png" alt="Mostra/Nascondi password" class="password-toggle" onclick="togglePasswordVisibility()">
         </div>
-        <input class="loginbutton" type="submit" value="Accedi">
-        <div>
-            <p>Non hai ancora un account? <a id="linkpagina" href="registration.html">Registrati qui</a></p>    
-        </div>   
+        <input class="loginbutton" type="submit" value="Accedi"> 
     </form>
 </body>
 </html>
