@@ -24,7 +24,7 @@ p {
 }
 
 .gallery img:hover {
-    cursor: crosshair;
+    cursor: pointer;
     width: 30vw;
     opacity: 1;
     filter: brightness(100%);
@@ -93,7 +93,7 @@ p {
 .activity-label:hover p {
   opacity: 1; /* mostra l'immagine e la descrizione quando l'elemento è espanso */
 }
-=======
+/* ======= */
 
 .service p {
   color: #333;
