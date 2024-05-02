@@ -63,10 +63,7 @@ svg {
   user-select: none; /* Impedisce la selezione dell'elemento da parte dell'utente */
 }
 
-/*-----------WebSite banner video--------------*/
-
-/*---------------------------------------------------------*/
-body
+.body
 {
   background: var(--body-color);
 }

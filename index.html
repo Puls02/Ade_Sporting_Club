@@ -68,6 +68,13 @@
                     </li>
                 </ul>
             </div>
+            <!--appena viene usato lo scroll la classe dell'header viene cambiata in "sticky"-->
+            <script type="text/javascript">
+                window.addEventListener("scroll", function(){
+                    var header = document.querySelector("header");
+                    header.classList.toggle("sticky", window.scrollY > 2);
+                })
+            </script>
         </nav>
     </header>
 

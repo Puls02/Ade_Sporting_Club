@@ -1,3 +1,4 @@
+/*Navbar css Stylesheet*/
 nav
 {
   height: 100px;
@@ -10,41 +11,8 @@ nav
   padding: 0 calc((100vw - 97vw) / 2); 
   /*navbar fissa*/
   position: fixed; 
-  z-index: 1;
+  z-index: 1000;
 }
-
-
-/*------------debug----------*/
-/*
-nav
-{
-  border: 1px solid purple;
-}
-ul.logo
-{
-  border: 1px solid rgb(0, 255, 0);
-}
-.logo_img
-{
-  border: 1px solid red;
-}
-.logo_name
-{
-  border: 1px solid red;
-}
-ul.toolbar
-{
-  border: 1px solid red;
-}
-ul.toolbar a
-{
-  border: 1px solid red;
-}
-li
-{
-  border: 1px solid orange;
-}
-*/
 /*--------------------------------------*/
 .logo
 {
@@ -56,16 +24,15 @@ li
 }
 .logo_img
 {
-  width: 70px;
+  width: var(--size-8xl);
   box-align: left;
 }
-
 .logo_name
 {
-  display: block;
   color: #fff;
   text-decoration: none;
-  font: 30px /*aggiungere nome font*/ ;
+  font-size: var(--size-4xl);
+  /*aggiungere nome font*/
 }
 
 .toolbar
@@ -75,19 +42,18 @@ li
   align-items: center;
   list-style: none;
   margin: 0 auto;
- 	padding: 3px;
+ 	padding: 5px;
 	text-align: center;
 }
-
 .toolbar a
 {
   color: #fff;
   text-decoration: none;
-  font: 10px /*aggiungere nome font*/ ;
+  font-size: var(--size-xl)
+  /*aggiungere nome font*/ ;
   margin: 0px 10px;
   padding: 10px 10px;
   position: relative;
-  z-index: 0;
   cursor: pointer;
 }
 
@@ -100,24 +66,21 @@ ul.topBotomBordersOut a:after
   left: 0px;
   width: 100%;
   height: 2px;
-  background: #000;
+  background: #fff;
   content: "";
   opacity: 0;
   transition: all 0.3s;
 }
-
 ul.topBotomBordersOut a:before
 {
   top: 0px;
   transform: translateY(10px);
 }
-
 ul.topBotomBordersOut a:after
 {
   bottom: 0px;
   transform: translateY(-10px);
 }
-
 ul.topBotomBordersOut a:hover:before, 
 ul.topBotomBordersOut a:hover:after
 {
@@ -126,7 +89,7 @@ ul.topBotomBordersOut a:hover:after
 }
 /*-------------------------------------------------------*/
 
-/*Responsive navbar*/
+/*----------Responsive navbar-------------*/
 /* xs */
 @media (max-width: 500px)
 {
@@ -174,7 +137,8 @@ ul.topBotomBordersOut a:hover:after
 
 /*----------------pulsante login------------------*/
 /*testa della persona di login*/
-.person{
+.person
+{
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -186,7 +150,8 @@ ul.topBotomBordersOut a:hover:after
   z-index: 2;
 }
 /*corpo della persona di login*/
-.person::after{
+.person::after
+{
   content: "";
   position: absolute;
   height: 20px;
@@ -198,12 +163,14 @@ ul.topBotomBordersOut a:hover:after
   cursor: pointer;
   z-index: 2;
 }
-.flex{
+.flex
+{
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.login_menu {
+.login_menu
+{
   background-color: rgb(252, 252, 252);
   position: relative;
   list-style: none;
@@ -217,15 +184,75 @@ ul.topBotomBordersOut a:hover:after
   right: 70px;
 }
 
-.login_menu li{
+.login_menu li
+{
   padding: 10% 10%;
   width: 100%;
   border-bottom: 1px solid rgb(13, 13, 91);
  
 }
 
-.login_menu li:last-child{
+.login_menu li:last-child
+{
   border-bottom: none;
 }
+/*--------------------------------------*/
 
-.show {display:block;}
+/*------Sticky navbar--------*/
+header.sticky
+{
+  padding: 10px 100px;
+  background-color: #fff;
+}
+header.sticky .logo_img
+{
+  width: 75px;
+}
+header.sticky .logo_name
+{
+  font-size: var(--size-2xl);
+}
+header.sticky .login_menu
+{
+  display: flex;
+}
+header.sticky ul li a
+{
+  color:#000;
+}
+
+
+
+/*---------------------------*/
+
+/*------------debug----------*/
+/*
+nav
+{
+  border: 1px solid purple;
+}
+ul.logo
+{
+  border: 1px solid rgb(0, 255, 0);
+}
+.logo_img
+{
+  border: 1px solid red;
+}
+.logo_name
+{
+  border: 1px solid red;
+}
+ul.toolbar
+{
+  border: 1px solid red;
+}
+ul.toolbar a
+{
+  border: 1px solid red;
+}
+li
+{
+  border: 1px solid orange;
+}
+*/
