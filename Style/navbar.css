@@ -1,14 +1,18 @@
 nav
 {
-  height: 80px;
-  background: var(--nav-color);
+  height: 100px;
+  width: 100%;
   /*flexbox code*/
   display: flex;
   justify-content: space-between;
   align-items: center;
   /*larghezza variabile della navbar in base alla finestra del browser*/
   padding: 0 calc((100vw - 97vw) / 2); 
+  /*navbar fissa*/
+  position: fixed; 
+  z-index: 1;
 }
+
 
 /*------------debug----------*/
 /*
@@ -59,6 +63,8 @@ li
 .logo_name
 {
   display: block;
+  color: #fff;
+  text-decoration: none;
   font: 30px /*aggiungere nome font*/ ;
 }
 
@@ -75,7 +81,7 @@ li
 
 .toolbar a
 {
-  color: black;
+  color: #fff;
   text-decoration: none;
   font: 10px /*aggiungere nome font*/ ;
   margin: 0px 10px;
@@ -130,7 +136,6 @@ ul.topBotomBordersOut a:hover:after
     display: none;
   }
 }
-
 /* sm */
 @media (max-width: 640px)
 {
@@ -139,7 +144,6 @@ ul.topBotomBordersOut a:hover:after
     display: none;
   }
 }
-
 /* md */
 @media (max-width: 768px)
 {
@@ -147,9 +151,7 @@ ul.topBotomBordersOut a:hover:after
   {
     display: none;
   }
-} 
-
-
+}
 /* lg */
 @media (max-width: 1024px) 
 {
@@ -159,8 +161,6 @@ ul.topBotomBordersOut a:hover:after
   }
   
 } 
-
-
 /* xl */
 @media (max-width: 1280px) 
 {
@@ -170,7 +170,9 @@ ul.topBotomBordersOut a:hover:after
     display: none;
   }
 } 
+/*---------------------------------------------*/
 
+/*----------------pulsante login------------------*/
 /*testa della persona di login*/
 .person{
   width: 20px;
@@ -178,10 +180,10 @@ ul.topBotomBordersOut a:hover:after
   border-radius: 50%;
   background-color: rgb(13, 13, 91);
   position: relative;
-  margin: 20px;
+  margin-right: 50px;
   top:-10px;
   cursor: pointer;
-  z-index: 1;
+  z-index: 2;
 }
 /*corpo della persona di login*/
 .person::after{
@@ -194,15 +196,13 @@ ul.topBotomBordersOut a:hover:after
   left: -10px;
   border-radius: 50% 50% 0% 0%;
   cursor: pointer;
-  z-index: 1;
+  z-index: 2;
 }
-
 .flex{
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 .login_menu {
   background-color: rgb(252, 252, 252);
   position: relative;
@@ -228,9 +228,4 @@ ul.topBotomBordersOut a:hover:after
   border-bottom: none;
 }
 
-.reg{
-  padding: 1rem 2rem;
-  align-items: center;
-  color: rgb(13, 13, 91);
-}
 .show {display:block;}
