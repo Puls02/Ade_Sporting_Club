@@ -102,5 +102,6 @@ function checkForm(event){
         return false;
     }
 
+    //Se dovete aggiungere del codice aggiungetelo sopra questa riga
     checkboxes[5].disabled=false;
 }

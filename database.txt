@@ -1,0 +1,108 @@
+CREATE TYPE sesso_enum AS ENUM ('M','F');
+CREATE TYPE tipo_abbonamento_enum AS ENUM ('AM','AS','AT','AA');
+CREATE TYPE livello_abbonamento_enum AS ENUM ('single','double','gym','opengym','gold');
+CREATE TYPE privilegi_gold_enum AS ENUM ('Si','No');
+CREATE TYPE corso_enum AS ENUM ('Calcio','Basket','Tennis','Paddle','Nuoto','Palestra');
+CREATE TYPE tipo_enum AS ENUM ('Calcetto','Calciotto','Calcio','Paddle','Tennis');
+* I check non possono essere eseguiti e vanno sostituiti con dei trigger.
+
+create table Utente(
+	ID SERIAL primary key,
+	Nome varchar(25) not null,
+	Cognome varchar(25) not null,
+	Sesso sesso_enum,
+	Residenza varchar(100) not null,
+	Luogo_nascita varchar(25) not null,
+	Password varchar(255),
+	Data_nascita date not null,
+	Email varchar(25) unique,
+	Telefono varchar(20) unique,
+)
+
+create table Istruttore (
+	ID SERIAL primary key,
+	Contratto boolean true,
+	Corso_insegnato varchar(20) not null,
+	foreign key(ID) references Utente(ID),
+	check (ID in (select Istruttore from Insegna)), *
+	check (ID not in (select ID from Cliente)) *
+)
+
+create table Cliente (
+	ID SERIAL primary key,
+	Certificato_med boolean,
+	Doc_identità boolean,
+	foreign key(ID) references Utente(ID),
+	foreign key(ID) references Sottoscrive(Cliente),
+	check (ID not in (select ID from Istruttore)) *
+)
+
+create table Cliente_Gold (
+	ID SERIAL primary key,
+	foreign key(ID) references Cliente(ID),
+	foreign key(ID) references Sottoscrive_Gold(Cliente),
+)
+
+create table Campo(
+	ID SERIAL primary key,
+	Tipo tipo_enum not null
+)
+
+create table Prenotazione(
+	Campo SERIAL,
+	Data date,
+	Ora time,
+	Utente SERIAL not null,
+	foreign key(Utente) references Utente(ID),
+	foreign key(Campo) references Campo(ID),
+	primary key (Campo, Data, Ora)
+)
+
+create table Corso(
+	Nome corso_enum primary key,
+	Prezzo_Mensile float not null,
+	check (Nome in (select Corso from Insegna)) *
+)
+
+create table Insegna(
+	Istruttore SERIAL,
+	Corso corso_enum,
+	foreign key(Istruttore) references Istruttore(ID),
+	foreign key(Corso) references Corso(Nome),
+	primary key (Istruttore, Corso)
+)
+
+create table Abbonamento(
+	Codice SERIAL primary key,
+	Tipo tipo_abbonamento_enum,
+	Livello livello_abbonamento_enum,
+	Sconto boolean,
+	foreign key(Codice) references Sottocrive(Abbonamento),
+	foreign key(Codice) references Prevede(Abbonamento)
+)
+
+create table Prevede(
+	Abbonamento SERIAL unique,
+	Corso corso_enum,
+	primary key(Abbonamento, Corso),
+	foreign key(Abbonamento) references Abbonamento(Codice),
+	foreign key(Corso) references Corso(Nome)
+)
+
+create table Sottoscrive(
+	Cliente SERIAL primary key,
+	Abbonamento SERIAL not null,
+	unique (Abbonamento),
+	unique (Cliente, Abbonamento),
+	foreign key(Abbonamento) references Abbonamento(Codice),
+	foreign key(Cliente) references Cliente(ID)
+)
+
+create table Sottoscrive_Gold(
+	Cliente SERIAL primary key,
+	Abbonamento SERIAL not null,
+	unique (Abbonamento),
+	foreign key(Abbonamento) references Abbonamento(Codice),
+	foreign key(Cliente) references Cliente_Gold(ID),
+	foreign key (Cliente, Abbonamento) references Sottoscrive(Cliente, Abbonamento)
+)

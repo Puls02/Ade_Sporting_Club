@@ -6,60 +6,69 @@
     <title>Pagina di Login</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
+            background-color: transparent;
+            position: relative;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
         }
-        .container {
-            flex-grow: 1;
-            display: flex;
-        }
-        .section {
+        .sectionclienti {
+            
             width: 50%;
-            padding: 20px;
-            box-sizing: border-box;
+            height: auto;
+            padding: 2%;
+            background-color: #ae2424;
+            position: absolute;
+            left: 0;
+            
         }
-        .clienti {
-            background-color: #f9f9f9;
-        }
-        .istruttori {
-            background-color: #e0e0e0;
-            display: none; /* Nasconde la sezione degli istruttori */
+        .sectionistruttori {
+            
+            width: 50%;
+            height: auto;
+            padding: 2%;
+            background-color: #2b12a8;
+            position: absolute;
+            display: none;  
+            right: 0;
+            
         }
         #btnToggle {
-            padding: 10px;
-            margin: 0 auto; /* Centra il bottone sotto le sezioni */
+            padding: 1%;
             cursor: pointer;
-            position: relative; /* Assicura che il bottone sia in primo piano */
+            height: 6vh;
             z-index: 10;
+            position: absolute;
+            top: 60%;
+            left: 30%;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="section clienti">
+        <div class="sectionclienti">
             <!-- Contenuto per i clienti -->
             <h2>Area Clienti</h2>
             <form>
                 <!-- Inserisci qui i campi per il login dei clienti -->
+                <label for="nomecliente">Nome:</label>
+                <input type="text" name="nomecliente" id="nomecliente" size="10">
             </form>
         </div>
-        <div class="section istruttori">
+        <div class="sectionistruttori">
             <!-- Contenuto per gli istruttori -->
             <h2>Area Istruttori</h2>
             <form>
                 <!-- Inserisci qui i campi per il login degli istruttori -->
+                <label for="nomecliente">Nome:</label>
+                <input type="text" name="nomecliente" id="nomecliente" size="10">
             </form>
         </div>
+        <button id="btnToggle">Passa a Istruttori</button>
     </div>
-    <button id="btnToggle">Passa a Istruttori</button>
+    
     <script>
         document.getElementById('btnToggle').addEventListener('click', function() {
-            var clientiSection = document.querySelector('.clienti');
-            var istruttoriSection = document.querySelector('.istruttori');
+            var clientiSection = document.querySelector('.sectionclienti');
+            var istruttoriSection = document.querySelector('.sectionistruttori');
             var btn = document.getElementById('btnToggle');
             
             // Controlla quale sezione è attiva e cambia di conseguenza
