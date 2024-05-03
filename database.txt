@@ -32,15 +32,11 @@ create table Cliente (
 	ID SERIAL primary key,
 	Certificato_med boolean,
 	Doc_identità boolean,
-	foreign key(ID) references Utente(ID),
-	foreign key(ID) references Sottoscrive(Cliente),
 	check (ID not in (select ID from Istruttore)) *
 )
 
 create table Cliente_Gold (
 	ID SERIAL primary key,
-	foreign key(ID) references Cliente(ID),
-	foreign key(ID) references Sottoscrive_Gold(Cliente),
 )
 
 create table Campo(
@@ -77,8 +73,6 @@ create table Abbonamento(
 	Tipo tipo_abbonamento_enum,
 	Livello livello_abbonamento_enum,
 	Sconto boolean,
-	foreign key(Codice) references Sottocrive(Abbonamento),
-	foreign key(Codice) references Prevede(Abbonamento)
 )
 
 create table Prevede(
@@ -106,3 +100,8 @@ create table Sottoscrive_Gold(
 	foreign key(Cliente) references Cliente_Gold(ID),
 	foreign key (Cliente, Abbonamento) references Sottoscrive(Cliente, Abbonamento)
 )
+
+------------------------TRIGGER-------------------------
+
+
+------------

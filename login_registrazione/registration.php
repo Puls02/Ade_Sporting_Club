@@ -56,12 +56,12 @@
         
         <script src="../js/login.js"></script>
     </header>
-    <form action="../php/database.php" method="post" name="registr" onsubmit="checkForm(event)"> <!-- importante per i comportamenti automatici del form -->
+    <form action="../php/regUtente.php" method="post" name="registr" onsubmit="checkForm(event)"> <!-- importante per i comportamenti automatici del form -->
         <label>Cognome: </label><input type="text" name="cognome" size="40" maxlength="40" required></br>
         <label>Nome: </label><input type="text" name="nome" size="30" maxlength="30" required>
         <br/>Sesso:
-                <br/><input type="radio" name="sesso" value="uomo"/>Maschio
-                <br/><input type="radio" name="sesso" value="donna"/>Femmina
+                <br/><input type="radio" name="sesso" value="M"/>Maschio
+                <br/><input type="radio" name="sesso" value="F"/>Femmina
         <br/>
         <label>Residenza: </label><input type="text" name="residenza" size="40" maxlength="40" required></br>
         <label>Nato/a a: </label><input type="text" placeholder="luogo" name="nascita" required/> il <input type="date" name="nata" required><br/>
@@ -106,8 +106,10 @@
                     <input type="checkbox" name="corso[]" value="palestra" >Palestra
                 </label>
         <br/>
+        Se sei un cliente inserisci il documento d'identità e il certificato medico:
+        <br>
         <input type="file" id="identity" name="identity" value="Documento d'identità" accept=".pdf, .png, .jpeg" multiple>
-        <input type="file" id="certmed" name="certmed" value="Certificato medica" accept=".pdf, .png, .jpeg" multiple>
+        <input type="file" id="certmed" name="certmed" value="Certificato medico" accept=".pdf, .png, .jpeg" multiple>
         <br>
         <input type="submit" value="invia form" >
         <input type="reset" value="reset form">
