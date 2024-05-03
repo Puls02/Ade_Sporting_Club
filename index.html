@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Serve per inserire un'icona nel title. Ho generato l'icona dal sito https://www.favicon-generator.org/ -->
-    <link rel="icon" type="image/png" sizes="32x32" href="immagini/logo/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="immagini/logo/favicon2.png">
     <title>Ade Sporting Club</title>
 
     <!-- Link to style folder -->
@@ -53,19 +53,38 @@
                     <a class="toolbar_link_Soci" href="Soci.html">Soci</a> 
                 </li>
             </ul>
-
-            <!--container for login features--> <!--Inserire un link sign in, sign up e un bottone con l'immagine che se cliccato ti apre un menu con accedi e registrati-->
+            <!--container for login features--> 
+            <!--Inserire un link sign in, sign up e un bottone con l'immagine che se cliccato ti apre un menu con accedi e registrati-->
             <div class="person flex">
                 <ul class="login_menu">
                     <!-- POPUP DEL LOGIN -->
-                    <li><button id="mostraPopupButton">Accedi</button></li>
-                    <li><a href="login_registrazione/registration.php"><button>Registrati</button></a></li>
+                    <li>
+                        <button id="mostraPopupButton">Accedi</button>
+                    </li>
+                    <li>
+                        <a href="login_registrazione/registration.php">
+                            <button>Registrati</button>
+                        </a>
+                    </li>
                 </ul>
             </div>
-            
+            <!--appena viene usato lo scroll la classe dell'header viene cambiata in "sticky"-->
+            <script type="text/javascript">
+                window.addEventListener("scroll", function(){
+                    var header = document.querySelector("header");
+                    header.classList.toggle("sticky", window.scrollY > 10);
+                })
+            </script>
         </nav>
     </header>
 
+    <!--Banner del sito-->
+    <section class="banner container">
+        <video class="cover-video" autoplay loop muted>
+            <source src="immagini/galleria/Banner.mp4" type="video/mp4">
+        </video>
+    </section>
+    
     <!-- Div nascosto del popup -->
     <div id="popup" class="popup">
         <div class="popup-content">
