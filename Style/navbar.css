@@ -11,7 +11,7 @@ nav
   padding: 0 calc((100vw - 97vw) / 2); 
   /*navbar fissa*/
   position: fixed; 
-  z-index: 1000;
+  z-index: 10;
 }
 /*--------------------------------------*/
 .logo
@@ -32,9 +32,9 @@ nav
   color: #fff;
   text-decoration: none;
   font-size: var(--size-4xl);
-  /*aggiungere nome font*/
+  font-family: "Panchang";
 }
-
+/*---------------------------------------*/
 .toolbar
 {  
   display: flex;
@@ -49,10 +49,11 @@ nav
 {
   color: #fff;
   text-decoration: none;
-  font-size: var(--size-xl)
-  /*aggiungere nome font*/ ;
+  font-size: var(--size-xl);
+  /*aggiungere nome font*/
+  font-family: "PilcrowRounded";
   margin: 0px 10px;
-  padding: 10px 10px;
+  padding: 20px 20px;
   position: relative;
   cursor: pointer;
 }
@@ -65,7 +66,7 @@ ul.topBotomBordersOut a:after
   position: absolute;
   left: 0px;
   width: 100%;
-  height: 2px;
+  height: 3px;
   background: #fff;
   content: "";
   opacity: 0;
@@ -89,52 +90,6 @@ ul.topBotomBordersOut a:hover:after
 }
 /*-------------------------------------------------------*/
 
-/*----------Responsive navbar-------------*/
-/* xs */
-@media (max-width: 500px)
-{
-  .toolbar_link_Home,
-  .toolbar_link_Struttura
-  {
-    display: none;
-  }
-}
-/* sm */
-@media (max-width: 640px)
-{
-  .toolbar_link_Soci
-  {
-    display: none;
-  }
-}
-/* md */
-@media (max-width: 768px)
-{
-  .toolbar_link_Ristorante
-  {
-    display: none;
-  }
-}
-/* lg */
-@media (max-width: 1024px) 
-{
-  .toolbar_link_Attivita
-  {
-    display: none;
-  }
-  
-} 
-/* xl */
-@media (max-width: 1280px) 
-{
-  .toolbar_link_Eventi,
-  .toolbar_link_Prenota
-  {
-    display: none;
-  }
-} 
-/*---------------------------------------------*/
-
 /*----------------pulsante login------------------*/
 /*testa della persona di login*/
 .person
@@ -147,7 +102,7 @@ ul.topBotomBordersOut a:hover:after
   margin-right: 50px;
   top:-10px;
   cursor: pointer;
-  z-index: 2;
+  z-index: 10;
 }
 /*corpo della persona di login*/
 .person::after
@@ -161,7 +116,7 @@ ul.topBotomBordersOut a:hover:after
   left: -10px;
   border-radius: 50% 50% 0% 0%;
   cursor: pointer;
-  z-index: 2;
+  z-index: 10;
 }
 .flex
 {
@@ -183,15 +138,12 @@ ul.topBotomBordersOut a:hover:after
   margin-top: 200px;
   right: 70px;
 }
-
 .login_menu li
 {
   padding: 10% 10%;
   width: 100%;
   border-bottom: 1px solid rgb(13, 13, 91);
- 
 }
-
 .login_menu li:last-child
 {
   border-bottom: none;
@@ -199,31 +151,93 @@ ul.topBotomBordersOut a:hover:after
 /*--------------------------------------*/
 
 /*------Sticky navbar--------*/
-header.sticky
+header.sticky nav
 {
-  padding: 10px 100px;
-  background-color: #fff;
+  background-color: var(--nav-color);
+  height: 80px;
+  transition: 0.6s;
 }
 header.sticky .logo_img
 {
-  width: 75px;
+  width: 80px;
 }
 header.sticky .logo_name
 {
   font-size: var(--size-2xl);
 }
-header.sticky .login_menu
-{
-  display: flex;
-}
-header.sticky ul li a
+header.sticky .logo li a,
+header.sticky .toolbar li a
 {
   color:#000;
 }
-
-
-
+header.sticky ul.topBotomBordersOut a:before, 
+header.sticky ul.topBotomBordersOut a:after
+{
+  background: #000000;
+}
 /*---------------------------*/
+
+/*----------Responsive navbar-------------*/
+/* xs */
+@media (max-width: 576px)
+{
+  .logo_name
+  {
+    display: none;
+  }
+}
+/* sm */
+@media (max-width: 768px)
+{
+  .toolbar_link_Home,
+  .toolbar_link_Struttura
+  {
+    display: none;
+  }
+  .logo_name
+  {
+    font-size: var(--size-md);
+  }
+}
+/* md */
+@media (max-width: 960px)
+{
+  .toolbar_link_Soci
+  {
+    display: none;
+  }
+  .logo_name
+  {
+    font-size: var(--size-sm);
+  }
+}
+/* lg */
+@media (max-width: 1060px) 
+{
+  .toolbar_link_Attivita
+  {
+    display: none;
+  }
+  .logo_name
+  {
+    font-size: var(--size-sm);
+  }
+  
+} 
+/* xl */
+@media (max-width: 1280px) 
+{
+  .toolbar_link_Prenota
+  {
+    display: none;
+  }
+  .logo_name
+  {
+    font-size: var(--size-xl);
+  }
+
+} 
+/*---------------------------------------------*/
 
 /*------------debug----------*/
 /*

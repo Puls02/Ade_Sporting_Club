@@ -2,19 +2,14 @@
 /*io uso un metodo da pc a telefono, cambio max-width*/
 /* xs */
 /* @media (min-width: 475px) {} */
-
 /* sm */
 /* @media (min-width: 640px) {} */
-
 /* md */
 /* @media (min-width: 768px) {} */
-
 /* lg */
 /* @media (min-width: 1024px) {} */
-
 /* xl */
 /* @media (min-width: 1280px) {} */
-
 /* 2xl */
 /* @media (min-width: 1536px) {} */
 
@@ -23,6 +18,7 @@
   /*color palette*/ 
   --nav-color: #358597;
   --body-color: #ffffff; 
+  --foot-color: #f27877;
 
   /* sizes */
   --size-xxs: 0.5rem;
@@ -61,6 +57,16 @@ svg {
   display: block; /* Imposta gli elementi multimediali come elementi di tipo blocco */
   max-width: 100%; /* Imposta la larghezza massima degli elementi multimediali al 100% del loro contenitore genitore */
   user-select: none; /* Impedisce la selezione dell'elemento da parte dell'utente */
+}
+
+/*font usati tutti free license*/
+@font-face {
+  font-family: Panchang;
+  src: url(../Font/Panchang/Panchang-Bold.woff);
+}
+@font-face {
+  font-family: PilcrowRounded;
+  src: url(../Font/PilcrowRounded/PilcrowRounded-Semibold.woff2);
 }
 
 .body
