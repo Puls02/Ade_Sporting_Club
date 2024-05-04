@@ -25,24 +25,10 @@ function togglePasswordVisibility() {
     passwordField.type = "password";
     toggleIcon.src = "../immagini/login/eye.png"; // Cambia il percorso dell'immagine per l'occhio aperto
   }
-}
-
-// Aggiungi un ascoltatore di eventi per controllare se il campo è vuoto o meno
-document.addEventListener('DOMContentLoaded', function() {
-  var inputs = document.querySelectorAll('input');
-  inputs.forEach(function(input) {
-    input.addEventListener('input', function() {
-      if (this.value !== '') {
-        this.classList.add('filled');
-      } else {
-        this.classList.remove('filled');
-      }
-    });
-  });
-});
+};
 
 //---------------------------------------------------------------
-
+/*
 // Funzione per collegare il bottone al popup
 function collegaBottoneAPopup() {
   // Seleziona il bottone desiderato
@@ -69,3 +55,26 @@ function collegaBottoneAPopup() {
     popup.style.display = 'none';
 });
 }
+*/
+
+// Funzione per collegare il bottone al popup
+function collegaBottoneAPopup() {
+  // Seleziona il bottone desiderato
+  var bottone = document.getElementById('mostraPopupButton');
+  var popup = document.getElementById('popup');
+
+  // Aggiungi un gestore per il clic sul bottone
+  bottone.addEventListener('click', function() {
+      // Mostra il popup al clic sul bottone
+      popup.style.display = 'block';
+  });
+
+  // Aggiungi un gestore per il messaggio 'closePopup'
+  window.addEventListener('message', function(event) {
+    // Controlla se il messaggio ricevuto è 'closePopup'
+    if (event.data === 'closePopup') {
+      // Chiudi il popup
+      popup.style.display = 'none';
+    }
+  });
+};
