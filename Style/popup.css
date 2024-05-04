@@ -1,43 +1,16 @@
-/* deve diventare popup css */ /*
-.popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 0;
-    border: none;
-    z-index: 9999;
-    cursor: pointer;
-    width: 45%;
-    height: 50%;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
-}
-*/
-
-
-
 .popup {
     display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
-    border: 1px solid black;
-    z-index: 1;
-    }
+    z-index: 8;
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.9); */
+    border-radius: 10px;
+}
     
-    .popup-content > button {
-        cursor: pointer;
-    }
-    
-    /* Stile per l'icona di chiusura */
-    .close {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        cursor: pointer;
-        font-size: 24px;
-        z-index: 2;
-    }
+/* Stile per l'icona di chiusura */
+.close {
+    position: absolute;
+    cursor: pointer;
+}
