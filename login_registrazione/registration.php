@@ -7,15 +7,16 @@
     <title>Registration</title>
     
     <link rel="StyleSheet" href="../Style/utility.css">
-    <link rel="StyleSheet" href="../Style/navbar.css">
+    <link rel="StyleSheet" href="../Style/navbarStatica.css">
     <link rel="StyleSheet" href="../Style/login.css">
     
 
-    <script src="../js/reg.js" defer></script>
+    <script src="../js/registrazioneU.js" defer></script>
     <script src="../js/navbar.js" defer></script>
 
 </head>
 <body>
+
     <!--Header, there is the navbar menu and login-->
     <header> 
         <nav class="nav container">
@@ -53,7 +54,7 @@
             
             
         </nav>
-        
+
         <script src="../js/login.js"></script>
     </header>
     <form action="../php/regUtente.php" method="post" name="registr" onsubmit="checkForm(event)"> <!-- importante per i comportamenti automatici del form -->
@@ -88,22 +89,22 @@
         </select></br>
         Seleziona corsi:<br>
                 <label>
-                    <input type="checkbox" name="corso[]" value="calcio"  oninput="checkSubscription(event)">Calcio
+                    <input type="checkbox" name="corso[]" value="Calcio"  oninput="checkSubscription(event)">Calcio
                 </label>
                 <label>
-                    <input type="checkbox" name="corso[]" value="basket"  oninput="checkSubscription(event)">Basket
+                    <input type="checkbox" name="corso[]" value="Basket"  oninput="checkSubscription(event)">Basket
                 </label>
                 <label>
-                    <input type="checkbox" name="corso[]" value="tennis"  oninput="checkSubscription(event)">Tennis
+                    <input type="checkbox" name="corso[]" value="Tennis"  oninput="checkSubscription(event)">Tennis
                 </label>
                 <label>
-                    <input type="checkbox" name="corso[]" value="paddle"  oninput="checkSubscription(event)">Paddle
+                    <input type="checkbox" name="corso[]" value="Paddle"  oninput="checkSubscription(event)">Paddle
                 </label>
                 <label>
-                    <input type="checkbox" name="corso[]" value="nuoto" oninput="checkSubscription(event)">Nuoto
+                    <input type="checkbox" name="corso[]" value="Nuoto" oninput="checkSubscription(event)">Nuoto
                 </label>
                 <label>
-                    <input type="checkbox" name="corso[]" value="palestra" >Palestra
+                    <input type="checkbox" name="corso[]" value="Palestra" >Palestra
                 </label>
         <br/>
         Se sei un cliente inserisci il documento d'identità e il certificato medico:

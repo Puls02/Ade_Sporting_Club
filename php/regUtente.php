@@ -1,8 +1,24 @@
 <?php
 
+function checkMail($conn,$email){
+    $query = "SELECT * FROM utente where email='$email'";
+    $result = pg_query($conn, $query);
+    if (pg_num_rows($result) > 0) {
+        return 1;
+    }
+}
+
+function checkTel($conn,$telefono){
+    $query = "SELECT * FROM utente where telefono='$telefono'";
+    $result = pg_query($conn, $query);
+    if (pg_num_rows($result) > 0) {
+        return 1;
+    }
+}
+
 $host='127.0.0.1';
 $port='5432';
-$dbname='Ade_Sporting_CLub';
+$dbname='Ade_Sporting_Club';
 $user='postgres';
 $password='Sporting77!';
 
@@ -21,20 +37,21 @@ $sesso = $_POST['sesso'];
 $residenza = $_POST['residenza'];
 $luogo_nascita = $_POST['nascita'];
 $data_nascita = $_POST['nata'];
-$elementi = explode("-", $data_nascita); // Divide in [gg, mm, aaaa]
-$elementiInvertiti = array_reverse($elementi); // Inverte l'ordine
-$data_nascita = implode("-", $elementiInvertiti); //Ricompone la data
 $email = $_POST['indirizzomail'];
+if(checkMail($conn,$email)){
+    die("L'email esiste già nel database.");
+}
 $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 $telefono = $_POST['telefono'];
+if(checkTel($conn,$telefono)){
+    die("Il numero di telefono esiste già nel database.");
+}
 //inserimento utente
 
 $query = "INSERT INTO Utente (nome, cognome, sesso, residenza, luogo_nascita, data_nascita, email, telefono, password) VALUES ('$nome','$cognome','$sesso','$residenza','$luogo_nascita','$data_nascita','$email','$telefono','$password')";
 $result = pg_query($conn, $query);
-if ($result) {
-    echo "Utente registrato con successo!";
-} else {
-    echo "Errore durante la registrazione:"  . pg_last_error($conn);
+if (!$result) {
+    echo "Errore nella registrazione Utente!" . pg_last_error($conn);
 }
 
 //inserimento cliente
@@ -46,7 +63,6 @@ $result = pg_query($conn, $query);
 if ($result) {
     $row = pg_fetch_assoc($result);
     $cli_id = $row['id'];
-    echo "Utente registrato con successo!";
 } else {
     echo "Errore durante la registrazione Cliente:"  . pg_last_error($conn);
 }
@@ -60,10 +76,8 @@ if($livello=='gold'){
     $sconto='true';
     $query = "INSERT INTO Cliente_Gold DEFAULT VALUES";
     $result = pg_query($conn, $query);
-    if ($result) {
-        echo "Utente registrato con successo!";
-    } else {
-        echo "Errore durante la registrazione Cliente:"  . pg_last_error($conn);
+    if (!$result) {
+        echo "Errore durante la registrazione Cliente_gold:"  . pg_last_error($conn);
     }
 }
 $abb_cod="";
@@ -72,27 +86,22 @@ $result = pg_query($conn, $query);
 if ($result) {
     $row = pg_fetch_assoc($result);
     $abb_cod = $row['codice'];
-    echo "Abbonamento registrato con successo!";
 } else {
-    echo "Errore durante la registrazione Cliente:"  . pg_last_error($conn);
+    echo "Errore durante la registrazione dell'abbonamento:"  . pg_last_error($conn);
 }
 
 //inserisce sottoscrizione
-$query = "INSERT INTO Sottoscrive (Cliente, Abbonamento) VALUES ('$cli_id','$abb_cod')";
+$query = "INSERT INTO Sottoscrizione (Cliente, Abbonamento) VALUES ('$cli_id','$abb_cod')";
 $result = pg_query($conn, $query);
-if ($result) {
-    echo "Sottoscrizione effettuata con successo!";
-} else {
-    echo "Errore durante la registrazione:"  . pg_last_error($conn);
+if (!$result) {
+    echo "Errore durante la sottoscrizione:"  . pg_last_error($conn);
 }
 
 if($sconto=='true'){
-    $query = "INSERT INTO Sottoscrizione_gold (Cliente, Abbonamento) VALUES ('$cli_id','$abb_cod')";
+    $query = "INSERT INTO Sottoscrizione_Gold (Cliente, Abbonamento) VALUES ('$cli_id','$abb_cod')";
     $result = pg_query($conn, $query);
-    if ($result) {
-        echo "Sottoscrizione effettuata con successo!";
-    } else {
-        echo "Errore durante la registrazione:"  . pg_last_error($conn);
+    if (!$result) {
+        echo "Errore durante la sottoscrizione_gold:"  . pg_last_error($conn);
     }
 }
 
@@ -101,34 +110,24 @@ if($livello=='single' || $livello=='gym'){
     $corso= implode($_POST['corso']);
     $query = "INSERT INTO Prevede (corso, Abbonamento) VALUES ('$corso','$abb_cod')";
     $result = pg_query($conn, $query);
-    if ($result) {
-        echo "Sottoscrizione effettuata con successo!";
-    } else {
-        echo "Errore durante la registrazione:"  . pg_last_error($conn);
-    }
+    
 } else {
     $corso= $_POST['corso'];
     $corso1=$corso[0];
     $query = "INSERT INTO Prevede (corso, Abbonamento) VALUES ('$corso1','$abb_cod')";
     $result = pg_query($conn, $query);
-    if ($result) {
-        echo "Sottoscrizione effettuata con successo!";
-    } else {
-        echo "Errore durante la registrazione:"  . pg_last_error($conn);
-    }
+    if (!$result) {
+        echo "Errore durante la registrazione dei corsi:"  . pg_last_error($conn);
+    } 
     $corso2=$corso[1];
     $query = "INSERT INTO Prevede (corso, Abbonamento) VALUES ('$corso2','$abb_cod')";
     $result = pg_query($conn, $query);
-    if ($result) {
-        echo "Sottoscrizione effettuata con successo!";
-    } else {
-        echo "Errore durante la registrazione:"  . pg_last_error($conn);
-    }
+    if (!$result) {
+        echo "Errore durante la registrazione dei corsi:"  . pg_last_error($conn);
+    } 
 }
 
-
 pg_close($conn);
-
 
 ?>
 

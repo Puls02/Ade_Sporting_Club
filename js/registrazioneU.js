@@ -46,7 +46,7 @@ function checkSubscription(event){
 
     if(checkLevel=="gym"){
         checkboxes.forEach(checkbox => {
-            if(checkbox.value=="palestra"){
+            if(checkbox.value=="Palestra"){
                 checkbox.checked=true;
             }
         })
@@ -58,7 +58,7 @@ function checkSubscription(event){
 
     if(checkLevel=="opengym"){
         checkboxes.forEach(checkbox => {
-            if(checkbox.value=="palestra"){
+            if(checkbox.value=="Palestra"){
                 checkbox.checked=true;
             }
         })
@@ -69,6 +69,20 @@ function checkSubscription(event){
             return false;
         }
         
+    }
+
+    if(checkLevel=="gold"){
+        checkboxes.forEach(checkbox => {
+            if(checkbox.value=="Palestra"){
+                checkbox.checked=true;
+            }
+        })
+        if(selected>2){
+            box=event.target;
+            box.checked=false;
+            alert("Con l'abbonamento gold puoi accedere solo ad un corso");
+            return false;
+        }
     }
 }
 

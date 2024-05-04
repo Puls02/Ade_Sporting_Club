@@ -1,10 +1,13 @@
+Creare un database su PostgreSQL e nel query tool eseguire il codice tra i ----codice------.
+
+---------------------------------------------------------------------------------------------
 CREATE TYPE sesso_enum AS ENUM ('M','F');
 CREATE TYPE tipo_abbonamento_enum AS ENUM ('AM','AS','AT','AA');
 CREATE TYPE livello_abbonamento_enum AS ENUM ('single','double','gym','opengym','gold');
 CREATE TYPE privilegi_gold_enum AS ENUM ('Si','No');
 CREATE TYPE corso_enum AS ENUM ('Calcio','Basket','Tennis','Paddle','Nuoto','Palestra');
 CREATE TYPE tipo_enum AS ENUM ('Calcetto','Calciotto','Calcio','Paddle','Tennis');
-* I check non possono essere eseguiti e vanno sostituiti con dei trigger.
+
 
 create table Utente(
 	ID SERIAL primary key,
@@ -16,92 +19,106 @@ create table Utente(
 	Password varchar(255),
 	Data_nascita date not null,
 	Email varchar(25) unique,
-	Telefono varchar(20) unique,
-)
+	Telefono varchar(20) unique
+);
 
 create table Istruttore (
 	ID SERIAL primary key,
-	Contratto boolean true,
-	Corso_insegnato varchar(20) not null,
-	foreign key(ID) references Utente(ID),
-	check (ID in (select Istruttore from Insegna)), *
-	check (ID not in (select ID from Cliente)) *
-)
+	Contratto BYTEA,
+	foreign key(ID) references Utente(ID) on delete cascade
+);
 
 create table Cliente (
 	ID SERIAL primary key,
-	Certificato_med boolean,
-	Doc_identità boolean,
-	check (ID not in (select ID from Istruttore)) *
-)
+	Certificato_med BYTEA,
+	Doc_identita BYTEA,
+	foreign key(ID) references Utente(ID) on delete cascade
+);
 
 create table Cliente_Gold (
 	ID SERIAL primary key,
-)
+	foreign key(ID) references Cliente(ID)
+);
 
 create table Campo(
 	ID SERIAL primary key,
 	Tipo tipo_enum not null
-)
+);
 
 create table Prenotazione(
 	Campo SERIAL,
 	Data date,
 	Ora time,
 	Utente SERIAL not null,
-	foreign key(Utente) references Utente(ID),
-	foreign key(Campo) references Campo(ID),
-	primary key (Campo, Data, Ora)
-)
+	primary key (Campo, Data, Ora),
+	foreign key(Utente) references Utente(ID) on delete cascade,
+	foreign key(Campo) references Campo(ID) on delete cascade
+);
 
 create table Corso(
 	Nome corso_enum primary key,
-	Prezzo_Mensile float not null,
-	check (Nome in (select Corso from Insegna)) *
-)
+	Prezzo_Mensile float not null
+);
 
 create table Insegna(
 	Istruttore SERIAL,
 	Corso corso_enum,
-	foreign key(Istruttore) references Istruttore(ID),
-	foreign key(Corso) references Corso(Nome),
-	primary key (Istruttore, Corso)
-)
+	primary key (Istruttore, Corso),
+	foreign key(Istruttore) references Istruttore(ID) on delete cascade,
+	foreign key(Corso) references Corso(Nome) on delete cascade
+);
 
 create table Abbonamento(
 	Codice SERIAL primary key,
 	Tipo tipo_abbonamento_enum,
 	Livello livello_abbonamento_enum,
-	Sconto boolean,
-)
+	Sconto boolean
+);
 
 create table Prevede(
-	Abbonamento SERIAL unique,
+	Abbonamento SERIAL,
 	Corso corso_enum,
 	primary key(Abbonamento, Corso),
-	foreign key(Abbonamento) references Abbonamento(Codice),
-	foreign key(Corso) references Corso(Nome)
-)
+	foreign key(Abbonamento) references Abbonamento(Codice) on delete cascade,
+	foreign key(Corso) references Corso(Nome) on delete cascade
+);
 
-create table Sottoscrive(
+create table Sottoscrizione(
 	Cliente SERIAL primary key,
 	Abbonamento SERIAL not null,
 	unique (Abbonamento),
 	unique (Cliente, Abbonamento),
-	foreign key(Abbonamento) references Abbonamento(Codice),
-	foreign key(Cliente) references Cliente(ID)
-)
+	foreign key(Abbonamento) references Abbonamento(Codice) on delete cascade,
+	foreign key(Cliente) references Cliente(ID) on delete cascade
+);
 
-create table Sottoscrive_Gold(
+create table Sottoscrizione_Gold(
 	Cliente SERIAL primary key,
 	Abbonamento SERIAL not null,
 	unique (Abbonamento),
-	foreign key(Abbonamento) references Abbonamento(Codice),
-	foreign key(Cliente) references Cliente_Gold(ID),
-	foreign key (Cliente, Abbonamento) references Sottoscrive(Cliente, Abbonamento)
-)
+	foreign key(Abbonamento) references Abbonamento(Codice) on delete cascade,
+	foreign key(Cliente) references Cliente_Gold(ID) on delete cascade,
+	foreign key (Cliente, Abbonamento) references Sottoscrizione(Cliente, Abbonamento) on delete cascade
+);
 
-------------------------TRIGGER-------------------------
+insert into corso (nome, prezzo_mensile) values ('Calcio', 50), ('Basket', 60), ('Tennis', 70), ('Paddle', 60), ('Palestra',45), ('Nuoto', 65);
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+----Per resettare il numero seriale (ID o Codice) usare:----
+
+ALTER SEQUENCE public.utente_id_seq RESTART WITH 1; --Per la tabella utente--
+
+ALTER SEQUENCE public.cliente_id_seq RESTART WITH 1; --Per la tabella cliente--
+
+ALTER SEQUENCE public.cliente_gold_id_seq RESTART WITH 1; --Per la tabella cliente_gold--
+
+ALTER SEQUENCE public.abbonamento_codice_seq RESTART WITH 1; --Per la tabella abbonamento--
 
 
-------------
+
+
+
+
+
+
+
