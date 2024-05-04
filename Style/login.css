@@ -1,7 +1,5 @@
 .formlogin {
-    padding: 3%;
     border: none;
-    background-color: rgba(7, 133, 172, 0.4);
     color: rgb(252, 252, 252); 
     width: auto;
     height: auto;
@@ -24,75 +22,58 @@ input[type="password"]::-webkit-credentials-auto-fill-button {
 }
 
 .title {
+    padding: 2%;
     display: inline-block;
     position: relative;
-    color: rgb(252, 252, 252);
-    width: 30%;
+    color: rgb(0, 0, 0);
+    width: auto;
     font-size: 2rem;
     font-weight: 100;
     text-transform: uppercase;
     margin-bottom: 10%;
-    margin-top: 5%;
-}
-
-.title::after {
-    content: '';
-    position: absolute;
-    align-self: auto;
-    left: 0;
-    bottom: -5px;
-    width: 100%;
-    height: 2px;
-    background: rgb(13, 13, 91);
 }
 
 .box {
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 40px; /* distanza tra i due campi */
+    margin-right: 1%;
 }
 
 .labellogin {
     position: absolute;
-    top: 10px;
+    top: -20px;
     left: 10px;
-    color: #ffffff;
+    color: #000000;
     font-size: 14px;
-    transition: top 0.3s, font-size 0.3s;
 }
 
 .field {
     font-size: 1rem;
     color: rgb(252, 252, 252);
-    padding: 0.2rem;
-    margin-bottom: 3rem;
+    padding: 2%;
     width: 100%;
-    outline: none;
+    background-color: rgb(252, 252, 252, 0.7);
+    border-radius: 10px;
     border: none;
-    border-bottom: 2px solid rgb(252, 252, 252);
-    background: transparent;
     width: calc(100% - 30px); /* Aggiunto */
-    padding: 10px;
     font-size: 16px;
-    transition: border-color 0.3s;
 }
 
 input:focus {
     outline: none;
-    border-color: rgb(0, 0, 0);
 }
 
 .field:focus + .labellogin, input:valid + .labellogin {
-    top: -20px;
-    font-size: 12px;
     color: black;
   }
 
 .loginbutton {
     display: block;
+    border-radius: 10px;
     text-transform: uppercase;
-    padding: 1%;
+    padding: 2%;
     color: rgb(252, 252, 252);
-    font-size: 1.2rem;
+    font-size: 18px;
     background: rgb(13, 13, 91);
     border: none;
     cursor: pointer;
@@ -102,10 +83,15 @@ input:focus {
 
 .password-toggle, .imagelogin {
     position: absolute;
-    top: 30%;
-    right: 4%;
+    top: 50%;
+    right: 3%;
     transform: translateY(-50%);
     cursor: pointer;
     width: 20px;
     height: 20px;
+}
+
+p {
+    padding: 2%;
+    color: black;
 }
