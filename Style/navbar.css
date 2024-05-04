@@ -126,17 +126,17 @@ ul.topBotomBordersOut a:hover:after
 }
 .login_menu
 {
-  background-color: rgb(252, 252, 252);
-  position: relative;
-  list-style: none;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  border-radius: 6px;
-  width: 400px;
-  height: auto;
-  margin-top: 200px;
-  right: 70px;
+    background-color: rgb(252, 252, 252);
+    position: relative;
+    list-style: none;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    width: 400px;
+    height: auto;
+    margin-top: 200px;
+    right: 100px;
 }
 .login_menu li
 {
@@ -148,8 +148,10 @@ ul.topBotomBordersOut a:hover:after
 {
   border-bottom: none;
 }
-/*--------------------------------------*/
 
+.show {
+  display: block;
+}
 /*------Sticky navbar--------*/
 header.sticky nav
 {
@@ -176,7 +178,6 @@ header.sticky ul.topBotomBordersOut a:after
   background: #000000;
 }
 /*---------------------------*/
-
 /*----------Responsive navbar-------------*/
 /* xs */
 @media (max-width: 576px)
@@ -236,37 +237,4 @@ header.sticky ul.topBotomBordersOut a:after
     font-size: var(--size-xl);
   }
 
-} 
-/*---------------------------------------------*/
-
-/*------------debug----------*/
-/*
-nav
-{
-  border: 1px solid purple;
 }
-ul.logo
-{
-  border: 1px solid rgb(0, 255, 0);
-}
-.logo_img
-{
-  border: 1px solid red;
-}
-.logo_name
-{
-  border: 1px solid red;
-}
-ul.toolbar
-{
-  border: 1px solid red;
-}
-ul.toolbar a
-{
-  border: 1px solid red;
-}
-li
-{
-  border: 1px solid orange;
-}
-*/
