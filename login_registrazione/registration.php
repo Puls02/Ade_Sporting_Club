@@ -7,7 +7,7 @@
     <title>Registration</title>
     
     <link rel="StyleSheet" href="../Style/utility.css">
-    <link rel="StyleSheet" href="../Style/navbarStatica.css">
+    <link rel="StyleSheet" href="../Style/navbarStatic.css">
     <link rel="StyleSheet" href="../Style/login.css">
     
 
