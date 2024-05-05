@@ -151,5 +151,3 @@ echo "Utente registrato con sucesso";
 pg_close($conn);
 
 ?>
-
-

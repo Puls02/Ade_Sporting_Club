@@ -1,3 +1,51 @@
+<?php
+    session_start();
+
+    $error = '';
+
+    $host='127.0.0.1';
+    $port='5432';
+    $dbname='Ade_Sporting_Club';
+    $user='postgres';
+    $password='Sporting77!';
+
+    $conn=pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
+
+    if(!$conn){
+        die("Errore nella connessione a PostgreSQL");
+    } else {
+        echo "Connssione stabilita\n";
+    }
+
+    $username = $_POST['indirizzomail'];
+    $password = $_POST['password'];
+
+    $query = "SELECT * FROM utente WHERE username = '$username'";
+    $result = pg_query($conn, $query);
+
+    if ($result && pg_num_rows($result) === 1) {
+        // Recupera l'utente
+        $user = pg_fetch_assoc($result);
+
+        if (password_verify($password, $user['password'])) {
+            // Imposta la sessione
+            $_SESSION['logged_in'] = true;
+            $_SESSION['username'] = $username;
+            
+            // Reindirizza alla pagina successiva (ad esempio, dashboard)
+            header("Location: dashboard.php");
+            exit;
+        } else {
+            $error = "Password errata.";
+        }
+    } else {
+        $error = "Utente non trovato.";
+    }
+
+
+    pg_close($conn);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
