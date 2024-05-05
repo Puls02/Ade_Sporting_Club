@@ -27,7 +27,7 @@ nav
 
 .logo_name
 { 
-  color: #fff;
+  color:#000;
   font-family: "Panchang";
   text-decoration: none;
   font-size: 1.3em;
@@ -46,7 +46,7 @@ nav
 
 .toolbar a
 {
-  color: #fff;
+  color:#000;
   text-decoration: none;
   font-size: var(--size-xl);
   font-family: "PilcrowRounded";
