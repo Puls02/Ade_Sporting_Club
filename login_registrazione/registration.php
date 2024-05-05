@@ -44,7 +44,7 @@
                     <a class="toolbar_link_Prenota" href="../Prenota.html">Prenota</a>
                 </li>
                 <li>
-                    <a class="toolbar_link_Soci" href="Soci.html">Soci</a> 
+                    <a class="toolbar_link_Soci" href="../Soci.html">Soci</a> 
                 </li>
             </ul>
 
