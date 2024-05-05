@@ -27,7 +27,7 @@ $conn=pg_connect("host=$host port=$port dbname=$dbname user=$user password=$pass
 if(!$conn){
     die("Errore nella connessione a PostgreSQL");
 } else {
-    echo "Connssione stabilita\n";
+    echo "Connessione stabilita\n";
 }
 
 //dati utente

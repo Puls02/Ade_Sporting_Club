@@ -26,18 +26,22 @@
             background-color: white;
             border-radius: 10px;
             border: 1px solid black;
+            position: relative;
+            height: 300px;
         }
         .calendar {
             grid-area: b;
             background-color: white;
             border-radius: 10px;
             border: 1px solid black;
+            position: relative;
         }
         .message {
             grid-area: c;
             background-color: white;
             border-radius: 10px;
             border: 1px solid black;
+            position: relative;
         }
         .chat {
             grid-area: d;
@@ -47,12 +51,14 @@
             overflow-y: auto;
             /* Altezza della colonna della chat pari all'80% dell'altezza della finestra */
             height: 80vh; 
+            position: relative;
         }
         .programmi {
             grid-area: e;
             background-color: white;
             border-radius: 10px;
             border: 1px solid black;
+            position: relative;
         } 
         h2 {
             color: #333;
@@ -190,6 +196,48 @@
             border-left: 3px solid #4caf50;
             background-color: #f0f0f0;
         }
+/*PROFILO*/
+        .profile-picture {
+            padding: 2%;
+            left: 0;
+            position: absolute;
+        }
+
+        .profile-picture > label {
+            margin-top: 200px;
+            margin-right: 10px; /* Margine a destra per separare l'etichetta dall'input */
+        }
+
+
+        /* Stile per l'immagine del profilo */
+        .profile-image {
+            width: 350px; /* Dimensioni dell'immagine del profilo */
+            height: 350px;
+            border-radius: 50%; /* Bordo circolare */
+            object-fit: cover; /* Per adattare l'immagine alla dimensione specificata */
+        }
+        .profile-image-preview {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            position: absolute;
+            margin-top: 30px;
+            margin-left: 70px;
+        }
+
+        .profile-image-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Stile per le informazioni del profilo */
+        .profile-details {
+            padding: 2%;
+            right: 0;
+            top: 0;
+            position: absolute;
+        }
     </style>
 </head>
 <body>
@@ -239,6 +287,20 @@
     <div class="grid">
         <div class="user_profile">
             <h2>Profilo utente</h2>
+                <!-- caricamento foto profilo -->
+                <div class="profile-picture">
+                    <label for="profile-image">Carica Foto Profilo:</label>
+                    <div id="profile-image-preview" class="profile-image-preview"></div>
+                    <input type="file" id="profile-image" accept="image/*" onchange="previewProfileImage(event)">
+                </div>
+                <!-- dettagli utente -->
+                <div class="profile-details">
+                    <p><strong>Nome:</strong> <?php echo $nome; ?></p>
+                    <p><strong>Cognome:</strong> <?php echo $cognome; ?></p>
+                    <p><strong>Data di nascita:</strong> <?php echo $data_di_nascita; ?></p>
+                    <p><strong>Tipo di abbonamento:</strong> <?php echo $tipo_abbonamento; ?></p>
+                    <p><strong>Data sottoscrizione abbonamento:</strong> <?php echo $data_sottoscrizione_abbonamento; ?></p>
+                </div>
         </div>
         <div class="calendar">
             <h2>Calendario Settimanale</h2>
@@ -367,6 +429,35 @@
 
         // Aggiunta iniziale dei corsi al container
         addCoursesToContainer();
+// PROFILO UTENTE   
+        function previewProfileImage(event) {
+            const preview = document.getElementById('profile-image-preview');
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            const fileInput = document.getElementById('profile-image');
+
+            reader.onload = function() {
+                const image = new Image();
+                image.src = reader.result;
+                image.style.maxWidth = '300px';
+                image.style.height = 'auto';
+                preview.innerHTML = '';
+                preview.appendChild(image);
+                fileInput.value = ''; // Resetta il valore dell'input per permettere di selezionare nuovamente lo stesso file
+                changeButtonLabel(); // Chiamata alla funzione per cambiare il testo del pulsante
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Funzione per cambiare il testo del pulsante a "Cambia Immagine" dopo il caricamento dell'immagine
+        function changeButtonLabel() {
+            const fileInput = document.getElementById('profile-image');
+            fileInput.removeAttribute('data-changed'); // Imposta un attributo per indicare che l'immagine è stata cambiata
+            fileInput.value = 'Cambia Immagine'; // Cambia il testo del pulsante
+        }
     </script>
 </body>
 </html>
