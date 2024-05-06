@@ -1,32 +1,37 @@
-/* gestisce i vari servizi */
-document.addEventListener('DOMContentLoaded', function() {
-    // Crea il riquadro di descrizione
-    var descriptionBox = document.createElement('div');
-    descriptionBox.id = 'description-box';
-    document.body.appendChild(descriptionBox);
-  
-    // Variabile per tenere traccia dell'elemento attualmente aperto
-    var currentOpenId = null;
-  
-    // Funzione per mostrare o nascondere la descrizione
-    function toggleDescription(event) {
-      var descId = event.target.id.replace('-title', '-desc');
-      var descText = document.getElementById(descId).textContent;
-  
-      // Controlla se l'elemento cliccato è già aperto
-      if (currentOpenId === descId) {
-        descriptionBox.style.display = 'none'; // Nasconde il riquadro
-        currentOpenId = null; // Resetta l'elemento aperto
-      } else {
-        descriptionBox.textContent = descText;
-        descriptionBox.style.display = 'block'; // Mostra il riquadro
-        currentOpenId = descId; // Aggiorna l'elemento aperto
-      }
-    }
-  
-    // Aggiungi l'evento di clic ai titoli
-    var titles = document.querySelectorAll('.service h2');
-    titles.forEach(function(title) {
-      title.addEventListener('click', toggleDescription);
-    });
-  });
+// Funzione per mostrare o nascondere la descrizione del servizio
+function toggleDescrizioneServizio(titolo, descrizione, immagine) {
+  var descrizioneFissa = document.getElementById("descrizione-fissa");
+  var titoloServizio = document.getElementById("titolo-servizio");
+  var immagineServizio = document.getElementById("immagine-servizio");
+  var descrizioneServizio = document.getElementById("descrizione-servizio");
+
+  // Se il titolo è lo stesso del servizio aperto, chiudi il div fisso
+  if (descrizioneFissa.dataset.servizio === titolo) {
+      descrizioneFissa.style.display = "none";
+      descrizioneFissa.dataset.servizio = "";
+  } else {
+      // Altrimenti, mostra il servizio e aggiorna il contenuto
+      titoloServizio.textContent = titolo;
+      immagineServizio.src = immagine;
+      descrizioneServizio.innerHTML = descrizione; // innerHTML ancihè textContent per prendere anche i br
+      descrizioneFissa.style.display = "block";
+      descrizioneFissa.dataset.servizio = titolo;
+
+      // Cambia lo stile del paragrafo
+      descrizioneServizio.style.fontSize = "14px"; /* Cambia la dimensione del testo */
+  }
+}
+
+// Aggiungi gestori di eventi ai titoli dei servizi
+document.getElementById("bar-title").addEventListener("click", function() {
+  toggleDescrizioneServizio("Bar", document.getElementById("bar-desc").innerHTML, "immagini/galleria/img5.jpg");
+});
+document.getElementById("pool-title").addEventListener("click", function() {
+  toggleDescrizioneServizio("Piscina", document.getElementById("pool-desc").innerHTML, "pool.jpg");
+});
+document.getElementById("rec-title").addEventListener("click", function() {
+  toggleDescrizioneServizio("Reception", document.getElementById("rec-desc").innerHTML, "reception.jpg");
+});
+document.getElementById("rest-title").addEventListener("click", function() {
+  toggleDescrizioneServizio("Ristorante", document.getElementById("rest-desc").innerHTML, "ristorante.jpg");
+});
