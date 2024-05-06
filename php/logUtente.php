@@ -29,10 +29,20 @@
             // Imposta la sessione
             $_SESSION['logged_in'] = true;
             $_SESSION['username'] = $username;
+            $id=$user['id'];
+
+            $query= "SELECT * FROM Cliente_Gold WHERE id='$id'";
+            $result = pg_query($conn, $query);
+            // Reindirizza alla pagina successiva
+            if(pg_num_rows($result) === 1 && $result){
+                header("Location: ../login_registrazione/utenteGold.php");
+                exit;
+            }else{
+                header("Location: ../login_registrazione/utenteNonGold.php");
+                exit;
+            }
             
-            // Reindirizza alla pagina successiva (ad esempio, dashboard)
-            header("Location: ../login_registrazione/utenteNonGold.php");
-            exit;
+            
         } else {
             die("Password errata.");
         }
