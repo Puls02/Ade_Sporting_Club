@@ -1,4 +1,5 @@
 <?php
+    echo "duifhsriughskurhbgksurbfskbfjksbk";
    session_start(); // Avvia la sessione
     
    // Verifica se l'utente è loggato

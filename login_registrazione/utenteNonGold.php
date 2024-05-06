@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina Riservata Soci Gold</title>
-    <link rel="StyleSheet" href="Style/utility.css">
-    <link rel="StyleSheet" href="Style/navbarStatic.css">
+    <link rel="StyleSheet" href="../Style/utility.css">
+    <link rel="StyleSheet" href="../Style/navbarStatic.css">
     <style>
         /* CSS per il layout generale */
         body {
@@ -247,7 +247,7 @@
             <!--container for logo and name-->
             <ul class="logo container"> 
                 <li>
-                    <img class="logo_img" src="immagini/logo/Ade.jpg">
+                    <img class="logo_img" src="../immagini/logo/Ade.jpg">
                 </li>
                 <li>
                     <a class="logo_name">ADE Sporting Club</a>                
@@ -256,19 +256,19 @@
             <!--container for navbar, topBotomBordersOut is the name of the toolbar animation-->
             <ul class="toolbar container topBotomBordersOut"> 
                 <li>
-                    <a class="toolbar_link_Home" href="index.html">Home</a>
+                    <a class="toolbar_link_Home" href="../index.html">Home</a>
                 </li>
                 <li>
-                    <a class="toolbar_link_Struttura" href="Struttura.html">Struttura</a>
+                    <a class="toolbar_link_Struttura" href="../Struttura.html">Struttura</a>
                 </li>
                 <li>
-                    <a class="toolbar_link_Attivita" href="Attivita.html"> Attività</a>
+                    <a class="toolbar_link_Attivita" href="../Attivita.html"> Attività</a>
                 </li>             
                 <li>
-                    <a class="toolbar_link_Prenota" href="Prenota.html">Prenota</a>
+                    <a class="toolbar_link_Prenota" href="../Prenota.html">Prenota</a>
                 </li>
                 <li>
-                    <a class="toolbar_link_Soci" href="Soci.html">Soci</a> 
+                    <a class="toolbar_link_Soci" href="../Soci.html">Soci</a> 
                 </li>
             </ul>
 
@@ -277,7 +277,7 @@
                 <ul class="login_menu">
                     <!-- POPUP DEL LOGIN -->
                     <li><button id="mostraPopupButton">Accedi</button></li>
-                    <li><a href="login_registrazione/registration.php"><button>Registrati</button></a></li>
+                    <li><a href="registration.php"><button>Registrati</button></a></li>
                 </ul>
             </div>
             
@@ -291,7 +291,7 @@
                 <div class="profile-picture">
                     <label for="profile-image">Carica Foto Profilo:</label>
                     <div id="profile-image-preview" class="profile-image-preview"></div>
-                    <input type="file" id="profile-image" accept="image/*" onchange="previewProfileImage(event)">
+                    <input type="file" id="profile-image" accept="../image/*" onchange="previewProfileImage(event)">
                 </div>
                 <!-- dettagli utente -->
                 <div class="profile-details">

@@ -27,36 +27,6 @@ function togglePasswordVisibility() {
   }
 };
 
-//---------------------------------------------------------------
-/*
-// Funzione per collegare il bottone al popup
-function collegaBottoneAPopup() {
-  // Seleziona il bottone desiderato
-  var bottone = document.getElementById('mostraPopupButton');
-  var popup = document.getElementById('popup');
-  var popupLink = document.getElementById('popupLink');
-
-  // Aggiungi un gestore per il clic sul bottone
-  bottone.addEventListener('click', function() {
-      // Mostra il popup al clic sul bottone
-      popup.style.display = 'block';
-  });
-
-  // Aggiungi un gestore per il clic sul bottone di chiusura del popup
-  var closeButton = document.getElementById('closeButton');
-  closeButton.addEventListener('click', function() {
-      // Chiudi il popup
-      popup.style.display = 'none';
-  });
-
-  // Aggiungi un gestore per il clic sul link all'interno del popup
-  popupLink.addEventListener('click', function(event) {
-    // Chiudi il popup
-    popup.style.display = 'none';
-});
-}
-*/
-
 // Funzione per collegare il bottone al popup
 function collegaBottoneAPopup() {
   // Seleziona il bottone desiderato

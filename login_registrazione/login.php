@@ -9,23 +9,6 @@
     <script src="../js/login.js" defer></script>
     <style>
         /* Stile generale per il contenitore della pagina di login */
-        /*
-        body {
-          background-repeat: no-repeat;
-         background-attachment: fixed;
-         background-size: cover;
-         background-image: url('immagini/login/pratologin.jpg');
-         background-position: top;
-         background-color: rgba(10, 96, 209, 0.3);
-         width: 100%;
-         height: 100%;
-         font-family: Arial, Helvetica;
-         letter-spacing: 0.02em;
-          font-weight: 400;
-         -webkit-font-smoothing: antialiased;
-         overflow-x: hidden;
-        }
-        */
         body {
             overflow-x: hidden;
             background: transparent;
@@ -75,9 +58,10 @@
     </style>
 </head>
 <body>
+    
     <div class="boxx">
         <div class="container cliente">
-            <form action="../php/logUtente.php" method="post" name="log" id="popup" class="formlogin"> <!-- importante per i comportamenti automatici del form -->
+            <form action="../php/logUtente.php" method="post" name="log" id="popup" class="formlogin" target="_top"> <!-- importante per i comportamenti automatici del form -->
                 <h1 class="title">login</h1>
                 <img src="../immagini/login/close.png"  alt="x per chiudere" class="close" id="closeButton">
                 <div class="box">
@@ -94,8 +78,9 @@
                 <p>Non hai ancora un account? <a id="linkToClosePopup" href="registration.php">Registrati qui</a></p>
             </form>
         </div>
+
         <div class="container istruttore">
-            <form action="../php/logUtente.php" method="post" name="log" id="popup" class="formlogin"> <!-- importante per i comportamenti automatici del form -->
+            <form action="../php/logUtente.php" method="post" name="log" id="popup" class="formlogin" target="_top"> <!-- importante per i comportamenti automatici del form -->
                 <h1 class="title">login</h1>
                 <img src="../immagini/login/close.png"  alt="x per chiudere" class="close" id="closeButton">
                 <div class="box">
