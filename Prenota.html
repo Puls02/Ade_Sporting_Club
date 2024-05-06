@@ -22,6 +22,8 @@
     <script src="js/login.js" defer></script>
     <script src="js/navbar.js" defer></script>
     <script src="js/prenotazioni.js" defer></script>
+
+    <!--Link al framework jquery-->
 </head>
 
 <body>
@@ -177,12 +179,12 @@
     </div>
 
     <div>
-        <ul class="toggle-list">
-            <li class="toggle-item">
+        <ul class="toggle-list" >
+            <li class="toggle-item" >
                 <input type="radio" id="calcio" name="attivita">
-                <label for="calcio">Calcio<span class="arrow"></span></label>
+                <label for="calcio" >Calcio<span class="arrow" ></span></label>
                 <div class="content">
-                    <form method="post" action="/upload">
+                    <form action="php/checkLogin.php" method="post" >
                         <label for="nomeCalcio">Nome:</label>
                         <input type="text" id="nomeCalcio" name="nomeCalcio"><br>
                         <label for="cognomeCalcio">Cognome:</label>
