@@ -1,12 +1,12 @@
 /* Style for the footer */
 /* lo organizzo secondo una griglia: la prima riga avrà la mappa e i contatti, la seconda gli sponsor, l'ultima l'ancora per tornare a inizio pagina */
 footer {
-    background-color: var(--foot-color);
+    background-color: var(--nav-color);
     color: #000;
     text-align: center;
     padding: 20px;
     display: grid;
-    grid-template: 'a b' 'c c' 'd d';
+    grid-template: 'a b' 'c c';
 }
 
 footer div {
@@ -21,10 +21,6 @@ footer div {
     grid-area: b;
 }
 
-.sponsor {
-    grid-area: c;
-}
-
 .ancora {
-    grid-area: d;
+    grid-area: c;
 }
