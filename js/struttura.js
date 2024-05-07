@@ -24,14 +24,14 @@ function toggleDescrizioneServizio(titolo, descrizione, immagine) {
 
 // Aggiungi gestori di eventi ai titoli dei servizi
 document.getElementById("bar-title").addEventListener("click", function() {
-  toggleDescrizioneServizio("Bar", document.getElementById("bar-desc").innerHTML, "immagini/galleria/img5.jpg");
+  toggleDescrizioneServizio("Bar", document.getElementById("bar-desc").innerHTML, "immagini/galleria/servizi/bar.jpg");
 });
 document.getElementById("pool-title").addEventListener("click", function() {
-  toggleDescrizioneServizio("Piscina", document.getElementById("pool-desc").innerHTML, "pool.jpg");
+  toggleDescrizioneServizio("Piscina", document.getElementById("pool-desc").innerHTML, "immagini/galleria/servizi/pool.jpg");
 });
 document.getElementById("rec-title").addEventListener("click", function() {
-  toggleDescrizioneServizio("Reception", document.getElementById("rec-desc").innerHTML, "reception.jpg");
+  toggleDescrizioneServizio("Reception", document.getElementById("rec-desc").innerHTML, "immagini/galleria/servizi/reception.jpg");
 });
 document.getElementById("rest-title").addEventListener("click", function() {
-  toggleDescrizioneServizio("Ristorante", document.getElementById("rest-desc").innerHTML, "ristorante.jpg");
+  toggleDescrizioneServizio("Ristorante", document.getElementById("rest-desc").innerHTML, "immagini/galleria/servizi/restaurant.jpeg");
 });

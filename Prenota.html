@@ -178,6 +178,7 @@
         </div>
     </div>
 
+    <!-- io inserirei a destra di ogni tendina un post it con le informazioni relative ai costi dei campi -->
     <div>
         <ul class="toggle-list" >
             <li class="toggle-item" >
@@ -232,6 +233,7 @@
                             <option value="campo1">Campo 1</option>
                             <option value="campo2">Campo 2</option>
                             <option value="campo3">Campo 3</option>
+                            <option value="campo3">Campo 4</option>
                         </select><br>
                         <label for="prenotazione">Tipo di prenotazione:</label><br>
                         <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>
@@ -261,11 +263,17 @@
                         <input type="date" id="dataTennis" name="dataTennis"><br>
                         <label for="orario">Orario prenotazione:</label>
                         <input type="time" id="orario" name="orario" required><br>
+                        <label for="sceltacampo">Tipo di prenotazione:</label><br>
+                        <input type="radio" id="terra" name="sceltacampo" value="terra" required>
+                        <label for="terra">Campo in terra</label><br>
+                        <input type="radio" id="cemento" name="sceltacampo" value="cemento">
+                        <label for="cemento">Campo in cemento</label><br>
                         <label for="campo">Seleziona campo:</label><br>
                         <select id="campo" name="campo" required>
                             <option value="campo1">Campo 1</option>
                             <option value="campo2">Campo 2</option>
                             <option value="campo3">Campo 3</option>
+                            <option value="campo3">Campo 4</option> <!-- con js fai il controllo, i primi due so di terra e gli altri due in cemento -->
                         </select><br>
                         <label for="prenotazione">Tipo di prenotazione:</label><br>
                         <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>
@@ -299,7 +307,6 @@
                         <select id="campo" name="campo" required>
                             <option value="campo1">Campo 1</option>
                             <option value="campo2">Campo 2</option>
-                            <option value="campo3">Campo 3</option>
                         </select><br>
                         <label for="prenotazione">Tipo di prenotazione:</label><br>
                         <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>
