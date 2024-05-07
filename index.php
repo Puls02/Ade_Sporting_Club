@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Serve per inserire un'icona nel title. Ho generato l'icona dal sito https://www.favicon-generator.org/ -->
+    <link rel="icon" type="image/png" sizes="32x32" href="immagini/logo/favicon2.png">
+    <title>Ade Sporting Club</title>
+
+    <!-- Link to style folder -->
+    <link rel="StyleSheet" href="Style/utility.css">
+    <link rel="StyleSheet" href="Style/navbar.css">
+    <link rel="StyleSheet" href="Style/login.css">
+    <link rel="StyleSheet" href="Style/footer.css">
+    <link rel="StyleSheet" href="Style/index.css">
+    <link rel="stylesheet" href="Style/popup.css"> 
+
+    <!-- Link ai file javascript -->
+    <script src="js/login.js" defer></script>
+    <script src="js/navbar.js" defer></script>
+
+</head>
+
+<body>
+    <!--Header, there is the navbar menu and login-->
+    <header id="beginning"> 
+        <nav class="nav responsive">
+            <!--container for logo and name-->
+            <ul class="logo container"> 
+                <li>
+                    <img class="logo_img" src="immagini/logo/Ade.jpg">
+                </li>
+                <li>
+                    <a class="logo_name">ADE Sporting Club</a>                
+                </li>
+            </ul>
+            <!--container for navbar, topBotomBordersOut is the name of the toolbar animation-->
+            <ul class="toolbar container topBotomBordersOut"> 
+                <li>
+                    <a class="toolbar_link_Home" href="index.php">Home</a>
+                </li>
+                <li>
+                    <a class="toolbar_link_Struttura" href="Struttura.html">Struttura</a>
+                </li>
+                <li>
+                    <a class="toolbar_link_Attivita" href="Attivita.html"> Attività</a>
+                </li>               
+                <li>
+                    <a class="toolbar_link_Prenota" href="Prenota.html">Prenota</a>
+                </li>
+                <li>
+                    <a class="toolbar_link_Soci" href="Soci.html">Soci</a> 
+                </li>
+            </ul>
+            <!--container for login features--> 
+            <!--Inserire un link sign in, sign up e un bottone con l'immagine che se cliccato ti apre un menu con accedi e registrati-->
+            <div class="person flex">
+                <ul class="login_menu">
+                    <!-- POPUP DEL LOGIN -->
+                    <li>
+                        <button id="mostraPopupButton">Accedi</button>
+                    </li>
+                    <li>
+                        <a href="login_registrazione/registration.php">
+                            <button>Registrati</button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!--appena viene usato lo scroll la classe dell'header viene cambiata in "sticky"-->
+            <script type="text/javascript">
+                window.addEventListener("scroll", function(){
+                    var header = document.querySelector("header");
+                    header.classList.toggle("sticky", window.scrollY > 10);
+                })
+            </script>
+        </nav>
+    </header>
+
+    <!--Banner del sito-->
+    <section class="banner container">
+        <video class="cover-video" autoplay loop muted>
+            <source src="immagini/galleria/Banner.mp4" type="video/mp4">
+        </video>
+    </section>
+    
+    <!-- Div nascosto del popup -->
+    <div id="popup" class="popup">
+        <iframe src="login_registrazione/login.php" width="580" height="500" frameborder="0" style="border:0; overflow:hidden;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <div class="body responsive">
+        <!-- First section with fixed background image -->
+        <div class="fixed-image" style="background-image: url('immagini/sfondo_index/calcio.png');">
+            <!-- Content for the first section -->
+            <div class="content">
+                <h1><u>CALCIO</u></h1>
+                <p> Scopri il piacere e l'energia del gioco che unisce milioni di persone in tutto il mondo. Che tu sia un professionista navigato o un appassionato dilettante, qui troverai uno spazio dove coltivare la tua passione per il gioco.
+                    I nostri campi vantano strutture moderne e all'avanguardia progettate per garantire un'esperienza di gioco ottimale e sono dotate di strutture di supporto come spogliatoi e tribune per offrirti un ambiente confortevole e sicuro per goderti il tuo tempo sul campo.
+                </p>
+                <a href="attivita.html"><button class="buttonindex" >Vai alla pagina del corso</button></a>
+                <a href="prenota.html"><button class="buttonindex">Prenota un campo</button></a>
+            </div>
+        </div>
+        
+        <!-- Second section with fixed background image -->
+        <div class="fixed-image" style="background-image: url('immagini/sfondo_index/padel.png');">
+            <!-- Content for the second section -->
+            <div class="content">
+                <h1>PADDLE</h1>
+                <p>Il paddle, con la sua combinazione di tennis e squash, offre un'esperienza unica di gioco che coinvolge corpo e mente. Presso il nostro campo, vi invitiamo a sperimentare l'emozione di questo sport dinamico in un ambiente professionale e amichevole.
+                Le nostre strutture all'avanguardia sono progettate per offrire la migliore esperienza di gioco possibile. Dai campi ben tenuti alle aree di osservazione per gli spettatori, tutto è pensato per garantire il massimo comfort e divertimento durante la vostra partita.</p>
+                <a href="attivita.html"><button class="buttonindex" >Vai alla pagina del corso</button></a>
+                <a href="prenota.html"><button class="buttonindex">Prenota un campo</button></a>
+            </div>
+        </div>
+
+        <!-- Third section with fixed background image -->
+        <div class="fixed-image" style="background-image: url('immagini/sfondo_index/tennis.png');">
+            <!-- Content for the second section -->
+            <div class="content">
+                <h1>TENNIS</h1>
+                <p>Il tennis è uno sport intramontabile che unisce agilità, precisione e strategia. I nostri campi da tennis sono progettati per offrire prestazioni ottimali, con superfici di gioco ben mantenute e strutture di supporto di prima classe. Che tu sia un principiante curioso di imparare le basi o un giocatore esperto in cerca di una partita competitiva, troverai tutto ciò di cui hai bisogno per goderti il tennis al massimo.</p>
+                <a href="attivita.html"><button class="buttonindex" >Vai alla pagina del corso</button></a>
+                <a href="prenota.html"><button class="buttonindex">Prenota un campo</button></a>
+            </div>
+        </div>
+
+        <!-- Fourth section with fixed background image -->
+        <div class="fixed-image" style="background-image: url('immagini/sfondo_index/basket.png');">
+            <!-- Content for the second section -->
+            <div class="content">
+                <h1>BASKET</h1>
+                <p>Dove la passione per il gioco si trasforma in azione e divertimento. 
+                Che tu sia un giocatore esperto in cerca di una partita competitiva o un principiante desideroso di imparare le basi, troverai tutto ciò di cui hai bisogno per goderti il basket al massimo.</p>
+                <a href="attivita.html"><button class="buttonindex" >Vai alla pagina del corso</button></a>
+                <a href="prenota.html"><button class="buttonindex">Prenota un campo</button></a>
+            </div>
+        </div>
+
+        <div class="fixed-image" style="background-image: url('immagini/sfondo_index/piscina.jpg');">
+            <!-- Content for the second section -->
+            <div class="content">
+                <h1>NUOTO</h1>
+                <p>Il nuoto è molto più di uno sport. È una passione che ti tiene in forma, ti rilassa e ti rinvigorisce, tutto mentre ti diverti nell'elemento più puro: l'acqua.
+
+                Che tu sia un principiante che cerca di imparare le basi, un nuotatore intermedio desideroso di perfezionare la tecnica o un atleta esperto in cerca di sfide più impegnative, il nuoto è l'attività perfetta per tutti. Presso il nostro centro, offriamo corsi di nuoto per tutte le età e livelli, con istruttori qualificati pronti a guidarti in ogni passo del tuo viaggio nel mondo del nuoto.</p>
+                <a href="attivita.html"><button class="buttonindex" >Vai alla pagina del corso</button></a>
+                <a href="prenota.html"><button class="buttonindex">Prenota un campo</button></a>
+            </div>
+        </div>
+
+        <div class="fixed-image" style="background-image: url('immagini/sfondo_index/palestra.png');">
+            <!-- Content for the second section -->
+            <div class="content">
+                <h1>LA PALESTRA</h1>
+                <p>Le nostre moderne e attrezzate sale pesi, le aree cardiovascolari e gli spazi per le lezioni collettive sono progettati per offrirti un'ampia gamma di opzioni di allenamento. Che tu sia un principiante o un atleta esperto, troverai tutto ciò di cui hai bisogno per raggiungere i tuoi obiettivi di fitness.</p>
+                <a href="attivita.html"><button class="buttonindex" >Vai alla pagina dedicata</button></a>
+            </div>
+        </div>
+    </div>
+
+<!-- Footer section with contacts -->	
+    <footer>
+        <div class="map">
+            <h3>Dove siamo</h3>
+            <!-- Embedding a Google Map -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.235657742299!2d12.57007927646197!3d41.952273060766345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f64619ddc961d%3A0x997b053d9ac9f023!2sSporting%20Club%20Panda!5e0!3m2!1sit!2sit!4v1714034933636!5m2!1sit!2sit" width="400" height="250" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <div class="contacts">
+            <h2>Contact Us</h2>
+            <p>Email: example@example.com</p>
+            <p>Phone: +1234567890</p>
+
+            <!-- Copyright Information -->
+            <p>&copy; 2024 Sample Website. All Rights Reserved.</p>
+
+            <!-- Social Media Links -->
+            <div>
+                <a href="https://www.facebook.com">Facebook</a>
+                <a href="https://twitter.com">Twitter</a>
+                <a href="https://www.instagram.com">Instagram</a>
+            </div>
+        </div>
+        <div class="ancora">
+            <a href="#beginning">torna su</a>		<!-- ancora per tornare all'inizio della pagina -->
+        </div>
+    </footer>
+
+</body>
+</html>

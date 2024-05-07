@@ -1,3 +1,8 @@
+<?php
+    session_start();
+
+    $userLoggedIn = isset($_SESSION['username']);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -58,7 +63,6 @@
     </style>
 </head>
 <body>
-    
     <div class="boxx">
         <div class="container cliente">
             <form action="../php/logUtente.php" method="post" name="log" id="popup" class="formlogin" target="_top"> <!-- importante per i comportamenti automatici del form -->
@@ -138,5 +142,6 @@
             });
         });
     </script>
+    
 </body>
 </html>

@@ -33,7 +33,7 @@
             <!--container for navbar, topBotomBordersOut is the name of the toolbar animation-->
             <ul class="toolbar container topBotomBordersOut"> 
                 <li>
-                    <a class="toolbar_link_Home" href="../index.html">Home</a>
+                    <a class="toolbar_link_Home" href="../index.php">Home</a>
                 </li>
                 <li>
                     <a class="toolbar_link_Struttura" href="../Struttura.html">Struttura</a>

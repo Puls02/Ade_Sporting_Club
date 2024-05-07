@@ -1,3 +1,21 @@
+<?php
+    session_start();
+
+    // Verifica se l'utente è loggato
+    if (!isset($_SESSION['username'])) {
+        // Se non è loggato, reindirizza alla pagina di login
+        header('Location: login.php');
+        exit();
+    }
+
+    if (isset($_POST['logout'])) {
+        session_unset(); // Rimuove tutte le variabili di sessione
+        session_destroy(); // Distrugge la sessione
+    
+        header('Location: index.php'); // Reindirizza alla pagina di login
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -6,239 +24,11 @@
     <title>Pagina Riservata Soci Gold</title>
     <link rel="StyleSheet" href="../Style/utility.css">
     <link rel="StyleSheet" href="../Style/navbarStatic.css">
-    <style>
-        /* CSS per il layout generale */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .grid {
-            display: grid;
-            grid-template: 'a a a' 'b c d' 'e e d';
-            border-radius: 10px;
-            gap: 10px;
-            height: 100vh; /* Imposta l'altezza della griglia al 100% dell'altezza della finestra */
-        }
-        .user_profile {
-            grid-area: a;
-            background-color: white;
-            border-radius: 10px;
-            border: 1px solid black;
-            position: relative;
-            height: 300px;
-        }
-        .calendar {
-            grid-area: b;
-            background-color: white;
-            border-radius: 10px;
-            border: 1px solid black;
-            position: relative;
-        }
-        .message {
-            grid-area: c;
-            background-color: white;
-            border-radius: 10px;
-            border: 1px solid black;
-            position: relative;
-        }
-        .chat {
-            grid-area: d;
-            background-color: white;
-            border-radius: 10px;
-            border: 1px solid black;
-            overflow-y: auto;
-            /* Altezza della colonna della chat pari all'80% dell'altezza della finestra */
-            height: 80vh; 
-            position: relative;
-        }
-        .programmi {
-            grid-area: e;
-            background-color: white;
-            border-radius: 10px;
-            border: 1px solid black;
-            position: relative;
-        } 
-        h2 {
-            color: #333;
-        }
+    <link rel="StyleSheet" href="../Style/login.css">
+    <link rel="StyleSheet" href="../Style/utente.css">
 
-        /* CSS per la pianificazione settimanale */
-        .weekly-schedule {
-            display: flex;
-            flex-direction: column;
-            margin-top: 10px;
-        }
-
-        .weekly-schedule h1 {
-            margin-top: 20px;
-            font-size: 1.3rem;
-            font-weight: 700;
-        }
-
-        .day-and-activity {
-            display: grid;
-            grid-template-columns: 15% 60% 25%;
-            align-items: center;
-            border-radius: 14px;
-            margin-bottom: 5px;
-            color: #484d53;
-            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
-        }
-
-        .activity-one {
-            background-color: rgb(124, 136, 224, 0.5);
-            background-image: linear-gradient(240deg, rgb(124, 136, 224) 0%, #c3f4fc 100%);
-        }
-
-        .activity-two {
-            background-color: #aee2a4a1;
-            background-image: linear-gradient(240deg, #e5a243ab 0%, #f7f7aa 90%);
-        }
-
-        .activity-three {
-            background-color: #ecfcc376;
-            background-image: linear-gradient(240deg, #97e7d1 0%, #ecfcc3 100%);
-        }
-
-        .activity-four {
-            background-color: #e6a7c3b5;
-            background-image: linear-gradient(240deg, #fc8ebe 0%, #fce5c3 100%);
-        }
-
-        .day {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transform: translateY(-10px);
-        }
-
-        .day h1 {
-            font-size: 1.6rem;
-            font-weight: 600;
-        }
-
-        .day p {
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transform: translateY(-3px);
-        }
-
-        .activity {
-            border-left: 3px solid #484d53;
-        }
-
-        .participants {
-            display: flex;
-            margin-left: 20px;
-        }
-
-        .participants img {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            z-index: calc(2 * var(--i));
-            margin-left: -10px;
-            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
-        }
-
-        .activity > h2 {
-            margin-left: 10px;
-            font-size: 1.25rem;
-            font-weight: 600;
-            border-radius: 12px;
-        }
-
-        /* CSS per i corsi di allenamento */
-        .courses {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-
-        .course {
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
-            padding: 20px;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        /* CSS per il pulsante di cambio visualizzazione */
-        .switch-button {
-            margin-top: 10px;
-            text-align: center;
-        }
-
-        /* CSS per le chat */
-        .chat-list {
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .chat-item {
-            padding: 10px;
-            cursor: pointer;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .chat-message {
-            display: none;
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .active-chat {
-            display: block;
-            border-left: 3px solid #4caf50;
-            background-color: #f0f0f0;
-        }
-/*PROFILO*/
-        .profile-picture {
-            padding: 2%;
-            left: 0;
-            position: absolute;
-        }
-
-        .profile-picture > label {
-            margin-top: 200px;
-            margin-right: 10px; /* Margine a destra per separare l'etichetta dall'input */
-        }
-
-
-        /* Stile per l'immagine del profilo */
-        .profile-image {
-            width: 350px; /* Dimensioni dell'immagine del profilo */
-            height: 350px;
-            border-radius: 50%; /* Bordo circolare */
-            object-fit: cover; /* Per adattare l'immagine alla dimensione specificata */
-        }
-        .profile-image-preview {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            position: absolute;
-            margin-top: 30px;
-            margin-left: 70px;
-        }
-
-        .profile-image-preview img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Stile per le informazioni del profilo */
-        .profile-details {
-            padding: 2%;
-            right: 0;
-            top: 0;
-            position: absolute;
-        }
-    </style>
+    <script src="../js/login.js" defer></script>
+    <script src="../js/navbar.js" defer></script>
 </head>
 <body>
     <!--Header, there is the navbar menu and login-->
@@ -256,7 +46,7 @@
             <!--container for navbar, topBotomBordersOut is the name of the toolbar animation-->
             <ul class="toolbar container topBotomBordersOut"> 
                 <li>
-                    <a class="toolbar_link_Home" href="../index.html">Home</a>
+                    <a class="toolbar_link_Home" href="../index.php">Home</a>
                 </li>
                 <li>
                     <a class="toolbar_link_Struttura" href="../Struttura.html">Struttura</a>
@@ -295,11 +85,11 @@
                 </div>
                 <!-- dettagli utente -->
                 <div class="profile-details">
-                    <p><strong>Nome:</strong> <?php echo $nome; ?></p>
-                    <p><strong>Cognome:</strong> <?php echo $cognome; ?></p>
-                    <p><strong>Data di nascita:</strong> <?php echo $data_di_nascita; ?></p>
-                    <p><strong>Tipo di abbonamento:</strong> <?php echo $tipo_abbonamento; ?></p>
-                    <p><strong>Data sottoscrizione abbonamento:</strong> <?php echo $data_sottoscrizione_abbonamento; ?></p>
+                    <p><strong>Nome:</strong> <?php echo  $_SESSION['name'] ?></p>
+                    <p><strong>Cognome:</strong> <?php echo $_SESSION['surname']; ?></p>
+                    <p><strong>Data di nascita:</strong> <?php echo $_SESSION['data_nascita']; ?></p>
+                    <p><strong>Livello di abbonamento:</strong> <?php echo $_SESSION['livello']; ?></p>
+                    <p><strong>Data sottoscrizione abbonamento:</strong> <?php echo $_SESSION['data_sottoscrizione']; ?></p>
                 </div>
         </div>
         <div class="calendar">
