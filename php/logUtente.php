@@ -33,6 +33,9 @@
             $_SESSION['surname'] = $user['cognome'];
             $_SESSION['data_nascita'] = $user['data_nascita'];
             $id=$user['id'];
+            //setta lo stato dell'utente a true
+            $query = "UPDATE utente SET status = TRUE WHERE id='$id'";
+            $result = pg_query($conn, $query);
             //imposto le variabili di sessione per l'abbonamento
             $query = "SELECT * FROM sottoscrizione WHERE cliente = '$id'";
             $result = pg_query($conn, $query);

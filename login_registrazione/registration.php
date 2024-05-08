@@ -58,7 +58,7 @@
 
         <script src="../js/login.js"></script>
     </header>
-    <div class="banner"></div>
+    <div class="banner" ></div>
     <form action="../php/regUtente.php" method="post" name="registr" onsubmit="checkForm(event)"> <!-- importante per i comportamenti automatici del form -->
         <h1>REGISTRAZIONE</h1>
         <h3>compila il form e unisciti alla nostra comunity</h3>

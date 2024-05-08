@@ -16,8 +16,8 @@
 :root 
 {
   /*color palette*/ 
-  --nav-color: #358597;
-  --body-color: #ffffff; 
+  --nav-color: #44a8be;
+  --body-color: #fff; 
   --foot-color: #f27877;
 
   /* sizes */
@@ -47,6 +47,7 @@
 html 
 {
   scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
 img,
@@ -68,14 +69,13 @@ svg {
   font-family: PilcrowRounded;
   src: url(../Font/PilcrowRounded/PilcrowRounded-Semibold.woff2);
 }
-
-.body
-{
-  background: var(--body-color);
+@font-face {
+  font-family: Synonym;
+  src: url(../Font/Synonym/Synonym-Regular.woff);
 }
-
-p {
-  padding: 2%;
+@font-face {
+  font-family: Chillax;
+  src: url(../Font/Chillax/Chillax-Semibold.woff);
 }
 
 .line-with-text {

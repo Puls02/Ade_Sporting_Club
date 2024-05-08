@@ -19,6 +19,8 @@ create table Utente(
 	Password varchar(255),
 	Data_nascita date not null,
 	Email varchar(40) unique,
+	Foto_profilo BYTEA,
+	Status boolean default false,
 	Telefono varchar(20) unique
 );
 
