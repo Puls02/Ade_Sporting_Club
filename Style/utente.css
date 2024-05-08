@@ -6,7 +6,7 @@ body {
 }
 .grid {
     display: grid;
-    grid-template: 'a a a' 'b c d' 'e e d';
+    grid-template: 'a a a' 'b b c' 'd d c';
     border-radius: 10px;
     gap: 10px;
     height: 100vh; /* Imposta l'altezza della griglia al 100% dell'altezza della finestra */
@@ -15,40 +15,40 @@ body {
     grid-area: a;
     background-color: white;
     border-radius: 10px;
-    border: 1px solid black;
     position: relative;
     height: 300px;
+    padding: 2%;
+    margin: 1%;
+    border: 4px solid #308ece;
 }
 .calendar {
     grid-area: b;
     background-color: white;
     border-radius: 10px;
-    border: 1px solid black;
+    border: 4px solid #308ece;
     position: relative;
+    padding: 2%;
+    margin: 2%;
 }
-.message {
+.chat {
     grid-area: c;
     background-color: white;
     border-radius: 10px;
-    border: 1px solid black;
+    border: 1px solid #efefef;
     position: relative;
+    padding: 2%;
+    margin: 2%;
 }
-.chat {
+/* solo per i gold */
+.programmi {
     grid-area: d;
     background-color: white;
     border-radius: 10px;
-    border: 1px solid black;
-    overflow-y: auto;
-    /* Altezza della colonna della chat pari all'80% dell'altezza della finestra */
-    height: 80vh; 
+    border: 1px solid #efefef;
     position: relative;
-}
-.programmi {
-    grid-area: e;
-    background-color: white;
-    border-radius: 10px;
-    border: 1px solid black;
-    position: relative;
+    padding: 2%;
+    margin: 2%;
+    border: 4px solid #308ece;
 } 
 h2 {
     color: #333;
@@ -162,30 +162,6 @@ h2 {
     text-align: center;
 }
 
-/* CSS per le chat */
-.chat-list {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-.chat-item {
-    padding: 10px;
-    cursor: pointer;
-    border-bottom: 1px solid #ddd;
-}
-
-.chat-message {
-    display: none;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
-
-.active-chat {
-    display: block;
-    border-left: 3px solid #4caf50;
-    background-color: #f0f0f0;
-}
 /*PROFILO*/
 .profile-picture {
     padding: 2%;
@@ -228,3 +204,132 @@ h2 {
     top: 0;
     position: absolute;
 }
+
+/* STILE PER LA CHAT */
+.wrapper{
+    background: #ffffff;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
+                0 32px 64px -48px rgba(0,0,0,0.5);
+  }
+  
+  /* Users List CSS Start */
+  .users{
+    padding: 30px;
+  }
+  .users header,
+  .users-list a{
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e6e6e6;
+    justify-content: space-between;
+  }
+  .wrapper img{
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .users header img{
+    height: 70px;
+    width: 70px;
+  }
+  :is(.users, .users-list) .content{
+    display: flex;
+    align-items: center;
+  }
+  :is(.users, .users-list) .content .details{
+    color: #000;
+    margin-left: 20px;
+  }
+  :is(.users, .users-list) .details span{
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .users .search{
+    margin: 20px 0;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    
+    /* questo bordo dovrebbe sparire una volta che clicchi sulla lente di ingrandimento */
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    padding-left: 6px;
+    padding-right: 4px;
+  }
+  .users .search .text{
+    font-size: 18px;
+  }
+  .users .search input{
+    position: absolute;
+    height: 42px;
+    width: calc(100% - 50px);
+    font-size: 16px;
+    padding: 0 13px;
+    border: none;
+    outline: none;
+    border-radius: 5px 0 0 5px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s ease;
+  }
+  .users .search input.show{
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .users .search button{
+    position: relative;
+    z-index: 1;
+    width: 47px;
+    height: 42px;
+    font-size: 17px;
+    cursor: pointer;
+    background: #ffffff;
+    color: #000000;
+    border: none;
+    outline: none;
+    border-radius: 0 5px 5px 0;
+    transition: all 0.2s ease;
+    border-left: 1px solid #e6e6e6;
+  }
+  .users .search button.active{
+    background: #ffffff;
+    color: #000000;
+  }
+  .search button.active i::before{
+    content: '\f00d'; /* unicode per l'icona x*/
+  }
+  .users-list{
+    max-height: 350px;
+    overflow-y: auto;
+  }
+  :is(.users-list, .chat-box)::-webkit-scrollbar{
+    width: 0px;
+  }
+  .users-list a{
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    padding-right: 15px;
+    border-bottom: 1px solid #e6e6e6;
+  }
+  .users-list a:last-child{
+    margin-bottom: 0px;
+    border-bottom: none;
+  }
+  .users-list a img{
+    height: 50px;
+    width: 50px;
+  }
+  .users-list a .details p{
+    color: #67676a;
+  }
+  .users-list a .status-dot{
+    font-size: 12px;
+    color: #468669;
+    padding-left: 10px;
+  }
+  .users-list a .status-dot.offline{
+    color: #ccc;
+  }
