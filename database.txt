@@ -18,7 +18,7 @@ create table Utente(
 	Luogo_nascita varchar(25) not null,
 	Password varchar(255),
 	Data_nascita date not null,
-	Email varchar(25) unique,
+	Email varchar(40) unique,
 	Telefono varchar(20) unique
 );
 

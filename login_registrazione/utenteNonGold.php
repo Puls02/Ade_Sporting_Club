@@ -27,6 +27,9 @@
     <link rel="StyleSheet" href="../Style/navbarStatic.css">
     <link rel="StyleSheet" href="../Style/login.css">
     <link rel="StyleSheet" href="../Style/utente.css">
+
+    <!-- <link rel="StyleSheet" href="../chat/stile.css"> -->
+    <script src="../chat/javascript/users.js" defer></script>
     
     <script src="../js/login.js" defer></script>
     <script src="../js/navbar.js" defer></script>
@@ -102,22 +105,86 @@
         </div>
         <div class="chat" id="chat-column">
             <h2>Chat</h2>
-            <div class="chat-list">
-                <div class="chat-item" onclick="showChat(1)">Chat 1</div>
-                <div class="chat-item" onclick="showChat(2)">Chat 2</div>
-                <div class="chat-item" onclick="showChat(3)">Chat 3</div>
+            <div class="wrapper">
+        <section class="users">
+            <header>
+                <div class="content">
+                    <img src="../immagini/galleria/banner_reg.jpg" alt=""> <!-- immagine caricata dinamicamente -->
+                    <div class="details">
+                        <span>Eleonora Marino</span>
+                        <p>Active now</p>
+                    </div>
+                </div>
+            </header>
+            <div class="search">
+                <span class="text">Seleziona un utente per una nuova conversazione</span>
+                <input type="text" class="text" placeholder="inserisci nome da cercare...">
+                <button><i class="fas fa-search"></i></button>
             </div>
-            <div class="chat-messages">
-                <div class="chat-message active-chat" id="chat1">
-                    Contenuto della Chat 1
-                </div>
-                <div class="chat-message" id="chat2">
-                    Contenuto della Chat 2
-                </div>
-                <div class="chat-message" id="chat3">
-                    Contenuto della Chat 3
-                </div>
+            <div class="users-list">
+                <a href="#">
+                    <div class="content">
+                        <img src="#" alt="">
+                        <div class="details">
+                            <span>Eleonora Marino</span>
+                            <p>Test message</p>
+                        </div>
+                    </div>
+                    <div class="status-dot"><i class="fas fa-circle"></i></div>
+                </a>
+                <a href="#">
+                    <div class="content">
+                        <img src="#" alt="">
+                        <div class="details">
+                            <span>Eleonora Marino</span>
+                            <p>Test message</p>
+                        </div>
+                    </div>
+                    <div class="status-dot"><i class="fas fa-circle"></i></div>
+                </a>
+                <a href="#">
+                    <div class="content">
+                        <img src="#" alt="">
+                        <div class="details">
+                            <span>Eleonora Marino</span>
+                            <p>Test message</p>
+                        </div>
+                    </div>
+                    <div class="status-dot"><i class="fas fa-circle"></i></div>
+                </a>
+                <a href="#">
+                    <div class="content">
+                        <img src="#" alt="">
+                        <div class="details">
+                            <span>Eleonora Marino</span>
+                            <p>Test message</p>
+                        </div>
+                    </div>
+                    <div class="status-dot"><i class="fas fa-circle"></i></div>
+                </a>
+                <a href="#">
+                    <div class="content">
+                        <img src="#" alt="">
+                        <div class="details">
+                            <span>Eleonora Marino</span>
+                            <p>Test message</p>
+                        </div>
+                    </div>
+                    <div class="status-dot"><i class="fas fa-circle"></i></div>
+                </a>
+                <a href="#">
+                    <div class="content">
+                        <img src="#" alt="">
+                        <div class="details">
+                            <span>Eleonora Marino</span>
+                            <p>Test message</p>
+                        </div>
+                    </div>
+                    <div class="status-dot"><i class="fas fa-circle"></i></div>
+                </a>
             </div>
+        </section>
+    </div>
         </div>
         
     </div>
@@ -169,13 +236,6 @@
 
         // Chiamata alla funzione per aggiungere i giorni e le attività al calendario settimanale
         addWeekDaysToSchedule();
-
-        // Funzione per mostrare solo la chat selezionata
-        function showChat(chatId) {
-            const chatMessages = document.querySelectorAll('.chat-message');
-            chatMessages.forEach(chat => chat.classList.remove('active-chat'));
-            document.getElementById(`chat${chatId}`).classList.add('active-chat');
-        }
 
         // Array dei corsi di allenamento
         const courses = ['Nuoto', 'Paddle', 'Tennis', 'Calcio', 'Palestra', 'Basket'];

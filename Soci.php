@@ -313,23 +313,6 @@
             <!-- Inserisci qui la bacheca dei messaggi -->
         </div>
         <div class="chat" id="chat-column">
-            <h2>Chat</h2>
-            <div class="chat-list">
-                <div class="chat-item" onclick="showChat(1)">Chat 1</div>
-                <div class="chat-item" onclick="showChat(2)">Chat 2</div>
-                <div class="chat-item" onclick="showChat(3)">Chat 3</div>
-            </div>
-            <div class="chat-messages">
-                <div class="chat-message active-chat" id="chat1">
-                    Contenuto della Chat 1
-                </div>
-                <div class="chat-message" id="chat2">
-                    Contenuto della Chat 2
-                </div>
-                <div class="chat-message" id="chat3">
-                    Contenuto della Chat 3
-                </div>
-            </div>
         </div>
         <div class="programmi">
             <h2>Programmi allenamento</h2>
@@ -389,13 +372,6 @@
 
         // Chiamata alla funzione per aggiungere i giorni e le attività al calendario settimanale
         addWeekDaysToSchedule();
-
-        // Funzione per mostrare solo la chat selezionata
-        function showChat(chatId) {
-            const chatMessages = document.querySelectorAll('.chat-message');
-            chatMessages.forEach(chat => chat.classList.remove('active-chat'));
-            document.getElementById(`chat${chatId}`).classList.add('active-chat');
-        }
 
         // Array dei corsi di allenamento
         const courses = ['Nuoto', 'Paddle', 'Tennis', 'Calcio', 'Palestra', 'Basket'];
