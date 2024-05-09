@@ -32,6 +32,7 @@
             $_SESSION['name'] = $user['nome'];
             $_SESSION['surname'] = $user['cognome'];
             $_SESSION['data_nascita'] = $user['data_nascita'];
+            $_SESSION['id'] = $user['id'];
             $id=$user['id'];
             //setta lo stato dell'utente a true
             $query = "UPDATE utente SET status = TRUE WHERE id='$id'";

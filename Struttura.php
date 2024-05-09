@@ -1,3 +1,8 @@
+<?php
+    session_start();
+
+    $logged=isset($_SESSION['logged_in']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,13 +51,13 @@
                     <a class="toolbar_link_Home" href="index.php">Home</a>
                 </li>
                 <li>
-                    <a class="toolbar_link_Struttura" href="Struttura.html">Struttura</a>
+                    <a class="toolbar_link_Struttura" href="Struttura.php">Struttura</a>
                 </li>
                 <li>
-                    <a class="toolbar_link_Attivita" href="Attivita.html"> Attività</a>
+                    <a class="toolbar_link_Attivita" href="Attivita.php"> Attività</a>
                 </li>             
                 <li>
-                    <a class="toolbar_link_Prenota" href="Prenota.html">Prenota</a>
+                    <a class="toolbar_link_Prenota" href="Prenota.php">Prenota</a>
                 </li>
                 <li>
                     <a class="toolbar_link_Soci" href="Soci.html">Soci</a> 
@@ -60,13 +65,30 @@
             </ul>
 
             <!--container for login features--> <!--Inserire un link sign in, sign up e un bottone con l'immagine che se cliccato ti apre un menu con accedi e registrati-->
-            <div class="person flex">
-                <ul class="login_menu">
-                    <!-- POPUP DEL LOGIN -->
-                    <li><button id="mostraPopupButton">Accedi</button></li>
-                    <li><a href="login_registrazione/registration.php"><button>Registrati</button></a></li>
-                </ul>
-            </div>
+            <?php if(!$logged) :?>
+                <div class="person flex">
+                    <ul class="login_menu">
+                        <!-- POPUP DEL LOGIN -->
+                        <li>
+                            <button id="mostraPopupButton">Accedi</button>
+                        </li>
+                        <li>
+                            <a href="login_registrazione/registration.php">
+                                <button>Registrati</button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            <?php else: ?>
+                <div class="person flex">
+                    <ul class="login_menu">
+                        <!-- Logout -->
+                        <form action="php/logout.php" method="post" >
+                            <button type="submit">Logout</button>
+                        </form>
+                    </ul>
+                </div>
+            <?php endif; ?>
             
         </nav>
         
