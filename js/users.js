@@ -21,7 +21,7 @@ searchBar.onkeyup = ()=>{
     searchBar.classList.remove("active");
   }
   let xhr = new XMLHttpRequest();
-  xhr.open("POST", "php/search.php", true);
+  xhr.open("POST", "../php/search.php", true);
   xhr.onload = ()=>{
     if(xhr.readyState === XMLHttpRequest.DONE){
         if(xhr.status === 200){
@@ -31,7 +31,7 @@ searchBar.onkeyup = ()=>{
     }
   }
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhr.send("searchTerm=" + searchTerm);
+  xhr.send("searchTerm=" + searchTerm); // mandato con ajax
 }
 
 // PER AGGIORNARE LA LISTA DELLE CHAT

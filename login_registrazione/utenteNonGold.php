@@ -16,6 +16,7 @@
     <link rel="StyleSheet" href="../Style/utente.css">
 
     <!-- <link rel="StyleSheet" href="../chat/stile.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="../chat/javascript/users.js" defer></script>
     
     <script src="../js/login.js" defer></script>
@@ -110,85 +111,24 @@
         <div class="chat" id="chat-column">
             <h2>Chat</h2>
             <div class="wrapper">
-        <section class="users">
-            <header>
-                <div class="content">
-                    <img src="../immagini/galleria/banner_reg.jpg" alt=""> <!-- immagine caricata dinamicamente -->
-                    <div class="details">
-                        <span>Eleonora Marino</span>
-                        <p>Active now</p>
-                    </div>
+    <section class="users">
+        <header>
+            <div class="content">                
+                <div class="details">
+                    <span><?php echo  $_SESSION['name'] ." " . $_SESSION['surname']?></span>
                 </div>
-            </header>
-            <div class="search">
-                <span class="text">Seleziona un utente per una nuova conversazione</span>
-                <input type="text" class="text" placeholder="inserisci nome da cercare...">
-                <button><i class="fas fa-search"></i></button>
             </div>
-            <div class="users-list">
-                <a href="#">
-                    <div class="content">
-                        <img src="#" alt="">
-                        <div class="details">
-                            <span>Eleonora Marino</span>
-                            <p>Test message</p>
-                        </div>
-                    </div>
-                    <div class="status-dot"><i class="fas fa-circle"></i></div>
-                </a>
-                <a href="#">
-                    <div class="content">
-                        <img src="#" alt="">
-                        <div class="details">
-                            <span>Eleonora Marino</span>
-                            <p>Test message</p>
-                        </div>
-                    </div>
-                    <div class="status-dot"><i class="fas fa-circle"></i></div>
-                </a>
-                <a href="#">
-                    <div class="content">
-                        <img src="#" alt="">
-                        <div class="details">
-                            <span>Eleonora Marino</span>
-                            <p>Test message</p>
-                        </div>
-                    </div>
-                    <div class="status-dot"><i class="fas fa-circle"></i></div>
-                </a>
-                <a href="#">
-                    <div class="content">
-                        <img src="#" alt="">
-                        <div class="details">
-                            <span>Eleonora Marino</span>
-                            <p>Test message</p>
-                        </div>
-                    </div>
-                    <div class="status-dot"><i class="fas fa-circle"></i></div>
-                </a>
-                <a href="#">
-                    <div class="content">
-                        <img src="#" alt="">
-                        <div class="details">
-                            <span>Eleonora Marino</span>
-                            <p>Test message</p>
-                        </div>
-                    </div>
-                    <div class="status-dot"><i class="fas fa-circle"></i></div>
-                </a>
-                <a href="#">
-                    <div class="content">
-                        <img src="#" alt="">
-                        <div class="details">
-                            <span>Eleonora Marino</span>
-                            <p>Test message</p>
-                        </div>
-                    </div>
-                    <div class="status-dot"><i class="fas fa-circle"></i></div>
-                </a>
-            </div>
-        </section>
-    </div>
+        </header>
+        <div class="search">
+            <span class="text">Select an user to start chat</span>
+            <input type="text" placeholder="Enter name to search...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        <div class="users-list">
+
+        </div>
+    </section>
+</div>
         </div>
         
     </div>
