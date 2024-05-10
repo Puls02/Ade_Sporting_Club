@@ -8,6 +8,12 @@ CREATE TYPE privilegi_gold_enum AS ENUM ('Si','No');
 CREATE TYPE corso_enum AS ENUM ('Calcio','Basket','Tennis','Paddle','Nuoto','Palestra');
 CREATE TYPE tipo_enum AS ENUM ('Calcetto','Calciotto','Calcio','Paddle','Tennis');
 
+create table Messaggi (
+	msg_id SERIAL primary key,
+  	incoming_msg_id int not null,
+ 	outgoing_msg_id int not null,
+ 	msg varchar(1000) not null
+);
 
 create table Utente(
 	ID SERIAL primary key,
