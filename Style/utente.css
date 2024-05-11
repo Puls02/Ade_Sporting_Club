@@ -174,27 +174,10 @@ h2 {
     margin-right: 10px; /* Margine a destra per separare l'etichetta dall'input */
 }
 
-
 /* Stile per l'immagine del profilo */
-.profile-image {
-    width: 350px; /* Dimensioni dell'immagine del profilo */
-    height: 350px;
-    border-radius: 50%; /* Bordo circolare */
-    object-fit: cover; /* Per adattare l'immagine alla dimensione specificata */
-}
-.profile-image-preview {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    position: absolute;
-    margin-top: 30px;
-    margin-left: 70px;
-}
-
-.profile-image-preview img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.foto-utente {
+    width: 10px !important; /* Dimensioni dell'immagine del profilo */
+    height: auto !important;
 }
 
 /* Stile per le informazioni del profilo */

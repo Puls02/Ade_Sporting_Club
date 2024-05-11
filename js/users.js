@@ -2,7 +2,6 @@ const searchBar = document.querySelector(".search input"),
 searchIcon = document.querySelector(".search button"),
 usersList = document.querySelector(".users-list");
 
-// funzionalità per la barra di ricerca
 searchIcon.onclick = ()=>{
   searchBar.classList.toggle("show");
   searchIcon.classList.toggle("active");
@@ -31,13 +30,12 @@ searchBar.onkeyup = ()=>{
     }
   }
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhr.send("searchTerm=" + searchTerm); // mandato con ajax
+  xhr.send("searchTerm=" + searchTerm);
 }
 
-// PER AGGIORNARE LA LISTA DELLE CHAT
 setInterval(() =>{
   let xhr = new XMLHttpRequest();
-  xhr.open("GET", "../php/users_to_chat.php", true); // la GET perchè dobbiamo ricevere dati
+  xhr.open("GET", "../php/users.php", true);
   xhr.onload = ()=>{
     if(xhr.readyState === XMLHttpRequest.DONE){
         if(xhr.status === 200){

@@ -2,6 +2,11 @@
     session_start();
 
     $logged=isset($_SESSION['logged_in']);
+
+    include_once "../php/config.php";
+    if(!isset($_SESSION['user_id'])){
+        header("location: login.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +22,7 @@
 
     <!-- <link rel="StyleSheet" href="../chat/stile.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="../chat/javascript/users.js" defer></script>
+    <script src="../js/users.js" defer></script>
     
     <script src="../js/login.js" defer></script>
     <script src="../js/navbar.js" defer></script>
@@ -82,15 +87,31 @@
             
         </nav>
         
-    </header>
+    </header>  
+
     <div class="grid">
         <div class="user_profile">
             <h2>Profilo utente</h2>
                 <!-- caricamento foto profilo -->
                 <div class="profile-picture">
-                    <label for="profile-image">Carica Foto Profilo:</label>
-                    <div id="profile-image-preview" class="profile-image-preview"></div>
-                    <input type="file" id="profile-image" accept="../image/*" onchange="previewProfileImage(event)">
+                <?php
+                    $result = pg_query($conn, "SELECT * FROM Utente WHERE id = '{$_SESSION['id']}'");
+
+                    if (pg_num_rows($result) > 0) {
+                        $row = pg_fetch_assoc($result);
+                        // Verifica se l'utente ha un'immagine di profilo
+                        if (isset($row['Foto_profilo']) && $row['Foto_profilo'] !== null) {
+                            // L'utente ha un'immagine di profilo, visualizzala
+                            $immagine_codificata = base64_encode($row['Foto_profilo']);
+                            echo '<img class="foto-utente" src="data:image/jpeg;base64,'.$immagine_codificata.'" />';
+                        } else {
+                            // Nessuna immagine di profilo per questo utente, mostra l'immagine predefinita
+                            echo '<img class="foto-utente" src="../immagini/photo-camera.png" alt="Immagine di profilo predefinita" />';
+                        }
+                    } 
+                ?>
+                    <label>Carica Foto Profilo:</label>
+                    <input type="file" id="foto_profilo" name="fotoprof" value="foto profilo" accept=".pdf, .png, .jpeg" multiple>
                 </div>
                 <!-- dettagli utente -->
                 <div class="profile-details">
@@ -111,24 +132,41 @@
         <div class="chat" id="chat-column">
             <h2>Chat</h2>
             <div class="wrapper">
-    <section class="users">
-        <header>
-            <div class="content">                
-                <div class="details">
-                    <span><?php echo  $_SESSION['name'] ." " . $_SESSION['surname']?></span>
-                </div>
-            </div>
-        </header>
-        <div class="search">
-            <span class="text">Select an user to start chat</span>
-            <input type="text" placeholder="Enter name to search...">
-            <button><i class="fas fa-search"></i></button>
-        </div>
-        <div class="users-list">
+                <section class="users">
+                <header>
+                    <div class="content">
+                        <?php
+                            $result = pg_query($conn, "SELECT * FROM Utente WHERE id = '{$_SESSION['id']}'");
 
-        </div>
-    </section>
-</div>
+                            if (pg_num_rows($result) > 0) {
+                                $row = pg_fetch_assoc($result);
+                                // Verifica se l'utente ha un'immagine di profilo
+                                if (isset($row['Foto_profilo']) && $row['Foto_profilo'] !== null) {
+                                    // L'utente ha un'immagine di profilo, visualizzala
+                                    $immagine_codificata = base64_encode($row['Foto_profilo']);
+                                    echo '<img src="data:image/jpeg;base64,'.$immagine_codificata.'" />';
+                                } else {
+                                    // Nessuna immagine di profilo per questo utente, mostra l'immagine predefinita
+                                    echo '<img src="../immagini/photo-camera.png" alt="Immagine di profilo predefinita" />';
+                                }
+                            } 
+                        ?>                        
+                        <div class="details">
+                            <span><?php echo $row['nome'] . " " . $row['cognome']; ?></span>
+                            <p><?php echo $row['status']; ?></p>
+                        </div>
+                    </div>
+                </header>
+                <div class="search">
+                    <span class="text">Select an user to start chat</span>
+                    <input type="text" placeholder="Enter name to search...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="users-list">
+            
+                </div>
+                </section>
+            </div>
         </div>
         
     </div>
@@ -213,35 +251,7 @@
 
         // Aggiunta iniziale dei corsi al container
         addCoursesToContainer();
-// PROFILO UTENTE   
-        function previewProfileImage(event) {
-            const preview = document.getElementById('profile-image-preview');
-            const file = event.target.files[0];
-            const reader = new FileReader();
-            const fileInput = document.getElementById('profile-image');
 
-            reader.onload = function() {
-                const image = new Image();
-                image.src = reader.result;
-                image.style.maxWidth = '300px';
-                image.style.height = 'auto';
-                preview.innerHTML = '';
-                preview.appendChild(image);
-                fileInput.value = ''; // Resetta il valore dell'input per permettere di selezionare nuovamente lo stesso file
-                changeButtonLabel(); // Chiamata alla funzione per cambiare il testo del pulsante
-            };
-
-            if (file) {
-                reader.readAsDataURL(file);
-            }
-        }
-
-        // Funzione per cambiare il testo del pulsante a "Cambia Immagine" dopo il caricamento dell'immagine
-        function changeButtonLabel() {
-            const fileInput = document.getElementById('profile-image');
-            fileInput.removeAttribute('data-changed'); // Imposta un attributo per indicare che l'immagine è stata cambiata
-            fileInput.value = 'Cambia Immagine'; // Cambia il testo del pulsante
-        }
     </script>
 </body>
 </html>
