@@ -29,7 +29,7 @@ if (isset($_SESSION['id'])) {
     } else {
         $output .= '<div class="text">Nessun messaggio disponibile. Una volta inviato un messaggio apparirà qui.</div>';
     }
-    echo $output;
+    echo $output ;
 } else {
     header("location: ../login.php");
 }

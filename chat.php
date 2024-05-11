@@ -119,21 +119,14 @@ if (!isset($_SESSION['id'])) {
   <div class="wrapper">
     <section class="chat-area">
       <header>
-        <?php 
-          $user_id = pg_escape_string($conn, $_GET['user_id']);
-          $sql = pg_query($conn, "SELECT * FROM Utente WHERE id = '{$user_id}'");
-          if (pg_num_rows($sql) > 0) {
-            $row = pg_fetch_assoc($sql);
-          } else {
-            header("location: php/users.php");
-          }
-        ?>
+        
         <a href="login_registrazione/utenteNonGold.php" class="back-icon"><i class="fas fa-arrow-left"></i></a> <!-- va cambiato dinamico -->
         <?php
-          $result = pg_query($conn, "SELECT * FROM Utente WHERE id = '{$_SESSION['id']}'");
+          $user_id = pg_escape_string($conn, $_GET['user_id']);
+          $sql = pg_query($conn, "SELECT * FROM Utente WHERE id = '{$user_id}'");
 
-          if (pg_num_rows($result) > 0) {
-          $row = pg_fetch_assoc($result);
+          if (pg_num_rows($sql) > 0) {
+          $row = pg_fetch_assoc($sql);
           // Verifica se l'utente ha un'immagine di profilo
           if (isset($row['Foto_profilo']) && $row['Foto_profilo'] !== null) {
             // L'utente ha un'immagine di profilo, visualizzala
