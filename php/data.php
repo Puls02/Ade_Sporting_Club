@@ -19,7 +19,7 @@ while ($row = pg_fetch_assoc($query)) {
     ($row['status'] == "Offline now") ? $offline = "offline" : $offline = "";
     ($outgoing_id == $row['id']) ? $hid_me = "hide" : $hid_me = "";
 
-    $output .= '<a href="chat.php?user_id='. $row['id'] .'">
+    $output .= '<a href="../chat.php?user_id='. $row['id'] .'">
                 <div class="content">
                 <img src="php/images/'. $row['Foto_profilo'] .'" alt="">
                 <div class="details">

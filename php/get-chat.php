@@ -5,7 +5,7 @@ if (isset($_SESSION['id'])) {
     $outgoing_id = $_SESSION['id'];
     $incoming_id = pg_escape_string($conn, $_POST['incoming_id']);
     $output = "";
-    $sql = "SELECT * FROM messages LEFT JOIN Utente ON utente.id = messaggi.outgoing_msg_id
+    $sql = "SELECT * FROM messaggi LEFT JOIN Utente ON utente.id = messaggi.outgoing_msg_id
             WHERE (outgoing_msg_id = '{$outgoing_id}' AND incoming_msg_id = '{$incoming_id}')
             OR (outgoing_msg_id = '{$incoming_id}' AND incoming_msg_id = '{$outgoing_id}') ORDER BY msg_id";
     $query = pg_query($conn, $sql);
