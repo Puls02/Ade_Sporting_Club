@@ -2,7 +2,7 @@
     session_start();
     include_once "config.php";
 
-    $outgoing_id = $_SESSION['user_id'];
+    $outgoing_id = $_SESSION['id'];
     $sql = "SELECT * FROM Utente WHERE NOT id = '{$outgoing_id}'";
     $query = pg_query($conn, $sql);
     $output = "";

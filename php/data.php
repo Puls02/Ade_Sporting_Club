@@ -9,7 +9,7 @@ while ($row = pg_fetch_assoc($query)) {
     (strlen($result) > 28) ? $msg =  substr($result, 0, 28) . '...' : $msg = $result;
     
     // Controllo sull'immagine del profilo
-    $foto_profilo = (isset($row['Foto_profilo']) && $row['Foto_profilo'] !== null) ? 'php/images/'.$row['Foto_profilo'] : '../immagini/photo-camera.png';
+    $foto_profilo = (isset($row['Foto_profilo']) && $row['Foto_profilo'] !== null) ? '../immagini/galleria'.$row['Foto_profilo'] : '../immagini/photo-camera.png';
     
     if (isset($row2['outgoing_msg_id'])) {
         ($outgoing_id == $row2['outgoing_msg_id']) ? $you = "Tu: " : $you = "";
@@ -21,7 +21,7 @@ while ($row = pg_fetch_assoc($query)) {
 
     $output .= '<a href="../chat.php?user_id='. $row['id'] .'">
                 <div class="content">
-                <img src="php/images/'. $row['Foto_profilo'] .'" alt="">
+                <img src="php/images/'. $foto_profilo .'" alt="">
                 <div class="details">
                     <span>'. $row['nome']. " " . $row['cognome'] .'</span>
                     <p>'. $you . $msg .'</p>

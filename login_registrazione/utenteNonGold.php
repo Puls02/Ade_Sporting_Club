@@ -4,9 +4,7 @@
     $logged=isset($_SESSION['logged_in']);
 
     include_once "../php/config.php";
-    if(!isset($_SESSION['user_id'])){
-        header("location: login.php");
-    }
+    
 ?>
 
 <!DOCTYPE html>
