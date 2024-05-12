@@ -151,7 +151,7 @@
                         ?>                        
                         <div class="details">
                             <span><?php echo $row['nome'] . " " . $row['cognome']; ?></span>
-                            <p><?php echo $row['status']; ?></p>
+                            <p><?php if($row['status'] == true) { echo 'online'; } else { echo 'offline'; }; ?></p>
                         </div>
                     </div>
                 </header>
