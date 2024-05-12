@@ -52,9 +52,6 @@
                 <li>
                     <a class="toolbar_link_Prenota" href="../Prenota.php">Prenota</a>
                 </li>
-                <li>
-                    <a class="toolbar_link_Soci" href="../Soci.html">Soci</a> 
-                </li>
             </ul>
 
             <!--container for login features--> <!--Inserire un link sign in, sign up e un bottone con l'immagine che se cliccato ti apre un menu con accedi e registrati-->
@@ -108,8 +105,11 @@
                         }
                     } 
                 ?>
-                    <label>Carica Foto Profilo:</label>
-                    <input type="file" id="foto_profilo" name="fotoprof" value="foto profilo" accept=".pdf, .png, .jpeg" multiple>
+                    <form action="../php/caricaImmagine.php" method="post" name="caricamentoFoto" enctype="multipart/form-data">
+                        <label>Carica Foto Profilo:</label>
+                        <input type="file" id="fotoprof" name="fotoprof" accept=".png, .jpeg"><br>
+                        <button type="submit" name="submit">Carica Immagine</button>
+                    </form>
                 </div>
                 <!-- dettagli utente -->
                 <div class="profile-details">

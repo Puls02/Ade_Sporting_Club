@@ -6,7 +6,8 @@ CREATE TYPE tipo_abbonamento_enum AS ENUM ('AM','AS','AT','AA');
 CREATE TYPE livello_abbonamento_enum AS ENUM ('single','double','gym','opengym','gold');
 CREATE TYPE privilegi_gold_enum AS ENUM ('Si','No');
 CREATE TYPE corso_enum AS ENUM ('Calcio','Basket','Tennis','Paddle','Nuoto','Palestra');
-CREATE TYPE tipo_enum AS ENUM ('Calcetto','Calciotto','Calcio','Paddle','Tennis');
+CREATE TYPE tipo_enum AS ENUM ('Calcetto','Calciotto','Calcio','Paddle','Tennis','Basket');
+CREATE TYPE categoria_enum AS ENUM ('bambini','ragazzi');
 
 create table Messaggi (
 	msg_id SERIAL primary key,
@@ -109,6 +110,47 @@ create table Sottoscrizione_Gold(
 	foreign key(Cliente) references Cliente_Gold(ID) on delete cascade,
 	foreign key (Cliente, Abbonamento) references Sottoscrizione(Cliente, Abbonamento) on delete cascade
 );
+
+create table Orari (
+    Nome corso_enum not null,
+    categoria categoria_enum,
+    giorno_settimana VARCHAR(20),
+    ora_inizio TIME,
+    ora_fine TIME,
+    primary key(nome,categoria,giorno_settimana,ora_inizio,ora_fine)
+);
+
+insert into Orari (nome, categoria,giorno_settimana,ora_inizio,ora_fine) values 
+('Calcio','bambini','lunedi','16:00','17:00'),('Calcio','bambini','lunedi','17:00','18:00'),
+('Calcio','bambini','mercoledi','16:00','17:00'),('Calcio','bambini','mercoledi','17:00','18:00'),
+('Calcio','bambini','giovedi','16:00','17:00'),('Calcio','bambini','giovedi','17:00','18:00'),
+('Calcio','ragazzi','martedi','17:00','18:00'),('Calcio','ragazzi','martedi','18:00','19:00'),
+('Calcio','ragazzi','giovedi','17:00','18:00'),('Calcio','ragazzi','giovedi','18:00','19:00'),
+('Calcio','ragazzi','venerdi','17:00','18:00'),('Calcio','ragazzi','venerdi','18:00','19:00'),
+
+('Basket','bambini','lunedi','15:00','16:00'),('Basket','bambini','lunedi','16:00','17:00'),
+('Basket','bambini','mercoledi','15:00','16:00'),('Basket','bambini','mercoledi','16:00','17:00'),
+('Basket','bambini','venerdi','15:00','16:00'),('Basket','bambini','venerdi','16:00','17:00'),
+('Basket','ragazzi','lunedi','18:00','19:00'),('Basket','ragazzi','lunedi','19:00','20:00'),
+('Basket','ragazzi','martedi','18:00','19:00'),('Basket','ragazzi','martedi','19:00','20:00'),
+('Basket','ragazzi','venerdi','18:00','19:00'),('Basket','ragazzi','venerdi','19:00','20:00'),
+
+('Tennis','bambini','martedi','16:00','17:00'),('Tennis','bambini','martedi','17:00','18:00'),
+('Tennis','bambini','venerdi','16:00','17:00'),('Tennis','bambini','venerdi','17:00','18:00'),
+('Tennis','ragazzi','lunedi','17:00','18:00'),('Tennis','ragazzi','lunedi','18:00','19:00'),
+('Tennis','ragazzi','mercoledi','18:00','19:00'),('Tennis','ragazzi','mercoledi','19:00','20:00'),
+('Tennis','ragazzi','giovedi','17:00','18:00'),('Tennis','ragazzi','giovedi','18:00','19:00'),
+
+('Paddle','ragazzi','martedi','19:00','20:00'),
+('Paddle','ragazzi','mercoledi','19:00','20:00'),
+('Paddle','ragazzi','venerdi','19:00','20:00'),
+
+('Nuoto','bambini','lunedi','17:00','18:00'),('Nuoto','bambini','lunedi','18:00','19:00'),
+('Nuoto','bambini','mertedi','15:00','16:00'),('Nuoto','bambini','mertedi','16:00','17:00'),
+('Nuoto','bambini','venerdi','17:00','18:00'),('Nuoto','bambini','venerdi','18:00','19:00'),
+('Nuoto','ragazzi','lunedi','18:00','19:00'),('Nuoto','ragazzi','lunedi','19:00','20:00'),
+('Nuoto','ragazzi','mercoledi','18:00','19:00'),('Nuoto','ragazzi','mercoledi','19:00','20:00'),
+('Nuoto','ragazzi','venerdi','18:00','19:00'),('Nuoto','ragazzi','venerdi','19:00','20:00');
 
 insert into corso (nome, prezzo_mensile) values ('Calcio', 50), ('Basket', 60), ('Tennis', 70), ('Paddle', 60), ('Palestra',45), ('Nuoto', 65);
 -----------------------------------------------------------------------------------------------------------------------------------------------------

@@ -148,6 +148,9 @@ pg_query($conn, "COMMIT");
 
 echo "Utente registrato con sucesso";
 
+header("Location: ../index.php");
+exit;
+
 pg_close($conn);
 
 ?>
