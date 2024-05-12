@@ -58,53 +58,67 @@ h1 {
 }
 
 /* parte della tabella */
-.schedule {
-    width: 100%;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
-.schedule table {
+table {
     width: 100%;
     border-collapse: collapse;
-    border-radius: 8px;
+    border-spacing: 0;
+    border: 1px solid #ddd;
 }
-.schedule th, .schedule td {
+th, td {
+    border: 1px solid #ddd;
     padding: 10px;
-    border: 1px solid #ccc;
     text-align: center;
 }
-.schedule th {
-    background-color: #333;
-    color: #fff;
-    font-weight: normal;
-}
-.field {
-    font-weight: bold;
+th {
+    background-color: #f2f2f2;
     color: #333;
 }
-
-/* parte della legenda */
-.legend {
-    width: 50%;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+td {
+    background-color: #fff; /* Sfondo bianco per le celle */
+    color: #333;
 }
-.legend-list {
-    padding: 20px;
+.time-column {
+    width: 15%;
+}
+/* Definizione della larghezza fissa per le celle della tabella interna */
+.inner-table {
     margin: 0;
-    list-style-type: none;
+    border: none;
+    font-size: 16px;
+    column-gap: 10px;
+}
+.inner-table td {
+    width: 10%; /* Modifica la larghezza a tuo piacimento */
+    border: none; 
+    border-radius: 10px;
+}
+/* Colori di sfondo per i nomi dei corsi */
+.corso-calcio-bambini { background-color: #90EE90; color: #333; }
+.corso-calcio-ragazzi { background-color: #008000; color: #fff; }
+.corso-tennis-bambini { background-color: #FFA500; color: #333; }
+.corso-tennis-ragazzi { background-color: #FF8C00; color: #fff; }
+.corso-nuoto-bambini { background-color: #ADD8E6; color: #333; }
+.corso-nuoto-ragazzi { background-color: #4682B4; color: #fff; }
+.corso-basket-bambini { background-color: #FF7F50; color: #333; }
+.corso-basket-ragazzi { background-color: #FF4500; color: #fff; }
+.corso-paddle-bambini { background-color: #FFFF00; color: #333; }
+.corso-paddle-ragazzi { background-color: #FFD700; color: #fff; }
+
+/* Stile per la legenda */
+.legend {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 20px;
 }
 .legend-item {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
-.legend-item span {
+.legend-circle {
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 5px;
 }
