@@ -59,9 +59,6 @@
                 <li>
                     <a class="toolbar_link_Prenota" href="Prenota.php">Prenota</a>
                 </li>
-                <li>
-                    <a class="toolbar_link_Soci" href="Soci.html">Soci</a> 
-                </li>
             </ul>
 
             <!--container for login features--> <!--Inserire un link sign in, sign up e un bottone con l'immagine che se cliccato ti apre un menu con accedi e registrati-->
