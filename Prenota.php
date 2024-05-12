@@ -105,12 +105,13 @@
             <table>
                 <tr>
                     <th>Ora</th>
-                    <th class="field">Calcio</th>
-                    <th class="field">Paddle</th>
-                    <th class="field">Tennis</th>
-                    <th class="field">Basket</th>
-                    <th class="field">Nuoto</th>
-                    <th class="field">Palestra</th>
+                    <th class="field">Lunedì</th>
+                    <th class="field">Martedì</th>
+                    <th class="field">Mercoledì</th>
+                    <th class="field">Giovedì</th>
+                    <th class="field">Venerdì</th>
+                    <th class="field">Sabato</th>
+                    <th class="field">Domenica</th>
                 </tr>
                 <tr>
                     <td>8:00 - 9:00</td>

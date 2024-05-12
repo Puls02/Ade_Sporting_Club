@@ -36,13 +36,13 @@
                     <a class="toolbar_link_Home" href="../index.php">Home</a>
                 </li>
                 <li>
-                    <a class="toolbar_link_Struttura" href="../Struttura.html">Struttura</a>
+                    <a class="toolbar_link_Struttura" href="../Struttura.php">Struttura</a>
                 </li>
                 <li>
-                    <a class="toolbar_link_Attivita" href="../Attivita.html"> Attività</a>
+                    <a class="toolbar_link_Attivita" href="../Attivita.php"> Attività</a>
                 </li>             
                 <li>
-                    <a class="toolbar_link_Prenota" href="../Prenota.html">Prenota</a>
+                    <a class="toolbar_link_Prenota" href="../Prenota.php">Prenota</a>
                 </li>
                 <li>
                     <a class="toolbar_link_Soci" href="../Soci.html">Soci</a> 
