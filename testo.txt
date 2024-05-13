@@ -1,0 +1,12 @@
+Sì, è normale vedere "binary data" quando si visualizza direttamente il contenuto di un campo di tipo bytea in un database relazionale come PostgreSQL. Il campo bytea è utilizzato per memorizzare dati binari, come immagini, file, o qualsiasi altra forma di dati non testuali.
+
+La visualizzazione di "binary data" indica che i dati dell'immagine sono stati memorizzati correttamente nel database, ma non possono essere interpretati direttamente come testo. Questo è il comportamento predefinito per i campi bytea.
+
+Per visualizzare l'immagine in modo leggibile, devi recuperare i dati dell'immagine dal database e trattarli come dati binari, quindi convertirli in un formato compatibile con l'immagine, come base64, e incorporarli nell'HTML o utilizzare un'API per servire l'immagine in modo appropriato. Questo è esattamente ciò che fai nel tuo codice PHP quando decodifichi i dati dell'immagine e li inserisci nell'attributo src di un elemento <img>.
+
+Quindi, se i dati dell'immagine sono correttamente memorizzati nel campo bytea del tuo database, e se il codice PHP è correttamente implementato per decodificare e visualizzare l'immagine, allora l'immagine dovrebbe essere correttamente visualizzata nella tua pagina web. Se non lo è, potresti dover esaminare il tuo codice PHP per individuare eventuali errori di recupero o visualizzazione dell'immagine.
+-----------------------------------------------------------------
+
+
+
+

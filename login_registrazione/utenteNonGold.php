@@ -94,13 +94,17 @@
 
                     if (pg_num_rows($result) > 0) {
                         $row = pg_fetch_assoc($result);
-                        // Verifica se l'utente ha un'immagine di profilo
-                        if (isset($row['Foto_profilo']) && $row['Foto_profilo'] !== null) {
-                            // L'utente ha un'immagine di profilo, visualizzala
-                            $immagine_codificata = base64_encode($row['Foto_profilo']);
-                            echo '<img class="foto-utente" src="data:image/jpeg;base64,'.$immagine_codificata.'" />';
+                        $foto_profilo_bytea = $row['foto_profilo'];
+
+                        // Se c'è un'immagine di profilo, la decodifichiamo e la mostriamo
+                        if ($foto_profilo_bytea !== null) {
+                            // Decodifica i dati bytea
+                            $foto_decodata = pg_unescape_bytea($foto_profilo_bytea);
+                            
+                            // Stampa l'immagine 
+                            echo "<img src='data:image/jpeg;base64," . base64_encode($foto_decodata) . "' alt='Foto Profilo' width='auto' height='200'><br>";
                         } else {
-                            // Nessuna immagine di profilo per questo utente, mostra l'immagine predefinita
+                            // Se non c'è un'immagine di profilo, mostra un messaggio
                             echo '<img class="foto-utente" src="../immagini/photo-camera.png" alt="Immagine di profilo predefinita" />';
                         }
                     } 
@@ -134,20 +138,16 @@
                 <header>
                     <div class="content">
                         <?php
-                            $result = pg_query($conn, "SELECT * FROM Utente WHERE id = '{$_SESSION['id']}'");
-
-                            if (pg_num_rows($result) > 0) {
-                                $row = pg_fetch_assoc($result);
-                                // Verifica se l'utente ha un'immagine di profilo
-                                if (isset($row['Foto_profilo']) && $row['Foto_profilo'] !== null) {
-                                    // L'utente ha un'immagine di profilo, visualizzala
-                                    $immagine_codificata = base64_encode($row['Foto_profilo']);
-                                    echo '<img src="data:image/jpeg;base64,'.$immagine_codificata.'" />';
-                                } else {
-                                    // Nessuna immagine di profilo per questo utente, mostra l'immagine predefinita
-                                    echo '<img src="../immagini/photo-camera.png" alt="Immagine di profilo predefinita" />';
-                                }
-                            } 
+                            if ($foto_profilo_bytea !== null) {
+                                // Decodifica i dati bytea
+                                $foto_decodata = pg_unescape_bytea($foto_profilo_bytea);
+                                
+                                // Stampa l'immagine 
+                                echo "<img src='data:image/jpeg;base64," . base64_encode($foto_decodata) . "' alt='Foto Profilo' width='auto' height='200'><br>";
+                            } else {
+                                // Se non c'è un'immagine di profilo, mostra un messaggio
+                                echo '<img class="foto-utente" src="../immagini/photo-camera.png" alt="Immagine di profilo predefinita" />';
+                            }
                         ?>                        
                         <div class="details">
                             <span><?php echo $row['nome'] . " " . $row['cognome']; ?></span>
