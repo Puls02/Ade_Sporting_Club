@@ -1,7 +1,7 @@
 nav
 {
   height: 100px;
-  width: auto;
+  width: 100%;
   /*flexbox code*/
   display: flex;
   justify-content: space-between;
@@ -10,7 +10,7 @@ nav
   padding: 0 calc((100vw - 97vw) / 2); 
   /*navbar fissa*/
   z-index: 10;
-  background: var(--nav-color);
+  position: fixed;
 }
 /*--------------------------------------*/
 .logo
@@ -28,7 +28,7 @@ nav
 }
 .logo_name
 { 
-  color:#000;
+  color:#fff;
   font-family: "Panchang";
   text-decoration: none;
   font-size: var(--size-4xl);
@@ -46,19 +46,18 @@ nav
 }
 .toolbar a
 {
-  color:#000;
+  color: #fff;
   text-decoration: none;
   font-size: var(--size-xl);
+  /*aggiungere nome font*/
   font-family: "PilcrowRounded";
   margin: 0px 10px;
-  padding: 20px 20px;
+  padding: 10px 20px;
   position: relative;
   cursor: pointer;
 }
 
 /*-----------Toolbar animation css code------------*/
-
-/*inspiration from https://tympanus.net/codrops/2013/08/06/creative-link-effects/ */
 ul.topBotomBordersOut a:before, 
 ul.topBotomBordersOut a:after
 {
@@ -66,7 +65,7 @@ ul.topBotomBordersOut a:after
   left: 0px;
   width: 100%;
   height: 3px;
-  background: #000;
+  background: #fff;
   content: "";
   opacity: 0;
   transition: all 0.3s;
@@ -90,70 +89,99 @@ ul.topBotomBordersOut a:hover:after
 /*-------------------------------------------------------*/
 
 /*----------------pulsante login------------------*/
-/*testa della persona di login*/
+.login_btn
+{
+  display: flex;
+  align-items: center;
+  margin-right: 3%;
+  width: 50px;
+  height: 50px;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 50%;
+}
+/*dropdown menu for login*/
 .person
 {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: rgb(13, 13, 91);
-  position: relative;
-  margin: 20px;
-  top:-10px;
-  cursor: pointer;
-  z-index: 1;
-}
-/*corpo della persona di login*/
-.person::after
-{
-  content: "";
   position: absolute;
-  height: 20px;
-  width: 40px;
-  background-color: rgb(13, 13, 91);
-  top: 22px;
-  left: -10px;
-  border-radius: 50% 50% 0% 0%;
-  cursor: pointer;
-  z-index: 1;
-}
-.flex{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.login_menu 
-{
-  background-color: rgb(252, 252, 252);
-  position: relative;
-  list-style: none;
+  top: 100%;
+  right: 5%;
+  width: 250px;
+  background: var(--nav-color);
   display: none;
-  align-items: center;
-  justify-content: center;
-  border-radius: 6px;
-  width: 400px;
-  height: auto;
-  margin-top: 200px;
-  right: 70px;
+  border-radius: 10px;
 }
-
-.login_menu li
+.login_menu
 {
-  padding: 10% 10%;
+  list-style: none;
+  padding: 10px 10px;
+  margin: 0;
+  text-decoration: none;
+}
+.login_menu p
+{
+  font-size: var(--size-base);
+}
+.login_menu p.bold
+{
+  font-size: var(--size-lg);
+}
+.login_menu .Sign
+{
+  border-radius: 20px;
+  margin-top: 10px;
+  text-align: center;
+  background: #fff;
+  border-radius: 20px;
+  height: 40px;
   width: 100%;
-  border-bottom: 1px solid rgb(13, 13, 91);
- 
-}
-.login_menu li:last-child
-{
-  border-bottom: none;
 }
 
 .show 
 {
-  display:block;
+  display: block;
 }
 /*---------------------------*/
+
+/*------Sticky navbar--------*/
+header.sticky nav
+{
+  background-color: var(--nav-color);
+  height: 80px;
+  transition: 0.6s;
+}
+header.sticky .logo_img
+{
+  width: 80px;
+}
+header.sticky .logo_name
+{
+  font-size: var(--size-2xl);
+}
+header.sticky .logo li a,
+header.sticky .toolbar li a
+{
+  color:#000;
+}
+header.sticky ul.topBotomBordersOut a:before, 
+header.sticky ul.topBotomBordersOut a:after
+{
+  background: #000000;
+}
+
+header.sticky .login_btn
+{
+  color: var(--nav2-color);
+}
+
+header.sticky .person
+{
+  border-top: 2px solid black;
+  top: 105%;
+}
+
+/*---------------------------*/
+
 /*----------Responsive navbar-------------*/
 /* xs */
 @media (max-width: 576px)

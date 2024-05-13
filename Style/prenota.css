@@ -92,38 +92,3 @@
 .toggle-item input[type="radio"]:checked ~ .content {
     display: block;
 }
-
-/* parte della tabella */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-    border: 1px solid #ddd;
-}
-th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-    border-radius: 10px;
-}
-th {
-    background-color: #f2f2f2;
-    color: #333;
-}
-td {
-    background-color: #fff; /* Sfondo bianco per le celle */
-    color: #333;
-    min-width: 60px; /* Imposta la larghezza massima delle celle */
-}
-.time-column {
-    width: 10%;
-}
-/* Definizione della larghezza fissa per le celle della tabella interna */
-.inner-table {
-    margin: 0;
-    border: none;
-    font-size: 16px;
-}
-.inner-table td {
-    border: none; 
-}

@@ -55,7 +55,7 @@
 
 /* parte della tabella */
 table {
-    width: 75%;
+    width: 80%;
     border-collapse: collapse;
     border-spacing: 0;
     border: 1px solid #ddd;
@@ -73,7 +73,6 @@ th {
 td {
     background-color: #fff; /* Sfondo bianco per le celle */
     color: #333;
-    min-width: 50px;
 }
 .time-column {
     width: 10%;
@@ -85,7 +84,9 @@ td {
     font-size: 16px;
 }
 .inner-table td {
+    width: 10%; /* Modifica la larghezza a tuo piacimento */
     border: none; 
+    border-radius: 10px;
 }
 /* Colori di sfondo per i nomi dei corsi */
 .corso-calcio-bambini { background-color: #90EE90; color: #333; }

@@ -2,15 +2,6 @@
     session_start();
 
     $logged=isset($_SESSION['logged_in']);
-
-    if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-        // Se l'utente non è loggato, imposta una variabile di JavaScript per mostrare il messaggio
-        echo "<script>var loggedIn = false;</script>";
-    } else {
-        // Se l'utente è loggato, imposta la variabile di JavaScript per indicare che è loggato
-        echo "<script>var loggedIn = true;</script>";
-    }
-    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,46 +10,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- serve per inserire un'icona nel title. Ho generato l'icona dal sito https://www.favicon-generator.org/ -->
-    <link rel="icon" type="image/png" sizes="32x32" href="immagini/logo/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="immagini/logo/favicon2.png">
     <title>Ade Sporting Club</title>
 
     <!--Link to style folder-->
     <link rel="StyleSheet" href="Style/utility.css">
-    <link rel="StyleSheet" href="Style/navbarStatic.css">
+    <link rel="StyleSheet" href="Style/navbar.css">
     <link rel="StyleSheet" href="Style/login.css">
     <link rel="StyleSheet" href="Style/footer.css">
     <link rel="StyleSheet" href="Style/index.css">
     <link rel="StyleSheet" href="Style/gallery.css">
     <link rel="stylesheet" href="Style/popup.css">
     <link rel="stylesheet" href="Style/prenota.css"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- per le cione delle attivita -->
 
     <!-- Link ai file javascript -->
     <script src="js/login.js" defer></script>
     <script src="js/navbar.js" defer></script>
     <script src="js/prenotazioni.js" defer></script>
 
-    <!--Script javascript-->
-    <script>
-        // Funzione per controllare se l'utente è loggato prima di consentire il clic
-        function checkLogin() {
-            if (!loggedIn) {
-                // Se l'utente non è loggato, mostra il messaggio di avviso
-                alert("Devi effettuare l'accesso per visualizzare questa sezione.");
-                return false; // Impedisce l'azione predefinita del clic
-            }
-        }
-    </script>
-
-    
-
+    <!--Link al framework jquery-->
 </head>
 
 <body>
 
     <!--Header, there is the navbar menu and login-->
     <header id="beginning"> 
-        <nav class="nav responsive">
+    <nav class="nav responsive">
             <!--container for logo and name-->
             <ul class="logo container"> 
                 <li>
@@ -83,20 +60,32 @@
                     <a class="toolbar_link_Prenota" href="Prenota.php">Prenota</a>
                 </li>
             </ul>
-
-            <!--container for login features--> <!--Inserire un link sign in, sign up e un bottone con l'immagine che se cliccato ti apre un menu con accedi e registrati-->
+            <div class="login_btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                    <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd" />
+                </svg>
+            </div>
+            <!--container for login features--> 
             <?php if(!$logged) :?>
                 <div class="person flex">
                     <ul class="login_menu">
-                        <!-- POPUP DEL LOGIN -->
                         <li>
-                            <button id="mostraPopupButton">Accedi</button>
+                            <p class="bold"><b>Registrati o Accedi</b></p>
                         </li>
+                        <li> 
+                            <p>Scopri tutte le funzionalità del sito</p>
+                        </li>
+                        <hr size="1" color="black">
                         <li>
                             <a href="login_registrazione/registration.php">
-                                <button>Registrati</button>
+                                <button class="Sign up">Registrati</button>
                             </a>
                         </li>
+                        <!-- POPUP DEL LOGIN -->
+                        <li>
+                            <button class="Sign in" id="mostraPopupButton">Accedi</button>
+                        </li>
+
                     </ul>
                 </div>
             <?php else: ?>
@@ -109,7 +98,16 @@
                     </ul>
                 </div>
             <?php endif; ?>
-            
+
+            <!--open the dropdown login menu on click-->
+            <script type="text/javascript">
+                const show_menu = document.querySelector('.login_btn');
+                const nav = document.querySelector('.person');
+
+                show_menu.onclick = () => {
+                    nav.classList.toggle("show");
+                };
+            </script>
         </nav>
     </header>
 
@@ -118,157 +116,130 @@
         <iframe src="login_registrazione/login.php" width="580" height="500" frameborder="0" style="border:0; overflow:hidden;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
+    <h1>DISPONIBILITA DEI CAMPI</h1>
+    <p>tabella complementare a quella della pagina attività in cui ci sono i campi occupati</p>  
     <div class="zona">
-        <table>
-        <tr>
-            <th class="time-column">Ora\Giorno</th>
-            <th>Lunedì</th>
-            <th>Martedì</th>
-            <th>Mercoledì</th>
-            <th>Giovedì</th>
-            <th>Venerdì</th>
-            <th>Sabato</th>
-            <th>Domenica</th>
-        </tr>
-        <?php
-            // Connessione al database PostgreSQL
-            $conn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=eleonora");
-            if (!$conn) {
-                echo "Errore nella connessione al database.";
-                exit;
-            }
-
-            // Query per recuperare i dati dalla tabella Prenotazioni
-            $result = pg_query($conn, "SELECT * FROM prenotazioni");
-
-            if ($result) {
-                // Array associativo per memorizzare le prenotazioni per ogni orario
-                $prenotazioni_per_orario = array(
-                    "10:00 - 11:00" => array(),
-                    "11:00 - 12:00" => array(),
-                    "12:00 - 13:00" => array(),
-                    "13:00 - 14:00" => array(),
-                    "14:00 - 15:00" => array(),
-                    "15:00 - 16:00" => array(),
-                    "16:00 - 17:00" => array(),
-                    "17:00 - 18:00" => array(),
-                    "18:00 - 19:00" => array(),
-                    "19:00 - 20:00" => array(),
-                    "20:00 - 21:00" => array(),
-                    "21:00 - 22:00" => array(),
-                );
-
-                // Riempimento dell'array con i dati delle prenotazioni
-                while ($row = pg_fetch_assoc($result)) {
-                    $id = $row["id"];
-                    $giorno = $row["giorno"];
-                    $inizio_completo = $row["orario_inizio"];
-                    $fine_completo = $row["orario_fine"];
-                    $sport = $row["sport"];
-                    $completa = $row["completa"];
-
-                    $inizio = substr($inizio_completo, 0, 5); // Estrae solo i primi 5 caratteri (HH:MM)
-                    $fine = substr($fine_completo, 0, 5); // Estrae solo i primi 5 caratteri (HH:MM)
-
-                    // Costruzione della stringa per l'orario
-                    $orario = "$inizio - $fine";
-
-                    // Aggiunta della prenotazione all'array associativo
-                    $prenotazioni_per_orario[$orario][$giorno][] = array("id" => $id, "sport" => $sport, "completa" => $completa);
-                }
-
-                // Creazione della tabella HTML
-                foreach ($prenotazioni_per_orario as $orario => $prenotazioni_per_giorno) {
-                    echo "<tr>";
-                    echo "<td>$orario</td>";
-                    foreach (["lunedi", "martedi", "mercoledi", "giovedi", "venerdi", "sabato", "domenica"] as $giorno) {
-                        echo "<td>";
-                        if (isset($prenotazioni_per_giorno[$giorno])) {                            
-                            echo "<table class='inner-table'>";
-                            
-                            // Creazione di una cella per ogni prenotazione
-                            foreach ($prenotazioni_per_giorno[$giorno] as $prenotazione) {
-                                $id = $prenotazione["id"];
-                                $sport = $prenotazione["sport"];
-                                $completa = $prenotazione["completa"];
-                                
-                                // Determina l'icona corretta per lo sport
-                                $icona = "";
-                                switch ($sport) {
-                                    case "calcio":
-                                        $icona = "fas fa-futbol"; // Icona per calcio
-                                        break;
-                                    case "paddle":
-                                        $icona = "fas fa-table-tennis"; // Icona per paddle
-                                        break;
-                                    case "tennis":
-                                        $icona = "fas fa-baseball-ball"; // Icona per tennis
-                                        break;
-                                    case "nuoto":
-                                        $icona = "fas fa-swimmer"; // Icona per nuoto
-                                        break;
-                                    case "basket":
-                                        $icona = "fas fa-basketball-ball"; // Icona per basket
-                                        break;
-                                    default:
-                                        $icona = "fas fa-question"; // Icona generica
-                                        break;
-                                }
-                                
-                                // Determina il colore dello sfondo in base alla prenotazione completa o incompleta
-                                $sfondo = $completa == 't' ? "#99d98c" : "#ffc300"; // Sfondo verde se completa, rosso altrimenti
-                                                    
-                                // Costruzione del testo del tooltip
-                                $tooltip = "ID: $id\nSport: $sport\n";
-                                if ($completa == 't') {
-                                    $tooltip .= "Campo: 1\nStato: Completa";
-                                } else {
-                                    // Supponendo che il numero di persone sia memorizzato in un'altra tabella
-                                    // Possiamo sostituire questo valore con quello appropriato
-                                    $numero_persone = 4; // Da sostituire con il numero reale di persone
-                                    $tooltip .= "Campo: 1\nNumero Persone: $numero_persone";
-                                }
-                                
-                                // Aggiungi l'icona con il tooltip
-                                echo "<td style='background-color: $sfondo' title='$tooltip'><i class='$icona'></i></td>";              
-                            }
-                            echo "</table>";
-                        }
-                        
-                        echo "</td>";
-                    }
-                    echo "</tr>";
-                }
-            } else {
-                echo "Nessuna prenotazione trovata.";
-            }
-        ?>
-        </table>
-    </div>
-    <div class="zona">
-        <p>la tebella sovrastante riporta le disponibilita dei vari campi da gioco. se la prenotazione è in verde vuol dire che il campo è già preso. se la prenotazione c'è ma risulta ancora rossa vuol dire che non è completa ci si può aggiungere</p>
+        <div class="schedule">
+            <table>
+                <tr>
+                    <th>Ora</th>
+                    <th class="field">Lunedì</th>
+                    <th class="field">Martedì</th>
+                    <th class="field">Mercoledì</th>
+                    <th class="field">Giovedì</th>
+                    <th class="field">Venerdì</th>
+                    <th class="field">Sabato</th>
+                    <th class="field">Domenica</th>
+                </tr>
+                <tr>
+                    <td>8:00 - 9:00</td>
+                    <td>Ins1</td>
+                    <td></td>
+                    <td>Ins2</td>
+                </tr>
+                <tr>
+                    <td>9:00 - 10:00</td>
+                    <td>Ins1</td>
+                    <td></td>
+                    <td>Ins2</td>
+                </tr>
+                <tr>
+                    <td>10:00 - 11:00</td>
+                    <td>Ins1</td>
+                    <td>Ins2</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>11:00 - 12:00</td>
+                    <td>Ins1</td>
+                    <td></td>
+                    <td>Ins2</td>
+                </tr>
+                <tr>
+                    <td>12:00 - 13:00</td>
+                    <td>Ins1</td>
+                    <td></td>
+                    <td>Ins2</td>
+                </tr>
+                <tr>
+                    <td>13:00 - 14:00</td>
+                    <td>Ins1</td>
+                    <td></td>
+                    <td>Ins2</td>
+                </tr>
+                <tr>
+                    <td>14:00 - 15:00</td>
+                    <td>Ins1</td>
+                    <td></td>
+                    <td>Ins2</td>
+                </tr>
+                <tr>
+                    <td>15:00 - 16:00</td>
+                    <td>Ins1</td>
+                    <td></td>
+                    <td>Ins2</td>
+                </tr>
+                <tr>
+                    <td>16:00 - 17:00</td>
+                    <td>Ins1</td>
+                    <td></td>
+                    <td>Ins2</td>
+                </tr>
+                <tr>
+                    <td>17:00 - 18:00</td>
+                    <td>Ins1</td>
+                    <td></td>
+                    <td>Ins2</td>
+                </tr>
+                <tr>
+                    <td>18:00 - 19:00</td>
+                    <td>Ins1</td>
+                    <td></td>
+                    <td>Ins2</td>
+                </tr>
+                <tr>
+                    <td>19:00 - 20:00</td>
+                    <td>Ins1</td>
+                    <td></td>
+                    <td>Ins2</td>
+                </tr>
+                <tr>
+                    <td>20:00 - 21:00</td>
+                    <td>Ins1</td>
+                    <td></td>
+                    <td>Ins2</td>
+                </tr>
+                <tr>
+                    <td>21:00 - 22:00</td>
+                    <td>Ins1</td>
+                    <td></td>
+                    <td>Ins2</td>
+                </tr>
+            </table>
+        </div>
     </div>
 
     <!-- io inserirei a destra di ogni tendina un post it con le informazioni relative ai costi dei campi -->
     <div>
-
         <ul class="toggle-list" >
-            <li class="toggle-item" onclick="return checkLogin();">
+            <li class="toggle-item" >
                 <input type="radio" id="calcio" name="attivita">
-                <label for="calcio" >Calcetto<span class="arrow" ></span></label>
+                <label for="calcio" >Calcio<span class="arrow" ></span></label>
                 <div class="content">
-                    <form action="php/checkLogin.php" method="php/prenotazione.php">
+                    <form action="php/checkLogin.php" method="post" >
+                        <label for="nomeCalcio">Nome:</label>
+                        <input type="text" id="nomeCalcio" name="nomeCalcio"><br>
+                        <label for="cognomeCalcio">Cognome:</label>
+                        <input type="text" id="cognomeCalcio" name="cognomeCalcio"><br>
                         <label for="dataCalcio">Data:</label>
-                        <input type="date" id="dataCalcio" name="data"><br>
-                        <label for="orario">Seleziona un orario:</label>
-                        <select class="orario" name="ora">
-                            <option value="">Seleziona un orario</option>
-                        </select><br>
+                        <input type="date" id="dataCalcio" name="dataCalcio"><br>
+                        <label for="orario">Orario prenotazione:</label>
+                        <input type="time" id="orario" name="orario" required><br>
                         <label for="campo">Seleziona campo:</label><br>
                         <select id="campo" name="campo" required>
-                            <option value="calcetto_1">Campo 1</option>
-                            <option value="calcetto_2">Campo 2</option>
-                            <option value="calcetto_3">Campo 3</option>
+                            <option value="campo1">Campo 1</option>
+                            <option value="campo2">Campo 2</option>
+                            <option value="campo3">Campo 3</option>
                         </select><br>
                         <label for="prenotazione">Tipo di prenotazione:</label><br>
                         <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>
@@ -285,22 +256,25 @@
                     </form>
                 </div>
             </li>
-            <li class="toggle-item" onclick="return checkLogin();">
+            <li class="toggle-item">
                 <input type="radio" id="paddle" name="attivita">
                 <label for="paddle">Paddle<span class="arrow"></span></label>
                 <div class="content">
-                    <form method="post" action="php/prenotazione.php">
+                    <form method="post" action="/upload">
+                        <label for="nomePaddle">Nome:</label>
+                        <input type="text" id="nomePaddle" name="nomePaddle"><br>
+                        <label for="cognomePaddle">Cognome:</label>
+                        <input type="text" id="cognomePaddle" name="cognomePaddle"><br>
                         <label for="dataPaddle">Data:</label>
-                        <input type="date" id="dataPaddle" name="data"><br>
-                        <label for="orario">Seleziona un orario:</label>
-                        <select class="orario" name="ora">
-                            <option value="">Seleziona un orario</option>
-                        </select><br>
+                        <input type="date" id="dataPaddle" name="dataPaddle"><br>
+                        <label for="orario">Orario prenotazione:</label>
+                        <input type="time" id="orario" name="orario" required><br>
                         <label for="campo">Seleziona campo:</label><br>
                         <select id="campo" name="campo" required>
-                            <option value="paddle_1">Campo 1</option>
-                            <option value="paddle_2">Campo 2</option>
-                            <option value="paddle_3">Campo 3</option>
+                            <option value="campo1">Campo 1</option>
+                            <option value="campo2">Campo 2</option>
+                            <option value="campo3">Campo 3</option>
+                            <option value="campo3">Campo 4</option>
                         </select><br>
                         <label for="prenotazione">Tipo di prenotazione:</label><br>
                         <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>
@@ -317,17 +291,19 @@
                     </form>
                 </div>
             </li>
-            <li class="toggle-item" onclick="return checkLogin();">
+            <li class="toggle-item">
                 <input type="radio" id="tennis" name="attivita">
                 <label for="tennis">Tennis<span class="arrow"></span></label>
                 <div class="content">
-                    <form method="post" action="php/prenotazione.php">
+                    <form method="post" action="/upload">
+                        <label for="nomeTennis">Nome:</label>
+                        <input type="text" id="nomeTennis" name="nomeTennis"><br>
+                        <label for="cognomeTennis">Cognome:</label>
+                        <input type="text" id="cognomeTennis" name="cognomeTennis"><br>
                         <label for="dataTennis">Data:</label>
-                        <input type="date" id="dataTennis" name="data"><br>
-                        <label for="orario">Seleziona un orario:</label>
-                        <select class="orario" name="ora">
-                            <option value="">Seleziona un orario</option>
-                        </select><br>
+                        <input type="date" id="dataTennis" name="dataTennis"><br>
+                        <label for="orario">Orario prenotazione:</label>
+                        <input type="time" id="orario" name="orario" required><br>
                         <label for="sceltacampo">Tipo di prenotazione:</label><br>
                         <input type="radio" id="terra" name="sceltacampo" value="terra" required>
                         <label for="terra">Campo in terra</label><br>
@@ -335,10 +311,10 @@
                         <label for="cemento">Campo in cemento</label><br>
                         <label for="campo">Seleziona campo:</label><br>
                         <select id="campo" name="campo" required>
-                            <option value="tennis_1">Campo 1</option>
-                            <option value="tennis_2">Campo 2</option>
-                            <option value="tennis_3">Campo 3</option>
-                            <option value="tennis_4">Campo 4</option> <!-- con js fai il controllo, i primi due so di terra e gli altri due in cemento -->
+                            <option value="campo1">Campo 1</option>
+                            <option value="campo2">Campo 2</option>
+                            <option value="campo3">Campo 3</option>
+                            <option value="campo3">Campo 4</option> <!-- con js fai il controllo, i primi due so di terra e gli altri due in cemento -->
                         </select><br>
                         <label for="prenotazione">Tipo di prenotazione:</label><br>
                         <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>
@@ -355,21 +331,23 @@
                     </form>
                 </div>
             </li>
-            <li class="toggle-item" onclick="return checkLogin();">
+            <li class="toggle-item">
                 <input type="radio" id="basket" name="attivita">
                 <label for="basket">Basket<span class="arrow"></span></label>
                 <div class="content">
-                    <form method="post" action="php/prenotazione.php">
+                    <form method="post" action="/upload">
+                        <label for="nomeBasket">Nome:</label>
+                        <input type="text" id="nomeBasket" name="nomeBasket"><br>
+                        <label for="cognomeBasket">Cognome:</label>
+                        <input type="text" id="cognomeBasket" name="cognomeBasket"><br>
                         <label for="dataBasket">Data:</label>
-                        <input type="date" id="dataBasket" name="data"><br>
-                        <label for="orario">Seleziona un orario:</label>
-                        <select class="orario" name="ora">
-                            <option value="">Seleziona un orario</option>
-                        </select><br>
+                        <input type="date" id="dataBasket" name="dataBasket"><br>
+                        <label for="orario">Orario prenotazione:</label>
+                        <input type="time" id="orario" name="orario" required><br>
                         <label for="campo">Seleziona campo:</label><br>
                         <select id="campo" name="campo" required>
-                            <option value="Basket_1">Campo 1</option>
-                            <option value="Basket_2">Campo 2</option>
+                            <option value="campo1">Campo 1</option>
+                            <option value="campo2">Campo 2</option>
                         </select><br>
                         <label for="prenotazione">Tipo di prenotazione:</label><br>
                         <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>
@@ -386,16 +364,20 @@
                     </form>
                 </div>
             </li>
-            <li class="toggle-item" onclick="return checkLogin();">
+            <li class="toggle-item">
                 <input type="radio" id="nuoto" name="attivita">
                 <label for="nuoto">Nuoto<span class="arrow"></span></label>
                 <div class="content">
-                    <form method="post" action="php/prenotazione.php">
+                    <form method="post" action="/upload">
+                        <label for="nomeNuoto">Nome:</label>
+                        <input type="text" id="nomeNuoto" name="nomeNuoto"><br>
+                        <label for="cognomeNuoto">Cognome:</label>
+                        <input type="text" id="cognomeNuoto" name="cognomeNuoto"><br>
                         <label for="dataNuoto">Data:</label>
-                        <input type="date" id="dataNuoto" name="data"><br>
+                        <input type="date" id="dataNuoto" name="dataNuoto"><br>
                         <!-- se possibile mettiamo in elenco solo le fasce disponibili -->
                         <label for="orarioNuoto">Scegli una fascia oraria:</label>
-                        <select name="type" id="orarioNuoto" name="ora"  required>
+                        <select name="type" id="orarioNuoto"  required>
                             <option value="">Seleziona orario</option>
                             <option value="1">9:00 - 10:00</option>
                             <option value="2">10:00 - 11:00</option>
@@ -407,17 +389,25 @@
                     </form>
                 </div>
             </li>
-            <li class="toggle-item" onclick="return checkLogin();">
+            <li class="toggle-item">
                 <input type="radio" id="palestra" name="attivita">
                 <label for="palestra">Palestra<span class="arrow"></span></label>
                 <div class="content">
-                    <form method="post" action="php/prenotazione.php">
+                    <form method="post" action="/upload">
+                        <label for="nomePalestra">Nome:</label>
+                        <input type="text" id="nomePalestra" name="nomePalestra"><br>
+                        <label for="cognome">Cognome:</label>
+                        <input type="text" id="cognomePalestra" name="cognomePalestra"><br>
                         <label for="dataPalestra">Data:</label>
-                        <input type="date" id="dataPalestra" name="data"><br>
+                        <input type="date" id="dataPalestra" name="dataPalestra"><br>
                         <!-- se possibile mettiamo in elenco solo le fasce disponibili -->
-                        <label for="orario">Seleziona un orario:</label>
-                        <select class="orario" name="ora">
-                            <option value="">Seleziona un orario</option>
+                        <label for="orarioPalestra">Scegli una fascia oraria:</label>
+                        <select name="type" id="orarioPalestra"  required>
+                            <option value="">Seleziona orario</option>
+                            <option value="1">9:00 - 10:00</option>
+                            <option value="2">10:00 - 11:00</option>
+                            <option value="3">11:00 - 12:00</option>
+                            <option value="4">12:00 - 13:00</option>
                         </select><br>
                         <input type="submit" value="Prenota"> 
                         <input type="reset" value="Azzera i campi">
