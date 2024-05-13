@@ -249,10 +249,10 @@
         <!-- Legenda -->
         <div class="legend">
             <div class="legend-item">
-                <div class="legend-circle" style="background-color: #90EE90;"></div> Calcio Bambini
+                <div class="legend-circle" style="background-color: #90EE90;"></div> Calcio Bambini: campo 1
             </div>
             <div class="legend-item">
-                <div class="legend-circle" style="background-color: #008000;"></div> Calcio Ragazzi
+                <div class="legend-circle" style="background-color: #008000;"></div> Calcio Ragazzi: campo 2
             </div>
             <div class="legend-item">
                 <div class="legend-circle" style="background-color: #FFA500;"></div> Tennis Bambini
