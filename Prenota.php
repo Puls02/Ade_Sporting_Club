@@ -2,6 +2,15 @@
     session_start();
 
     $logged=isset($_SESSION['logged_in']);
+
+    if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+        // Se l'utente non è loggato, imposta una variabile di JavaScript per mostrare il messaggio
+        echo "<script>var loggedIn = false;</script>";
+    } else {
+        // Se l'utente è loggato, imposta la variabile di JavaScript per indicare che è loggato
+        echo "<script>var loggedIn = true;</script>";
+    }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +37,20 @@
     <script src="js/navbar.js" defer></script>
     <script src="js/prenotazioni.js" defer></script>
 
-    <!--Link al framework jquery-->
+    <!--Script javascript-->
+    <script>
+        // Funzione per controllare se l'utente è loggato prima di consentire il clic
+        function checkLogin() {
+            if (!loggedIn) {
+                // Se l'utente non è loggato, mostra il messaggio di avviso
+                alert("Devi effettuare l'accesso per visualizzare questa sezione.");
+                return false; // Impedisce l'azione predefinita del clic
+            }
+        }
+    </script>
+
+    
+
 </head>
 
 <body>
@@ -200,25 +222,24 @@
 
     <!-- io inserirei a destra di ogni tendina un post it con le informazioni relative ai costi dei campi -->
     <div>
+
         <ul class="toggle-list" >
-            <li class="toggle-item" >
+            <li class="toggle-item" onclick="return checkLogin();">
                 <input type="radio" id="calcio" name="attivita">
-                <label for="calcio" >Calcio<span class="arrow" ></span></label>
+                <label for="calcio" >Calcetto<span class="arrow" ></span></label>
                 <div class="content">
-                    <form action="php/checkLogin.php" method="post" >
-                        <label for="nomeCalcio">Nome:</label>
-                        <input type="text" id="nomeCalcio" name="nomeCalcio"><br>
-                        <label for="cognomeCalcio">Cognome:</label>
-                        <input type="text" id="cognomeCalcio" name="cognomeCalcio"><br>
+                    <form action="php/checkLogin.php" method="php/prenotazione.php">
                         <label for="dataCalcio">Data:</label>
-                        <input type="date" id="dataCalcio" name="dataCalcio"><br>
-                        <label for="orario">Orario prenotazione:</label>
-                        <input type="time" id="orario" name="orario" required><br>
+                        <input type="date" id="dataCalcio" name="data"><br>
+                        <label for="orario">Seleziona un orario:</label>
+                        <select class="orario" name="ora">
+                            <option value="">Seleziona un orario</option>
+                        </select><br>
                         <label for="campo">Seleziona campo:</label><br>
                         <select id="campo" name="campo" required>
-                            <option value="campo1">Campo 1</option>
-                            <option value="campo2">Campo 2</option>
-                            <option value="campo3">Campo 3</option>
+                            <option value="calcetto_1">Campo 1</option>
+                            <option value="calcetto_2">Campo 2</option>
+                            <option value="calcetto_3">Campo 3</option>
                         </select><br>
                         <label for="prenotazione">Tipo di prenotazione:</label><br>
                         <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>
@@ -235,25 +256,22 @@
                     </form>
                 </div>
             </li>
-            <li class="toggle-item">
+            <li class="toggle-item" onclick="return checkLogin();">
                 <input type="radio" id="paddle" name="attivita">
                 <label for="paddle">Paddle<span class="arrow"></span></label>
                 <div class="content">
-                    <form method="post" action="/upload">
-                        <label for="nomePaddle">Nome:</label>
-                        <input type="text" id="nomePaddle" name="nomePaddle"><br>
-                        <label for="cognomePaddle">Cognome:</label>
-                        <input type="text" id="cognomePaddle" name="cognomePaddle"><br>
+                    <form method="post" action="php/prenotazione.php">
                         <label for="dataPaddle">Data:</label>
-                        <input type="date" id="dataPaddle" name="dataPaddle"><br>
-                        <label for="orario">Orario prenotazione:</label>
-                        <input type="time" id="orario" name="orario" required><br>
+                        <input type="date" id="dataPaddle" name="data"><br>
+                        <label for="orario">Seleziona un orario:</label>
+                        <select class="orario" name="ora">
+                            <option value="">Seleziona un orario</option>
+                        </select><br>
                         <label for="campo">Seleziona campo:</label><br>
                         <select id="campo" name="campo" required>
-                            <option value="campo1">Campo 1</option>
-                            <option value="campo2">Campo 2</option>
-                            <option value="campo3">Campo 3</option>
-                            <option value="campo3">Campo 4</option>
+                            <option value="paddle_1">Campo 1</option>
+                            <option value="paddle_2">Campo 2</option>
+                            <option value="paddle_3">Campo 3</option>
                         </select><br>
                         <label for="prenotazione">Tipo di prenotazione:</label><br>
                         <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>
@@ -270,19 +288,17 @@
                     </form>
                 </div>
             </li>
-            <li class="toggle-item">
+            <li class="toggle-item" onclick="return checkLogin();">
                 <input type="radio" id="tennis" name="attivita">
                 <label for="tennis">Tennis<span class="arrow"></span></label>
                 <div class="content">
-                    <form method="post" action="/upload">
-                        <label for="nomeTennis">Nome:</label>
-                        <input type="text" id="nomeTennis" name="nomeTennis"><br>
-                        <label for="cognomeTennis">Cognome:</label>
-                        <input type="text" id="cognomeTennis" name="cognomeTennis"><br>
+                    <form method="post" action="php/prenotazione.php">
                         <label for="dataTennis">Data:</label>
-                        <input type="date" id="dataTennis" name="dataTennis"><br>
-                        <label for="orario">Orario prenotazione:</label>
-                        <input type="time" id="orario" name="orario" required><br>
+                        <input type="date" id="dataTennis" name="data"><br>
+                        <label for="orario">Seleziona un orario:</label>
+                        <select class="orario" name="ora">
+                            <option value="">Seleziona un orario</option>
+                        </select><br>
                         <label for="sceltacampo">Tipo di prenotazione:</label><br>
                         <input type="radio" id="terra" name="sceltacampo" value="terra" required>
                         <label for="terra">Campo in terra</label><br>
@@ -290,10 +306,10 @@
                         <label for="cemento">Campo in cemento</label><br>
                         <label for="campo">Seleziona campo:</label><br>
                         <select id="campo" name="campo" required>
-                            <option value="campo1">Campo 1</option>
-                            <option value="campo2">Campo 2</option>
-                            <option value="campo3">Campo 3</option>
-                            <option value="campo3">Campo 4</option> <!-- con js fai il controllo, i primi due so di terra e gli altri due in cemento -->
+                            <option value="tennis_1">Campo 1</option>
+                            <option value="tennis_2">Campo 2</option>
+                            <option value="tennis_3">Campo 3</option>
+                            <option value="tennis_4">Campo 4</option> <!-- con js fai il controllo, i primi due so di terra e gli altri due in cemento -->
                         </select><br>
                         <label for="prenotazione">Tipo di prenotazione:</label><br>
                         <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>
@@ -310,23 +326,21 @@
                     </form>
                 </div>
             </li>
-            <li class="toggle-item">
+            <li class="toggle-item" onclick="return checkLogin();">
                 <input type="radio" id="basket" name="attivita">
                 <label for="basket">Basket<span class="arrow"></span></label>
                 <div class="content">
-                    <form method="post" action="/upload">
-                        <label for="nomeBasket">Nome:</label>
-                        <input type="text" id="nomeBasket" name="nomeBasket"><br>
-                        <label for="cognomeBasket">Cognome:</label>
-                        <input type="text" id="cognomeBasket" name="cognomeBasket"><br>
+                    <form method="post" action="php/prenotazione.php">
                         <label for="dataBasket">Data:</label>
-                        <input type="date" id="dataBasket" name="dataBasket"><br>
-                        <label for="orario">Orario prenotazione:</label>
-                        <input type="time" id="orario" name="orario" required><br>
+                        <input type="date" id="dataBasket" name="data"><br>
+                        <label for="orario">Seleziona un orario:</label>
+                        <select class="orario" name="ora">
+                            <option value="">Seleziona un orario</option>
+                        </select><br>
                         <label for="campo">Seleziona campo:</label><br>
                         <select id="campo" name="campo" required>
-                            <option value="campo1">Campo 1</option>
-                            <option value="campo2">Campo 2</option>
+                            <option value="Basket_1">Campo 1</option>
+                            <option value="Basket_2">Campo 2</option>
                         </select><br>
                         <label for="prenotazione">Tipo di prenotazione:</label><br>
                         <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>
@@ -343,20 +357,16 @@
                     </form>
                 </div>
             </li>
-            <li class="toggle-item">
+            <li class="toggle-item" onclick="return checkLogin();">
                 <input type="radio" id="nuoto" name="attivita">
                 <label for="nuoto">Nuoto<span class="arrow"></span></label>
                 <div class="content">
-                    <form method="post" action="/upload">
-                        <label for="nomeNuoto">Nome:</label>
-                        <input type="text" id="nomeNuoto" name="nomeNuoto"><br>
-                        <label for="cognomeNuoto">Cognome:</label>
-                        <input type="text" id="cognomeNuoto" name="cognomeNuoto"><br>
+                    <form method="post" action="php/prenotazione.php">
                         <label for="dataNuoto">Data:</label>
-                        <input type="date" id="dataNuoto" name="dataNuoto"><br>
+                        <input type="date" id="dataNuoto" name="data"><br>
                         <!-- se possibile mettiamo in elenco solo le fasce disponibili -->
                         <label for="orarioNuoto">Scegli una fascia oraria:</label>
-                        <select name="type" id="orarioNuoto"  required>
+                        <select name="type" id="orarioNuoto" name="ora"  required>
                             <option value="">Seleziona orario</option>
                             <option value="1">9:00 - 10:00</option>
                             <option value="2">10:00 - 11:00</option>
@@ -368,25 +378,17 @@
                     </form>
                 </div>
             </li>
-            <li class="toggle-item">
+            <li class="toggle-item" onclick="return checkLogin();">
                 <input type="radio" id="palestra" name="attivita">
                 <label for="palestra">Palestra<span class="arrow"></span></label>
                 <div class="content">
-                    <form method="post" action="/upload">
-                        <label for="nomePalestra">Nome:</label>
-                        <input type="text" id="nomePalestra" name="nomePalestra"><br>
-                        <label for="cognome">Cognome:</label>
-                        <input type="text" id="cognomePalestra" name="cognomePalestra"><br>
+                    <form method="post" action="php/prenotazione.php">
                         <label for="dataPalestra">Data:</label>
-                        <input type="date" id="dataPalestra" name="dataPalestra"><br>
+                        <input type="date" id="dataPalestra" name="data"><br>
                         <!-- se possibile mettiamo in elenco solo le fasce disponibili -->
-                        <label for="orarioPalestra">Scegli una fascia oraria:</label>
-                        <select name="type" id="orarioPalestra"  required>
-                            <option value="">Seleziona orario</option>
-                            <option value="1">9:00 - 10:00</option>
-                            <option value="2">10:00 - 11:00</option>
-                            <option value="3">11:00 - 12:00</option>
-                            <option value="4">12:00 - 13:00</option>
+                        <label for="orario">Seleziona un orario:</label>
+                        <select class="orario" name="ora">
+                            <option value="">Seleziona un orario</option>
                         </select><br>
                         <input type="submit" value="Prenota"> 
                         <input type="reset" value="Azzera i campi">
@@ -423,5 +425,40 @@
             <a href="#beginning">torna su</a>		<!-- ancora per tornare all'inizio della pagina -->
         </div>
     </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ottieni tutti gli elementi con la classe "orario"
+            var selectOrari = document.querySelectorAll(".orario");
+
+            // Per ogni elemento, popola la lista degli orari con i valori appropriati
+            selectOrari.forEach(function(selectOrario) {
+                for (var hour = 8; hour < 22; hour++) {
+                    for (var minute = 0; minute < 60; minute += 15) { // Solo minuti multipli di 15
+                        if (minute === 0) { // Solo minuti uguali a 00
+                            var formattedHour = ('0' + hour).slice(-2);
+                            selectOrario.innerHTML += '<option value="' + formattedHour + ':00">' + formattedHour + ':00</option>';
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+    <script>
+        // Ottieni tutti gli input di tipo date
+        var inputDateFields = document.querySelectorAll("input[type='date']");
+
+        // Ottieni la data corrente
+        var now = new Date();
+        // Imposta la data minima come la data corrente (nel formato richiesto dall'input di tipo date)
+        // Aggiungi un giorno per permettere solo date future
+        var minDate = new Date(now.getTime() + 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+
+        // Itera su ogni campo data e imposta la data minima
+        inputDateFields.forEach(function(inputData) {
+            inputData.min = minDate;
+        });
+    </script>
 </body>
 </html>
