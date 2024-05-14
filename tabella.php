@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orari dei corsi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- per le cione delle attivita -->
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -207,6 +209,135 @@
         </div>
     </div>
 </div>
+<br>
+<table>
+      <tr>
+        <th class="time-column">Ora\Giorno</th>
+        <th>Lunedì</th>
+        <th>Martedì</th>
+        <th>Mercoledì</th>
+        <th>Giovedì</th>
+        <th>Venerdì</th>
+        <th>Sabato</th>
+        <th>Domenica</th>
+      </tr>
+      <?php
+        // Connessione al database PostgreSQL
+        $conn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=eleonora");
+        if (!$conn) {
+            echo "Errore nella connessione al database.";
+            exit;
+        }
+
+        // Query per recuperare i dati dalla tabella Prenotazioni
+        $result = pg_query($conn, "SELECT * FROM prenotazioni");
+
+        if ($result) {
+            // Array associativo per memorizzare le prenotazioni per ogni orario
+            $prenotazioni_per_orario = array(
+                "10:00 - 11:00" => array(),
+                "11:00 - 12:00" => array(),
+                "12:00 - 13:00" => array(),
+                "13:00 - 14:00" => array(),
+                "14:00 - 15:00" => array(),
+                "15:00 - 16:00" => array(),
+                "16:00 - 17:00" => array(),
+                "17:00 - 18:00" => array(),
+                "18:00 - 19:00" => array(),
+                "19:00 - 20:00" => array(),
+                "20:00 - 21:00" => array(),
+                "21:00 - 22:00" => array(),
+            );
+
+            // Riempimento dell'array con i dati delle prenotazioni
+            while ($row = pg_fetch_assoc($result)) {
+                $id = $row["id"];
+                $giorno = $row["giorno"];
+                $inizio_completo = $row["orario_inizio"];
+                $fine_completo = $row["orario_fine"];
+                $sport = $row["sport"];
+                $completa = $row["completa"];
+
+                $inizio = substr($inizio_completo, 0, 5); // Estrae solo i primi 5 caratteri (HH:MM)
+                $fine = substr($fine_completo, 0, 5); // Estrae solo i primi 5 caratteri (HH:MM)
+
+                // Costruzione della stringa per l'orario
+                $orario = "$inizio - $fine";
+
+                // Aggiunta della prenotazione all'array associativo
+                $prenotazioni_per_orario[$orario][$giorno][] = array("id" => $id, "sport" => $sport, "completa" => $completa);
+            }
+
+            // Creazione della tabella HTML
+    foreach ($prenotazioni_per_orario as $orario => $prenotazioni_per_giorno) {
+        echo "<tr>";
+        echo "<td>$orario</td>";
+        foreach (["lunedi", "martedi", "mercoledi", "giovedi", "venerdi", "sabato", "domenica"] as $giorno) {
+            echo "<td>";
+            if (isset($prenotazioni_per_giorno[$giorno])) {
+
+                echo "<table class='inner-table'>";
+
+                // Creazione di una cella per ogni prenotazione
+                foreach ($prenotazioni_per_giorno[$giorno] as $prenotazione) {
+                    $id = $prenotazione["id"];
+                    $sport = $prenotazione["sport"];
+                    $completa = $prenotazione["completa"];
+
+                    // Determina l'icona corretta per lo sport
+                    $icona = "";
+                    switch ($sport) {
+                        case "calcio":
+                            $icona = "fas fa-futbol"; // Icona per calcio
+                            break;
+                        case "paddle":
+                            $icona = "fas fa-table-tennis"; // Icona per paddle
+                            break;
+                        case "tennis":
+                            $icona = "fas fa-baseball-ball"; // Icona per tennis
+                            break;
+                        case "nuoto":
+                            $icona = "fas fa-swimmer"; // Icona per nuoto
+                            break;
+                        case "basket":
+                            $icona = "fas fa-basketball-ball"; // Icona per basket
+                            break;
+                        default:
+                            $icona = "fas fa-question"; // Icona generica
+                            break;
+                    }
+
+                    // Determina il colore dello sfondo in base alla prenotazione completa o incompleta
+                    $sfondo = $completa == 't' ? "green" : "red"; // Sfondo verde se completa, rosso altrimenti
+
+                    // Costruzione del testo del tooltip
+                    $tooltip = "ID: $id\nSport: $sport\n";
+                    if ($completa == 't') {
+                        $tooltip .= "Campo: 1\nStato: Completa";
+                    } else {
+                        // Supponendo che il numero di persone sia memorizzato in un'altra tabella
+                        // Possiamo sostituire questo valore con quello appropriato
+                        $numero_persone = 4; // Da sostituire con il numero reale di persone
+                        $tooltip .= "Campo: 1\nNumero Persone: $numero_persone";
+                    }
+
+                    // Aggiungi l'icona con il tooltip
+                    echo "<td style='background-color: $sfondo' title='$tooltip'><i class='$icona'></i></td>";
+
+
+                }
+
+                echo "</table>";
+            }
+            echo "</td>";
+        }
+        echo "</tr>";
+    }
+        } else {
+            echo "Nessuna prenotazione trovata.";
+        }
+      ?>
+    </table>
 
 </body>
 </html>

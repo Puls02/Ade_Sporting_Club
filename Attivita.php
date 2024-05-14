@@ -18,7 +18,6 @@
     <link rel="StyleSheet" href="Style/navbar.css">
     <link rel="StyleSheet" href="Style/login.css">
     <link rel="StyleSheet" href="Style/footer.css">
-    <link rel="StyleSheet" href="Style/index.css">
     <link rel="StyleSheet" href="Style/gallery.css">
     <link rel="stylesheet" href="Style/popup.css">
     <link rel="stylesheet" href="Style/attivita.css"> 
