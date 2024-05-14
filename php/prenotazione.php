@@ -19,8 +19,29 @@
     // me li dividi poi in orario mdi inizio e orario di fine :)
     if(isset($_POST['campo'])){
         $campo=$_POST['campo'];
+        $id_campo=explode("_",$campo)[1];
     }
-    $prenotazione=$_POST['prenotazione'];
+    if(isset($_POST['prenotazione'])){
+        $prenotazione=$_POST['prenotazione'];
+        if($prenotazione=="interoCampo"){
+            $completa=true;
+            if(explode("_",$campo)[0]=="calcetto"){
+                $numePersone=10;
+            }
+            if(explode("_",$campo)[0]=="paddle"){
+                $numePersone=4;
+            }
+            if(explode("_",$campo)[0]=="tennis"){
+                $numePersone=4;
+            }
+            if(explode("_",$campo)[0]=="basket"){
+                $numePersone=10;
+            }
+        }
+    }
+    
+    $query = "INSERT INTO Prenotazione (campo,data,ora,utente,completa,numpersone) VALUES ('$doc1','$doc2') RETURNING id";
+    $result = pg_query($conn, $query);
     
 
 
