@@ -2,6 +2,7 @@
     session_start();
 
     $logged=isset($_SESSION['logged_in']);
+    $gold=isset($_SESSION['gold']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -104,9 +105,15 @@
                 <div class="person flex">
                     <ul class="login_menu">
                         <!-- rimanda al profilo personale -->
-                        <a href="login_registrazione/utenteNonGold.php">
-                            <button class="Sign profile">Profilo</button>
-                        </a>
+                        <?php if(!$gold): ?>
+                            <a href="login_registrazione/utenteNonGold.php">
+                                <button class="Sign profile">Profilo</button>
+                            </a>
+                        <?php else: ?>
+                            <a href="login_registrazione/utenteGold.php">
+                                <button class="Sign profile">Profilo</button>
+                            </a>
+                        <?php endif;?>
                         <!-- Logout -->
                         <form action="php/logout.php" method="post" >
                             <button class="Sign out" type="submit">Logout</button>
@@ -146,14 +153,14 @@
         </tr>
         <?php
             // Connessione al database PostgreSQL
-            $conn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=eleonora");
+            $conn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=Sporting77!");
             if (!$conn) {
                 echo "Errore nella connessione al database.";
                 exit;
             }
 
             // Query per recuperare i dati dalla tabella Prenotazioni
-            $result = pg_query($conn, "SELECT * FROM prenotazioni"); //prenotazione
+            $result = pg_query($conn, "SELECT * FROM prenotazione"); //prenotazione
 
             if ($result) {
                 // Array associativo per memorizzare le prenotazioni per ogni orario

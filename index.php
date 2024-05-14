@@ -2,6 +2,7 @@
     session_start();
 
     $logged=isset($_SESSION['logged_in']);
+    $gold=isset($_SESSION['gold']);
 ?>
 
 <!DOCTYPE html>
@@ -87,9 +88,15 @@
                 <div class="person flex">
                     <ul class="login_menu">
                         <!-- rimanda al profilo personale -->
-                        <a href="login_registrazione/utenteNonGold.php">
-                            <button class="Sign profile">Profilo</button>
-                        </a>
+                        <?php if(!$gold): ?>
+                            <a href="login_registrazione/utenteNonGold.php">
+                                <button class="Sign profile">Profilo</button>
+                            </a>
+                        <?php else: ?>
+                            <a href="login_registrazione/utenteGold.php">
+                                <button class="Sign profile">Profilo</button>
+                            </a>
+                        <?php endif;?>
                         <!-- Logout -->
                         <form action="php/logout.php" method="post" >
                             <button class="Sign out" type="submit">Logout</button>
