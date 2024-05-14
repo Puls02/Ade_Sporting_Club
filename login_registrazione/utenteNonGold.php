@@ -104,26 +104,26 @@
             <h2>Profilo utente</h2>
                 <!-- caricamento foto profilo -->
                 <div class="profile-picture">
-                <?php
-                    $result = pg_query($conn, "SELECT * FROM Utente WHERE id = '{$_SESSION['id']}'");
+                    <?php
+                        $result = pg_query($conn, "SELECT * FROM Utente WHERE id = '{$_SESSION['id']}'");
 
-                    if (pg_num_rows($result) > 0) {
-                        $row = pg_fetch_assoc($result);
-                        $foto_profilo_bytea = $row['foto_profilo'];
+                        if (pg_num_rows($result) > 0) {
+                            $row = pg_fetch_assoc($result);
+                            $foto_profilo_bytea = $row['foto_profilo'];
 
-                        // Se c'è un'immagine di profilo, la decodifichiamo e la mostriamo
-                        if ($foto_profilo_bytea !== null) {
-                            // Decodifica i dati bytea
-                            $foto_decodata = pg_unescape_bytea($foto_profilo_bytea);
-                            
-                            // Stampa l'immagine 
-                            echo "<img src='data:image/jpeg;base64," . base64_encode($foto_decodata) . "' alt='Foto Profilo' width='auto' height='200'><br>";
-                        } else {
-                            // Se non c'è un'immagine di profilo, mostra un messaggio
-                            echo '<img class="foto-utente" src="../immagini/photo-camera.png" alt="Immagine di profilo predefinita" />';
-                        }
-                    } 
-                ?>
+                            // Se c'è un'immagine di profilo, la decodifichiamo e la mostriamo
+                            if ($foto_profilo_bytea !== null) {
+                                // Decodifica i dati bytea
+                                $foto_decodata = pg_unescape_bytea($foto_profilo_bytea);
+                                
+                                // Stampa l'immagine 
+                                echo "<img src='data:image/jpeg;base64," . base64_encode($foto_decodata) . "' alt='Foto Profilo' width='auto' height='200' border-radius=50%><br>";
+                            } else {
+                                // Se non c'è un'immagine di profilo, mostra un messaggio
+                                echo '<img class="foto-utente" src="../immagini/photo-camera.png" alt="Immagine di profilo predefinita" />';
+                            }
+                        } 
+                    ?>
                     <form action="../php/caricaImmagine.php" method="post" name="caricamentoFoto" enctype="multipart/form-data">
                         <label>Carica Foto Profilo:</label>
                         <input type="file" id="fotoprof" name="fotoprof" accept=".png, .jpeg"><br>
@@ -142,7 +142,10 @@
 
 <!-- WEEKLY SCHEDULE -->        
         <div class="calendar">
-            <h2>Calendario Settimanale</h2>
+            <h2 id="currentMonth"></h2>
+            <div id="calendar"></div>
+        </div>
+        <div class="schedule">
             <div class="weekly-schedule" id="weekly-schedule">
                 <!-- Il calendario settimanale verrà generato qui -->
             </div>
@@ -296,6 +299,46 @@ function addWeekDaysToSchedule() {
         addWeekDaysToSchedule();
     });
 
+
+        // script.js
+
+const calendar = document.getElementById('calendar');
+const currentMonthDisplay = document.getElementById('currentMonth');
+
+function generateCalendar(year, month) {
+    const startDate = new Date(year, month, 1);
+    const endDate = new Date(year, month + 1, 0);
+    const startDay = startDate.getDay();
+
+    let html = '';
+
+    // Mostra il nome del mese e l'anno
+    const monthNames = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
+    currentMonthDisplay.textContent = monthNames[month] + ' ' + year;
+
+    // Aggiungi intestazione dei giorni
+    const days = ['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'];
+    html += '<div class="giorno giorno-header">' + days.join('</div><div class="giorno giorno-header">') + '</div>';
+
+    // Aggiungi giorni del mese
+    for (let i = 0; i < startDay; i++) {
+        html += '<div class="giorno other-month"></div>';
+    }
+
+    for (let giorno = 1; giorno <= endDate.getDate(); giorno++) {
+        if (giorno === new Date().getDate() && year === new Date().getFullYear() && month === new Date().getMonth()) {
+            html += '<div class="giorno current-month today">' + giorno + '</div>';
+        } else {
+            html += '<div class="giorno current-month">' + giorno + '</div>';
+        }
+    }
+
+    calendar.innerHTML = html;
+}
+
+// Genera il calendario per il mese corrente
+const currentDate = new Date();
+generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
 
 
     </script>

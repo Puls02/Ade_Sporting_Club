@@ -6,7 +6,7 @@ body {
 }
 .grid {
     display: grid;
-    grid-template: 'a a a' 'b b c' 'd d c';
+    grid-template: 'a a a' 'b c d' 'b c d';
     border-radius: 10px;
     gap: 10px;
     height: 100vh; /* Imposta l'altezza della griglia al 100% dell'altezza della finestra */
@@ -16,7 +16,7 @@ body {
     background-color: white;
     border-radius: 10px;
     position: relative;
-    height: 300px;
+    min-height: 300px;
     padding: 2%;
     margin: 1%;
     border: 4px solid #308ece;
@@ -29,14 +29,25 @@ body {
     position: relative;
     padding: 2%;
     margin: 2%;
+    z-index: -5;
+}
+.schedule {
+  grid-area: c;
+  background-color: white;
+  border-radius: 10px;
+  border: 4px solid #308ece;
+  position: relative;
+  padding: 2%;
+  margin: 2%;
 }
 .chat {
-    grid-area: c;
+    grid-area: d;
     background-color: white;
     border-radius: 10px;
     border: 1px solid #efefef;
     position: relative;
     padding: 2%;
+    border: 4px solid #308ece;
     margin: 2%;
 }
 /* solo per i gold */
@@ -52,6 +63,33 @@ body {
 } 
 h2 {
     color: #333;
+}
+/*PROFILO*/
+.profile-picture {
+  padding: 2%;
+  left: 2%;
+  position: absolute;
+  margin-bottom: 2%;
+}
+
+.profile-picture > label {
+  margin-top: 200px;
+  margin-right: 10px; /* Margine a destra per separare l'etichetta dall'input */
+}
+
+/* Stile per l'immagine del profilo */
+.foto-utente {
+  width: 140px; /* Dimensioni dell'immagine del profilo */
+  height: auto;
+}
+
+/* Stile per le informazioni del profilo */
+.profile-details {
+  padding: 2%;
+  right: 2%;
+  top: 4%;
+  position: absolute;
+  width: 500px;
 }
 
 /* CSS per la pianificazione settimanale */
@@ -162,31 +200,7 @@ h2 {
     text-align: center;
 }
 
-/*PROFILO*/
-.profile-picture {
-    padding: 2%;
-    left: 0;
-    position: absolute;
-}
 
-.profile-picture > label {
-    margin-top: 200px;
-    margin-right: 10px; /* Margine a destra per separare l'etichetta dall'input */
-}
-
-/* Stile per l'immagine del profilo */
-.foto-utente {
-    width: 140px; /* Dimensioni dell'immagine del profilo */
-    height: auto;
-}
-
-/* Stile per le informazioni del profilo */
-.profile-details {
-    padding: 2%;
-    right: 0;
-    top: 0;
-    position: absolute;
-}
 
 /* STILE PER LA CHAT */
 .wrapper{
@@ -431,4 +445,48 @@ h2 {
   border-radius: 10px;
   margin: 2%;
   color: black;
+}
+
+/* calendario */
+#calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: 70px; /* Altezza delle righe del calendario */
+  z-index: 1;
+}
+
+.giorno {
+  border: 1px solid #ccc;
+  text-align: left;
+  padding: 15px;
+}
+
+.giorno-header {
+  background-color: #f2f2f2;
+  text-align: center; /* Centra il testo */
+}
+
+.current-month {
+  color: black;
+}
+
+.other-month {
+  color: #ccc;
+}
+
+.today {
+  position: relative;
+  color: #fff;
+}
+
+.today:before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #c1121f;
+  z-index: -1;
 }
