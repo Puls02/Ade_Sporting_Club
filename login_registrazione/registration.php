@@ -7,7 +7,7 @@
     <title>Registration</title>
     
     <link rel="StyleSheet" href="../Style/utility.css">
-    <link rel="StyleSheet" href="../Style/navbarStatic.css">
+    <link rel="StyleSheet" href="../Style/navbar.css">
     <link rel="StyleSheet" href="../Style/login.css">
     <link rel="StyleSheet" href="../Style/registration.css">
     
@@ -47,6 +47,11 @@
             </ul>
 
             <!--container for login features--> <!--Inserire un link sign in, sign up e un bottone con l'immagine che se cliccato ti apre un menu con accedi e registrati-->
+            <div class="login_btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                    <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd" />
+                </svg>
+            </div>
             <div class="person flex container">
             </div>
             
