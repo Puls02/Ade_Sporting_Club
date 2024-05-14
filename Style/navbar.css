@@ -106,8 +106,8 @@ ul.topBotomBordersOut a:hover:after
 .person
 {
   position: absolute;
-  top: 100%;
-  right: 5%;
+  top: 110%;
+  right: 4%;
   width: 250px;
   background: var(--nav-color);
   display: none;
@@ -116,7 +116,7 @@ ul.topBotomBordersOut a:hover:after
 .login_menu
 {
   list-style: none;
-  padding: 10px 10px;
+  padding: 0 10px 10px 10px;
   margin: 0;
   text-decoration: none;
 }
@@ -134,9 +134,9 @@ ul.topBotomBordersOut a:hover:after
   margin-top: 10px;
   text-align: center;
   background: #fff;
-  border-radius: 20px;
   height: 40px;
   width: 100%;
+  cursor: pointer;
 }
 
 .show 

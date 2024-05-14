@@ -78,11 +78,21 @@
                     <ul class="login_menu">
                         <!-- Logout -->
                         <form action="../php/logout.php" method="post" >
-                            <button type="submit">Logout</button>
+                            <button class="Sign out" type="submit">Logout</button>
                         </form>
                     </ul>
                 </div>
             <?php endif; ?>
+
+        <!--open the dropdown login menu on click-->
+        <script type="text/javascript">
+                const show_menu = document.querySelector('.login_btn');
+                const nav = document.querySelector('.person');
+
+                show_menu.onclick = () => {
+                    nav.classList.toggle("show");
+                };
+            </script>
             
         </nav>
         
