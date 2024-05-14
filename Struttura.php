@@ -89,9 +89,13 @@
             <?php else: ?>
                 <div class="person flex">
                     <ul class="login_menu">
+                        <!-- rimanda al profilo personale -->
+                        <a href="login_registrazione/utenteNonGold.php">
+                            <button class="Sign profile">Profilo</button>
+                        </a>
                         <!-- Logout -->
                         <form action="php/logout.php" method="post" >
-                            <button type="submit">Logout</button>
+                            <button class="Sign out" type="submit">Logout</button>
                         </form>
                     </ul>
                 </div>

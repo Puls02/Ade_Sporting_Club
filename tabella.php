@@ -74,10 +74,54 @@
             border-radius: 50%;
             margin-right: 5px;
         }
+
+
+        #calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 70px; /* Altezza delle righe del calendario */
+}
+
+.day {
+    border: 1px solid #ccc;
+    text-align: left;
+    padding: 15px;
+}
+
+.day-header {
+    background-color: #f2f2f2;
+    text-align: center; /* Centra il testo */
+}
+
+.current-month {
+    color: black;
+}
+
+.other-month {
+    color: #ccc;
+}
+
+.today {
+    position: relative;
+}
+
+.today:before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #bde0fe;
+    z-index: -1;
+}
     </style>
 </head>
 <body>
-
+<h2 id="currentMonth"></h2>
+<div id="calendar"></div>
+<br>
 <h2 style="text-align: center;">Orari dei corsi</h2>
 
 <div class="container">
@@ -339,5 +383,46 @@
       ?>
     </table>
 
+    
+<script>
+
+const calendar = document.getElementById('calendar');
+const currentMonthDisplay = document.getElementById('currentMonth');
+
+function generateCalendar(year, month) {
+    const startDate = new Date(year, month, 1);
+    const endDate = new Date(year, month + 1, 0);
+    const startDay = startDate.getDay();
+
+    let html = '';
+
+    // Mostra il nome del mese e l'anno
+    const monthNames = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
+    currentMonthDisplay.textContent = monthNames[month] + ' ' + year;
+
+    // Aggiungi intestazione dei giorni
+    const days = ['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'];
+    html += '<div class="day day-header">' + days.join('</div><div class="day day-header">') + '</div>';
+
+    // Aggiungi giorni del mese
+    for (let i = 0; i < startDay; i++) {
+        html += '<div class="day other-month"></div>';
+    }
+
+    for (let day = 1; day <= endDate.getDate(); day++) {
+        if (day === new Date().getDate() && year === new Date().getFullYear() && month === new Date().getMonth()) {
+            html += '<div class="day current-month today">' + day + '</div>';
+        } else {
+            html += '<div class="day current-month">' + day + '</div>';
+        }
+    }
+
+    calendar.innerHTML = html;
+}
+
+// Genera il calendario per il mese corrente
+const currentDate = new Date();
+generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
+</script>
 </body>
 </html>
