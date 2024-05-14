@@ -424,3 +424,11 @@ h2 {
   opacity: 1;
   pointer-events: auto;
 }
+
+/* weekly schedule*/
+.activity-item {
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin: 2%;
+  color: black;
+}

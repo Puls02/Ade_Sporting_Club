@@ -12,9 +12,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina Riservata Soci Gold</title>
+    <title>Profilo Utente</title>
     <link rel="StyleSheet" href="../Style/utility.css">
-    <link rel="StyleSheet" href="../Style/navbarStatic.css">
+    <link rel="StyleSheet" href="../Style/navbar.css">
     <link rel="StyleSheet" href="../Style/login.css">
     <link rel="StyleSheet" href="../Style/utente.css">
 
@@ -85,6 +85,7 @@
     </header>  
 
     <div class="grid">
+<!-- USER PROFILE -->
         <div class="user_profile">
             <h2>Profilo utente</h2>
                 <!-- caricamento foto profilo -->
@@ -124,13 +125,16 @@
                     <p><strong>Data sottoscrizione abbonamento:</strong> <?php echo $_SESSION['data_sottoscrizione']; ?></p>
                 </div>
         </div>
-        
+
+<!-- WEEKLY SCHEDULE -->        
         <div class="calendar">
             <h2>Calendario Settimanale</h2>
             <div class="weekly-schedule" id="weekly-schedule">
                 <!-- Il calendario settimanale verrà generato qui -->
             </div>
         </div>
+
+<!-- CHAT -->
         <div class="chat" id="chat-column">
             <h2>Chat</h2>
             <div class="wrapper">
@@ -170,8 +174,11 @@
     </div>
 
     <script>
-        // Funzione per generare i giorni della settimana
-        function generateWeekDays() {
+        
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Funzione per generare i giorni della settimana
+    function generateWeekDays() {
             const daysOfWeek = ['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'];
             const currentDate = new Date();
             const todayIndex = currentDate.getDay();
@@ -189,11 +196,52 @@
             return weekDays;
         }
 
-        // Funzione per aggiungere i giorni e le attività al calendario settimanale
-        function addWeekDaysToSchedule() {
-            const weekDays = generateWeekDays();
-            const scheduleElement = document.getElementById('weekly-schedule');
+        // Funzione per mappare i giorni della settimana nel formato desiderato
+function mapWeekDay(day) {
+    const dayMapping = {
+        'Dom': 'domenica',
+        'Lun': 'lunedi',
+        'Mar': 'martedi',
+        'Mer': 'mercoledi',
+        'Gio': 'giovedi',
+        'Ven': 'venerdi',
+        'Sab': 'sabato'
+    };
+    return dayMapping[day];
+}
 
+// Funzione per ottenere il colore in base al nome dell'attività
+function getActivityColor(activityName) {
+    switch (activityName.toLowerCase()) {
+        case 'calcio':
+            return '#a7c957';
+        case 'tennis':
+            return '#ffbf69';
+        case 'nuoto':
+            return '#a8dadc';
+        case 'basket':
+            return '#f7c59f';
+        case 'paddle':
+            return '#fff3b0';
+        default:
+            return 'gray'; // Colore di default nel caso in cui non corrisponda a nessuna attività specificata
+    }
+}
+
+// Funzione per aggiungere i giorni e le attività al calendario settimanale
+function addWeekDaysToSchedule() {
+    const weekDays = generateWeekDays();
+    const scheduleElement = document.getElementById('weekly-schedule');
+
+    // Chiamata AJAX per ottenere le attività dal database
+    fetch('../php/get-activities.php')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Errore nella richiesta al server.');
+            }
+            return response.json();
+        })
+        .then(data => {
             weekDays.forEach((day, index) => {
                 const dayAndActivityElement = document.createElement('div');
                 dayAndActivityElement.classList.add('day-and-activity');
@@ -205,50 +253,36 @@
 
                 const activityElement = document.createElement('div');
                 activityElement.classList.add('activity');
-                activityElement.innerHTML = `<h2>Attività ${index + 1}</h2><p>Descrizione dell'attività</p>`;
+                
+                // Trova le attività per il giorno corrente
+                const dayKey = mapWeekDay(day.day);
+                const activitiesForDay = data.filter(activity => activity.giorno.toLowerCase() === dayKey);
+                activitiesForDay.forEach(activity => {
+                    const activityInfo = document.createElement('p');
+                    activityInfo.innerHTML = `<strong>${activity.corso}</strong> ${activity.orarioinizio.slice(0, 5)} - ${activity.orariofine.slice(0, 5)}`;
+                    
+                    // Assegna lo sfondo colorato in base al nome dell'attività
+                    const activityColor = getActivityColor(activity.corso);
+                    activityInfo.style.backgroundColor = activityColor;
+                    activityInfo.classList.add('activity-item');
+
+                    activityElement.appendChild(activityInfo);
+                });
 
                 dayAndActivityElement.appendChild(dayElement);
                 dayAndActivityElement.appendChild(activityElement);
 
                 scheduleElement.appendChild(dayAndActivityElement);
             });
-        }
+        })
+        .catch(error => console.error('Errore durante la richiesta AJAX:', error)); // Gestione degli errori
+}
 
         // Chiamata alla funzione per aggiungere i giorni e le attività al calendario settimanale
         addWeekDaysToSchedule();
+    });
 
-        // Array dei corsi di allenamento
-        const courses = ['Nuoto', 'Paddle', 'Tennis', 'Calcio', 'Palestra', 'Basket'];
-        let gridView = true; // Vista iniziale: griglia
 
-        // Funzione per aggiungere i corsi al container
-        function addCoursesToContainer() {
-            const coursesContainer = document.getElementById('courses-container');
-            coursesContainer.innerHTML = '';
-
-            courses.forEach(course => {
-                const courseElement = document.createElement('div');
-                courseElement.classList.add('course');
-                courseElement.textContent = course;
-                coursesContainer.appendChild(courseElement);
-            });
-        }
-
-        // Funzione per cambiare la visualizzazione tra griglia e elenco
-        function toggleView() {
-            const coursesContainer = document.getElementById('courses-container');
-            if (gridView) {
-                coursesContainer.classList.remove('courses');
-                coursesContainer.classList.add('courses-list');
-            } else {
-                coursesContainer.classList.remove('courses-list');
-                coursesContainer.classList.add('courses');
-            }
-            gridView = !gridView;
-        }
-
-        // Aggiunta iniziale dei corsi al container
-        addCoursesToContainer();
 
     </script>
 </body>
