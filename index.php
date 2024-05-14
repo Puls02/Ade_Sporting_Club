@@ -80,9 +80,9 @@
                         <li>
                             <button class="Sign in" id="mostraPopupButton">Accedi</button>
                         </li>
-
                     </ul>
                 </div>
+                
             <?php else: ?>
                 <div class="person flex">
                     <ul class="login_menu">

@@ -1,7 +1,7 @@
 nav
 {
-  height: 100px;
-  width: 100%;
+  height: 80px;
+  width: auto;
   /*flexbox code*/
   display: flex;
   justify-content: space-between;
@@ -11,6 +11,7 @@ nav
   /*navbar fissa*/
   z-index: 10;
   background: var(--nav-color);
+  position: relative;
 }
 /*--------------------------------------*/
 .logo
@@ -23,7 +24,7 @@ nav
 }
 .logo_img
 {
-  width: var(--size-8xl);
+  width: 80px;
   box-align: left;
 }
 .logo_name
@@ -31,7 +32,7 @@ nav
   color:#000;
   font-family: "Panchang";
   text-decoration: none;
-  font-size: var(--size-4xl);
+  font-size: var(--size-2xl);
 }
 /*--------------------------------------*/
 .toolbar
@@ -51,14 +52,12 @@ nav
   font-size: var(--size-xl);
   font-family: "PilcrowRounded";
   margin: 0px 10px;
-  padding: 20px 20px;
+  padding: 10px 20px;
   position: relative;
   cursor: pointer;
 }
 
 /*-----------Toolbar animation css code------------*/
-
-/*inspiration from https://tympanus.net/codrops/2013/08/06/creative-link-effects/ */
 ul.topBotomBordersOut a:before, 
 ul.topBotomBordersOut a:after
 {
@@ -105,12 +104,13 @@ ul.topBotomBordersOut a:hover:after
 .person
 {
   position: absolute;
-  top: 100%;
   right: 5%;
   width: 250px;
   background: var(--nav-color);
   display: none;
   border-radius: 10px;
+  border-top: 2px solid black;
+  top: 105%;
 }
 .login_menu
 {
@@ -137,11 +137,11 @@ ul.topBotomBordersOut a:hover:after
   height: 40px;
   width: 100%;
 }
-
 .show 
 {
   display: block;
 }
+
 /*---------------------------*/
 
 /*----------Responsive navbar-------------*/
@@ -204,3 +204,48 @@ ul.topBotomBordersOut a:hover:after
   }
 
 }
+
+/*debug*/
+/*
+nav
+{
+  border: 1px solid yellow;
+}
+.logo
+{
+  border: 1px solid red;
+}
+.logo_img
+{
+  border: 1px solid blue;
+}
+.logo_name
+{ 
+ border: 1px solid green;
+}
+
+.toolbar
+{  
+  border: 1px solid red;
+}
+.toolbar a
+{
+  border: 1px solid blue;
+}
+.login_btn
+{
+  border: 1px solid green;
+}
+.person
+{
+  border: 1px solid red;
+}
+.login_menu
+{
+  border: 1px solid blue;
+}
+.login_menu .Sign
+{
+  border: 1px solid green;
+}
+*/

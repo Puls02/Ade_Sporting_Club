@@ -18,12 +18,11 @@
     <link rel="StyleSheet" href="Style/navbar.css">
     <link rel="StyleSheet" href="Style/login.css">
     <link rel="StyleSheet" href="Style/footer.css">
-    <link rel="StyleSheet" href="Style/index.css">
     <link rel="StyleSheet" href="Style/struttura.css">
     <link rel="stylesheet" href="Style/popup.css"> 
     
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- per le cione delle attivita -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- per le icone delle attivita -->
 
     <!-- Link ai file javascript -->
     <script src="js/login.js" defer></script>
@@ -84,9 +83,9 @@
                         <li>
                             <button class="Sign in" id="mostraPopupButton">Accedi</button>
                         </li>
-
                     </ul>
                 </div>
+
             <?php else: ?>
                 <div class="person flex">
                     <ul class="login_menu">
@@ -106,7 +105,6 @@
                 show_menu.onclick = () => {
                     nav.classList.toggle("show");
                 };
-
             </script>
         </nav>
         
@@ -117,63 +115,91 @@
         <iframe src="login_registrazione/login.php" width="580" height="500" frameborder="0" style="border:0; overflow:hidden;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
-    <div class="scatola">
-            <p>Benvenuti nel nostro centro sportivo di prim'ordine situato nel cuore di Roma.<br> Immersa tra le vivaci strade di questa città storica, la nostra struttura offre un rifugio per gli appassionati di fitness, gli atleti e le famiglie.<br><br>
-Ci impegniamo a fornire un ambiente dinamico e inclusivo in cui persone di tutte le età e abilità possono perseguire i propri obiettivi e scoprire la gioia di uno stile di vita attivo. Che tu sia un atleta esperto desideroso di perfezionare le tue abilità o qualcuno che intraprende un viaggio per migliorare la propria salute e il benessere, troverai pane per i tuoi denti.
-Le nostre strutture all'avanguardia vantano attrezzature all'ultimo grido, servizi moderni e personale qualificato impegnato ad aiutarti a raggiungere le tue aspirazioni di fitness. Dall'attrezzatura da palestra all'avanguardia a campi sportivi versatili e ampie aree di allenamento, offriamo una gamma diversificata di attività e programmi adattati alle tue esigenze.<br><br>
-Ma il nostro impegno va oltre il semplice fitness. Crediamo nel favorire un senso di comunità e cameratismo tra i nostri membri, creando un ambiente di sostegno e motivazione in cui puoi prosperare sia dentro che fuori dalla palestra. Perciò, che tu voglia sudare, fare nuove amicizie o semplicemente rilassarti dopo una lunga giornata, unisciti a noi e 
-intraprendi un viaggio verso un te più sano e felice. 
-            </p>
-    </div>
+    <div class="main">
+        <div class="Sezione_1">
+            <img class="bg_img" src="immagini/galleria/presentazione/banner2.jpg">
+            <div class="box presentation">
+                <h1>Cosa offre il nostro club</h1>
+                <p>Benvenuti nel nostro centro sportivo di prim'ordine situato nel cuore di Roma.
+                    <br>
+                    Immersa tra le vivaci strade di questa città storica, la nostra struttura offre un rifugio per gli appassionati di fitness, gli atleti e le famiglie.
+                    <br>
+                    <br>
+                    Ci impegniamo a fornire un ambiente dinamico e inclusivo in cui persone di tutte le età e abilità possono perseguire i propri obiettivi e scoprire la gioia 
+                    di uno stile di vita attivo. Che tu sia un atleta esperto desideroso di perfezionare le tue abilità o qualcuno che intraprende un viaggio per migliorare la propria 
+                    salute e il benessere, troverai pane per i tuoi denti.
+                    Le nostre strutture all'avanguardia vantano attrezzature all'ultimo grido, servizi moderni e personale qualificato impegnato ad aiutarti a raggiungere le tue 
+                    aspirazioni di fitness. Dall'attrezzatura da palestra all'avanguardia a campi sportivi versatili e ampie aree di allenamento, offriamo una gamma diversificata di 
+                    attività e programmi adattati alle tue esigenze.
+                    <br>
+                    <br>
+                    Ma il nostro impegno va oltre il semplice fitness. Crediamo nel favorire un senso di comunità e cameratismo tra i nostri membri, creando un ambiente di sostegno 
+                    e motivazione in cui puoi prosperare sia dentro che fuori dalla palestra. Perciò, che tu voglia sudare, fare nuove amicizie o semplicemente rilassarti dopo una lunga 
+                    giornata, unisciti a noi e 
+                    intraprendi un viaggio verso un te più sano e felice. 
+                </p>
+            </div>
+        </div>
+        <div class="Sezione_2">
+            <div class="Services">
+                <div class="fisso" id="descrizione-fissa">
+                    <h2 id="titolo-servizio"></h2>
+                    <img id="immagine-servizio" src="" alt="Immagine Servizio">
+                    <p id="descrizione-servizio"></p>
+                </div>
 
-<!-- Galleria di Immagini: DA SCEGLIERE -->
-    
-    <div class="gallery">
-        <img src="immagini/galleria/presentazione/piantina.jpg" alt="piantina">
-        <img src="immagini/galleria/presentazione/calcio.jpg" alt="calcio">
-        <img src="immagini/galleria/presentazione/calcio2.jpg" alt="calcio">
-        <img src="immagini/galleria/presentazione/basket.jpg" alt="basket">
-        <img src="immagini/galleria/presentazione/basket2.jpg" alt="basket">
-        <img src="immagini/galleria/presentazione/padel.png" alt="padel">
-        <img src="immagini/galleria/presentazione/padel2.jpg" alt="padel">
-        <img src="immagini/galleria/presentazione/padel3.jpeg" alt="padel">
-        <img src="immagini/galleria/presentazione/palestra.png" alt="palestra">
-        <img src="immagini/galleria/presentazione/tennis.jpg" alt="tennis">
-        <img src="immagini/galleria/presentazione/tennis2.jpg" alt="tennis">
+                <div class="service">
+                    <h2 id="bar-title"><i class="fas fa-coffee"></i> Bar</h2>
+                    <p id="bar-desc">Godetevi una varietà di bevande e snack all'interno della nuova area; il luogo ideale per rilassarsi dopo una partita o per gustare un drink con gli amici. 
+                        <br> 
+                        Offriamo una selezione di cocktail, birre e vini nonchè di bevande proteiche e energizzanti.
+                        <br><br> 
+                        Orari: 8:00 - 24:00 
+                    </p>
+                </div>
+            
+                <div class="service">
+                    <h2 id="pool-title"><i class="fas fa-swimmer"></i> Piscina</h2>
+                    <p id="pool-desc">Rilassatevi o fate qualche vasca nella piscina, perfetta per rinfrescarsi durante le giornate calde estive. 
+                        La zona è costantemente sorvegliata da personale qualificato per garantire la sicurezza di tutti.
+                        <br><br> 
+                        Orari: 11:00 - 19:00
+                    </p>
+                </div>
+            
+                <div class="service">
+                    <h2 id="rec-title"><i class="fas fa-user"></i> Reception</h2>
+                    <p id="rec-desc">Il nostro staff cordiale è a vostra disposizione per assistervi con qualsiasi richiesta o informazione sulle attività del circolo.</p>
+                </div>
+            
+                <div class="service">
+                    <h2 id="rest-title"><i class="fas fa-utensils"></i> Ristorante</h2>
+                    <p id="rest-desc">Assaporate piatti deliziosi preparati dai nostri chef nel ristorante del circolo. 
+                        Il nostro ristorante offre una vasta selezione di piatti deliziosi, dai pasti leggeri alle pietanze gourmet, il tutto accompagnato da una varietà di bevande.
+                        <br><br>
+                        Pranzo: 12:00 - 15:00 
+                        <br>
+                        Cena: 19:00 - 00:00
+                    </p>
+                </div>
+            
+                <!-- Galleria di Immagini: DA SCEGLIERE -->
+                <div class="gallery">
+                    <img src="immagini/galleria/presentazione/piantina.jpg" alt="piantina">
+                    <img src="immagini/galleria/presentazione/calcio.jpg" alt="calcio">
+                    <img src="immagini/galleria/presentazione/calcio2.jpg" alt="calcio">
+                    <img src="immagini/galleria/presentazione/basket.jpg" alt="basket">
+                    <img src="immagini/galleria/presentazione/basket2.jpg" alt="basket">
+                    <img src="immagini/galleria/presentazione/padel.png" alt="padel">
+                    <img src="immagini/galleria/presentazione/padel2.jpg" alt="padel">
+                    <img src="immagini/galleria/presentazione/padel3.jpeg" alt="padel">
+                    <img src="immagini/galleria/presentazione/palestra.png" alt="palestra">
+                    <img src="immagini/galleria/presentazione/tennis.jpg" alt="tennis">
+                    <img src="immagini/galleria/presentazione/tennis2.jpg" alt="tennis">
+                </div>
+            </div>
+        </div>
     </div>
-    
-    <div class="scatola">
-        <div class="cont">
-            <div class="fisso" id="descrizione-fissa">
-                <h2 id="titolo-servizio"></h2>
-                <img id="immagine-servizio" src="" alt="Immagine Servizio">
-                <p id="descrizione-servizio"></p>
-            </div>
-
-            <div class="service">
-                <h2 id="bar-title"><i class="fas fa-coffee"></i> Bar</h2>
-                <p id="bar-desc">Godetevi una varietà di bevande e snack all'interno della nuova area; il luogo ideale per rilassarsi dopo una partita o per gustare un drink con gli amici. <br> Offriamo una selezione di cocktail, birre e vini nonchè di bevande proteiche e energizzanti.<br><br> Orari: 8:00 - 24:00 </p>
-                
-            </div>
-            
-            <div class="service">
-                <h2 id="pool-title"><i class="fas fa-swimmer"></i> Piscina</h2>
-                <p id="pool-desc">Rilassatevi o fate qualche vasca nella piscina, perfetta per rinfrescarsi durante le giornate calde estive. La zona è costantemente sorvegliata da personale qualificato per garantire la sicurezza di tutti.<br><br> Orari: 11:00 - 19:00</p>
-            </div>
-            
-            <div class="service">
-                <h2 id="rec-title"><i class="fas fa-user"></i> Reception</h2>
-                <p id="rec-desc">Il nostro staff cordiale è a vostra disposizione per assistervi con qualsiasi richiesta o informazione sulle attività del circolo.</p>
-            </div>
-            
-            <div class="service">
-                <h2 id="rest-title"><i class="fas fa-utensils"></i> Ristorante</h2>
-                <p id="rest-desc">Assaporate piatti deliziosi preparati dai nostri chef nel ristorante del circolo. Il nostro ristorante offre una vasta selezione di piatti deliziosi, dai pasti leggeri alle pietanze gourmet, il tutto accompagnato da una varietà di bevande.<br><br>Pranzo: 12:00 - 15:00 <br>Cena: 19:00 - 00:00</p>
-            </div>
-        </div> 
-        
-    </div>
-
 <!-- Footer section with contacts -->	
     <footer>
         <div class="map">

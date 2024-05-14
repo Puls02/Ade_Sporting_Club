@@ -49,7 +49,6 @@ nav
   color: #fff;
   text-decoration: none;
   font-size: var(--size-xl);
-  /*aggiungere nome font*/
   font-family: "PilcrowRounded";
   margin: 0px 10px;
   padding: 10px 20px;
@@ -110,6 +109,7 @@ ul.topBotomBordersOut a:hover:after
   background: var(--nav-color);
   display: none;
   border-radius: 10px;
+
 }
 .login_menu
 {
@@ -117,6 +117,7 @@ ul.topBotomBordersOut a:hover:after
   padding: 10px 10px;
   margin: 0;
   text-decoration: none;
+  border: 1px solid red;
 }
 .login_menu p
 {
@@ -136,7 +137,6 @@ ul.topBotomBordersOut a:hover:after
   height: 40px;
   width: 100%;
 }
-
 .show 
 {
   display: block;

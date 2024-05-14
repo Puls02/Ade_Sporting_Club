@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: center;
   background: var(--body-color);
+  border: 5px solid red;
 }
 
 h1
@@ -227,27 +228,9 @@ hr
   background: #fff;
   box-shadow: 0 0 5px#fff;
 }
-
-
-
-
 /*---------------------------------------*/
 
-/*sezione 3*/
-.Sezione_3
-{
-  width: 100%;
-  height: fit-content;
-}
-/*-------------------------------------*/
 /*responsive css for index*/
-
-/* xs */
-/* @media (min-width: 475px) {} */
-/* sm */
-/* @media (min-width: 640px) {} */
-
-
 @media (max-width: 1535px)
 {
   /*responsive css for general part*/
