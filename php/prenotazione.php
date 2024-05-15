@@ -14,13 +14,14 @@
     }
     //recupero i dati della prenotazione
     $id=$_SESSION['id'];
-    $date=$_POST['data'];
+    $data=$_POST['data'];
     $ora=$_POST['ora'];
-    // me li dividi poi in orario mdi inizio e orario di fine :)
-    if(isset($_POST['campo'])){
-        $campo=$_POST['campo'];
-        $id_campo=explode("_",$campo)[1];
-    }
+    $ora_inizio=explode("-",$ora)[0];
+    $ora_fine=explode("-",$ora)[1];
+    // me li dividi poi in orario di inizio e orario di fine :)
+    $campo=$_POST['campo'];
+    $id_campo=explode("_",$campo)[1];
+    
     if(isset($_POST['prenotazione'])){
         $prenotazione=$_POST['prenotazione'];
         if($prenotazione=="interoCampo"){
@@ -39,10 +40,11 @@
             }
         }
     }
-    
+    echo $id, $data, $ora_inizio, $ora_fine, $campo, $prenotazione;
+    /*
     $query = "INSERT INTO Prenotazione (campo,data,ora,utente,completa,numpersone) VALUES ('$doc1','$doc2') RETURNING id";
     $result = pg_query($conn, $query);
     
-
+    */
 
 ?>

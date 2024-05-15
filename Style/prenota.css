@@ -10,8 +10,10 @@
     margin: 2%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
-
+/*nasconde le checkbox in prenota*/
+.hidden{
+    display: none;
+}
 
 /* prenotazione attività */
 .toggle-list {
