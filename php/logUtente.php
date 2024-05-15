@@ -7,7 +7,7 @@
     $port='5432';
     $dbname='Ade_Sporting_Club';
     $user='postgres';
-    $password='Sporting77!';
+    $password='eleonora';
 
     $conn=pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
 
@@ -32,6 +32,8 @@
             $_SESSION['name'] = $user['nome'];
             $_SESSION['surname'] = $user['cognome'];
             $_SESSION['data_nascita'] = $user['data_nascita'];
+            $_SESSION['mail'] = $user['email'];
+            $_SESSION['phone'] = $user['telefono'];
             $_SESSION['id'] = $user['id'];
             $id=$user['id'];
             //setta lo stato dell'utente a true

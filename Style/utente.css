@@ -12,16 +12,16 @@ body {
     height: 100vh; /* Imposta l'altezza della griglia al 100% dell'altezza della finestra */
 }
 .user_profile {
-    grid-area: a;
-    background-color: white;
-    border-radius: 10px;
-    position: relative;
-    min-height: 300px;
-    padding: 2%;
-    margin: 1%;
-    border: 4px solid #308ece;
+  grid-area: a;
+  background-color: white;
+  border-radius: 10px;
+  position: relative;
+  margin: 1%;
+  border: 4px solid #308ece;
+  display: flex;
+  justify-content: space-between; /* Distribuisci gli elementi lungo l'asse principale */
 }
-.calendar {
+.calendario {
     grid-area: b;
     background-color: white;
     border-radius: 10px;
@@ -29,16 +29,16 @@ body {
     position: relative;
     padding: 2%;
     margin: 2%;
-    z-index: -5;
 }
-.schedule {
+.weekly-schedule {
   grid-area: c;
   background-color: white;
   border-radius: 10px;
   border: 4px solid #308ece;
   position: relative;
   padding: 2%;
-  margin: 2%;
+  margin: 1%;
+  width: auto;
 }
 .chat {
     grid-area: d;
@@ -65,142 +65,47 @@ h2 {
     color: #333;
 }
 /*PROFILO*/
-.profile-picture {
+.section {
+  flex-grow: 1;
   padding: 2%;
-  left: 2%;
-  position: absolute;
-  margin-bottom: 2%;
 }
 
-.profile-picture > label {
+.section label {
   margin-top: 200px;
   margin-right: 10px; /* Margine a destra per separare l'etichetta dall'input */
 }
 
-/* Stile per l'immagine del profilo */
-.foto-utente {
-  width: 140px; /* Dimensioni dell'immagine del profilo */
-  height: auto;
+.section button {
+  margin-top: 10px;
+  margin-left: 16%;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  border: 1px solid #efefef;
+  width: 30%;
 }
 
-/* Stile per le informazioni del profilo */
-.profile-details {
-  padding: 2%;
-  right: 2%;
-  top: 4%;
+.subscription-progress {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background-color: #ddd;
+  border-radius: 10px;
+  position: relative;
+}
+
+.progress-indicator {
+  height: 100%;
+  background-color: blue; /* Colore della barra di progresso */
+  border-radius: 10px; /* Arrotondamento degli angoli */
   position: absolute;
-  width: 500px;
+  top: 0;
+  left: 0;
 }
-
-/* CSS per la pianificazione settimanale */
-.weekly-schedule {
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-}
-
-.weekly-schedule h1 {
-    margin-top: 20px;
-    font-size: 1.3rem;
-    font-weight: 700;
-}
-
-.day-and-activity {
-    display: grid;
-    grid-template-columns: 15% 60% 25%;
-    align-items: center;
-    border-radius: 14px;
-    margin-bottom: 5px;
-    color: #484d53;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
-}
-
-.activity-one {
-    background-color: rgb(124, 136, 224, 0.5);
-    background-image: linear-gradient(240deg, rgb(124, 136, 224) 0%, #c3f4fc 100%);
-}
-
-.activity-two {
-    background-color: #aee2a4a1;
-    background-image: linear-gradient(240deg, #e5a243ab 0%, #f7f7aa 90%);
-}
-
-.activity-three {
-    background-color: #ecfcc376;
-    background-image: linear-gradient(240deg, #97e7d1 0%, #ecfcc3 100%);
-}
-
-.activity-four {
-    background-color: #e6a7c3b5;
-    background-image: linear-gradient(240deg, #fc8ebe 0%, #fce5c3 100%);
-}
-
-.day {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transform: translateY(-10px);
-}
-
-.day h1 {
-    font-size: 1.6rem;
-    font-weight: 600;
-}
-
-.day p {
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transform: translateY(-3px);
-}
-
-.activity {
-    border-left: 3px solid #484d53;
-}
-
-.participants {
-    display: flex;
-    margin-left: 20px;
-}
-
-.participants img {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    z-index: calc(2 * var(--i));
-    margin-left: -10px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
-}
-
-.activity > h2 {
-    margin-left: 10px;
-    font-size: 1.25rem;
-    font-weight: 600;
-    border-radius: 12px;
-}
-
-/* CSS per i corsi di allenamento */
-.courses {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-}
-
-.course {
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-/* CSS per il pulsante di cambio visualizzazione */
-.switch-button {
-    margin-top: 10px;
-    text-align: center;
-}
-
-
 
 /* STILE PER LA CHAT */
 .wrapper{
@@ -439,54 +344,74 @@ h2 {
   pointer-events: auto;
 }
 
-/* weekly schedule*/
-.activity-item {
-  border: 1px solid gray;
-  border-radius: 10px;
-  margin: 2%;
-  color: black;
-}
-
-/* calendario */
+/*CALENDARIO*/
 #calendar {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 1fr)); /* Modifica */
   grid-auto-rows: 70px; /* Altezza delle righe del calendario */
-  z-index: 1;
+  
 }
 
 .giorno {
-  border: 1px solid #ccc;
-  text-align: left;
-  padding: 15px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  text-align: center;
+  position: relative;
+  display: flex; /* Aggiunta */
+  justify-content: center; /* Aggiunta */
+  align-items: center; /* Aggiunta */
 }
 
 .giorno-header {
-  background-color: #f2f2f2;
-  text-align: center; /* Centra il testo */
+  font-weight: bold;
+  background-color: rgb(43, 128, 226);
 }
 
 .current-month {
-  color: black;
+  cursor: pointer;
 }
 
-.other-month {
-  color: #ccc;
+.current-month:hover {
+  background-color: #f0f0f0;
+  border-radius: 10px;
 }
 
 .today {
-  position: relative;
-  color: #fff;
+  background-color: rgb(126, 207, 231);
+  border-radius: 10px;
 }
 
-.today:before {
-  content: '';
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: #c1121f;
-  z-index: -1;
+.weekly-schedule {
+  margin-top: 20px;
+}
+
+.schedule-header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.schedule-date {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.schedule-activity {
+  margin-top: 25px;
+}
+
+.activity {
+  border-radius: 10px;
+  padding: 2%;
+  margin: 2%;
+}
+
+.activity-item {
+  margin-bottom: 5px;
+  background-color: yellow;
+}
+
+.activity-name {
+  font-weight: bold;
 }

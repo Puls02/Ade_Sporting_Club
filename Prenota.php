@@ -153,14 +153,14 @@
         </tr>
         <?php
             // Connessione al database PostgreSQL
-            $conn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=Sporting77!");
+            $conn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=eleonora");
             if (!$conn) {
                 echo "Errore nella connessione al database.";
                 exit;
             }
 
             // Query per recuperare i dati dalla tabella Prenotazioni
-            $result = pg_query($conn, "SELECT * FROM prenotazione"); //prenotazione
+            $result = pg_query($conn, "SELECT * FROM prenotazioni"); //prenotazione
 
             if ($result) {
                 // Array associativo per memorizzare le prenotazioni per ogni orario

@@ -1,10 +1,7 @@
 <?php
     session_start();
-
     $logged=isset($_SESSION['logged_in']);
-
     include_once "../php/config.php";
-    
 ?>
 
 <!DOCTYPE html>
@@ -21,9 +18,8 @@
     <!-- <link rel="StyleSheet" href="../chat/stile.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="../js/users.js" defer></script>
-    
-    <script src="../js/login.js" defer></script>
-    <script src="../js/navbar.js" defer></script>
+    <script src="../js/dashboard.js" defer></script>
+
 </head>
 <body>
     <!--Header, there is the navbar menu and login-->
@@ -101,9 +97,8 @@
     <div class="grid">
 <!-- USER PROFILE -->
         <div class="user_profile">
-            <h2>Profilo utente</h2>
                 <!-- caricamento foto profilo -->
-                <div class="profile-picture">
+                <div class="section">
                     <?php
                         $result = pg_query($conn, "SELECT * FROM Utente WHERE id = '{$_SESSION['id']}'");
 
@@ -117,37 +112,58 @@
                                 $foto_decodata = pg_unescape_bytea($foto_profilo_bytea);
                                 
                                 // Stampa l'immagine 
-                                echo "<img src='data:image/jpeg;base64," . base64_encode($foto_decodata) . "' alt='Foto Profilo' width='auto' height='200' border-radius=50%><br>";
+                                echo "<img src='data:image/jpeg;base64," . base64_encode($foto_decodata) . "' alt='Foto Profilo' width='auto' height='200'><br>";
+                                echo "<label>Cambia l'immagine</label>";
                             } else {
                                 // Se non c'è un'immagine di profilo, mostra un messaggio
-                                echo '<img class="foto-utente" src="../immagini/photo-camera.png" alt="Immagine di profilo predefinita" />';
+                                echo '<img src="../immagini/photo-camera.png" alt="Immagine di profilo predefinita" />';
+                                echo "<label>Inserisci un'immagine</label>";
                             }
                         } 
                     ?>
                     <form action="../php/caricaImmagine.php" method="post" name="caricamentoFoto" enctype="multipart/form-data">
-                        <label>Carica Foto Profilo:</label>
                         <input type="file" id="fotoprof" name="fotoprof" accept=".png, .jpeg"><br>
-                        <button type="submit" name="submit">Carica Immagine</button>
+                        <button type="submit" name="submit">Carica</button>
                     </form>
                 </div>
                 <!-- dettagli utente -->
-                <div class="profile-details">
+                
+                <div class="section">
+                    <h2>Informazioni personali</h2>
                     <p><strong>Nome:</strong> <?php echo  $_SESSION['name'] ?></p>
                     <p><strong>Cognome:</strong> <?php echo $_SESSION['surname']; ?></p>
                     <p><strong>Data di nascita:</strong> <?php echo $_SESSION['data_nascita']; ?></p>
+                    <p><strong>E-mail:</strong> <?php echo $_SESSION['mail']; ?></p>
+                    <p><strong>Numero di telefono:</strong> <?php echo $_SESSION['phone']; ?></p>
+                </div>
+                
+                <div class="section">
+                    <h2>Dettagli abbonamento</h2>
                     <p><strong>Livello di abbonamento:</strong> <?php echo $_SESSION['livello']; ?></p>
                     <p><strong>Data sottoscrizione abbonamento:</strong> <?php echo $_SESSION['data_sottoscrizione']; ?></p>
-                </div>
+                    <p><strong>Data fine abbonamento:</strong></p>
+                    <div class="subscription-progress">
+                        <div class="progress-bar">
+                            <div class="progress-indicator"></div>
+                        </div>
+                    </div>
+            </div>
         </div>
 
 <!-- WEEKLY SCHEDULE -->        
-        <div class="calendar">
+        <div class="calendario">
             <h2 id="currentMonth"></h2>
-            <div id="calendar"></div>
+            <div id="calendar">
+
+            </div>
         </div>
-        <div class="schedule">
-            <div class="weekly-schedule" id="weekly-schedule">
-                <!-- Il calendario settimanale verrà generato qui -->
+        <div class="weekly-schedule">
+            <div class="schedule-date">
+
+            </div>
+            <!-- Qui verrà aggiunta la data e le attività -->
+            <div class="schedule-activity">
+
             </div>
         </div>
 
@@ -190,157 +206,5 @@
         
     </div>
 
-    <script>
-        
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Funzione per generare i giorni della settimana
-    function generateWeekDays() {
-            const daysOfWeek = ['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'];
-            const currentDate = new Date();
-            const todayIndex = currentDate.getDay();
-            const weekDays = [];
-
-            for (let i = 0; i < 7; i++) {
-                const currentDate = new Date();
-                currentDate.setDate(currentDate.getDate() + i);
-                const index = currentDate.getDay();
-                const day = daysOfWeek[index];
-                const dayNumber = currentDate.getDate();
-                weekDays.push({ day, dayNumber });
-            }
-
-            return weekDays;
-        }
-
-        // Funzione per mappare i giorni della settimana nel formato desiderato
-function mapWeekDay(day) {
-    const dayMapping = {
-        'Dom': 'domenica',
-        'Lun': 'lunedi',
-        'Mar': 'martedi',
-        'Mer': 'mercoledi',
-        'Gio': 'giovedi',
-        'Ven': 'venerdi',
-        'Sab': 'sabato'
-    };
-    return dayMapping[day];
-}
-
-// Funzione per ottenere il colore in base al nome dell'attività
-function getActivityColor(activityName) {
-    switch (activityName.toLowerCase()) {
-        case 'calcio':
-            return '#a7c957';
-        case 'tennis':
-            return '#ffbf69';
-        case 'nuoto':
-            return '#a8dadc';
-        case 'basket':
-            return '#f7c59f';
-        case 'paddle':
-            return '#fff3b0';
-        default:
-            return 'gray'; // Colore di default nel caso in cui non corrisponda a nessuna attività specificata
-    }
-}
-
-// Funzione per aggiungere i giorni e le attività al calendario settimanale
-function addWeekDaysToSchedule() {
-    const weekDays = generateWeekDays();
-    const scheduleElement = document.getElementById('weekly-schedule');
-
-    // Chiamata AJAX per ottenere le attività dal database
-    fetch('../php/get-activities.php')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Errore nella richiesta al server.');
-            }
-            return response.json();
-        })
-        .then(data => {
-            weekDays.forEach((day, index) => {
-                const dayAndActivityElement = document.createElement('div');
-                dayAndActivityElement.classList.add('day-and-activity');
-                dayAndActivityElement.classList.add(`activity-${index + 1}`);
-
-                const dayElement = document.createElement('div');
-                dayElement.classList.add('day');
-                dayElement.innerHTML = `<h1>${day.dayNumber}</h1><p>${day.day}</p>`;
-
-                const activityElement = document.createElement('div');
-                activityElement.classList.add('activity');
-                
-                // Trova le attività per il giorno corrente
-                const dayKey = mapWeekDay(day.day);
-                const activitiesForDay = data.filter(activity => activity.giorno.toLowerCase() === dayKey);
-                activitiesForDay.forEach(activity => {
-                    const activityInfo = document.createElement('p');
-                    activityInfo.innerHTML = `<strong>${activity.corso}</strong> ${activity.orarioinizio.slice(0, 5)} - ${activity.orariofine.slice(0, 5)}`;
-                    
-                    // Assegna lo sfondo colorato in base al nome dell'attività
-                    const activityColor = getActivityColor(activity.corso);
-                    activityInfo.style.backgroundColor = activityColor;
-                    activityInfo.classList.add('activity-item');
-
-                    activityElement.appendChild(activityInfo);
-                });
-
-                dayAndActivityElement.appendChild(dayElement);
-                dayAndActivityElement.appendChild(activityElement);
-
-                scheduleElement.appendChild(dayAndActivityElement);
-            });
-        })
-        .catch(error => console.error('Errore durante la richiesta AJAX:', error)); // Gestione degli errori
-}
-
-        // Chiamata alla funzione per aggiungere i giorni e le attività al calendario settimanale
-        addWeekDaysToSchedule();
-    });
-
-
-        // script.js
-
-const calendar = document.getElementById('calendar');
-const currentMonthDisplay = document.getElementById('currentMonth');
-
-function generateCalendar(year, month) {
-    const startDate = new Date(year, month, 1);
-    const endDate = new Date(year, month + 1, 0);
-    const startDay = startDate.getDay();
-
-    let html = '';
-
-    // Mostra il nome del mese e l'anno
-    const monthNames = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
-    currentMonthDisplay.textContent = monthNames[month] + ' ' + year;
-
-    // Aggiungi intestazione dei giorni
-    const days = ['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'];
-    html += '<div class="giorno giorno-header">' + days.join('</div><div class="giorno giorno-header">') + '</div>';
-
-    // Aggiungi giorni del mese
-    for (let i = 0; i < startDay; i++) {
-        html += '<div class="giorno other-month"></div>';
-    }
-
-    for (let giorno = 1; giorno <= endDate.getDate(); giorno++) {
-        if (giorno === new Date().getDate() && year === new Date().getFullYear() && month === new Date().getMonth()) {
-            html += '<div class="giorno current-month today">' + giorno + '</div>';
-        } else {
-            html += '<div class="giorno current-month">' + giorno + '</div>';
-        }
-    }
-
-    calendar.innerHTML = html;
-}
-
-// Genera il calendario per il mese corrente
-const currentDate = new Date();
-generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
-
-
-    </script>
 </body>
 </html>
