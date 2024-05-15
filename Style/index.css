@@ -9,7 +9,6 @@
   align-items: center;
   justify-content: center;
   background: var(--body-color);
-  border: 5px solid red;
 }
 
 h1
