@@ -278,7 +278,7 @@
                 <input type="radio" id="calcio" name="attivita">
                 <label for="calcio" >Calcetto<span class="arrow" ></span></label>
                 <div class="content">
-                    <form action="php/checkLogin.php" method="post" >
+                    <form action="php/prenotazione.php" method="post" name="formPrenotazione">
                         <label for="dataCalcio">Data:</label>
                         <input type="date" id="dataCalcio" name="dataCalcio"><br>
                         <label for="orario">Orario prenotazione:</label>
@@ -310,7 +310,7 @@
                 <input type="radio" id="paddle" name="attivita">
                 <label for="paddle">Paddle<span class="arrow"></span></label>
                 <div class="content">
-                    <form method="post" action="php/prenotazione.php">
+                    <form method="post" action="php/prenotazione.php" name="formPrenotazione">
                         <label for="dataPaddle">Data:</label>
                         <input type="date" id="dataPaddle" name="dataPaddle"><br>
                         <label for="orario">Orario prenotazione:</label>
@@ -319,10 +319,9 @@
                         </select><br>
                         <label for="campo">Seleziona campo:</label><br>
                         <select id="campo" name="campo" required>
-                            <option value="paddle_1">Campo 1</option>
-                            <option value="paddle_2">Campo 2</option>
-                            <option value="paddle_3">Campo 3</option>
-                            <option value="paddle_3">Campo 4</option>
+                            <option value="paddle_4">Campo 1</option>
+                            <option value="paddle_5">Campo 2</option>
+                            <option value="paddle_6">Campo 3</option>
                         </select><br>
                         <label for="prenotazione">Tipo di prenotazione:</label><br>
                         <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>
@@ -343,7 +342,7 @@
                 <input type="radio" id="tennis" name="attivita">
                 <label for="tennis">Tennis<span class="arrow"></span></label>
                 <div class="content">
-                    <form method="post" action="php/prenotazione.php">
+                    <form method="post" action="php/prenotazione.php" name="formPrenotazione">
                         <label for="dataTennis">Data:</label>
                         <input type="date" id="dataTennis" name="dataTennis"><br>
                         <label for="orario">Orario prenotazione:</label>
@@ -357,10 +356,10 @@
                         <label for="cemento">Campo in cemento</label><br>
                         <label for="campo">Seleziona campo:</label><br>
                         <select id="campo" name="campo" required>
-                            <option value="tennis_1">Campo 1</option>
-                            <option value="tennis_2">Campo 2</option>
-                            <option value="tennis_3">Campo 3</option>
-                            <option value="tennis_4">Campo 4</option> <!-- con js fai il controllo, i primi due so di terra e gli altri due in cemento -->
+                            <option value="tennis_7">Campo 1</option>
+                            <option value="tennis_8">Campo 2</option>
+                            <option value="tennis_9">Campo 3</option>
+                            <option value="tennis_10">Campo 4</option> <!-- con js fai il controllo, i primi due so di terra e gli altri due in cemento -->
                         </select><br>
                         <label for="prenotazione">Tipo di prenotazione:</label><br>
                         <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>
@@ -381,7 +380,7 @@
                 <input type="radio" id="basket" name="attivita">
                 <label for="basket">Basket<span class="arrow"></span></label>
                 <div class="content">
-                    <form method="post" action="php/prenotazione.php">
+                    <form method="post" action="php/prenotazione.php" name="formPrenotazione">
                         <label for="dataBasket">Data:</label>
                         <input type="date" id="dataBasket" name="dataBasket"><br>
                         <label for="orario">Orario prenotazione:</label>
@@ -390,8 +389,8 @@
                         </select><br>
                         <label for="campo">Seleziona campo:</label><br>
                         <select id="campo" name="campo" required>
-                            <option value="campo1">Basket_1</option>
-                            <option value="campo2">Basket_2</option>
+                            <option value="campo_11">Basket_1</option>
+                            <option value="campo_12">Basket_2</option>
                         </select><br>
                         <label for="prenotazione">Tipo di prenotazione:</label><br>
                         <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>
@@ -412,9 +411,9 @@
                 <input type="radio" id="nuoto" name="attivita">
                 <label for="nuoto">Nuoto<span class="arrow"></span></label>
                 <div class="content">
-                    <form method="post" action="php/prenotazione.php">
+                    <form method="post" action="php/prenotazione.php" name="formPrenotazione">
                         <label for="dataNuoto">Data:</label>
-                        <input type="date" id="dataNuoto" name="dataNuoto"><br>
+                        <input type="date" id="dataNuoto" name="dataNuoto"><input type="checkbox" class="hidden" id="campo" name="campo" value="piscina_13" checked><br>
                         <!-- se possibile mettiamo in elenco solo le fasce disponibili -->
                         <label for="orarioNuoto">Scegli una fascia oraria:</label>
                         <select name="type" id="orarioNuoto"  required>
@@ -433,9 +432,9 @@
                 <input type="radio" id="palestra" name="attivita">
                 <label for="palestra">Palestra<span class="arrow"></span></label>
                 <div class="content">
-                    <form method="post" action="php/prenotazione.php">
-                        <label for="dataPalestra">Data:</label>
-                        <input type="date" id="dataPalestra" name="dataPalestra"><br>
+                    <form method="post" action="php/prenotazione.php" name="formPrenotazione">
+                        <label for="dataPalestra">Data:</label> 
+                        <input type="date" id="dataPalestra" name="dataPalestra"><input type="checkbox" class="hidden" id="campo" name="campo" value="palestra_14" checked><br>
                         <!-- se possibile mettiamo in elenco solo le fasce disponibili -->
                         <label for="orarioPalestra">Scegli una fascia oraria:</label>
                         <select class="orario" name="ora" required>
@@ -484,11 +483,13 @@
 
             // Per ogni elemento, popola la lista degli orari con i valori appropriati
             selectOrari.forEach(function(selectOrario) {
-                for (var hour = 8; hour < 22; hour++) {
+                for (var hour = 8; hour < 23; hour++) {
                     for (var minute = 0; minute < 60; minute += 15) { // Solo minuti multipli di 15
                         if (minute === 0) { // Solo minuti uguali a 00
                             var formattedHour = ('0' + hour).slice(-2);
-                            selectOrario.innerHTML += '<option value="' + formattedHour + ':00">' + formattedHour + ':00</option>';
+                            hourSucc=hour+1;
+                            var formattedHourSucc = ('0' + hourSucc).slice(-2);
+                            selectOrario.innerHTML += '<option value="' + formattedHour + ':00' + formattedHourSucc + ':00">' + formattedHour + ':00' + '-' + formattedHourSucc + ':00</option>';
                         }
                     }
                 }
@@ -510,6 +511,13 @@
         inputDateFields.forEach(function(inputData) {
             inputData.min = minDate;
         });
+    </script>
+
+    <script>
+        checkboxes=document.querySelectorAll('input[name="campo"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.disabled=true;
+        })
     </script>
 </body>
 </html>
