@@ -49,8 +49,6 @@
             $result = pg_query($conn, $query);
             $abbonamento=pg_fetch_assoc($result);
             $_SESSION['livello'] = $abbonamento['livello'];
-            $data_sottoscrizione=explode(" ",$abbonamento['data_sottoscrizione']);
-            $_SESSION['data_sottoscrizione']= $data_sottoscrizione[0];
             $query= "SELECT * FROM Cliente_Gold WHERE id='$id'";
             $result = pg_query($conn, $query);
 

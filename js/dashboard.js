@@ -138,15 +138,18 @@ if (currentDayElement) {
     currentDayElement.click();
 }
 
-//PER LA BARRA DI PROGRESSO
-    // Data di inizio e fine dell'abbonamento (formato: "YYYY-MM-DD")
-var startDate = new Date("2024-05-01"); // Data di inizio
-var endDate = new Date("2024-06-01"); // Data di fine
+function toggleView() {
+    var eventContainer = document.getElementById('event-container');
+    var toggleButton = document.getElementById('toggle-view-btn');
 
-// Calcola la percentuale di completamento dell'abbonamento
-var cDate = new Date();
-var progress = (cDate - startDate) / (endDate - startDate) * 100;
-
-// Imposta la larghezza della barra di progresso
-var progressBar = document.querySelector('.progress-indicator');
-progressBar.style.width = progress + '%';
+    // Toggle tra griglia ed elenco
+    if (eventContainer.classList.contains('grid-view')) {
+        eventContainer.classList.remove('grid-view');
+        eventContainer.classList.add('list-view');
+        toggleButton.textContent = 'Visualizzazione: Elenco';
+    } else {
+        eventContainer.classList.remove('list-view');
+        eventContainer.classList.add('grid-view');
+        toggleButton.textContent = 'Visualizzazione: Griglia';
+    }
+}
