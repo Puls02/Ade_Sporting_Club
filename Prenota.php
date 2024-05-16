@@ -181,16 +181,16 @@
 
                 // Riempimento dell'array con i dati delle prenotazioni
                 while ($row = pg_fetch_assoc($result)) {
-                    $id = $row["id"];
-                    $giorno = $row["giorno"];
-                    $inizio_completo = $row["orario_inizio"];
-                    $fine_completo = $row["orario_fine"];
-                    $sport = $row["sport"];
+                    $id = $row["utente"];
+                    $giorno = $row["data"];
+                    $inizio_completo = $row["ora_inizio"];
+                    $fine_completo = $row["ora_fine"];
+                    $sport = $row["campo"];
                     $completa = $row["completa"];
-
+                    
                     $inizio = substr($inizio_completo, 0, 5); // Estrae solo i primi 5 caratteri (HH:MM)
                     $fine = substr($fine_completo, 0, 5); // Estrae solo i primi 5 caratteri (HH:MM)
-
+                    
                     // Costruzione della stringa per l'orario
                     $orario = "$inizio - $fine";
 
@@ -330,7 +330,7 @@
                         <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
                         <div id="numPersoneWrapper">
                             <label for="numeroPersone">Numero di persone:</label>
-                            <input type="number" id="numeroPersone" name="numeroPersone" min="1" required><br>
+                            <input type="number" id="numeroPersone" name="numeroPersone" min="1"><br>
                         </div>
                         
                         <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
@@ -368,7 +368,7 @@
                         <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
                         <div id="numPersoneWrapper">
                             <label for="numeroPersone">Numero di persone:</label>
-                            <input type="number" id="numeroPersone" name="numeroPersone" min="1" required><br>
+                            <input type="number" id="numeroPersone" name="numeroPersone" min="1"><br>
                         </div>
                         
                         <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
@@ -399,7 +399,7 @@
                         <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
                         <div id="numPersoneWrapper">
                             <label for="numeroPersone">Numero di persone:</label>
-                            <input type="number" id="numeroPersone" name="numeroPersone" min="1" required><br>
+                            <input type="number" id="numeroPersone" name="numeroPersone" min="1"><br>
                         </div>
                         
                         <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
@@ -416,12 +416,8 @@
                         <input type="date" id="dataNuoto" name="data"><input type="checkbox" class="hidden" id="campo" name="campo" value="piscina_13" checked><br>
                         <!-- se possibile mettiamo in elenco solo le fasce disponibili -->
                         <label for="orarioNuoto">Scegli una fascia oraria:</label>
-                        <select name="type" id="orarioNuoto"  required>
+                        <select class="orario"  name="ora" required>
                             <option value="">Seleziona orario</option>
-                            <option value="1">9:00 - 10:00</option>
-                            <option value="2">10:00 - 11:00</option>
-                            <option value="3">11:00 - 12:00</option>
-                            <option value="4">12:00 - 13:00</option>
                         </select><br>
                         <input type="submit" value="Prenota"> 
                         <input type="reset" value="Azzera i campi">
@@ -513,11 +509,5 @@
         });
     </script>
 
-    <script>
-        checkboxes=document.querySelectorAll('input[name="campo"]');
-        checkboxes.forEach(checkbox => {
-            checkbox.disabled=true;
-        })
-    </script>
 </body>
 </html>
