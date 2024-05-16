@@ -1,6 +1,6 @@
 <?php
 // Connessione al database
-$conn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=Sporting77!");
+$conn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=eleonora");
 
 // Controlla la connessione
 if (!$conn) {
