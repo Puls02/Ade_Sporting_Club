@@ -246,7 +246,7 @@
         var endDate = new Date("<?php echo $data_fine_abbonamento; ?>");
 
         function updateProgressBar(startDate, endDate) {
-            var cDate = new Date();
+            var cDate = new Date().toLocaleDateString();
             var progress = (cDate - startDate) / (endDate - startDate) * 100;
 
             var progressBar = document.querySelector('.progress-indicator');
