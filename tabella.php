@@ -188,7 +188,7 @@
       </tr>
       <?php
         // Connessione al database PostgreSQL
-        $conn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=eleonora");
+        $conn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=Sporting77!");
         if (!$conn) {
             echo "Errore nella connessione al database.";
             exit;
@@ -319,7 +319,7 @@
       </tr>
       <?php
         // Connessione al database PostgreSQL
-        $conn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=eleonora");
+        $conn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=Sporting77!");
         if (!$conn) {
             echo "Errore nella connessione al database.";
             exit;

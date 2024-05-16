@@ -27,24 +27,37 @@
         if($prenotazione=="interoCampo"){
             $completa=true;
             if(explode("_",$campo)[0]=="calcetto"){
-                $numePersone=10;
+                $numPersone=10;
             }
             if(explode("_",$campo)[0]=="paddle"){
-                $numePersone=4;
+                $numPersone=4;
             }
             if(explode("_",$campo)[0]=="tennis"){
-                $numePersone=4;
+                $numPersone=4;
             }
             if(explode("_",$campo)[0]=="basket"){
-                $numePersone=10;
+                $numPersone=10;
+            }
+        } else {
+            $completa=false;
+            if(explode("_",$campo)[0]=="calcetto"){
+                $numPersone=$_POST['numeroPersone'];
+            }
+            if(explode("_",$campo)[0]=="paddle"){
+                $numPersone=$_POST['numeroPersone'];
+            }
+            if(explode("_",$campo)[0]=="tennis"){
+                $numPersone=$_POST['numeroPersone'];
+            }
+            if(explode("_",$campo)[0]=="basket"){
+                $numPersone=$_POST['numeroPersone'];
             }
         }
     }
-    echo $id, $data, $ora_inizio, $ora_fine, $campo, $prenotazione;
-    /*
-    $query = "INSERT INTO Prenotazione (campo,data,ora,utente,completa,numpersone) VALUES ('$doc1','$doc2') RETURNING id";
+
+    $query = "INSERT INTO Prenotazione (campo,data,ora_inizio,ora_fine,utente,completa,num_persone) VALUES ('$id_campo','$data','$ora_inizio','$ora_fine','$id','$completa','$numPersone')";
     $result = pg_query($conn, $query);
     
-    */
-
+    header("Location: ../Prenota.php");
+    exit;
 ?>
