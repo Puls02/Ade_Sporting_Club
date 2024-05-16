@@ -101,6 +101,7 @@
                 <div class="section">
                     <?php
                         $result = pg_query($conn, "SELECT * FROM Utente WHERE id = '{$_SESSION['id']}'");
+                        $result2 = pg_query($conn, "SELECT * FROM Abbonamento a join Sottoscrizione s on s.Abbonamento = a.codice WHERE s.cliente = '{$_SESSION['id']}'");
 
                         if (pg_num_rows($result) > 0) {
                             $row = pg_fetch_assoc($result);
@@ -116,9 +117,41 @@
                                 echo "<label>Cambia l'immagine</label>";
                             } else {
                                 // Se non c'è un'immagine di profilo, mostra un messaggio
-                                echo '<img src="../immagini/photo-camera.png" alt="Immagine di profilo predefinita" />';
+                                echo '<img src="../immagini/photo-camera.png" alt="Immagine di profilo predefinita" width="auto" height="200">';
                                 echo "<label>Inserisci un'immagine</label>";
                             }
+                        } 
+                        if (pg_num_rows($result2) > 0) {
+                            $row2 = pg_fetch_assoc($result2);
+                            $data_sottoscrizione_intera=explode(" ",$row2['data_sottoscrizione']);
+                            $data_sottoscrizione= $data_sottoscrizione_intera[0];
+                            $tipo_abbonamento=$row2['tipo'];
+
+                            // Assume che $row2['data_sottoscrizione'] contenga la data di inizio dell'abbonamento nel formato "YYYY-MM-DD"
+                            $data_inizio = new DateTime($row2['data_sottoscrizione']);
+                            // Determina la durata dell'abbonamento in base al tipo
+                            switch ($tipo_abbonamento) {
+                                case 'AM':
+                                    $durata_abbonamento = new DateInterval('P1M'); // Periodo di 1 mese
+                                    break;
+                                case 'AT':
+                                    $durata_abbonamento = new DateInterval('P3M'); // Periodo di 3 mesi
+                                    break;
+                                case 'AS':
+                                    $durata_abbonamento = new DateInterval('P6M'); // Periodo di 6 mesi
+                                    break;
+                                case 'AA':
+                                    $durata_abbonamento = new DateInterval('P1Y'); // Periodo di 1 anno
+                                    break;
+                                default:
+                                    // Gestione dell'errore o comportamento predefinito
+                                    break;
+                            }
+
+                            // Calcola la data di fine dell'abbonamento aggiungendo la durata al data di inizio
+                            $data_fine = $data_inizio->add($durata_abbonamento);
+                            // per visualizzarla correttamente va riconvertita nel giusto formato
+                            $data_fine_abbonamento = $data_fine->format('Y-m-d');
                         } 
                     ?>
                     <form action="../php/caricaImmagine.php" method="post" name="caricamentoFoto" enctype="multipart/form-data">
@@ -140,9 +173,10 @@
                 <div class="section">
                     <h2>Dettagli abbonamento</h2>
                     <p><strong>Livello di abbonamento:</strong> <?php echo $_SESSION['livello']; ?></p>
-                    <p><strong>Data sottoscrizione abbonamento:</strong> <?php echo $_SESSION['data_sottoscrizione']; ?></p>
-                    <p><strong>Data fine abbonamento:</strong></p>
+                    <p><strong>Data sottoscrizione abbonamento:</strong> <?php echo $data_sottoscrizione; ?></p>
+                    <p><strong>Data fine abbonamento:</strong><?php echo $data_fine_abbonamento ?></p>
                     <div class="subscription-progress">
+                        <h4>stato avanzamento:</h4>
                         <div class="progress-bar">
                             <div class="progress-indicator"></div>
                         </div>
@@ -206,5 +240,20 @@
         
     </div>
 
+    <script>
+        /* BARRA DI PROGRESSO */
+        var startDate = new Date("<?php echo $data_sottoscrizione; ?>");
+        var endDate = new Date("<?php echo $data_fine_abbonamento; ?>");
+
+        function updateProgressBar(startDate, endDate) {
+            var cDate = new Date();
+            var progress = (cDate - startDate) / (endDate - startDate) * 100;
+
+            var progressBar = document.querySelector('.progress-indicator');
+            progressBar.style.width = progress + '%';
+        }
+
+        updateProgressBar(startDate, endDate);
+    </script>
 </body>
 </html>

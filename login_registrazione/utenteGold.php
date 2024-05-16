@@ -1,21 +1,25 @@
 <?php
     session_start();
-
     $logged=isset($_SESSION['logged_in']);
+    include_once "../php/config.php";
 ?>
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina Riservata Soci Gold</title>
+    <title>Profilo Utente</title>
     <link rel="StyleSheet" href="../Style/utility.css">
     <link rel="StyleSheet" href="../Style/navbar.css">
     <link rel="StyleSheet" href="../Style/login.css">
     <link rel="StyleSheet" href="../Style/utente.css">
 
-    <script src="../js/login.js" defer></script>
-    <script src="../js/navbar.js" defer></script>
+    <!-- <link rel="StyleSheet" href="../chat/stile.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="../js/users.js" defer></script>
+    <script src="../js/dashboard.js" defer></script>
+
 </head>
 <body>
     <!--Header, there is the navbar menu and login-->
@@ -44,7 +48,6 @@
                 <li>
                     <a class="toolbar_link_Prenota" href="../Prenota.php">Prenota</a>
                 </li>
-                
             </ul>
             <div class="login_btn">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
@@ -71,189 +74,217 @@
                     <ul class="login_menu">
                         <!-- Logout -->
                         <form action="../php/logout.php" method="post" >
-                            <button type="submit">Logout</button>
+                            <button class="Sign out" type="submit">Logout</button>
                         </form>
                     </ul>
                 </div>
             <?php endif; ?>
+
+        <!--open the dropdown login menu on click-->
+        <script type="text/javascript">
+                const show_menu = document.querySelector('.login_btn');
+                const nav = document.querySelector('.person');
+
+                show_menu.onclick = () => {
+                    nav.classList.toggle("show");
+                };
+            </script>
             
         </nav>
         
-    </header>
-    <div class="grid">
+    </header>  
+
+    <div class="grid_gold">
+<!-- USER PROFILE -->
         <div class="user_profile">
-            <h2>Profilo utente</h2>
                 <!-- caricamento foto profilo -->
-                <div class="profile-picture">
-                    <label for="profile-image">Carica Foto Profilo:</label>
-                    <div id="profile-image-preview" class="profile-image-preview"></div>
-                    <input type="file" id="profile-image" accept="../image/*" onchange="previewProfileImage(event)">
+                <div class="section">
+                    <?php
+                        $result = pg_query($conn, "SELECT * FROM Utente WHERE id = '{$_SESSION['id']}'");
+                        $result2 = pg_query($conn, "SELECT * FROM Abbonamento a join Sottoscrizione s on s.Abbonamento = a.codice WHERE s.cliente = '{$_SESSION['id']}'");
+
+                        if (pg_num_rows($result) > 0) {
+                            $row = pg_fetch_assoc($result);
+                            $foto_profilo_bytea = $row['foto_profilo'];
+
+                            // Se c'è un'immagine di profilo, la decodifichiamo e la mostriamo
+                            if ($foto_profilo_bytea !== null) {
+                                // Decodifica i dati bytea
+                                $foto_decodata = pg_unescape_bytea($foto_profilo_bytea);
+                                
+                                // Stampa l'immagine 
+                                echo "<img src='data:image/jpeg;base64," . base64_encode($foto_decodata) . "' alt='Foto Profilo' width='auto' height='200'><br>";
+                                echo "<label>Cambia l'immagine</label>";
+                            } else {
+                                // Se non c'è un'immagine di profilo, mostra un messaggio
+                                echo '<img src="../immagini/photo-camera.png" alt="Immagine di profilo predefinita" width="auto" height="200">';
+                                echo "<label>Inserisci un'immagine</label>";
+                            }
+                        } 
+                        if (pg_num_rows($result2) > 0) {
+                            $row2 = pg_fetch_assoc($result2);
+                            $data_sottoscrizione_intera=explode(" ",$row2['data_sottoscrizione']);
+                            $data_sottoscrizione= $data_sottoscrizione_intera[0];
+                            $tipo_abbonamento=$row2['tipo'];
+
+                            // Assume che $row2['data_sottoscrizione'] contenga la data di inizio dell'abbonamento nel formato "YYYY-MM-DD"
+                            $data_inizio = new DateTime($row2['data_sottoscrizione']);
+                            // Determina la durata dell'abbonamento in base al tipo
+                            switch ($tipo_abbonamento) {
+                                case 'AM':
+                                    $durata_abbonamento = new DateInterval('P1M'); // Periodo di 1 mese
+                                    break;
+                                case 'AT':
+                                    $durata_abbonamento = new DateInterval('P3M'); // Periodo di 3 mesi
+                                    break;
+                                case 'AS':
+                                    $durata_abbonamento = new DateInterval('P6M'); // Periodo di 6 mesi
+                                    break;
+                                case 'AA':
+                                    $durata_abbonamento = new DateInterval('P1Y'); // Periodo di 1 anno
+                                    break;
+                                default:
+                                    // Gestione dell'errore o comportamento predefinito
+                                    break;
+                            }
+
+                            // Calcola la data di fine dell'abbonamento aggiungendo la durata al data di inizio
+                            $data_fine = $data_inizio->add($durata_abbonamento);
+                            // per visualizzarla correttamente va riconvertita nel giusto formato
+                            $data_fine_abbonamento = $data_fine->format('Y-m-d');
+                        } 
+                    ?>
+                    <form action="../php/caricaImmagine.php" method="post" name="caricamentoFoto" enctype="multipart/form-data">
+                        <input type="file" id="fotoprof" name="fotoprof" accept=".png, .jpeg"><br>
+                        <button type="submit" name="submit">Carica</button>
+                    </form>
                 </div>
                 <!-- dettagli utente -->
-                <div class="profile-details">
+                
+                <div class="section">
+                    <h2>Informazioni personali</h2>
                     <p><strong>Nome:</strong> <?php echo  $_SESSION['name'] ?></p>
                     <p><strong>Cognome:</strong> <?php echo $_SESSION['surname']; ?></p>
                     <p><strong>Data di nascita:</strong> <?php echo $_SESSION['data_nascita']; ?></p>
-                    <p><strong>Livello di abbonamento:</strong> <?php echo $_SESSION['livello']; ?></p>
-                    <p><strong>Data sottoscrizione abbonamento:</strong> <?php echo $_SESSION['data_sottoscrizione']; ?></p>
+                    <p><strong>E-mail:</strong> <?php echo $_SESSION['mail']; ?></p>
+                    <p><strong>Numero di telefono:</strong> <?php echo $_SESSION['phone']; ?></p>
                 </div>
-        </div>
-        <div class="calendar">
-            <h2>Calendario Settimanale</h2>
-            <div class="weekly-schedule" id="weekly-schedule">
-                <!-- Il calendario settimanale verrà generato qui -->
+                
+                <div class="section">
+                    <h2>Dettagli abbonamento</h2>
+                    <p><strong>Livello di abbonamento:</strong> <?php echo $_SESSION['livello']; ?></p>
+                    <p><strong>Data sottoscrizione abbonamento:</strong> <?php echo $data_sottoscrizione; ?></p>
+                    <p><strong>Data fine abbonamento:</strong><?php echo $data_fine_abbonamento ?></p>
+                    <div class="subscription-progress">
+                        <h4>stato avanzamento:</h4>
+                        <div class="progress-bar">
+                            <div class="progress-indicator"></div>
+                        </div>
+                    </div>
             </div>
         </div>
-        <div class="message">
-            <h2>Bacheca Messaggi</h2>
-            <!-- Inserisci qui la bacheca dei messaggi -->
+<!-- PER I SOCI GOLD -->
+        <div class="informazioni">
+            <h3>I TUOI VANTAGGI</h3>
+            <p>in qualità di utente gold hai: libero accesso al bar della palestra, sconti all'interno della nostra area ristoro, <br> precdenza nelle prenotazioni e corsi privati messi a disposizone dagli insegnanti, nonchè accesso esclusivo gli eventi organizzati dal circolo. <br>
+            nella sezione qui a destra potrai vedere tutti gli eventi a cui hai accesso</p>
+
         </div>
+        <div class="eventi">
+            <div id="event-container" class="grid-view">
+                <!-- Contenuto degli eventi verrà caricato qui -->
+                <?php
+                // Array degli eventi (puoi caricarli dal database o da qualsiasi altra fonte)
+                $events = array(
+                    array('nome' => 'Ballo', 'descrizione' => 'Festa di ballo', 'data' => '2024-05-20'),
+                    array('nome' => 'Gara di nuoto', 'descrizione' => 'Competizione di nuoto', 'data' => '2024-06-10'),
+                    array('nome' => 'Torneo di tennis', 'descrizione' => 'Torneo di tennis amatoriale', 'data' => '2024-07-05')
+                );
+
+                // Mostra gli eventi
+                foreach ($events as $event) {
+                    echo '<div class="event">';
+                    echo '<h2>' . $event['nome'] . '</h2>';
+                    echo '<p>' . $event['descrizione'] . '</p>';
+                    echo '<p>Data: ' . $event['data'] . '</p>';
+                    echo '</div>';
+                }
+                ?>
+            </div>
+
+            <button id="toggle-view-btn" onclick="toggleView()">Visualizzazione: Griglia</button>
+        </div>
+
+<!-- WEEKLY SCHEDULE -->        
+        <div class="calendario">
+            <h2 id="currentMonth"></h2>
+            <div id="calendar">
+
+            </div>
+        </div>
+        <div class="weekly-schedule">
+            <div class="schedule-date">
+
+            </div>
+            <!-- Qui verrà aggiunta la data e le attività -->
+            <div class="schedule-activity">
+
+            </div>
+        </div>
+
+<!-- CHAT -->
         <div class="chat" id="chat-column">
             <h2>Chat</h2>
-            <div class="chat-list">
-                <div class="chat-item" onclick="showChat(1)">Chat 1</div>
-                <div class="chat-item" onclick="showChat(2)">Chat 2</div>
-                <div class="chat-item" onclick="showChat(3)">Chat 3</div>
-            </div>
-            <div class="chat-messages">
-                <div class="chat-message active-chat" id="chat1">
-                    Contenuto della Chat 1
+            <div class="wrapper">
+                <section class="users">
+                <header>
+                    <div class="content">
+                        <?php
+                            if ($foto_profilo_bytea !== null) {
+                                // Decodifica i dati bytea
+                                $foto_decodata = pg_unescape_bytea($foto_profilo_bytea);
+                                
+                                // Stampa l'immagine 
+                                echo "<img src='data:image/jpeg;base64," . base64_encode($foto_decodata) . "' alt='Foto Profilo' width='auto' height='200'><br>";
+                            } else {
+                                // Se non c'è un'immagine di profilo, mostra un messaggio
+                                echo '<img class="foto-utente" src="../immagini/photo-camera.png" alt="Immagine di profilo predefinita" />';
+                            }
+                        ?>                        
+                        <div class="details">
+                            <span><?php echo $row['nome'] . " " . $row['cognome']; ?></span>
+                            <p><?php if($row['status'] == true) { echo 'online'; } else { echo 'offline'; }; ?></p>
+                        </div>
+                    </div>
+                </header>
+                <div class="search">
+                    <span class="text">Select an user to start chat</span>
+                    <input type="text" placeholder="Enter name to search...">
+                    <button><i class="fas fa-search"></i></button>
                 </div>
-                <div class="chat-message" id="chat2">
-                    Contenuto della Chat 2
+                <div class="users-list">
+            
                 </div>
-                <div class="chat-message" id="chat3">
-                    Contenuto della Chat 3
-                </div>
+                </section>
             </div>
         </div>
-        <div class="programmi">
-            <h2>Programmi allenamento</h2>
-            <div class="courses" id="courses-container">
-                <!-- Corsi verranno aggiunti qui -->
-            </div>
-            <div class="switch-button">
-                <button onclick="toggleView()">Cambia Visualizzazione</button>
-            </div>
-        </div>
+        
     </div>
 
     <script>
-        // Funzione per generare i giorni della settimana
-        function generateWeekDays() {
-            const daysOfWeek = ['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'];
-            const currentDate = new Date();
-            const todayIndex = currentDate.getDay();
-            const weekDays = [];
+        /* BARRA DI PROGRESSO */
+        var startDate = new Date("<?php echo $data_sottoscrizione; ?>");
+        var endDate = new Date("<?php echo $data_fine_abbonamento; ?>");
 
-            for (let i = 0; i < 7; i++) {
-                const currentDate = new Date();
-                currentDate.setDate(currentDate.getDate() + i);
-                const index = currentDate.getDay();
-                const day = daysOfWeek[index];
-                const dayNumber = currentDate.getDate();
-                weekDays.push({ day, dayNumber });
-            }
+        function updateProgressBar(startDate, endDate) {
+            var cDate = new Date();
+            var progress = (cDate - startDate) / (endDate - startDate) * 100;
 
-            return weekDays;
+            var progressBar = document.querySelector('.progress-indicator');
+            progressBar.style.width = progress + '%';
         }
 
-        // Funzione per aggiungere i giorni e le attività al calendario settimanale
-        function addWeekDaysToSchedule() {
-            const weekDays = generateWeekDays();
-            const scheduleElement = document.getElementById('weekly-schedule');
-
-            weekDays.forEach((day, index) => {
-                const dayAndActivityElement = document.createElement('div');
-                dayAndActivityElement.classList.add('day-and-activity');
-                dayAndActivityElement.classList.add(`activity-${index + 1}`);
-
-                const dayElement = document.createElement('div');
-                dayElement.classList.add('day');
-                dayElement.innerHTML = `<h1>${day.dayNumber}</h1><p>${day.day}</p>`;
-
-                const activityElement = document.createElement('div');
-                activityElement.classList.add('activity');
-                activityElement.innerHTML = `<h2>Attività ${index + 1}</h2><p>Descrizione dell'attività</p>`;
-
-                dayAndActivityElement.appendChild(dayElement);
-                dayAndActivityElement.appendChild(activityElement);
-
-                scheduleElement.appendChild(dayAndActivityElement);
-            });
-        }
-
-        // Chiamata alla funzione per aggiungere i giorni e le attività al calendario settimanale
-        addWeekDaysToSchedule();
-
-        // Funzione per mostrare solo la chat selezionata
-        function showChat(chatId) {
-            const chatMessages = document.querySelectorAll('.chat-message');
-            chatMessages.forEach(chat => chat.classList.remove('active-chat'));
-            document.getElementById(`chat${chatId}`).classList.add('active-chat');
-        }
-
-        // Array dei corsi di allenamento
-        const courses = ['Nuoto', 'Paddle', 'Tennis', 'Calcio', 'Palestra', 'Basket'];
-        let gridView = true; // Vista iniziale: griglia
-
-        // Funzione per aggiungere i corsi al container
-        function addCoursesToContainer() {
-            const coursesContainer = document.getElementById('courses-container');
-            coursesContainer.innerHTML = '';
-
-            courses.forEach(course => {
-                const courseElement = document.createElement('div');
-                courseElement.classList.add('course');
-                courseElement.textContent = course;
-                coursesContainer.appendChild(courseElement);
-            });
-        }
-
-        // Funzione per cambiare la visualizzazione tra griglia e elenco
-        function toggleView() {
-            const coursesContainer = document.getElementById('courses-container');
-            if (gridView) {
-                coursesContainer.classList.remove('courses');
-                coursesContainer.classList.add('courses-list');
-            } else {
-                coursesContainer.classList.remove('courses-list');
-                coursesContainer.classList.add('courses');
-            }
-            gridView = !gridView;
-        }
-
-        // Aggiunta iniziale dei corsi al container
-        addCoursesToContainer();
-// PROFILO UTENTE   
-        function previewProfileImage(event) {
-            const preview = document.getElementById('profile-image-preview');
-            const file = event.target.files[0];
-            const reader = new FileReader();
-            const fileInput = document.getElementById('profile-image');
-
-            reader.onload = function() {
-                const image = new Image();
-                image.src = reader.result;
-                image.style.maxWidth = '300px';
-                image.style.height = 'auto';
-                preview.innerHTML = '';
-                preview.appendChild(image);
-                fileInput.value = ''; // Resetta il valore dell'input per permettere di selezionare nuovamente lo stesso file
-                changeButtonLabel(); // Chiamata alla funzione per cambiare il testo del pulsante
-            };
-
-            if (file) {
-                reader.readAsDataURL(file);
-            }
-        }
-
-        // Funzione per cambiare il testo del pulsante a "Cambia Immagine" dopo il caricamento dell'immagine
-        function changeButtonLabel() {
-            const fileInput = document.getElementById('profile-image');
-            fileInput.removeAttribute('data-changed'); // Imposta un attributo per indicare che l'immagine è stata cambiata
-            fileInput.value = 'Cambia Immagine'; // Cambia il testo del pulsante
-        }
+        updateProgressBar(startDate, endDate);
     </script>
 </body>
 </html>

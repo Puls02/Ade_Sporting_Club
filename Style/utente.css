@@ -11,6 +11,13 @@ body {
     gap: 10px;
     height: 100vh; /* Imposta l'altezza della griglia al 100% dell'altezza della finestra */
 }
+.grid_gold {
+  display: grid;
+  grid-template: 'a a a a' 'e e f f' 'b c d d' 'b c d d';
+  border-radius: 10px;
+  gap: 10px;
+  height: 100vh; /* Imposta l'altezza della griglia al 100% dell'altezza della finestra */
+}
 .user_profile {
   grid-area: a;
   background-color: white;
@@ -51,8 +58,8 @@ body {
     margin: 2%;
 }
 /* solo per i gold */
-.programmi {
-    grid-area: d;
+.informazioni {
+    grid-area: e;
     background-color: white;
     border-radius: 10px;
     border: 1px solid #efefef;
@@ -61,9 +68,39 @@ body {
     margin: 2%;
     border: 4px solid #308ece;
 } 
+.eventi {
+  grid-area: f;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid #efefef;
+  position: relative;
+  padding: 2%;
+  margin: 2%;
+  border: 4px solid #308ece;
+} 
 h2 {
     color: #333;
 }
+/*EVENTI*/
+/* Stile per la griglia */
+.grid-view {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+/* Stile per la visualizzazione a elenco */
+.list-view {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Stile per gli eventi */
+.event {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
 /*PROFILO*/
 .section {
   flex-grow: 1;
@@ -85,6 +122,7 @@ h2 {
   width: 30%;
 }
 
+/* PER LA BARRA DI PROGRESSO */
 .subscription-progress {
   width: 100%;
   margin-top: 20px;
@@ -100,7 +138,7 @@ h2 {
 
 .progress-indicator {
   height: 100%;
-  background-color: blue; /* Colore della barra di progresso */
+  background-color: rgb(18, 143, 80); /* Colore della barra di progresso */
   border-radius: 10px; /* Arrotondamento degli angoli */
   position: absolute;
   top: 0;
