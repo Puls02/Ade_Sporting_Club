@@ -242,10 +242,13 @@
 
     <script>
         /* BARRA DI PROGRESSO */
+        var startDate = <?php echo $data_sottoscrizione; ?>;
+        var endDate = <?php echo $data_fine_abbonamento; ?>;
+        
 
         function updateProgressBar(startDate, endDate) {
             var currentDate = new Date();
-            var progress = (currentDate - <?php echo $data_sottoscrizione; ?>) / (<?php echo $data_fine_abbonamento; ?> - <?php echo $data_sottoscrizione; ?>) * 100;
+            var progress = (currentDate - startDate) / (endDate - startDate) * 100;
 
             var progressBar = document.querySelector('.progress-indicator');
             progressBar.style.width = progress + '%';

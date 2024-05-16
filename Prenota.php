@@ -280,7 +280,7 @@
                 <div class="content">
                     <form action="php/prenotazione.php" method="post" name="formPrenotazione">
                         <label for="dataCalcio">Data:</label>
-                        <input type="date" id="dataCalcio" name="dataCalcio"><br>
+                        <input type="date" id="dataCalcio" name="data"><br>
                         <label for="orario">Orario prenotazione:</label>
                         <select class="orario" name="ora" required>
                             <option value="">Seleziona un orario</option>
@@ -298,7 +298,7 @@
                         <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
                         <div id="numPersoneWrapper">
                             <label for="numeroPersone">Numero di persone:</label>
-                            <input type="number" id="numeroPersone" name="numeroPersone" min="1" required><br>
+                            <input type="number" id="numeroPersone" name="numeroPersone" min="1"><br>
                         </div>
                         
                         <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
@@ -312,7 +312,7 @@
                 <div class="content">
                     <form method="post" action="php/prenotazione.php" name="formPrenotazione">
                         <label for="dataPaddle">Data:</label>
-                        <input type="date" id="dataPaddle" name="dataPaddle"><br>
+                        <input type="date" id="dataPaddle" name="data"><br>
                         <label for="orario">Orario prenotazione:</label>
                         <select class="orario" name="ora" required>
                             <option value="">Seleziona un orario</option>
@@ -344,7 +344,7 @@
                 <div class="content">
                     <form method="post" action="php/prenotazione.php" name="formPrenotazione">
                         <label for="dataTennis">Data:</label>
-                        <input type="date" id="dataTennis" name="dataTennis"><br>
+                        <input type="date" id="dataTennis" name="data"><br>
                         <label for="orario">Orario prenotazione:</label>
                         <<select class="orario" name="ora" required>
                             <option value="">Seleziona un orario</option>
@@ -382,7 +382,7 @@
                 <div class="content">
                     <form method="post" action="php/prenotazione.php" name="formPrenotazione">
                         <label for="dataBasket">Data:</label>
-                        <input type="date" id="dataBasket" name="dataBasket"><br>
+                        <input type="date" id="dataBasket" name="data"><br>
                         <label for="orario">Orario prenotazione:</label>
                         <select class="orario" name="ora" required>
                             <option value="">Seleziona un orario</option>
@@ -413,7 +413,7 @@
                 <div class="content">
                     <form method="post" action="php/prenotazione.php" name="formPrenotazione">
                         <label for="dataNuoto">Data:</label>
-                        <input type="date" id="dataNuoto" name="dataNuoto"><input type="checkbox" class="hidden" id="campo" name="campo" value="piscina_13" checked><br>
+                        <input type="date" id="dataNuoto" name="data"><input type="checkbox" class="hidden" id="campo" name="campo" value="piscina_13" checked><br>
                         <!-- se possibile mettiamo in elenco solo le fasce disponibili -->
                         <label for="orarioNuoto">Scegli una fascia oraria:</label>
                         <select name="type" id="orarioNuoto"  required>
@@ -434,7 +434,7 @@
                 <div class="content">
                     <form method="post" action="php/prenotazione.php" name="formPrenotazione">
                         <label for="dataPalestra">Data:</label> 
-                        <input type="date" id="dataPalestra" name="dataPalestra"><input type="checkbox" class="hidden" id="campo" name="campo" value="palestra_14" checked><br>
+                        <input type="date" id="dataPalestra" name="data"><input type="checkbox" class="hidden" id="campo" name="campo" value="palestra_14" checked><br>
                         <!-- se possibile mettiamo in elenco solo le fasce disponibili -->
                         <label for="orarioPalestra">Scegli una fascia oraria:</label>
                         <select class="orario" name="ora" required>
@@ -489,7 +489,7 @@
                             var formattedHour = ('0' + hour).slice(-2);
                             hourSucc=hour+1;
                             var formattedHourSucc = ('0' + hourSucc).slice(-2);
-                            selectOrario.innerHTML += '<option value="' + formattedHour + ':00' + formattedHourSucc + ':00">' + formattedHour + ':00' + '-' + formattedHourSucc + ':00</option>';
+                            selectOrario.innerHTML += '<option value="' + formattedHour + ':00' +'-'+ formattedHourSucc + ':00">' + formattedHour + ':00' + '-' + formattedHourSucc + ':00</option>';
                         }
                     }
                 }

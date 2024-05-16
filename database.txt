@@ -57,7 +57,8 @@ create table Campo(
 create table Prenotazione(
 	Campo SERIAL,
 	Data date,
-	Ora time,
+	Ora_inizio time,
+	Ora_fine time,
 	Utente SERIAL not null,
 	primary key (Campo, Data, Ora),
 	foreign key(Utente) references Utente(ID) on delete cascade,
