@@ -209,38 +209,46 @@ hr
   }
   .presentation
   { 
-    top: 200px; 
+    top: 15%; 
     right: 25%;
   }
 
 }
 
-@media (max-width: 768px)
+@media (max-width: 767px)
 {
   /*responsive css for general part*/
   h1
   {
-    font-size: var(--size-xl);
+    font-size: var(--size-lg);
   }
   p
   {
-    font-size: var(--size-base);
+    font-size: var(--size-xs);
   }
   /*responsive css for Section1*/
   .presentation
   { 
-    top: 150px;
-    right: 15%;
+    top: 10%;
+    right: 20%;
   }
 }
 
 @media (max-width: 640px)
 {
   /*responsive css for Section1*/
+  .Sezione_1
+  {
+    height: 550px;
+  }
   .presentation
   { 
-    top: 150px;
-    right: 15%;
+    right: 10%;
+  }
+  /*responsive css for img menu*/
+  #descrizione-fissa img 
+  {
+    display: none;
   }
 }
 
@@ -257,7 +265,7 @@ hr
   /*responsive css for Section1*/
   .presentation
   { 
-    top: 90px;
+    top: 10%;
     right: 10%;
   }
   /*responsive css for img menu*/
