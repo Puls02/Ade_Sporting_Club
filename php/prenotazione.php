@@ -5,7 +5,7 @@
     $port='5432';
     $dbname='Ade_Sporting_Club';
     $user='postgres';
-    $password='Sporting77!';
+    $password='eleonora';
     
     $conn = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
     
@@ -18,7 +18,6 @@
     $ora=$_POST['ora'];
     $ora_inizio=explode("-",$ora)[0];
     $ora_fine=explode("-",$ora)[1];
-    // me li dividi poi in orario di inizio e orario di fine :)
     $campo=$_POST['campo'];
     $id_campo=explode("_",$campo)[1];
     
