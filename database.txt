@@ -63,7 +63,7 @@ create table Prenotazione(
 	Utente SERIAL not null,
 	num_persone int,
 	Completa boolean,
-	primary key (Campo, Data, Ora),
+	primary key (Campo, Data, Ora_inizio),
 	foreign key(Utente) references Utente(ID) on delete cascade,
 	foreign key(Campo) references Campo(ID) on delete cascade
 );
