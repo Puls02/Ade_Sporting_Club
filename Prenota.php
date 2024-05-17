@@ -153,7 +153,7 @@
         </tr>
         <?php
             // Connessione al database PostgreSQL
-            $conn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=eleonora");
+            $conn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=Sporting77!");
             if (!$conn) {
                 echo "Errore nella connessione al database.";
                 exit;
@@ -396,8 +396,8 @@
                         </select><br>
                         <label for="campo">Seleziona campo:</label><br>
                         <select id="campo" name="campo" required>
-                            <option value="campo_11">Basket_1</option>
-                            <option value="campo_12">Basket_2</option>
+                            <option value="basket_11">Campo_1</option>
+                            <option value="basket_12">Campo_2</option>
                         </select><br>
                         <label for="prenotazione">Tipo di prenotazione:</label><br>
                         <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>

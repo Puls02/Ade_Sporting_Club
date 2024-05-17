@@ -157,6 +157,9 @@ insert into Orari (nome, categoria,giorno_settimana,ora_inizio,ora_fine) values
 ('Nuoto','ragazzi','venerdi','18:00','19:00'),('Nuoto','ragazzi','venerdi','19:00','20:00');
 
 insert into corso (nome, prezzo_mensile) values ('Calcio', 50), ('Basket', 60), ('Tennis', 70), ('Paddle', 60), ('Palestra',45), ('Nuoto', 65);
+
+insert into campo (tipo) values ('Calcetto'), ('Calcetto'), ('Calcetto'), ('Paddle'),('Paddle'),('Paddle'),
+				('Tennis'),('Tennis'),('Tennis'),('Tennis'), ('Basket'),('Basket'), ('Piscina'), ('Palestra');
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 
 ----Per resettare il numero seriale (ID o Codice) usare:----
