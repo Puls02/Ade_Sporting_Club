@@ -187,8 +187,8 @@
                     $data = $row["data"];
 
                     // devo prendere il giorno della settimana
-                    $giorno = date('l', strtotime($data));
-
+                    $giornoSettimana=date('l', strtotime($data));
+                    $giorno = "$giornoSettimana - $data";
                     $inizio_completo = $row["ora_inizio"];
                     $fine_completo = $row["ora_fine"];
                     $utente = $row["utente"];
@@ -202,16 +202,33 @@
                     
                     // Costruzione della stringa per l'orario
                     $orario = "$inizio - $fine";
-
+                    
                     // Aggiunta della prenotazione all'array associativo
                     $prenotazioni_per_orario[$orario][$giorno][] = array("id" => $id_campo, "sport" => $sport, "completa" => $completa, "persone" => $num_persone);
                 }
+                //Costruzione dell'array per i giorni della settimana "GiornoSettimana - data"
+                date_default_timezone_set('Europe/Rome');
+                
+                // Ottieni la data del lunedì di questa settimana
+                $mondayOfThisWeek = date('Y-m-d', strtotime('monday this week'));
 
+                // Inizializza un array per memorizzare i giorni della settimana corrente
+                $daysOfTheWeek = array();
+
+                // Cicla per ottenere tutti i giorni della settimana corrente
+                for ($i = 0; $i < 7; $i++) {
+                    // Aggiungi i giorni alla data del lunedì
+                    $day = date('Y-m-d', strtotime($mondayOfThisWeek . " +$i days"));
+                    // Aggiungi il giorno all'array
+                    $daysOfTheWeek[] = $day;
+                }
+                
                 // Creazione della tabella HTML
                 foreach ($prenotazioni_per_orario as $orario => $prenotazioni_per_giorno) {
                     echo "<tr>";
                     echo "<td>$orario</td>";
-                    foreach (["Monday", "Tuesday", "Wednesday", "Thurstday", "Friday", "Saturday", "Sunday"] as $giorno) {
+                    foreach (["Monday - " . $daysOfTheWeek[0], "Tuesday - ". $daysOfTheWeek[1], "Wednesday - ". $daysOfTheWeek[2], "Thurstday - ". $daysOfTheWeek[3], "Friday - ". $daysOfTheWeek[4], "Saturday - ". $daysOfTheWeek[5], "Sunday - ". $daysOfTheWeek[6]] as $giorno) {
+                        
                         echo "<td>";
                         if (isset($prenotazioni_per_giorno[$giorno])) {                            
                             echo "<table class='inner-table'>";
