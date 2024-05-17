@@ -116,6 +116,7 @@ hr
   width: 200px; /* Larghezza dell'immagine */
   height: auto; /* Altezza automatica per mantenere le proporzioni */
 }
+
 /* Stile per la galleria */
 .gallery 
 {
@@ -142,11 +143,11 @@ hr
   filter: brightness(100%);
   filter: contrast(120%);
 }
-
+/*-------------------------------------------------*/
 
 
 /*responsive css for struct*/
-@media (max-width: 1535px)
+@media (max-width: 1536px)
 {
   /*responsive css for general part*/
   h1
@@ -164,7 +165,7 @@ hr
   }
 }
 
-@media (max-width: 1279px)
+@media (max-width: 1280px)
 {
   /*responsive css for general part*/
   h1
@@ -182,7 +183,7 @@ hr
   }
 }
 
-@media (max-width: 1023px)
+@media (max-width: 1024px)
 {
   /*responsive css for general part*/
   h1
@@ -200,7 +201,7 @@ hr
   }
 }
 
-@media (max-width: 929px)
+@media (max-width: 930px)
 {
   /*responsive css for Section1*/
   .Sezione_1
@@ -215,7 +216,7 @@ hr
 
 }
 
-@media (max-width: 767px)
+@media (max-width: 768px)
 {
   /*responsive css for general part*/
   h1
