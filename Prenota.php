@@ -226,7 +226,7 @@
                                 // Determina l'icona corretta per lo sport
                                 $icona = "";
                                 switch ($sport) {
-                                    case "Calcio":
+                                    case "Calcetto":
                                         $icona = "fas fa-futbol"; // Icona per calcio
                                         break;
                                     case "Paddle":

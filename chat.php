@@ -12,7 +12,7 @@ if (!isset($_SESSION['id'])) {
     <section class="chat-area">
       <header>
         
-        <a href="login_registrazione/utenteNonGold.php" class="back-icon"><i class="fas fa-arrow-left"></i></a> <!-- va cambiato dinamico -->
+        <a href="#" class="back-icon" onclick="window.parent.postMessage('closeChat', '*')"><i class="fas fa-arrow-left"></i></a> <!-- va cambiato dinamico -->
         <?php
           $user_id = pg_escape_string($conn, $_GET['user_id']);
           $sql = pg_query($conn, "SELECT * FROM Utente WHERE id = '{$user_id}'");
