@@ -20,25 +20,15 @@
     $ora_fine=explode("-",$ora)[1];
     $campo=$_POST['campo'];
     $id_campo=explode("_",$campo)[1];
+    $sport=explode("_",$campo)[0];
     
     if(isset($_POST['prenotazione'])){
         $prenotazione=$_POST['prenotazione'];
         if($prenotazione=="interoCampo"){
             $completa=true;
-            if(explode("_",$campo)[0]=="calcetto"){
-                $numPersone=10;
-            }
-            if(explode("_",$campo)[0]=="paddle"){
-                $numPersone=4;
-            }
-            if(explode("_",$campo)[0]=="tennis"){
-                $numPersone=4;
-            }
-            if(explode("_",$campo)[0]=="basket"){
-                $numPersone=10;
-            }
+            $query = "INSERT INTO Prenotazione (campo,data,ora_inizio,ora_fine,utente,completa,sport) VALUES ('$id_campo','$data','$ora_inizio','$ora_fine','$id','true','$sport')";
+            $result = pg_query($conn, $query);
         } else {
-            $completa=false;
             if(explode("_",$campo)[0]=="calcetto"){
                 $numPersone=$_POST['numeroPersone'];
             }
@@ -51,11 +41,21 @@
             if(explode("_",$campo)[0]=="basket"){
                 $numPersone=$_POST['numeroPersone'];
             }
+            $query = "INSERT INTO Prenotazione (campo,data,ora_inizio,ora_fine,utente,completa,num_persone,sport) VALUES ('$id_campo','$data','$ora_inizio','$ora_fine','$id','false','$numPersone','$sport')";
+            $result = pg_query($conn, $query);
         }
     }
 
-    $query = "INSERT INTO Prenotazione (campo,data,ora_inizio,ora_fine,utente,completa,num_persone) VALUES ('$id_campo','$data','$ora_inizio','$ora_fine','$id','$completa','$numPersone')";
-    $result = pg_query($conn, $query);
+    if($sport=="piscina" || $sport=="palestra"){
+        $query = "INSERT INTO Prenotazione (campo,data,ora_inizio,ora_fine,utente,completa,sport) VALUES ('$id_campo','$data','$ora_inizio','$ora_fine','$id','true','$sport')";
+        $result = pg_query($conn, $query);
+    }
+    
+    if (!$result) {
+        //annulla la transazine se si verifica qualche errore
+        pg_query($conn, "ROLLBACK");
+        die("Errore nella registrazione Utente!" . pg_last_error($conn));
+    }
     
     header("Location: ../Prenota.php");
     exit;
