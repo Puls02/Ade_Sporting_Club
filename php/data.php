@@ -23,10 +23,11 @@
         } else {
             $you = "";
         }
-        ($row['status'] == false) ? $offline = "offline" : $offline = "";
+        ($row['status'] === 'f') ? $classe = "status-dot-offline" : $classe = "status-dot";
+        
         ($outgoing_id == $row['id']) ? $hid_me = "hide" : $hid_me = "";
 
-        $output .= '<a href="../chat.php?user_id='. $row['id'] .'">
+        $output .= '<a href="../chat.php?user_id='. $row['id'] .'" target="chatframe" class="chat-link">
                     <div class="content">
                     <img src="'. $foto_profilo .'" alt="Foto Profilo">
                     <div class="details">
@@ -34,7 +35,7 @@
                         <p>'. $you . $msg .'</p>
                     </div>
                     </div>
-                    <div class="status-dot '. $offline .'"><i class="fas fa-circle"></i></div>
+                    <div class="'.$classe.'"><i class="fas fa-circle"></i></div>
                 </a>';
     }
 ?>
