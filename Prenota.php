@@ -193,6 +193,9 @@
                     $fine_completo = $row["ora_fine"];
                     $utente = $row["utente"];
                     $completa = $row["completa"];
+                    $num_persone = $row["num_persone"];
+
+                    $sport = $row["tipo"];
 
                     $inizio = substr($inizio_completo, 0, 5); // Estrae solo i primi 5 caratteri (HH:MM)
                     $fine = substr($fine_completo, 0, 5); // Estrae solo i primi 5 caratteri (HH:MM)
