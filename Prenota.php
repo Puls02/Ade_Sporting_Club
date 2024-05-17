@@ -226,7 +226,7 @@
                                 // Determina l'icona corretta per lo sport
                                 $icona = "";
                                 switch ($sport) {
-                                    case "Calcio":
+                                    case "Calcetto":
                                         $icona = "fas fa-futbol"; // Icona per calcio
                                         break;
                                     case "Paddle":
@@ -240,6 +240,9 @@
                                         break;
                                     case "Basket":
                                         $icona = "fas fa-basketball-ball"; // Icona per basket
+                                        break;
+                                    case "Palestra":
+                                        $icona ="fa-solid fa-dumbbell";
                                         break;
                                     default:
                                         $icona = "fas fa-question"; // Icona generica

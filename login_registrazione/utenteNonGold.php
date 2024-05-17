@@ -184,7 +184,44 @@
             </div>
         </div>
 
-<!-- WEEKLY SCHEDULE -->        
+<!-- WEEKLY SCHEDULE -->
+        <?php 
+            $host='127.0.0.1';
+            $port='5432';
+            $dbname='Ade_Sporting_Club';
+            $user='postgres';
+            $password='Sporting77!';
+      
+            $conn=pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
+      
+            if(!$conn){
+                die("Errore nella connessione a PostgreSQL");
+            }
+            
+            //recupero le prenotazioni fatte dall'utente
+            $id=$_SESSION['id'];
+            $query="SELECT * FROM prenotazione WHERE utente=$id";
+            $result = pg_query($conn, $query);
+            
+
+            if (!$result) {
+                //annulla la transazine se si verifica qualche errore
+                pg_query($conn, "ROLLBACK");
+                echo "Errore nella registrazione Utente!" . pg_last_error($conn);
+            }
+            
+            //creazione dell'array che contiente le prenotazioni
+            $prenotazioni = array();
+            
+            while ($rows = pg_fetch_assoc($result)) {
+                $prenotazioni[] = $rows;
+            }
+            
+            json_encode($prenotazioni);
+
+            pg_close($conn);
+            
+        ?>
         <div class="calendario">
             <h2 id="currentMonth"></h2>
             <div id="calendar">
@@ -200,6 +237,8 @@
 
             </div>
         </div>
+
+        
 
 <!-- CHAT -->
         <div class="chat" id="chat-column">
