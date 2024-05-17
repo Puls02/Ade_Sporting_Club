@@ -276,7 +276,7 @@ h2 {
     padding-left: 10px;
   }
 
-    /* Chat Area CSS Start */
+/* Chat Area CSS Start */
 .chat-area header{
   display: flex;
   align-items: center;
@@ -324,11 +324,14 @@ h2 {
 }
 .chat-box .outgoing{
   display: flex;
+  border: none;
+  background: none;
 }
 .chat-box .outgoing .details{
   margin-left: auto;
   max-width: calc(100% - 130px);
 }
+
 .outgoing .details p{
   background: #333;
   color: #fff;
@@ -337,10 +340,6 @@ h2 {
 .chat-box .incoming{
   display: flex;
   align-items: flex-end;
-}
-.chat-box .incoming img{
-  height: 35px;
-  width: 35px;
 }
 .chat-box .incoming .details{
   margin-right: auto;

@@ -31,10 +31,20 @@ create table Utente(
 	Telefono varchar(20) unique
 );
 
+--utenti inseriti tramite registrazione che è più comodo
+
 create table Istruttore (
 	ID SERIAL primary key,
 	Contratto BYTEA,
 	foreign key(ID) references Utente(ID) on delete cascade
+);
+
+create table Evento (
+	ID SERIAL primary key,
+	titolo varchar(50) not null,
+	giorno varchar(25) not null,
+	orario_inizio time,
+	descrizione varchar(1000) not null 
 );
 
 create table Cliente (
@@ -124,6 +134,14 @@ create table Orari (
     primary key(nome,categoria,giorno_settimana,ora_inizio,ora_fine)
 );
 
+insert into evento (titolo,giorno,orario_inizio,descrizione) values 
+('Torneo di Tennis Amatoriale','21-06-2024','10:00','Un torneo aperto a tutti i soci del circolo, diviso in categorie per livello di abilità. Premi per i vincitori e gadget per tutti i partecipanti.'),
+('Corsa Campestre Annuale','6-06-2024','9:00','Una gara di corsa campestre aperta a tutte le età. Il percorso si snoderà attraverso i sentieri naturali intorno al circolo. Al termine della corsa verrà offerto un rinfresco a bordo piscina.'),
+('Torneo di Beach Volley','22-07-2024','16:00','Un torneo di beach volley che si svolgerà sui campi di sabbia del circolo. Squadre composte da 4 giocatori, aperto a tutti i soci. Musica e divertimento assicurati.'),
+('Marathon Fitness Day','10-06-2024','8:00','Una giornata intera dedicata al fitness con lezioni di aerobica, yoga, pilates e spinning. Accesso libero a tutti i soci e possibilità di partecipare a più sessioni durante il giorno.'),
+('Torneo di Calcetto Notturno','14-07-2024','20:00','Un torneo di calcetto che si svolgerà in notturna sui campi illuminati del circolo. Squadre di 5 giocatori, aperto a tutte le età. Premi per i vincitori e festa finale con musica dal vivo.'),
+('Gara di Nuoto Estiva','15-07-2024','14:00','Competizione di nuoto per diverse categorie di età e livello. Le gare includeranno diversi stili di nuoto. Premi per i vincitori e medaglie per tutti i partecipanti.');
+
 insert into Orari (nome, categoria,giorno_settimana,ora_inizio,ora_fine) values 
 ('Calcio','bambini','lunedi','16:00','17:00'),('Calcio','bambini','lunedi','17:00','18:00'),
 ('Calcio','bambini','mercoledi','16:00','17:00'),('Calcio','bambini','mercoledi','17:00','18:00'),
@@ -150,7 +168,7 @@ insert into Orari (nome, categoria,giorno_settimana,ora_inizio,ora_fine) values
 ('Paddle','ragazzi','venerdi','19:00','20:00'),
 
 ('Nuoto','bambini','lunedi','17:00','18:00'),('Nuoto','bambini','lunedi','18:00','19:00'),
-('Nuoto','bambini','mertedi','15:00','16:00'),('Nuoto','bambini','mertedi','16:00','17:00'),
+('Nuoto','bambini','mertedi','15:00','16:00'),('Nuoto','bambini','martedi','16:00','17:00'),
 ('Nuoto','bambini','venerdi','17:00','18:00'),('Nuoto','bambini','venerdi','18:00','19:00'),
 ('Nuoto','ragazzi','lunedi','18:00','19:00'),('Nuoto','ragazzi','lunedi','19:00','20:00'),
 ('Nuoto','ragazzi','mercoledi','18:00','19:00'),('Nuoto','ragazzi','mercoledi','19:00','20:00'),

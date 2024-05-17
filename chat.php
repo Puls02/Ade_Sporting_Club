@@ -48,7 +48,7 @@ if (!isset($_SESSION['id'])) {
 
       </div>
       <form action="php/insert-chat.php" method="post"  class="typing-area">
-        <input type="text" class="incoming_id" name="incoming_id" value="<?php echo $user_id; ?>" > <!-- poi rimettici hidden -->
+        <input type="text" class="incoming_id" name="incoming_id" value="<?php echo $user_id; ?>" hidden>
         <input type="text" name="message" class="input-field" placeholder="Scrivi un messaggio qui..." autocomplete="off">
         <button type="submit"><i class="fab fa-telegram-plane"></i></button>
       </form>

@@ -153,7 +153,7 @@
         </tr>
         <?php
             // Connessione al database PostgreSQL
-            $conn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=Sporting77!");
+            $conn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=eleonora");
             if (!$conn) {
                 echo "Errore nella connessione al database.";
                 exit;
@@ -295,7 +295,7 @@
     </div>
 
     <div class="zona">
-        <p>la tebella sovrastante riporta le disponibilita dei vari campi da gioco. se la prenotazione è in verde vuol dire che il campo è già preso. se la prenotazione c'è ma risulta ancora rossa vuol dire che non è completa ci si può aggiungere</p>
+        <p>La tebella sovrastante riporta le disponibilita settimanali (lun-dom) dei vari campi da gioco.<br>Se la prenotazione risulta verde vuol dire che è stata validata e tale campo è quindi occupato. Al contrario se la prenotazione c'è ma risulta ancora gialla vuol dire che non è completa e ci si può aggiungere</p>
     </div>
 
     <!-- io inserirei a destra di ogni tendina un post it con le informazioni relative ai costi dei campi -->

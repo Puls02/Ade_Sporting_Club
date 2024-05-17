@@ -194,19 +194,25 @@
             <div id="event-container" class="grid-view">
                 <!-- Contenuto degli eventi verrà caricato qui -->
                 <?php
-                // Array degli eventi (puoi caricarli dal database o da qualsiasi altra fonte)
-                $events = array(
-                    array('nome' => 'Ballo', 'descrizione' => 'Festa di ballo', 'data' => '2024-05-20'),
-                    array('nome' => 'Gara di nuoto', 'descrizione' => 'Competizione di nuoto', 'data' => '2024-06-10'),
-                    array('nome' => 'Torneo di tennis', 'descrizione' => 'Torneo di tennis amatoriale', 'data' => '2024-07-05')
-                );
+                // Connect to the database
+                $dbconn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=eleonora") or die('Could not connect: ' . pg_last_error());
+
+                // Define the SQL query
+                $query = 'SELECT * FROM evento';
+
+                // Execute the query
+                $result = pg_query($query) or die('Query failed: ' . pg_last_error());
+
+                // Fetch all the result rows as an associative array
+                $events = pg_fetch_all($result);
 
                 // Mostra gli eventi
                 foreach ($events as $event) {
                     echo '<div class="event">';
-                    echo '<h2>' . $event['nome'] . '</h2>';
+                    echo '<h2>' . $event['titolo'] . '</h2>';
+                    echo '<p>Data: ' . $event['giorno'] . '</p>';
+                    echo '<p>Orario: ' . $event['orario_inizio'] . '</p>';
                     echo '<p>' . $event['descrizione'] . '</p>';
-                    echo '<p>Data: ' . $event['data'] . '</p>';
                     echo '</div>';
                 }
                 ?>

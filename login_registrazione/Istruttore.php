@@ -94,7 +94,7 @@
         
     </header>  
 
-    <div class="grid">
+    <div class="grid_gold">
 <!-- USER PROFILE -->
         <div class="user_profile">
                 <!-- caricamento foto profilo -->
@@ -183,45 +183,93 @@
                     </div>
             </div>
         </div>
+<!-- PER I SOCI GOLD -->
+        <div class="informazioni">
+            <div id="event-container" class="grid-view">
+                <!-- Contenuto degli eventi verrà caricato qui -->
+                <?php
+                // Connect to the database
+                $dbconn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=eleonora") or die('Could not connect: ' . pg_last_error());
 
-<!-- WEEKLY SCHEDULE -->
-        <?php 
-            $host='127.0.0.1';
-            $port='5432';
-            $dbname='Ade_Sporting_Club';
-            $user='postgres';
-            $password='eleonora';
-      
-            $conn=pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
-      
-            if(!$conn){
-                die("Errore nella connessione a PostgreSQL");
-            }
-            
-            //recupero le prenotazioni fatte dall'utente
-            $id=$_SESSION['id'];
-            $query="SELECT * FROM prenotazione WHERE utente=$id";
-            $result = pg_query($conn, $query);
-            
+                    // CAMBIARE E INSERIRE I CORSI CHE L'ISTRUTTORE PUO' GESTIRE
 
-            if (!$result) {
-                //annulla la transazine se si verifica qualche errore
-                pg_query($conn, "ROLLBACK");
-                echo "Errore nella registrazione Utente!" . pg_last_error($conn);
-            }
-            
-            //creazione dell'array che contiente le prenotazioni
-            $prenotazioni = array();
-            
-            while ($rows = pg_fetch_assoc($result)) {
-                $prenotazioni[] = $rows;
-            }
-            
-            json_encode($prenotazioni);
+                // Define the SQL query
+                $query = 'SELECT * FROM evento';
 
-            pg_close($conn);
-            
-        ?>
+                // Execute the query
+                $result = pg_query($query) or die('Query failed: ' . pg_last_error());
+
+                // Fetch all the result rows as an associative array
+                $events = pg_fetch_all($result);
+
+                // Mostra gli eventi
+                foreach ($events as $event) {
+                    echo '<div class="event">';
+                    echo '<h2>' . $event['titolo'] . '</h2>';
+                    echo '<p>Data: ' . $event['giorno'] . '</p>';
+                    echo '<p>Orario: ' . $event['orario_inizio'] . '</p>';
+                    echo '<p>' . $event['descrizione'] . '</p>';
+                    echo '</div>';
+                }
+                ?>
+            </div>
+
+            <button id="toggle-view-btn" onclick="toggleView()">Visualizzazione: Griglia</button>
+        </div>
+        <div class="eventi">
+            <div id="event-container" class="grid-view">
+                <!-- Contenuto degli eventi verrà caricato qui -->
+                <?php
+                // Connect to the database
+                $dbconn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=eleonora") or die('Could not connect: ' . pg_last_error());
+
+                // Define the SQL query
+                $query = 'SELECT * FROM evento';
+
+                // Execute the query
+                $result = pg_query($query) or die('Query failed: ' . pg_last_error());
+
+                // Fetch all the result rows as an associative array
+                $events = pg_fetch_all($result);
+
+                // Mostra gli eventi
+                foreach ($events as $event) {
+                    echo '<div class="event">';
+                    echo '<h2>' . $event['titolo'] . '</h2>';
+                    echo '<p>Data: ' . $event['giorno'] . '</p>';
+                    echo '<p>Orario: ' . $event['orario_inizio'] . '</p>';
+                    echo '<p>' . $event['descrizione'] . '</p>';
+                    echo '</div>';
+                }
+                ?>
+            </div>
+
+            <button id="toggle-view-btn" onclick="toggleView()">Visualizzazione: Griglia</button>
+
+            <!-- Button to open the new event form -->
+    <button id="new-event-btn" onclick="document.getElementById('new-event-form').style.display='block'">Nuovo Evento</button>
+
+<!-- Form to create a new event -->
+<div id="new-event-form" style="display: none;">
+    <form action="../php/insert-event.php" method="post">
+        <label for="titolo">Titolo:</label>
+        <input type="text" id="titolo" name="titolo" required>
+
+        <label for="giorno">Data:</label>
+        <input type="date" id="giorno" name="giorno" required>
+
+        <label for="orario_inizio">Orario:</label>
+        <input type="time" id="orario_inizio" name="orario_inizio" required>
+
+        <label for="descrizione">Descrizione:</label>
+        <textarea id="descrizione" name="descrizione" required></textarea>
+
+        <input type="submit" value="Crea Evento">
+    </form>
+</div>
+        </div>
+
+<!-- WEEKLY SCHEDULE -->        
         <div class="calendario">
             <h2 id="currentMonth"></h2>
             <div id="calendar">
@@ -238,14 +286,10 @@
             </div>
         </div>
 
-        
-
 <!-- CHAT -->
         <div class="chat" id="chat-column">
             <h2>Chat</h2>
-            <iframe name="chatframe" id="iframe-chat" style="width:100%; height:600px; display: none; border: none; "></iframe>
-            <div class="wrapper" id="chat-home" style="display: block;">
-                
+            <div class="wrapper">
                 <section class="users">
                 <header>
                     <div class="content">
@@ -286,10 +330,6 @@
         var startDate = new Date("<?php echo $data_sottoscrizione; ?>");
         var endDate = new Date("<?php echo $data_fine_abbonamento; ?>");
 
-        // Stampa le variabili nella console del browser per il debug
-        console.log('Data sottoscrizione:', startDate);
-        console.log('Data fine abbonamento:', endDate);
-
         function updateProgressBar(startDate, endDate) {
             var cDate = new Date();
             var progress = (cDate - startDate) / (endDate - startDate) * 100;
@@ -299,20 +339,6 @@
         }
 
         updateProgressBar(startDate, endDate);
-
-        
-document.body.addEventListener('click', function(e) {
-    if(e.target.classList.contains('chat-link')) {
-        document.getElementById('iframe-chat').style.display = 'block'; // Show the iframe
-        document.getElementById('chat-home').style.display = 'none'; // Hide the chat area
-    }
-});
-window.addEventListener('message', function(event) {
-    if (event.data === 'closeChat') {
-        document.getElementById('iframe-chat').style.display = 'none'; // Hide the iframe
-        document.getElementById('chat-home').style.display = 'block'; // Show the chat area
-    }
-});
     </script>
 </body>
 </html>
