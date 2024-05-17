@@ -6,7 +6,7 @@ CREATE TYPE tipo_abbonamento_enum AS ENUM ('AM','AS','AT','AA');
 CREATE TYPE livello_abbonamento_enum AS ENUM ('single','double','gym','opengym','gold');
 CREATE TYPE privilegi_gold_enum AS ENUM ('Si','No');
 CREATE TYPE corso_enum AS ENUM ('Calcio','Basket','Tennis','Paddle','Nuoto','Palestra');
-CREATE TYPE tipo_enum AS ENUM ('Calcetto','Calciotto','Calcio','Paddle','Tennis','Basket');
+CREATE TYPE tipo_enum AS ENUM ('Calcetto','Paddle','Tennis','Basket','Piscina','Palestra');
 CREATE TYPE categoria_enum AS ENUM ('bambini','ragazzi');
 
 create table Messaggi (
@@ -62,6 +62,7 @@ create table Prenotazione(
 	Ora_fine time,
 	Utente SERIAL not null,
 	num_persone int,
+	Completa boolean,
 	primary key (Campo, Data, Ora),
 	foreign key(Utente) references Utente(ID) on delete cascade,
 	foreign key(Campo) references Campo(ID) on delete cascade
