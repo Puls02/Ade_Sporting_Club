@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="StyleSheet" href="../Style/login.css">
+    
     <script src="../js/login.js" defer></script>
     <style>
         /* Stile generale per il contenitore della pagina di login */
@@ -84,12 +85,12 @@
         </div>
 
         <div class="container istruttore">
-            <form action="../php/logUtente.php" method="post" name="log" id="popup" class="formlogin" target="_top"> <!-- importante per i comportamenti automatici del form -->
+            <form action="../php/logIstruttore.php" method="post" name="log" id="popup" class="formlogin" target="_top"> <!-- importante per i comportamenti automatici del form -->
                 <h1 class="title">login</h1>
                 <img src="../immagini/login/close.png"  alt="x per chiudere" class="close" id="closeButton">
                 <div class="box">
-                    <input id="id" type="text" class="field" name="id" size="30" maxlength="30" required>
-                    <label for="id" class="labellogin">ID: </label>
+                    <input id="id" type="text" class="field" name="codice" size="30" maxlength="30" required>
+                    <label for="id" class="labellogin">Inserisci il tuo codice: </label>
                     <img class="imagelogin" src="../immagini/login/mail.png" alt="icona mail">
                 </div>
                 <div class="box">

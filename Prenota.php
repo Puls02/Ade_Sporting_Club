@@ -160,11 +160,12 @@
             }
 
             // Query per recuperare i dati dalla tabella Prenotazioni
-            $result = pg_query($conn, "SELECT * FROM prenotazioni"); //prenotazione
-
+            $result = pg_query($conn, "SELECT * FROM prenotazione p join campo c on c.id = p.campo"); //prenotazione
             if ($result) {
                 // Array associativo per memorizzare le prenotazioni per ogni orario
                 $prenotazioni_per_orario = array(
+                    "8:00 - 9:00" => array(),
+                    "9:00 - 10:00" => array(),
                     "10:00 - 11:00" => array(),
                     "11:00 - 12:00" => array(),
                     "12:00 - 13:00" => array(),
@@ -177,32 +178,57 @@
                     "19:00 - 20:00" => array(),
                     "20:00 - 21:00" => array(),
                     "21:00 - 22:00" => array(),
+                    "22:00 - 23:00" => array(),
                 );
 
                 // Riempimento dell'array con i dati delle prenotazioni
                 while ($row = pg_fetch_assoc($result)) {
-                    $id = $row["id"];
-                    $giorno = $row["giorno"];
-                    $inizio_completo = $row["orario_inizio"];
-                    $fine_completo = $row["orario_fine"];
-                    $sport = $row["sport"];
+                    $id_campo = $row["campo"];
+                    $data = $row["data"];
+
+                    // devo prendere il giorno della settimana
+                    $giornoSettimana=date('l', strtotime($data));
+                    $giorno = "$giornoSettimana - $data";
+                    $inizio_completo = $row["ora_inizio"];
+                    $fine_completo = $row["ora_fine"];
+                    $utente = $row["utente"];
                     $completa = $row["completa"];
+                    $num_persone = $row["num_persone"];
+
+                    $sport = $row["tipo"];
 
                     $inizio = substr($inizio_completo, 0, 5); // Estrae solo i primi 5 caratteri (HH:MM)
                     $fine = substr($fine_completo, 0, 5); // Estrae solo i primi 5 caratteri (HH:MM)
-
+                    
                     // Costruzione della stringa per l'orario
                     $orario = "$inizio - $fine";
-
+                    
                     // Aggiunta della prenotazione all'array associativo
-                    $prenotazioni_per_orario[$orario][$giorno][] = array("id" => $id, "sport" => $sport, "completa" => $completa);
+                    $prenotazioni_per_orario[$orario][$giorno][] = array("id" => $id_campo, "sport" => $sport, "completa" => $completa, "persone" => $num_persone);
                 }
+                //Costruzione dell'array per i giorni della settimana "GiornoSettimana - data"
+                date_default_timezone_set('Europe/Rome');
+                
+                // Ottieni la data del lunedì di questa settimana
+                $mondayOfThisWeek = date('Y-m-d', strtotime('monday this week'));
 
+                // Inizializza un array per memorizzare i giorni della settimana corrente
+                $daysOfTheWeek = array();
+
+                // Cicla per ottenere tutti i giorni della settimana corrente
+                for ($i = 0; $i < 7; $i++) {
+                    // Aggiungi i giorni alla data del lunedì
+                    $day = date('Y-m-d', strtotime($mondayOfThisWeek . " +$i days"));
+                    // Aggiungi il giorno all'array
+                    $daysOfTheWeek[] = $day;
+                }
+                
                 // Creazione della tabella HTML
                 foreach ($prenotazioni_per_orario as $orario => $prenotazioni_per_giorno) {
                     echo "<tr>";
                     echo "<td>$orario</td>";
-                    foreach (["lunedi", "martedi", "mercoledi", "giovedi", "venerdi", "sabato", "domenica"] as $giorno) {
+                    foreach (["Monday - " . $daysOfTheWeek[0], "Tuesday - ". $daysOfTheWeek[1], "Wednesday - ". $daysOfTheWeek[2], "Thurstday - ". $daysOfTheWeek[3], "Friday - ". $daysOfTheWeek[4], "Saturday - ". $daysOfTheWeek[5], "Sunday - ". $daysOfTheWeek[6]] as $giorno) {
+                        
                         echo "<td>";
                         if (isset($prenotazioni_per_giorno[$giorno])) {                            
                             echo "<table class='inner-table'>";
@@ -212,24 +238,28 @@
                                 $id = $prenotazione["id"];
                                 $sport = $prenotazione["sport"];
                                 $completa = $prenotazione["completa"];
+                                $persone = $prenotazione["persone"];
 
                                 // Determina l'icona corretta per lo sport
                                 $icona = "";
                                 switch ($sport) {
-                                    case "calcio":
+                                    case "Calcetto":
                                         $icona = "fas fa-futbol"; // Icona per calcio
                                         break;
-                                    case "paddle":
+                                    case "Paddle":
                                         $icona = "fas fa-table-tennis"; // Icona per paddle
                                         break;
-                                    case "tennis":
+                                    case "Tennis":
                                         $icona = "fas fa-baseball-ball"; // Icona per tennis
                                         break;
-                                    case "nuoto":
+                                    case "Nuoto":
                                         $icona = "fas fa-swimmer"; // Icona per nuoto
                                         break;
-                                    case "basket":
+                                    case "Basket":
                                         $icona = "fas fa-basketball-ball"; // Icona per basket
+                                        break;
+                                    case "Palestra":
+                                        $icona ="fa-solid fa-dumbbell";
                                         break;
                                     default:
                                         $icona = "fas fa-question"; // Icona generica
@@ -244,10 +274,7 @@
                                 if ($completa == 't') {
                                     $tooltip .= "Campo: 1\nStato: Completa";
                                 } else {
-                                    // Supponendo che il numero di persone sia memorizzato in un'altra tabella
-                                    // Possiamo sostituire questo valore con quello appropriato
-                                    $numero_persone = 4; // Da sostituire con il numero reale di persone
-                                    $tooltip .= "Campo: 1\nNumero Persone: $numero_persone";
+                                    $tooltip .= "Campo: 1\nNumero Persone: $persone";
                                 }
 
                                 // Aggiungi l'icona con il tooltip
@@ -268,7 +295,7 @@
     </div>
 
     <div class="zona">
-        <p>la tebella sovrastante riporta le disponibilita dei vari campi da gioco. se la prenotazione è in verde vuol dire che il campo è già preso. se la prenotazione c'è ma risulta ancora rossa vuol dire che non è completa ci si può aggiungere</p>
+        <p>La tebella sovrastante riporta le disponibilita settimanali (lun-dom) dei vari campi da gioco.<br>Se la prenotazione risulta verde vuol dire che è stata validata e tale campo è quindi occupato. Al contrario se la prenotazione c'è ma risulta ancora gialla vuol dire che non è completa e ci si può aggiungere</p>
     </div>
 
     <!-- io inserirei a destra di ogni tendina un post it con le informazioni relative ai costi dei campi -->
@@ -280,7 +307,7 @@
                 <div class="content">
                     <form action="php/prenotazione.php" method="post" name="formPrenotazione">
                         <label for="dataCalcio">Data:</label>
-                        <input type="date" id="dataCalcio" name="dataCalcio"><br>
+                        <input type="date" id="dataCalcio" name="data"><br>
                         <label for="orario">Orario prenotazione:</label>
                         <select class="orario" name="ora" required>
                             <option value="">Seleziona un orario</option>
@@ -298,7 +325,7 @@
                         <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
                         <div id="numPersoneWrapper">
                             <label for="numeroPersone">Numero di persone:</label>
-                            <input type="number" id="numeroPersone" name="numeroPersone" min="1" required><br>
+                            <input type="number" id="numeroPersone" name="numeroPersone" min="1"><br>
                         </div>
                         
                         <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
@@ -312,7 +339,7 @@
                 <div class="content">
                     <form method="post" action="php/prenotazione.php" name="formPrenotazione">
                         <label for="dataPaddle">Data:</label>
-                        <input type="date" id="dataPaddle" name="dataPaddle"><br>
+                        <input type="date" id="dataPaddle" name="data"><br>
                         <label for="orario">Orario prenotazione:</label>
                         <select class="orario" name="ora" required>
                             <option value="">Seleziona un orario</option>
@@ -330,7 +357,7 @@
                         <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
                         <div id="numPersoneWrapper">
                             <label for="numeroPersone">Numero di persone:</label>
-                            <input type="number" id="numeroPersone" name="numeroPersone" min="1" required><br>
+                            <input type="number" id="numeroPersone" name="numeroPersone" min="1"><br>
                         </div>
                         
                         <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
@@ -344,7 +371,7 @@
                 <div class="content">
                     <form method="post" action="php/prenotazione.php" name="formPrenotazione">
                         <label for="dataTennis">Data:</label>
-                        <input type="date" id="dataTennis" name="dataTennis"><br>
+                        <input type="date" id="dataTennis" name="data"><br>
                         <label for="orario">Orario prenotazione:</label>
                         <<select class="orario" name="ora" required>
                             <option value="">Seleziona un orario</option>
@@ -368,7 +395,7 @@
                         <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
                         <div id="numPersoneWrapper">
                             <label for="numeroPersone">Numero di persone:</label>
-                            <input type="number" id="numeroPersone" name="numeroPersone" min="1" required><br>
+                            <input type="number" id="numeroPersone" name="numeroPersone" min="1"><br>
                         </div>
                         
                         <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
@@ -382,15 +409,15 @@
                 <div class="content">
                     <form method="post" action="php/prenotazione.php" name="formPrenotazione">
                         <label for="dataBasket">Data:</label>
-                        <input type="date" id="dataBasket" name="dataBasket"><br>
+                        <input type="date" id="dataBasket" name="data"><br>
                         <label for="orario">Orario prenotazione:</label>
                         <select class="orario" name="ora" required>
                             <option value="">Seleziona un orario</option>
                         </select><br>
                         <label for="campo">Seleziona campo:</label><br>
                         <select id="campo" name="campo" required>
-                            <option value="campo_11">Basket_1</option>
-                            <option value="campo_12">Basket_2</option>
+                            <option value="basket_11">Campo_1</option>
+                            <option value="basket_12">Campo_2</option>
                         </select><br>
                         <label for="prenotazione">Tipo di prenotazione:</label><br>
                         <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>
@@ -399,7 +426,7 @@
                         <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
                         <div id="numPersoneWrapper">
                             <label for="numeroPersone">Numero di persone:</label>
-                            <input type="number" id="numeroPersone" name="numeroPersone" min="1" required><br>
+                            <input type="number" id="numeroPersone" name="numeroPersone" min="1"><br>
                         </div>
                         
                         <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
@@ -413,15 +440,11 @@
                 <div class="content">
                     <form method="post" action="php/prenotazione.php" name="formPrenotazione">
                         <label for="dataNuoto">Data:</label>
-                        <input type="date" id="dataNuoto" name="dataNuoto"><input type="checkbox" class="hidden" id="campo" name="campo" value="piscina_13" checked><br>
+                        <input type="date" id="dataNuoto" name="data"><input type="checkbox" class="hidden" id="campo" name="campo" value="piscina_13" checked><br>
                         <!-- se possibile mettiamo in elenco solo le fasce disponibili -->
                         <label for="orarioNuoto">Scegli una fascia oraria:</label>
-                        <select name="type" id="orarioNuoto"  required>
+                        <select class="orario"  name="ora" required>
                             <option value="">Seleziona orario</option>
-                            <option value="1">9:00 - 10:00</option>
-                            <option value="2">10:00 - 11:00</option>
-                            <option value="3">11:00 - 12:00</option>
-                            <option value="4">12:00 - 13:00</option>
                         </select><br>
                         <input type="submit" value="Prenota"> 
                         <input type="reset" value="Azzera i campi">
@@ -434,7 +457,7 @@
                 <div class="content">
                     <form method="post" action="php/prenotazione.php" name="formPrenotazione">
                         <label for="dataPalestra">Data:</label> 
-                        <input type="date" id="dataPalestra" name="dataPalestra"><input type="checkbox" class="hidden" id="campo" name="campo" value="palestra_14" checked><br>
+                        <input type="date" id="dataPalestra" name="data"><input type="checkbox" class="hidden" id="campo" name="campo" value="palestra_14" checked><br>
                         <!-- se possibile mettiamo in elenco solo le fasce disponibili -->
                         <label for="orarioPalestra">Scegli una fascia oraria:</label>
                         <select class="orario" name="ora" required>
@@ -489,7 +512,7 @@
                             var formattedHour = ('0' + hour).slice(-2);
                             hourSucc=hour+1;
                             var formattedHourSucc = ('0' + hourSucc).slice(-2);
-                            selectOrario.innerHTML += '<option value="' + formattedHour + ':00' + formattedHourSucc + ':00">' + formattedHour + ':00' + '-' + formattedHourSucc + ':00</option>';
+                            selectOrario.innerHTML += '<option value="' + formattedHour + ':00' +'-'+ formattedHourSucc + ':00">' + formattedHour + ':00' + '-' + formattedHourSucc + ':00</option>';
                         }
                     }
                 }
@@ -513,11 +536,5 @@
         });
     </script>
 
-    <script>
-        checkboxes=document.querySelectorAll('input[name="campo"]');
-        checkboxes.forEach(checkbox => {
-            checkbox.disabled=true;
-        })
-    </script>
 </body>
 </html>

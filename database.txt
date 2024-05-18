@@ -6,7 +6,7 @@ CREATE TYPE tipo_abbonamento_enum AS ENUM ('AM','AS','AT','AA');
 CREATE TYPE livello_abbonamento_enum AS ENUM ('single','double','gym','opengym','gold');
 CREATE TYPE privilegi_gold_enum AS ENUM ('Si','No');
 CREATE TYPE corso_enum AS ENUM ('Calcio','Basket','Tennis','Paddle','Nuoto','Palestra');
-CREATE TYPE tipo_enum AS ENUM ('Calcetto','Calciotto','Calcio','Paddle','Tennis','Basket');
+CREATE TYPE tipo_enum AS ENUM ('Calcetto','Paddle','Tennis','Basket','Piscina','Palestra');
 CREATE TYPE categoria_enum AS ENUM ('bambini','ragazzi');
 
 create table Messaggi (
@@ -31,10 +31,44 @@ create table Utente(
 	Telefono varchar(20) unique
 );
 
+--utenti inseriti tramite registrazione che è più comodo
+
 create table Istruttore (
 	ID SERIAL primary key,
-	Contratto BYTEA,
-	foreign key(ID) references Utente(ID) on delete cascade
+	Codice varchar(25) not null,
+	Nome varchar(25) not null,
+	Cognome varchar(25) not null,
+	Data_nascita date not null,
+	Telefono varchar(20) unique,
+	Email varchar(40) unique,
+	Password varchar(255) not null,
+	Foto_profilo BYTEA,
+	Status boolean default false,
+	Contratto BYTEA
+);
+
+INSERT INTO Istruttore (codice, nome, cognome, data_nascita, telefono, email, password) VALUES
+('m4rc0', 'Marco', 'Signorini', '1982-10-01', '3471258463', 'marco@signorini.com', 'marco'),
+('5t3f4n0', 'Stefano', 'Ponte', '1992-08-16', '3471044862', 'stefano@ponte.com', 'stefano'),
+('a1c3ssandra', 'Alessandra', 'Rossi', '1985-05-15', '3471112233', 'alessandra@rossi.com', 'alessandra'),
+('g14n1uc4', 'Gianluca', 'Verdi', '1979-12-23', '3471223344', 'gianluca@verdi.com', 'gianluca'),
+('f3d3r1c0', 'Federico', 'Bianchi', '1990-03-10', '3471334455', 'federico@bianchi.com', 'federico'),
+('v1tt0r14', 'Vittoria', 'Neri', '1988-07-19', '3471445566', 'vittoria@neri.com', 'vittoria'),
+('s4r4', 'Sara', 'Gialli', '1995-11-22', '3471556677', 'sara@gialli.com', 'sara'),
+('m4tt3o', 'Matteo', 'Blu', '1983-09-30', '3471667788', 'matteo@blu.com', 'matteo'),
+('l4ur4', 'Laura', 'Rossi', '1987-04-05', '3471778899', 'laura@rossi.com', 'laura'),
+('p4o10', 'Paolo', 'Ferrari', '1986-01-15', '3471889900', 'paolo@ferrari.com', 'paolo'),
+('v4l3ri4', 'Valeria', 'Moretti', '1991-03-21', '3471990011', 'valeria@moretti.com', 'valeria'),
+('r0b3rt0', 'Roberto', 'Santoro', '1980-06-10', '3472001122', 'roberto@santoro.com', 'roberto'),
+('g10v4n1', 'Giovanni', 'Russo', '1975-09-08', '3472112233', 'giovanni@russo.com', 'giovanni'),
+('f4b10', 'Fabio', 'Marini', '1994-12-17', '3472223344', 'fabio@marini.com', 'fabio');
+
+create table Evento (
+	ID SERIAL primary key,
+	titolo varchar(50) not null,
+	giorno varchar(25) not null,
+	orario_inizio time,
+	descrizione varchar(1000) not null 
 );
 
 create table Cliente (
@@ -57,9 +91,13 @@ create table Campo(
 create table Prenotazione(
 	Campo SERIAL,
 	Data date,
-	Ora time,
+	Sport varchar(255),
+	Ora_inizio time,
+	Ora_fine time,
 	Utente SERIAL not null,
-	primary key (Campo, Data, Ora),
+	num_persone int,
+	Completa boolean,
+	primary key (Campo, Data, Ora_inizio),
 	foreign key(Utente) references Utente(ID) on delete cascade,
 	foreign key(Campo) references Campo(ID) on delete cascade
 );
@@ -76,6 +114,8 @@ create table Insegna(
 	foreign key(Istruttore) references Istruttore(ID) on delete cascade,
 	foreign key(Corso) references Corso(Nome) on delete cascade
 );
+
+insert into insegna (istruttore,corso) values (1,'Tennis'),(1,'Calcio'),(2,'Palestra'),(3,'Paddle'),(4,'Calcio'),(5,'Tennis'),(6,'Paddle'),(7,'Palestra'),(8,'Tennis'),(9,'Tennis'),(10,'Palestra'),(11,'Nuoto'),(12,'Nuoto'),(13,'Basket'),(14,'Basket');
 
 create table Abbonamento(
 	Codice SERIAL primary key,
@@ -120,6 +160,17 @@ create table Orari (
     primary key(nome,categoria,giorno_settimana,ora_inizio,ora_fine)
 );
 
+-- Alter the sequence to start from 30 (così i primi 30 saranno gli istruttori e il resto saranno clienti)
+ALTER SEQUENCE Utente_ID_seq RESTART WITH 30;
+
+insert into evento (titolo,giorno,orario_inizio,descrizione) values 
+('Torneo di Tennis Amatoriale','21-06-2024','10:00','Un torneo aperto a tutti i soci del circolo, diviso in categorie per livello di abilità. Premi per i vincitori e gadget per tutti i partecipanti.'),
+('Corsa Campestre Annuale','6-06-2024','9:00','Una gara di corsa campestre aperta a tutte le età. Il percorso si snoderà attraverso i sentieri naturali intorno al circolo. Al termine della corsa verrà offerto un rinfresco a bordo piscina.'),
+('Torneo di Beach Volley','22-07-2024','16:00','Un torneo di beach volley che si svolgerà sui campi di sabbia del circolo. Squadre composte da 4 giocatori, aperto a tutti i soci. Musica e divertimento assicurati.'),
+('Marathon Fitness Day','10-06-2024','8:00','Una giornata intera dedicata al fitness con lezioni di aerobica, yoga, pilates e spinning. Accesso libero a tutti i soci e possibilità di partecipare a più sessioni durante il giorno.'),
+('Torneo di Calcetto Notturno','14-07-2024','20:00','Un torneo di calcetto che si svolgerà in notturna sui campi illuminati del circolo. Squadre di 5 giocatori, aperto a tutte le età. Premi per i vincitori e festa finale con musica dal vivo.'),
+('Gara di Nuoto Estiva','15-07-2024','14:00','Competizione di nuoto per diverse categorie di età e livello. Le gare includeranno diversi stili di nuoto. Premi per i vincitori e medaglie per tutti i partecipanti.');
+
 insert into Orari (nome, categoria,giorno_settimana,ora_inizio,ora_fine) values 
 ('Calcio','bambini','lunedi','16:00','17:00'),('Calcio','bambini','lunedi','17:00','18:00'),
 ('Calcio','bambini','mercoledi','16:00','17:00'),('Calcio','bambini','mercoledi','17:00','18:00'),
@@ -146,13 +197,16 @@ insert into Orari (nome, categoria,giorno_settimana,ora_inizio,ora_fine) values
 ('Paddle','ragazzi','venerdi','19:00','20:00'),
 
 ('Nuoto','bambini','lunedi','17:00','18:00'),('Nuoto','bambini','lunedi','18:00','19:00'),
-('Nuoto','bambini','mertedi','15:00','16:00'),('Nuoto','bambini','mertedi','16:00','17:00'),
+('Nuoto','bambini','mertedi','15:00','16:00'),('Nuoto','bambini','martedi','16:00','17:00'),
 ('Nuoto','bambini','venerdi','17:00','18:00'),('Nuoto','bambini','venerdi','18:00','19:00'),
 ('Nuoto','ragazzi','lunedi','18:00','19:00'),('Nuoto','ragazzi','lunedi','19:00','20:00'),
 ('Nuoto','ragazzi','mercoledi','18:00','19:00'),('Nuoto','ragazzi','mercoledi','19:00','20:00'),
 ('Nuoto','ragazzi','venerdi','18:00','19:00'),('Nuoto','ragazzi','venerdi','19:00','20:00');
 
 insert into corso (nome, prezzo_mensile) values ('Calcio', 50), ('Basket', 60), ('Tennis', 70), ('Paddle', 60), ('Palestra',45), ('Nuoto', 65);
+
+insert into campo (tipo) values ('Calcetto'), ('Calcetto'), ('Calcetto'), ('Paddle'),('Paddle'),('Paddle'),
+				('Tennis'),('Tennis'),('Tennis'),('Tennis'), ('Basket'),('Basket'), ('Piscina'), ('Palestra');
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 
 ----Per resettare il numero seriale (ID o Codice) usare:----

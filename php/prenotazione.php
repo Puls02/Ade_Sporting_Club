@@ -5,7 +5,7 @@
     $port='5432';
     $dbname='Ade_Sporting_Club';
     $user='postgres';
-    $password='Sporting77!';
+    $password='eleonora';
     
     $conn = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
     
@@ -18,33 +18,45 @@
     $ora=$_POST['ora'];
     $ora_inizio=explode("-",$ora)[0];
     $ora_fine=explode("-",$ora)[1];
-    // me li dividi poi in orario di inizio e orario di fine :)
     $campo=$_POST['campo'];
     $id_campo=explode("_",$campo)[1];
+    $sport=explode("_",$campo)[0];
     
     if(isset($_POST['prenotazione'])){
         $prenotazione=$_POST['prenotazione'];
         if($prenotazione=="interoCampo"){
             $completa=true;
+            $query = "INSERT INTO Prenotazione (campo,data,ora_inizio,ora_fine,utente,completa,sport) VALUES ('$id_campo','$data','$ora_inizio','$ora_fine','$id','true','$sport')";
+            $result = pg_query($conn, $query);
+        } else {
             if(explode("_",$campo)[0]=="calcetto"){
-                $numePersone=10;
+                $numPersone=$_POST['numeroPersone'];
             }
             if(explode("_",$campo)[0]=="paddle"){
-                $numePersone=4;
+                $numPersone=$_POST['numeroPersone'];
             }
             if(explode("_",$campo)[0]=="tennis"){
-                $numePersone=4;
+                $numPersone=$_POST['numeroPersone'];
             }
             if(explode("_",$campo)[0]=="basket"){
-                $numePersone=10;
+                $numPersone=$_POST['numeroPersone'];
             }
+            $query = "INSERT INTO Prenotazione (campo,data,ora_inizio,ora_fine,utente,completa,num_persone,sport) VALUES ('$id_campo','$data','$ora_inizio','$ora_fine','$id','false','$numPersone','$sport')";
+            $result = pg_query($conn, $query);
         }
     }
-    echo $id, $data, $ora_inizio, $ora_fine, $campo, $prenotazione;
-    /*
-    $query = "INSERT INTO Prenotazione (campo,data,ora,utente,completa,numpersone) VALUES ('$doc1','$doc2') RETURNING id";
-    $result = pg_query($conn, $query);
-    
-    */
 
+    if($sport=="piscina" || $sport=="palestra"){
+        $query = "INSERT INTO Prenotazione (campo,data,ora_inizio,ora_fine,utente,completa,sport) VALUES ('$id_campo','$data','$ora_inizio','$ora_fine','$id','true','$sport')";
+        $result = pg_query($conn, $query);
+    }
+    
+    if (!$result) {
+        //annulla la transazine se si verifica qualche errore
+        pg_query($conn, "ROLLBACK");
+        die("Errore nella registrazione Utente!" . pg_last_error($conn));
+    }
+    
+    header("Location: ../Prenota.php");
+    exit;
 ?>

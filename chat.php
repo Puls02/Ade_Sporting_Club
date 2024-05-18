@@ -12,7 +12,7 @@ if (!isset($_SESSION['id'])) {
     <section class="chat-area">
       <header>
         
-        <a href="login_registrazione/utenteNonGold.php" class="back-icon"><i class="fas fa-arrow-left"></i></a> <!-- va cambiato dinamico -->
+        <a href="#" class="back-icon" onclick="window.parent.postMessage('closeChat', '*')"><i class="fas fa-arrow-left"></i></a> <!-- va cambiato dinamico -->
         <?php
           $user_id = pg_escape_string($conn, $_GET['user_id']);
           $sql = pg_query($conn, "SELECT * FROM Utente WHERE id = '{$user_id}'");
@@ -34,7 +34,7 @@ if (!isset($_SESSION['id'])) {
                 echo "<img src='data:image/jpeg;base64," . base64_encode($foto_decodata) . "' alt='Foto Profilo' width='auto' height='200'><br>";
             } else {
                 // Se non c'è un'immagine di profilo, mostra un messaggio
-                echo '<img class="foto-utente" src="../immagini/photo-camera.png" alt="Immagine di profilo predefinita" />';
+                echo '<img src="immagini/photo-camera.png" alt="Immagine di profilo predefinita" width="auto" height="200">';
             }
         } 
         ?>         
@@ -47,10 +47,10 @@ if (!isset($_SESSION['id'])) {
       <div class="chat-box">
 
       </div>
-      <form action="#" class="typing-area">
-        <input type="text" class="incoming_id" name="incoming_id" value="<?php echo $user_id; ?>" > <!-- poi rimettici hidden -->
+      <form action="php/insert-chat.php" method="post"  class="typing-area">
+        <input type="text" class="incoming_id" name="incoming_id" value="<?php echo $user_id; ?>" hidden>
         <input type="text" name="message" class="input-field" placeholder="Scrivi un messaggio qui..." autocomplete="off">
-        <button><i class="fab fa-telegram-plane"></i></button>
+        <button type="submit"><i class="fab fa-telegram-plane"></i></button>
       </form>
     </section>
   </div>

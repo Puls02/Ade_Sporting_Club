@@ -18,6 +18,13 @@ body {
   gap: 10px;
   height: 100vh; /* Imposta l'altezza della griglia al 100% dell'altezza della finestra */
 }
+.grid_istruttore {
+  display: grid;
+  grid-template: 'a b c' 'e f d';
+  border-radius: 10px;
+  gap: 10px;
+  height: 100vh; /* Imposta l'altezza della griglia al 100% dell'altezza della finestra */
+}
 .user_profile {
   grid-area: a;
   background-color: white;
@@ -67,6 +74,8 @@ body {
     padding: 2%;
     margin: 2%;
     border: 4px solid #308ece;
+    height: 30vh;
+    overflow: auto;
 } 
 .eventi {
   grid-area: f;
@@ -77,6 +86,8 @@ body {
   padding: 2%;
   margin: 2%;
   border: 4px solid #308ece;
+  height: 30vh;
+  overflow: auto;
 } 
 h2 {
     color: #333;
@@ -270,11 +281,13 @@ h2 {
     color: #468669;
     padding-left: 10px;
   }
-  .users-list a .status-dot.offline{
+  .users-list a .status-dot-offline{
+    font-size: 12px;
     color: #ccc;
+    padding-left: 10px;
   }
 
-    /* Chat Area CSS Start */
+/* Chat Area CSS Start */
 .chat-area header{
   display: flex;
   align-items: center;
@@ -322,11 +335,14 @@ h2 {
 }
 .chat-box .outgoing{
   display: flex;
+  border: none;
+  background: none;
 }
 .chat-box .outgoing .details{
   margin-left: auto;
   max-width: calc(100% - 130px);
 }
+
 .outgoing .details p{
   background: #333;
   color: #fff;
@@ -335,10 +351,6 @@ h2 {
 .chat-box .incoming{
   display: flex;
   align-items: flex-end;
-}
-.chat-box .incoming img{
-  height: 35px;
-  width: 35px;
 }
 .chat-box .incoming .details{
   margin-right: auto;

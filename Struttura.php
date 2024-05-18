@@ -59,6 +59,11 @@
                     <a class="toolbar_link_Prenota" href="Prenota.php">Prenota</a>
                 </li>
             </ul>
+            <div class="hamburger_menu">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                    <path fill-rule="evenodd" d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
+                </svg>
+            </div>
             <div class="login_btn">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                     <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd" />
@@ -154,13 +159,13 @@
         <div class="Sezione_2">
             <div class="Services">
                 <div class="fisso" id="descrizione-fissa">
-                    <h2 id="titolo-servizio"></h2>
+                    <h1 id="titolo-servizio"></h1>
                     <img id="immagine-servizio" src="" alt="Immagine Servizio">
                     <p id="descrizione-servizio"></p>
                 </div>
 
                 <div class="service">
-                    <h2 id="bar-title"><i class="fas fa-coffee"></i> Bar</h2>
+                    <h1 id="bar-title"><i class="fas fa-coffee"></i> Bar</h1>
                     <p id="bar-desc">Godetevi una varietà di bevande e snack all'interno della nuova area; il luogo ideale per rilassarsi dopo una partita o per gustare un drink con gli amici. 
                         <br> 
                         Offriamo una selezione di cocktail, birre e vini nonchè di bevande proteiche e energizzanti.
@@ -170,7 +175,7 @@
                 </div>
             
                 <div class="service">
-                    <h2 id="pool-title"><i class="fas fa-swimmer"></i> Piscina</h2>
+                    <h1 id="pool-title"><i class="fas fa-swimmer"></i> Piscina</h1>
                     <p id="pool-desc">Rilassatevi o fate qualche vasca nella piscina, perfetta per rinfrescarsi durante le giornate calde estive. 
                         La zona è costantemente sorvegliata da personale qualificato per garantire la sicurezza di tutti.
                         <br><br> 
@@ -179,12 +184,12 @@
                 </div>
             
                 <div class="service">
-                    <h2 id="rec-title"><i class="fas fa-user"></i> Reception</h2>
+                    <h1 id="rec-title"><i class="fas fa-user"></i> Reception</h1>
                     <p id="rec-desc">Il nostro staff cordiale è a vostra disposizione per assistervi con qualsiasi richiesta o informazione sulle attività del circolo.</p>
                 </div>
             
                 <div class="service">
-                    <h2 id="rest-title"><i class="fas fa-utensils"></i> Ristorante</h2>
+                    <h1 id="rest-title"><i class="fas fa-utensils"></i> Ristorante</h1>
                     <p id="rest-desc">Assaporate piatti deliziosi preparati dai nostri chef nel ristorante del circolo. 
                         Il nostro ristorante offre una vasta selezione di piatti deliziosi, dai pasti leggeri alle pietanze gourmet, il tutto accompagnato da una varietà di bevande.
                         <br><br>
@@ -193,7 +198,9 @@
                         Cena: 19:00 - 00:00
                     </p>
                 </div>
-            
+                <div class="space"></div>
+                <hr size="1" color="black"> 
+                <div class="space"></div>
                 <!-- Galleria di Immagini: DA SCEGLIERE -->
                 <div class="gallery">
                     <img src="immagini/galleria/presentazione/piantina.jpg" alt="piantina">
@@ -203,7 +210,7 @@
                     <img src="immagini/galleria/presentazione/basket2.jpg" alt="basket">
                     <img src="immagini/galleria/presentazione/padel.png" alt="padel">
                     <img src="immagini/galleria/presentazione/padel2.jpg" alt="padel">
-                    <img src="immagini/galleria/presentazione/padel3.jpeg" alt="padel">
+                    <img src="immagini/galleria/presentazione/padel3.jpg" alt="padel">
                     <img src="immagini/galleria/presentazione/palestra.png" alt="palestra">
                     <img src="immagini/galleria/presentazione/tennis.jpg" alt="tennis">
                     <img src="immagini/galleria/presentazione/tennis2.jpg" alt="tennis">
@@ -212,10 +219,11 @@
         </div>
     </div>
 <!-- Footer section with contacts -->	
+<!--  
     <footer>
         <div class="map">
             <h3>Dove siamo</h3>
-            <!-- Embedding a Google Map -->
+
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.235657742299!2d12.57007927646197!3d41.952273060766345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f64619ddc961d%3A0x997b053d9ac9f023!2sSporting%20Club%20Panda!5e0!3m2!1sit!2sit!4v1714034933636!5m2!1sit!2sit" width="400" height="250" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 
@@ -224,10 +232,10 @@
             <p>Email: example@example.com</p>
             <p>Phone: +1234567890</p>
 
-            <!-- Copyright Information -->
+
             <p>&copy; 2024 Sample Website. All Rights Reserved.</p>
 
-            <!-- Social Media Links -->
+
             <div>
                 <a href="https://www.facebook.com">Facebook</a>
                 <a href="https://twitter.com">Twitter</a>
@@ -235,8 +243,8 @@
             </div>
         </div>
         <div class="ancora">
-            <a href="#beginning">torna su</a>		<!-- ancora per tornare all'inizio della pagina -->
+            <a href="#beginning">torna su</a>		
         </div>
-    </footer>
+    </footer> -->
 </body>
 </html>

@@ -23,6 +23,11 @@ hr
 {
   z-index: 2;
 }
+.space
+{
+  width: 100%;
+  height: 50px;
+}
 /* page description section */
 .Sezione_1
 {
@@ -78,7 +83,7 @@ hr
   transition: height 0.3s;
   height: 2em; /* Altezza iniziale pari all'altezza del titolo */
 }
-.service h2 {
+.service h1 {
   color: #333;
   margin: 0;
   border-bottom: 2px solid rgb(0, 0, 0);
@@ -103,6 +108,15 @@ hr
   display: none;
   padding: 2%;
 }
+/* Stile per l'immagine */
+#descrizione-fissa img 
+{
+  float: left; /* Posiziona l'immagine a sinistra */
+  margin-right: 10px; /* Aggiunge spazio a destra dell'immagine */
+  width: 200px; /* Larghezza dell'immagine */
+  height: auto; /* Altezza automatica per mantenere le proporzioni */
+}
+
 /* Stile per la galleria */
 .gallery 
 {
@@ -129,14 +143,137 @@ hr
   filter: brightness(100%);
   filter: contrast(120%);
 }
+/*-------------------------------------------------*/
 
-/* Stile per l'immagine */
-#descrizione-fissa img 
+
+/*responsive css for struct*/
+@media (max-width: 1536px)
 {
-  float: left; /* Posiziona l'immagine a sinistra */
-  margin-right: 10px; /* Aggiunge spazio a destra dell'immagine */
-  width: 200px; /* Larghezza dell'immagine */
-  height: auto; /* Altezza automatica per mantenere le proporzioni */
+  /*responsive css for general part*/
+  h1
+  {
+    font-size: var(--size-3xl);
+  }
+  p
+  {
+    font-size: var(--size-lg);
+  }
+  /*responsive css for Section1*/
+  .presentation
+  { 
+    right: 38%;
+  }
+}
+
+@media (max-width: 1280px)
+{
+  /*responsive css for general part*/
+  h1
+  {
+    font-size: var(--size-2xl);
+  }
+  p
+  {
+    font-size: var(--size-base);
+  }
+  /*responsive css for Section1*/
+  .presentation
+  { 
+    right: 35%;
+  }
+}
+
+@media (max-width: 1024px)
+{
+  /*responsive css for general part*/
+  h1
+  {
+    font-size: var(--size-xl);
+  }
+  p
+  {
+    font-size: var(--size-sm);
+  }
+  /*responsive css for Section1*/
+  .presentation
+  { 
+    right: 30%;
+  }
+}
+
+@media (max-width: 930px)
+{
+  /*responsive css for Section1*/
+  .Sezione_1
+  {
+    height: 600px;
+  }
+  .presentation
+  { 
+    top: 15%; 
+    right: 25%;
+  }
+
+}
+
+@media (max-width: 768px)
+{
+  /*responsive css for general part*/
+  h1
+  {
+    font-size: var(--size-lg);
+  }
+  p
+  {
+    font-size: var(--size-xs);
+  }
+  /*responsive css for Section1*/
+  .presentation
+  { 
+    top: 10%;
+    right: 20%;
+  }
+}
+
+@media (max-width: 640px)
+{
+  /*responsive css for Section1*/
+  .Sezione_1
+  {
+    height: 550px;
+  }
+  .presentation
+  { 
+    right: 10%;
+  }
+  /*responsive css for img menu*/
+  #descrizione-fissa img 
+  {
+    display: none;
+  }
+}
+
+@media (max-width: 475px) 
+{
+  h1
+  {
+    font-size: var(--size-lg);
+  }
+  p
+  {
+    font-size: var(--size-xs);
+  }
+  /*responsive css for Section1*/
+  .presentation
+  { 
+    top: 10%;
+    right: 10%;
+  }
+  /*responsive css for img menu*/
+  #descrizione-fissa img 
+  {
+    display: none;
+  }
 }
 
 /*debug*/
