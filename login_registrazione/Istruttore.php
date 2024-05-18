@@ -144,7 +144,7 @@
                 <!-- Contenuto degli eventi verrà caricato qui -->
                 <?php
                 // Connect to the database
-                $dbconn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=eleonora") or die('Could not connect: ' . pg_last_error());
+                $dbconn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=Sporting77!") or die('Could not connect: ' . pg_last_error());
 
                     // CAMBIARE E INSERIRE I CORSI CHE L'ISTRUTTORE PUO' GESTIRE
 
@@ -153,7 +153,7 @@
                 
 
                 // Execute the query
-                $result = pg_query($query) or die('Query failed: ' . pg_last_error());
+                $result = pg_query($dbconn,$query) or die('Query failed: ' . pg_last_error());
 
                 // Fetch all the result rows as an associative array
                 $events = pg_fetch_all($result);
@@ -203,13 +203,13 @@
                 <!-- Contenuto degli eventi verrà caricato qui -->
                 <?php
                 // Connect to the database
-                $dbconn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=eleonora") or die('Could not connect: ' . pg_last_error());
+                $dbconn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=Sporting77!") or die('Could not connect: ' . pg_last_error());
 
                 // Define the SQL query
                 $query = 'SELECT * FROM evento';
 
                 // Execute the query
-                $result = pg_query($query) or die('Query failed: ' . pg_last_error());
+                $result = pg_query($dbconn,$query) or die('Query failed: ' . pg_last_error());
 
                 // Fetch all the result rows as an associative array
                 $events = pg_fetch_all($result);

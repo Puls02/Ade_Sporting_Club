@@ -15,6 +15,7 @@
     <title>Ade Sporting Club</title>
 
     <!--Link to style folder-->
+    <link rel="StyleSheet" href="Style/modal.css">
     <link rel="StyleSheet" href="Style/utility.css">
     <link rel="StyleSheet" href="Style/navbar.css">
     <link rel="StyleSheet" href="Style/login.css">
@@ -141,19 +142,38 @@
 
     <div class="zona">
     <table>
+        <?php 
+            //Costruzione dell'array per i giorni della settimana "GiornoSettimana - data"
+            date_default_timezone_set('Europe/Rome');
+                
+            // Ottieni la data del lunedì di questa settimana
+            $mondayOfThisWeek = date('Y-m-d', strtotime('monday this week'));
+
+            // Inizializza un array per memorizzare i giorni della settimana corrente
+            $daysOfTheWeek = array();
+
+            // Cicla per ottenere tutti i giorni della settimana corrente
+            for ($i = 0; $i < 7; $i++) {
+                // Aggiungi i giorni alla data del lunedì
+                $day = date('Y-m-d', strtotime($mondayOfThisWeek . " +$i days"));
+                // Aggiungi il giorno all'array
+
+                $daysOfTheWeek[] = $day;
+            }
+        ?>
         <tr>
             <th class="time-column">Ora\Giorno</th>
-            <th>Lunedì</th>
-            <th>Martedì</th>
-            <th>Mercoledì</th>
-            <th>Giovedì</th>
-            <th>Venerdì</th>
-            <th>Sabato</th>
-            <th>Domenica</th>
+            <th>Lunedì <?php echo $daysOfTheWeek[0]?></th>
+            <th>Martedì <?php echo $daysOfTheWeek[1]?></th>
+            <th>Mercoledì <?php echo $daysOfTheWeek[2]?></th>
+            <th>Giovedì <?php echo $daysOfTheWeek[3]?></th>
+            <th>Venerdì <?php echo $daysOfTheWeek[4]?></th>
+            <th>Sabato <?php echo $daysOfTheWeek[5]?></th>
+            <th>Domenica <?php echo $daysOfTheWeek[6]?></th>
         </tr>
         <?php
             // Connessione al database PostgreSQL
-            $conn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=eleonora");
+            $conn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=Sporting77!");
             if (!$conn) {
                 echo "Errore nella connessione al database.";
                 exit;
@@ -183,9 +203,10 @@
 
                 // Riempimento dell'array con i dati delle prenotazioni
                 while ($row = pg_fetch_assoc($result)) {
-                    $id_campo = $row["campo"];
+        
+                    $id_prenotazione = $row["id_prenotazione"];
                     $data = $row["data"];
-
+                    $campo =$row["campo"];
                     // devo prendere il giorno della settimana
                     $giornoSettimana=date('l', strtotime($data));
                     $giorno = "$giornoSettimana - $data";
@@ -204,24 +225,9 @@
                     $orario = "$inizio - $fine";
                     
                     // Aggiunta della prenotazione all'array associativo
-                    $prenotazioni_per_orario[$orario][$giorno][] = array("id" => $id_campo, "sport" => $sport, "completa" => $completa, "persone" => $num_persone);
+                    $prenotazioni_per_orario[$orario][$giorno][] = array("id" => $id_prenotazione,"numero_campo" => $campo, "sport" => $sport, "completa" => $completa, "persone" => $num_persone);
                 }
-                //Costruzione dell'array per i giorni della settimana "GiornoSettimana - data"
-                date_default_timezone_set('Europe/Rome');
                 
-                // Ottieni la data del lunedì di questa settimana
-                $mondayOfThisWeek = date('Y-m-d', strtotime('monday this week'));
-
-                // Inizializza un array per memorizzare i giorni della settimana corrente
-                $daysOfTheWeek = array();
-
-                // Cicla per ottenere tutti i giorni della settimana corrente
-                for ($i = 0; $i < 7; $i++) {
-                    // Aggiungi i giorni alla data del lunedì
-                    $day = date('Y-m-d', strtotime($mondayOfThisWeek . " +$i days"));
-                    // Aggiungi il giorno all'array
-                    $daysOfTheWeek[] = $day;
-                }
                 
                 // Creazione della tabella HTML
                 foreach ($prenotazioni_per_orario as $orario => $prenotazioni_per_giorno) {
@@ -237,6 +243,7 @@
                             foreach ($prenotazioni_per_giorno[$giorno] as $prenotazione) {
                                 $id = $prenotazione["id"];
                                 $sport = $prenotazione["sport"];
+                                $campo= $prenotazione["numero_campo"];
                                 $completa = $prenotazione["completa"];
                                 $persone = $prenotazione["persone"];
 
@@ -261,24 +268,33 @@
                                     case "Palestra":
                                         $icona ="fa-solid fa-dumbbell";
                                         break;
+                                    case "Piscina":
+                                        $icona ="fa-solid fa-person-swimming";
+                                        break;
                                     default:
                                         $icona = "fas fa-question"; // Icona generica
                                         break;
                                 }
 
-                                // Determina il colore dello sfondo in base alla prenotazione completa o incompleta
-                                $sfondo = $completa == 't' ? "#99d98c" : "#ffc300"; // Sfondo verde se completa, rosso altrimenti
-
                                 // Costruzione del testo del tooltip
-                                $tooltip = "ID: $id\nSport: $sport\n";
+                                $tooltip = "ID: $id\nCampo: $campo\nSport: $sport\n";
                                 if ($completa == 't') {
-                                    $tooltip .= "Campo: 1\nStato: Completa";
+                                    $tooltip .= "Stato: Completa";
                                 } else {
-                                    $tooltip .= "Campo: 1\nNumero Persone: $persone";
+                                    $tooltip .= "Numero Persone: $persone";
                                 }
 
-                                // Aggiungi l'icona con il tooltip
-                                echo "<td style='background-color: $sfondo' title='$tooltip'><i class='$icona'></i></td>";              
+                                if($completa == 't'){
+                                    $sfondo = "#99d98c";//cella verde
+                                    // Aggiungi l'icona con il tooltip
+                                    echo "<td style='background-color: $sfondo' title='$tooltip'><i class='$icona'></i></td>";
+                                }else{
+                                    $sfondo = "#ffc300";//cella gialla
+                                    // Aggiungi l'icona con il tooltip
+                                    echo "<td style='background-color: $sfondo' title='$tooltip' onclick='finestraDiAggiunta($id)'><i class='$icona'></i></td>";
+                                }
+
+                                              
                             }
                             echo "</table>";
                         }
@@ -292,6 +308,17 @@
             }
         ?>
         </table>
+
+        <!-- Finestra Modale -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="modalContent">
+                    <!-- Qui verranno inseriti dinamicamente i dettagli della prenotazione -->
+                </div>
+                <button id="actionButton">Aggiungimi alla prenotazione</button>
+            </div>
+        </div>
     </div>
 
     <div class="zona">
@@ -307,7 +334,7 @@
                 <div class="content">
                     <form action="php/prenotazione.php" method="post" name="formPrenotazione">
                         <label for="dataCalcio">Data:</label>
-                        <input type="date" id="dataCalcio" name="data"><br>
+                        <input type="date" id="dataCalcio" name="data" required><br>
                         <label for="orario">Orario prenotazione:</label>
                         <select class="orario" name="ora" required>
                             <option value="">Seleziona un orario</option>
@@ -325,7 +352,7 @@
                         <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
                         <div id="numPersoneWrapper">
                             <label for="numeroPersone">Numero di persone:</label>
-                            <input type="number" id="numeroPersone" name="numeroPersone" min="1"><br>
+                            <input type="number" id="numeroPersone" name="numeroPersone" min="1" max="9"><br>
                         </div>
                         
                         <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
@@ -339,7 +366,7 @@
                 <div class="content">
                     <form method="post" action="php/prenotazione.php" name="formPrenotazione">
                         <label for="dataPaddle">Data:</label>
-                        <input type="date" id="dataPaddle" name="data"><br>
+                        <input type="date" id="dataPaddle" name="data" required><br>
                         <label for="orario">Orario prenotazione:</label>
                         <select class="orario" name="ora" required>
                             <option value="">Seleziona un orario</option>
@@ -357,7 +384,7 @@
                         <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
                         <div id="numPersoneWrapper">
                             <label for="numeroPersone">Numero di persone:</label>
-                            <input type="number" id="numeroPersone" name="numeroPersone" min="1"><br>
+                            <input type="number" id="numeroPersone" name="numeroPersone" min="1" max="3"><br>
                         </div>
                         
                         <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
@@ -371,7 +398,7 @@
                 <div class="content">
                     <form method="post" action="php/prenotazione.php" name="formPrenotazione">
                         <label for="dataTennis">Data:</label>
-                        <input type="date" id="dataTennis" name="data"><br>
+                        <input type="date" id="dataTennis" name="data" required><br>
                         <label for="orario">Orario prenotazione:</label>
                         <<select class="orario" name="ora" required>
                             <option value="">Seleziona un orario</option>
@@ -395,7 +422,7 @@
                         <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
                         <div id="numPersoneWrapper">
                             <label for="numeroPersone">Numero di persone:</label>
-                            <input type="number" id="numeroPersone" name="numeroPersone" min="1"><br>
+                            <input type="number" id="numeroPersone" name="numeroPersone" min="1" max="4"><br>
                         </div>
                         
                         <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
@@ -409,7 +436,7 @@
                 <div class="content">
                     <form method="post" action="php/prenotazione.php" name="formPrenotazione">
                         <label for="dataBasket">Data:</label>
-                        <input type="date" id="dataBasket" name="data"><br>
+                        <input type="date" id="dataBasket" name="data" required><br>
                         <label for="orario">Orario prenotazione:</label>
                         <select class="orario" name="ora" required>
                             <option value="">Seleziona un orario</option>
@@ -426,7 +453,7 @@
                         <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
                         <div id="numPersoneWrapper">
                             <label for="numeroPersone">Numero di persone:</label>
-                            <input type="number" id="numeroPersone" name="numeroPersone" min="1"><br>
+                            <input type="number" id="numeroPersone" name="numeroPersone" min="1" max="9"><br>
                         </div>
                         
                         <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
@@ -440,7 +467,7 @@
                 <div class="content">
                     <form method="post" action="php/prenotazione.php" name="formPrenotazione">
                         <label for="dataNuoto">Data:</label>
-                        <input type="date" id="dataNuoto" name="data"><input type="checkbox" class="hidden" id="campo" name="campo" value="piscina_13" checked><br>
+                        <input type="date" id="dataNuoto" name="data" required><input type="checkbox" class="hidden" id="campo" name="campo" value="piscina_13" checked><br>
                         <!-- se possibile mettiamo in elenco solo le fasce disponibili -->
                         <label for="orarioNuoto">Scegli una fascia oraria:</label>
                         <select class="orario"  name="ora" required>
@@ -457,7 +484,7 @@
                 <div class="content">
                     <form method="post" action="php/prenotazione.php" name="formPrenotazione">
                         <label for="dataPalestra">Data:</label> 
-                        <input type="date" id="dataPalestra" name="data"><input type="checkbox" class="hidden" id="campo" name="campo" value="palestra_14" checked><br>
+                        <input type="date" id="dataPalestra" name="data" required><input type="checkbox" class="hidden" id="campo" name="campo" value="palestra_14" checked><br>
                         <!-- se possibile mettiamo in elenco solo le fasce disponibili -->
                         <label for="orarioPalestra">Scegli una fascia oraria:</label>
                         <select class="orario" name="ora" required>
@@ -535,6 +562,57 @@
             inputData.min = minDate;
         });
     </script>
+
+    <script>
+        // Funzione per mostrare la finestra modale
+        function finestraDiAggiunta(id) {
+        // Mostra la finestra modale
+        var modal = document.getElementById("myModal");
+        modal.style.display = "block";
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "php/modalCreation.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                var modalContent = document.getElementById("modalContent");
+                modalContent.innerHTML = `
+                    <p>Dettagli della prenotazione:</p>
+                    <p>ID della prenotazione: ${response.id}</p>
+                    <p>Sport: ${response.sport}</p>
+                    <p>Id del campo: ${response.campo}</p>
+                    <p>Numero di persone: ${response.num_persone}</p>
+                `;
+            }
+        };
+    xhr.send("id=" + id); // Invia l'ID della prenotazione come parametro
+
+    // Azione per il pulsante
+    var button = document.getElementById("actionButton");
+    button.onclick = function() {
+        alert("Ti sei aggiunto con successo alla partita");
+        modal.style.display = "none";
+    };
+}
+
+        // Chiudi la finestra modale quando l'utente clicca sulla 'x'
+        var span = document.getElementsByClassName("close")[0];
+        span.onclick = function() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+
+        // Chiudi la finestra modale quando l'utente clicca fuori dalla finestra
+        window.onclick = function(event) {
+            var modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+    
 
 </body>
 </html>

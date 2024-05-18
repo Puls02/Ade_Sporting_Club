@@ -5,7 +5,7 @@
     $port='5432';
     $dbname='Ade_Sporting_Club';
     $user='postgres';
-    $password='eleonora';
+    $password='Sporting77!';
     
     $conn = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
     
@@ -26,7 +26,7 @@
         $prenotazione=$_POST['prenotazione'];
         if($prenotazione=="interoCampo"){
             $completa=true;
-            $query = "INSERT INTO Prenotazione (campo,data,ora_inizio,ora_fine,utente,completa,sport) VALUES ('$id_campo','$data','$ora_inizio','$ora_fine','$id','true','$sport')";
+            $query = "INSERT INTO Prenotazione (campo,data,ora_inizio,ora_fine,utente,completa,sport, owner) VALUES ('$id_campo','$data','$ora_inizio','$ora_fine','$id','true','$sport','true')";
             $result = pg_query($conn, $query);
         } else {
             if(explode("_",$campo)[0]=="calcetto"){
@@ -41,13 +41,13 @@
             if(explode("_",$campo)[0]=="basket"){
                 $numPersone=$_POST['numeroPersone'];
             }
-            $query = "INSERT INTO Prenotazione (campo,data,ora_inizio,ora_fine,utente,completa,num_persone,sport) VALUES ('$id_campo','$data','$ora_inizio','$ora_fine','$id','false','$numPersone','$sport')";
+            $query = "INSERT INTO Prenotazione (campo,data,ora_inizio,ora_fine,utente,completa,num_persone,sport, owner) VALUES ('$id_campo','$data','$ora_inizio','$ora_fine','$id','false','$numPersone','$sport','true')";
             $result = pg_query($conn, $query);
         }
     }
 
     if($sport=="piscina" || $sport=="palestra"){
-        $query = "INSERT INTO Prenotazione (campo,data,ora_inizio,ora_fine,utente,completa,sport) VALUES ('$id_campo','$data','$ora_inizio','$ora_fine','$id','true','$sport')";
+        $query = "INSERT INTO Prenotazione (campo,data,ora_inizio,ora_fine,utente,completa,sport,owner) VALUES ('$id_campo','$data','$ora_inizio','$ora_fine','$id','true','$sport','true')";
         $result = pg_query($conn, $query);
     }
     

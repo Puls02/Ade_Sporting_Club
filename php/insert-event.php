@@ -1,6 +1,6 @@
 <?php
 // Connect to the database
-$dbconn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=eleonora")
+$dbconn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=Sporting77!")
     or die('Could not connect: ' . pg_last_error());
 
 // Get the form data
@@ -14,7 +14,7 @@ $descrizione = pg_escape_string($_POST['descrizione']);
 $query = "INSERT INTO evento (titolo, giorno, orario_inizio, descrizione) VALUES ('$titolo', '$giorno', '$orario_inizio', '$descrizione')";
 
 // Execute the query
-$result = pg_query($query) or die('Query failed: ' . pg_last_error());
+$result = pg_query($dbconn,$query) or die('Query failed: ' . pg_last_error());
 
 // Redirect back to the original page or display a success message
 header('Location: ../login_registrazione/Istruttore.php');
