@@ -6,7 +6,7 @@
     $searchTerm = pg_escape_string($conn, $_POST['searchTerm']);
     $output = "";
 
-    if ($outgoing_id <= 30) {
+    if ($outgoing_id < 30) {
         // Execute the first query if id is less than or equal to 30
         $sql = "SELECT * FROM Istruttore WHERE NOT id = '{$outgoing_id}' AND (nome ILIKE '%{$searchTerm}%' OR cognome ILIKE '%{$searchTerm}%') ";
     } else {

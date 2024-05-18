@@ -15,7 +15,16 @@ if (!isset($_SESSION['id'])) {
         <a href="#" class="back-icon" onclick="window.parent.postMessage('closeChat', '*')"><i class="fas fa-arrow-left"></i></a> <!-- va cambiato dinamico -->
         <?php
           $user_id = pg_escape_string($conn, $_GET['user_id']);
-          $sql = pg_query($conn, "SELECT * FROM Utente WHERE id = '{$user_id}'");
+
+          if ($user_id <= 30) {
+            // Execute the first query if id is less than or equal to 30
+            $query = "SELECT * FROM Istruttore WHERE id = '{$user_id}'";
+          } else {
+              // Execute the second query if id is greater than 30
+            $query = "SELECT * FROM Utente WHERE id = '{$user_id}'";
+          }
+
+          $sql = pg_query($conn, $query);
 
           if (pg_num_rows($sql) > 0) {
             $row = pg_fetch_assoc($sql);

@@ -162,6 +162,7 @@ create table Orari (
 
 -- Alter the sequence to start from 30 (così i primi 30 saranno gli istruttori e il resto saranno clienti)
 ALTER SEQUENCE Utente_ID_seq RESTART WITH 30;
+ALTER SEQUENCE Cliente_ID_seq RESTART WITH 30;
 
 insert into evento (titolo,giorno,orario_inizio,descrizione) values 
 ('Torneo di Tennis Amatoriale','21-06-2024','10:00','Un torneo aperto a tutti i soci del circolo, diviso in categorie per livello di abilità. Premi per i vincitori e gadget per tutti i partecipanti.'),
