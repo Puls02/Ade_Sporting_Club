@@ -94,14 +94,13 @@
         
     </header>  
 
-    <div class="grid_gold">
+    <div class="grid_istruttore">
 <!-- USER PROFILE -->
         <div class="user_profile">
                 <!-- caricamento foto profilo -->
                 <div class="section">
                     <?php
-                        $result = pg_query($conn, "SELECT * FROM Utente WHERE id = '{$_SESSION['id']}'");
-                        $result2 = pg_query($conn, "SELECT * FROM Abbonamento a join Sottoscrizione s on s.Abbonamento = a.codice WHERE s.cliente = '{$_SESSION['id']}'");
+                        $result = pg_query($conn, "SELECT * FROM Istruttore WHERE id = '{$_SESSION['id']}'");
 
                         if (pg_num_rows($result) > 0) {
                             $row = pg_fetch_assoc($result);
@@ -121,38 +120,7 @@
                                 echo "<label>Inserisci un'immagine</label>";
                             }
                         } 
-                        if (pg_num_rows($result2) > 0) {
-                            $row2 = pg_fetch_assoc($result2);
-                            $data_sottoscrizione_intera=explode(" ",$row2['data_sottoscrizione']);
-                            $data_sottoscrizione= $data_sottoscrizione_intera[0];
-                            $tipo_abbonamento=$row2['tipo'];
-
-                            // Assume che $row2['data_sottoscrizione'] contenga la data di inizio dell'abbonamento nel formato "YYYY-MM-DD"
-                            $data_inizio = new DateTime($row2['data_sottoscrizione']);
-                            // Determina la durata dell'abbonamento in base al tipo
-                            switch ($tipo_abbonamento) {
-                                case 'AM':
-                                    $durata_abbonamento = new DateInterval('P1M'); // Periodo di 1 mese
-                                    break;
-                                case 'AT':
-                                    $durata_abbonamento = new DateInterval('P3M'); // Periodo di 3 mesi
-                                    break;
-                                case 'AS':
-                                    $durata_abbonamento = new DateInterval('P6M'); // Periodo di 6 mesi
-                                    break;
-                                case 'AA':
-                                    $durata_abbonamento = new DateInterval('P1Y'); // Periodo di 1 anno
-                                    break;
-                                default:
-                                    // Gestione dell'errore o comportamento predefinito
-                                    break;
-                            }
-
-                            // Calcola la data di fine dell'abbonamento aggiungendo la durata al data di inizio
-                            $data_fine = $data_inizio->add($durata_abbonamento);
-                            // per visualizzarla correttamente va riconvertita nel giusto formato
-                            $data_fine_abbonamento = $data_fine->format('Y-m-d');
-                        } 
+                         
                     ?>
                     <form action="../php/caricaImmagine.php" method="post" name="caricamentoFoto" enctype="multipart/form-data">
                         <input type="file" id="fotoprof" name="fotoprof" accept=".png, .jpeg"><br>
@@ -169,23 +137,10 @@
                     <p><strong>E-mail:</strong> <?php echo $_SESSION['mail']; ?></p>
                     <p><strong>Numero di telefono:</strong> <?php echo $_SESSION['phone']; ?></p>
                 </div>
-                
-                <div class="section">
-                    <h2>Dettagli abbonamento</h2>
-                    <p><strong>Livello di abbonamento:</strong> <?php echo $_SESSION['livello']; ?></p>
-                    <p><strong>Data sottoscrizione abbonamento:</strong> <?php echo $data_sottoscrizione; ?></p>
-                    <p><strong>Data fine abbonamento:</strong><?php echo $data_fine_abbonamento ?></p>
-                    <div class="subscription-progress">
-                        <h4>stato avanzamento:</h4>
-                        <div class="progress-bar">
-                            <div class="progress-indicator"></div>
-                        </div>
-                    </div>
-            </div>
         </div>
 <!-- PER I SOCI GOLD -->
         <div class="informazioni">
-            <div id="event-container" class="grid-view">
+            <div id="course-container" class="grid-view">
                 <!-- Contenuto degli eventi verrà caricato qui -->
                 <?php
                 // Connect to the database
@@ -194,7 +149,8 @@
                     // CAMBIARE E INSERIRE I CORSI CHE L'ISTRUTTORE PUO' GESTIRE
 
                 // Define the SQL query
-                $query = 'SELECT * FROM evento';
+                $query = "SELECT ist.nome,ins.corso,o.categoria,o.giorno_settimana,o.ora_inizio,o.ora_fine FROM (istruttore ist join insegna ins on ins.istruttore = ist.id) join orari o on o.nome = ins.corso where ist.id = {$_SESSION['id']}";
+                
 
                 // Execute the query
                 $result = pg_query($query) or die('Query failed: ' . pg_last_error());
@@ -202,19 +158,45 @@
                 // Fetch all the result rows as an associative array
                 $events = pg_fetch_all($result);
 
-                // Mostra gli eventi
+                // Create an associative array to group the events
+                $groupedEvents = [];
+
+                // Group the events by corso and categoria
                 foreach ($events as $event) {
+                    $key = $event['corso'] . '-' . $event['categoria'];
+
+                    if (!isset($groupedEvents[$key])) {
+                        $groupedEvents[$key] = [
+                            'corso' => $event['corso'],
+                            'categoria' => $event['categoria'],
+                            'times' => []
+                        ];
+                    }
+
+                    $groupedEvents[$key]['times'][] = [
+                        'giorno_settimana' => $event['giorno_settimana'],
+                        'ora_inizio' => $event['ora_inizio'],
+                        'ora_fine' => $event['ora_fine']
+                    ];
+                }
+
+                // Display the grouped events
+                foreach ($groupedEvents as $event) {
                     echo '<div class="event">';
-                    echo '<h2>' . $event['titolo'] . '</h2>';
-                    echo '<p>Data: ' . $event['giorno'] . '</p>';
-                    echo '<p>Orario: ' . $event['orario_inizio'] . '</p>';
-                    echo '<p>' . $event['descrizione'] . '</p>';
+                    echo '<h2>' . $event['corso'] . '</h2>';
+                    echo '<p>Categoria: ' . $event['categoria'] . '</p>';
+
+                    foreach ($event['times'] as $time) {
+                        echo '<p>Data: ' . $time['giorno_settimana'] . '</p>';
+                        echo '<p>Orario: ' . $time['ora_inizio'] . ' - ' . $time['ora_fine'] . ' </p>';
+                    }
+
                     echo '</div>';
                 }
                 ?>
             </div>
 
-            <button id="toggle-view-btn" onclick="toggleView()">Visualizzazione: Griglia</button>
+            <button id="toggle-view-btn-corsi" onclick="toggleViewCorsi()">Visualizzazione: Griglia</button>
         </div>
         <div class="eventi">
             <div id="event-container" class="grid-view">
@@ -244,7 +226,7 @@
                 ?>
             </div>
 
-            <button id="toggle-view-btn" onclick="toggleView()">Visualizzazione: Griglia</button>
+            <button id="toggle-view-btn-eventi" onclick="toggleViewEventi()">Visualizzazione: Griglia</button>
 
             <!-- Button to open the new event form -->
     <button id="new-event-btn" onclick="document.getElementById('new-event-form').style.display='block'">Nuovo Evento</button>
@@ -324,21 +306,5 @@
         </div>
         
     </div>
-
-    <script>
-        /* BARRA DI PROGRESSO */
-        var startDate = new Date("<?php echo $data_sottoscrizione; ?>");
-        var endDate = new Date("<?php echo $data_fine_abbonamento; ?>");
-
-        function updateProgressBar(startDate, endDate) {
-            var cDate = new Date();
-            var progress = (cDate - startDate) / (endDate - startDate) * 100;
-
-            var progressBar = document.querySelector('.progress-indicator');
-            progressBar.style.width = progress + '%';
-        }
-
-        updateProgressBar(startDate, endDate);
-    </script>
 </body>
 </html>

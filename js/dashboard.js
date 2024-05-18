@@ -138,9 +138,25 @@ if (currentDayElement) {
     currentDayElement.click();
 }
 
-function toggleView() {
+/* PER CAMBIARE VISUALIZZAZIONE */
+function toggleViewEventi() {
     var eventContainer = document.getElementById('event-container');
-    var toggleButton = document.getElementById('toggle-view-btn');
+    var toggleButton = document.getElementById('toggle-view-btn-eventi');
+
+    // Toggle tra griglia ed elenco
+    if (eventContainer.classList.contains('grid-view')) {
+        eventContainer.classList.remove('grid-view');
+        eventContainer.classList.add('list-view');
+        toggleButton.textContent = 'Visualizzazione: Elenco';
+    } else {
+        eventContainer.classList.remove('list-view');
+        eventContainer.classList.add('grid-view');
+        toggleButton.textContent = 'Visualizzazione: Griglia';
+    }
+}
+function toggleViewCorsi() {
+    var eventContainer = document.getElementById('course-container');
+    var toggleButton = document.getElementById('toggle-view-btn-corsi');
 
     // Toggle tra griglia ed elenco
     if (eventContainer.classList.contains('grid-view')) {
