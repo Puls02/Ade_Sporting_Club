@@ -272,19 +272,28 @@
     </div>
 
     <script>
-        /* BARRA DI PROGRESSO */
-        var startDate = new Date("<?php echo $data_sottoscrizione; ?>");
-        var endDate = new Date("<?php echo $data_fine_abbonamento; ?>");
+    function updateProgressBar(startDate, endDate) {
+        var currentDate = new Date();
+        var start = new Date(startDate);
+        var end = new Date(endDate);
 
-        function updateProgressBar(startDate, endDate) {
-            var cDate = new Date();
-            var progress = (cDate - startDate) / (endDate - startDate) * 100;
+        // Stampa le variabili nella console del browser per il debug
+    console.log('Data sottoscrizione:', currentDate);
+    console.log('Data fine abbonamento:', start);
+    console.log('Data fine abbonamento:', end);
 
-            var progressBar = document.querySelector('.progress-indicator');
-            progressBar.style.width = progress + '%';
-        }
+        var elapsed = currentDate - start;
+        var totalDuration = end - start;
+        var progress = (elapsed / totalDuration) * 100;
 
-        updateProgressBar(startDate, endDate);
-    </script>
+        // Assicura che la percentuale di avanzamento non superi il 100%
+        progress = Math.min(progress, 100);
+
+        var progressBar = document.querySelector('.progress-indicator');
+        progressBar.style.width = progress + '%';
+    }
+
+    updateProgressBar('24-04-2024', '<?php echo $data_fine_abbonamento; ?>');
+</script>
 </body>
 </html>
