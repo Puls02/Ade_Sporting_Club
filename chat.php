@@ -16,7 +16,7 @@ if (!isset($_SESSION['id'])) {
         <?php
           $user_id = pg_escape_string($conn, $_GET['user_id']);
 
-          if ($user_id <= 30) {
+          if ($user_id < 30) {
             // Execute the first query if id is less than or equal to 30
             $query = "SELECT * FROM Istruttore WHERE id = '{$user_id}'";
           } else {
