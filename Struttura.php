@@ -3,6 +3,7 @@
 
     $logged=isset($_SESSION['logged_in']);
     $gold=isset($_SESSION['gold']);
+    $id=$_SESSION['id'];
 
     include_once "php/config.php";
 ?>
@@ -98,7 +99,11 @@
                 <div class="person flex">
                     <ul class="login_menu">
                         <!-- rimanda al profilo personale -->
-                        <?php if(!$gold): ?>
+                        <?php if($id < 30): ?>
+                            <a href="login_registrazione/Istruttore.php">
+                                <button class="Sign profile">Profilo</button>
+                            </a>
+                        <?php elseif($id > 30 && !$gold): ?>
                             <a href="login_registrazione/utenteNonGold.php">
                                 <button class="Sign profile">Profilo</button>
                             </a>
