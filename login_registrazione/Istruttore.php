@@ -123,7 +123,7 @@
                          
                     ?>
                     <form action="../php/caricaImmagine.php" method="post" name="caricamentoFoto" enctype="multipart/form-data">
-                        <input type="file" id="fotoprof" name="fotoprof" accept=".png, .jpeg"><br>
+                        <input type="file" id="fotoprof" name="fotoprof" accept=".png, .jpeg, .jpg"><br>
                         <button type="submit" name="submit">Carica</button>
                     </form>
                 </div>
