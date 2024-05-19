@@ -1,26 +1,64 @@
 /* Style for the footer */
-/* lo organizzo secondo una griglia: la prima riga avrà la mappa e i contatti, la seconda gli sponsor, l'ultima l'ancora per tornare a inizio pagina */
 footer {
     background-color: var(--nav-color);
     color: #000;
-    text-align: center;
-    padding: 20px;
-    display: grid;
-    grid-template: 'a b' 'c c';
-}
-
-footer div {
-    padding: 10px;
+    position: relative;
+    z-index: -1;
+    padding: 20px; /* Aggiungi un po' di padding per uno spazio interno */
+    display: flex;
+    justify-content: space-between;
 }
 
 .map {
-    grid-area: a;
+    flex: 1;
+    margin-right: 20px; /* Spazio tra la mappa e i contatti */
 }
 
 .contacts {
-    grid-area: b;
+    flex: 2;
+    padding: 1%;
+    text-align: center;
+    position: relative; /* Necessario per il posizionamento assoluto dell'icona */
+}
+
+.formalita {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Allinea verticalmente gli elementi */
+    margin-top: 20px; /* Spazio sopra la sezione formalità */
+}
+
+.cc {
+    font-size: 10px;
+}
+
+.social {
+    font-size: 10px;
 }
 
 .ancora {
-    grid-area: c;
+    position: absolute;
+    top: 10px; /* Distanza dal bordo superiore del footer */
+    right: 10px; /* Distanza dal bordo destro del footer */
+    background-color: #f0f0f0; /* Colore di sfondo per l'icona */
+    border-radius: 10px;
+    border: 1px solid #efefee;
+    padding: 10px; /* Aggiungi padding per uno spazio interno */
+    text-align: center; /* Centra il contenuto all'interno del link */
+}
+
+.ancora a {
+    text-decoration: none;
+    color: inherit; /* Mantiene il colore del testo */
+}
+
+.ancora a i {
+    font-size: 20px; /* Dimensione dell'icona */
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #efefef; /* same as border color */
+    margin: 20px 0; /* Spazio sopra e sotto l'hr */
 }

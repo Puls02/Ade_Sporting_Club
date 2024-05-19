@@ -1,11 +1,7 @@
 <?php
 
 // Connessione al database
-$conn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=Sporting77!");
-if (!$conn) {
-    echo json_encode(['message' => 'Errore nella connessione al database.']);
-    exit;
-}
+include_once "config.php";
 
 $id = $_POST['id'];
 $result = pg_query($conn, "SELECT * FROM prenotazione WHERE id_prenotazione = $id");

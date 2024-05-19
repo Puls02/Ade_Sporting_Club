@@ -143,10 +143,7 @@
             <div id="course-container" class="grid-view">
                 <!-- Contenuto degli eventi verrà caricato qui -->
                 <?php
-                // Connect to the database
-                $dbconn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=Sporting77!") or die('Could not connect: ' . pg_last_error());
-
-                    // CAMBIARE E INSERIRE I CORSI CHE L'ISTRUTTORE PUO' GESTIRE
+               // CAMBIARE E INSERIRE I CORSI CHE L'ISTRUTTORE PUO' GESTIRE
 
                 // Define the SQL query
                 $query = "SELECT ist.nome,ins.corso,o.categoria,o.giorno_settimana,o.ora_inizio,o.ora_fine FROM (istruttore ist join insegna ins on ins.istruttore = ist.id) join orari o on o.nome = ins.corso where ist.id = {$_SESSION['id']}";
@@ -202,9 +199,6 @@
             <div id="event-container" class="grid-view">
                 <!-- Contenuto degli eventi verrà caricato qui -->
                 <?php
-                // Connect to the database
-                $dbconn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=Sporting77!") or die('Could not connect: ' . pg_last_error());
-
                 // Define the SQL query
                 $query = 'SELECT * FROM evento';
 

@@ -1,12 +1,6 @@
 <?php
 // Connessione al database
-$conn = pg_connect("host=localhost dbname=Ade_Sporting_Club user=postgres password=Sporting77!");
-
-// Controlla la connessione
-if (!$conn) {
-    echo "Errore di connessione al database.";
-    exit;
-}
+include_once "config.php";
 
 // Recupera la data selezionata (passata come parametro GET)
 if(isset($_GET['date'])) {
