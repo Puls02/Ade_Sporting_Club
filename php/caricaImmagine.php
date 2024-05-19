@@ -19,9 +19,14 @@
    
    // ID dell'utente
    $id = $_SESSION['id'];
+
+    // recupera l'immagine esistente, se presente
+   if ($id < 30) {
+        $query = "SELECT Foto_profilo FROM Istruttore WHERE id='$id'";
+   } else {
+        $query = "SELECT Foto_profilo FROM Utente WHERE id='$id'";
+   }
    
-   // Recupera l'immagine esistente, se presente
-   $query = "SELECT Foto_profilo FROM Utente WHERE id='$id'";
    $result = pg_query($conn, $query);
    
    // Controlla se la query ha avuto successo e se ci sono righe restituite
@@ -33,7 +38,11 @@
            // Se la chiave è presente, ottieni l'immagine esistente
            $immagineEsistente = $row['Foto_profilo'];
            // Elimina l'immagine esistente
-           $queryDelete = "UPDATE Utente SET Foto_profilo = NULL WHERE id='$id'";
+           if ($id < 30) {
+                $queryDelete = "UPDATE Istruttore SET Foto_profilo = NULL WHERE id='$id'";
+            } else {
+                $queryDelete = "UPDATE Utente SET Foto_profilo = NULL WHERE id='$id'";
+            }
            $resultDelete = pg_query($conn, $queryDelete);
            if (!$resultDelete) {
                die("Errore nell'eliminazione dell'immagine esistente");
@@ -42,12 +51,20 @@
    }
    
    // Inserisci la nuova immagine
-   $queryInsert = "UPDATE Utente SET Foto_profilo = '$fotoEscaped' WHERE id='$id'";
+   if ($id < 30) {
+        $queryInsert = "UPDATE Istruttore SET Foto_profilo = '$fotoEscaped' WHERE id='$id'";
+    } else {
+        $queryInsert = "UPDATE Utente SET Foto_profilo = '$fotoEscaped' WHERE id='$id'";
+    }
    $resultInsert = pg_query($conn, $queryInsert);
    if (!$resultInsert) {
        // In caso di errore, ripristina l'immagine precedente
        if (isset($immagineEsistente)) {
-           $queryRestore = "UPDATE Utente SET Foto_profilo = '$immagineEsistente' WHERE id='$id'";
+            if ($id < 30) {
+                $queryRestore = "UPDATE Istruttore SET Foto_profilo = '$immagineEsistente' WHERE id='$id'";
+            } else {
+                $queryRestore = "UPDATE Utente SET Foto_profilo = '$immagineEsistente' WHERE id='$id'";
+            }            
            $resultRestore = pg_query($conn, $queryRestore);
            if (!$resultRestore) {
                die("Errore nel ripristino dell'immagine precedente");
@@ -57,16 +74,28 @@
    }
    
    // Se siamo arrivati qui, tutto è andato bene
-   $query= "SELECT * FROM Cliente_Gold WHERE id='$id'";
-    $result = pg_query($conn, $query);
+   if ($id < 30) {
+        $query= "SELECT * FROM Istruttore WHERE id='$id'";
+        $result = pg_query($conn, $query);
 
-    // Reindirizza alla pagina successiva
-    if(pg_num_rows($result) === 1 && $result){
-        header("Location: ../login_registrazione/utenteGold.php");
-        exit;
-    }else{
-        header("Location: ../login_registrazione/utenteNonGold.php");
-        exit;
-    }
-   
+        if(pg_num_rows($result) === 1 && $result){
+            header("Location: ../login_registrazione/Istruttore.php");
+            exit;
+        }else{
+            exit;
+        }
+
+   } else {
+        $query= "SELECT * FROM Cliente_Gold WHERE id='$id'";
+        $result = pg_query($conn, $query);
+
+        // Reindirizza alla pagina successiva
+        if(pg_num_rows($result) === 1 && $result){
+            header("Location: ../login_registrazione/utenteGold.php");
+            exit;
+        }else{
+            header("Location: ../login_registrazione/utenteNonGold.php");
+            exit;
+        }
+   }   
 ?>   

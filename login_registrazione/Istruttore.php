@@ -150,7 +150,7 @@
                 
 
                 // Execute the query
-                $result = pg_query($dbconn,$query) or die('Query failed: ' . pg_last_error());
+                $result = pg_query($conn,$query) or die('Query failed: ' . pg_last_error());
 
                 // Fetch all the result rows as an associative array
                 $events = pg_fetch_all($result);
@@ -203,7 +203,7 @@
                 $query = 'SELECT * FROM evento';
 
                 // Execute the query
-                $result = pg_query($dbconn,$query) or die('Query failed: ' . pg_last_error());
+                $result = pg_query($conn,$query) or die('Query failed: ' . pg_last_error());
 
                 // Fetch all the result rows as an associative array
                 $events = pg_fetch_all($result);
