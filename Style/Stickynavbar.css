@@ -7,7 +7,7 @@ nav
   justify-content: space-between;
   align-items: center;
   /*larghezza variabile della navbar in base alla finestra del browser*/
-  padding: 0 calc((100vw - 97vw) / 2); 
+  padding: 0 20px; 
   /*navbar fissa*/
   z-index: 10;
   position: fixed;
@@ -96,6 +96,7 @@ ul.topBotomBordersOut a:hover:after
   height: 50px;
   display: block;
   cursor: pointer;
+  border: 1px solid green;
 }
 .sidebar
 {
@@ -158,12 +159,14 @@ ul.topBotomBordersOut a:hover:after
 {
   display: flex;
   align-items: center;
-  margin-right: 3%;
+  margin-right: 80px;
   width: 50px;
   height: 50px;
   color: #fff;
   cursor: pointer;
   border-radius: 50%;
+  border: 1px solid red;
+  position: relative;
 }
 /*dropdown menu for login*/
 .person
@@ -285,10 +288,6 @@ header.sticky .side_exit
 @media (max-width: 1023px) 
 {
   .toolbar
-  {
-    display: none;
-  }
-  .login_btn
   {
     display: none;
   }

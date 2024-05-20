@@ -31,15 +31,15 @@
     border-radius: 10px;
     margin-bottom: 20px;
 }
-.activity h2 {
+.activity h1 {
     margin-top: 0;
-    font-size: 1.5em;
+    font-size: var(--size-3xl);
     color: #333;
 }
 .activity p {
     color: #666;
     margin-bottom: 15px;
-    font-size: 18px;
+    font-size: var(--size-lg);
 }
 .activity a {
     display: inline-block;
@@ -116,4 +116,37 @@ td {
     height: 15px;
     border-radius: 50%;
     margin-right: 5px;
+}
+/*---------------------------------------*/
+
+/*responsive css for attività*/
+@media (max-width: 1535px)
+{
+
+}
+@media (max-width: 1279px)
+{
+
+}
+@media (max-width: 1023px)
+{
+    
+}
+@media (max-width: 929px)
+{
+ 
+}
+@media (max-width: 767px)
+{
+  
+}
+
+@media (max-width: 640px)
+{
+
+}
+
+@media (max-width: 475px) 
+{
+  
 }

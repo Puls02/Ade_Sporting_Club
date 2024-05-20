@@ -231,10 +231,6 @@ ul.topBotomBordersOut a:hover:after
   {
     display: none;
   }
-  .login_btn
-  {
-    display: none;
-  }
 }
 @media (max-width: 768px) 
 {

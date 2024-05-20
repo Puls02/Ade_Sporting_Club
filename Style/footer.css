@@ -10,7 +10,8 @@ footer {
 
 .map {
     flex: 1;
-    margin-right: 20px; /* Spazio tra la mappa e i contatti */
+    margin-right: 20px; 
+    /* Spazio tra la mappa e i contatti */
 }
 
 .contacts {
@@ -60,4 +61,46 @@ footer {
     height: 1px;
     background-color: #efefef; /* same as border color */
     margin: 20px 0; /* Spazio sopra e sotto l'hr */
+}
+/*------------------------------------------*/
+
+/*responsive css for footer*/
+@media (max-width: 1535px)
+{
+
+}
+@media (max-width: 1279px)
+{
+
+}
+@media (max-width: 1023px)
+{
+    footer 
+    {
+        flex-direction: column;
+    } 
+    .map
+    {
+        max-width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media (max-width: 929px)
+{
+ 
+}
+@media (max-width: 767px)
+{
+  
+}
+
+@media (max-width: 640px)
+{
+
+}
+
+@media (max-width: 475px) 
+{
+  
 }

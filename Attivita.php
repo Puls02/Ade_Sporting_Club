@@ -159,13 +159,6 @@
                 <li>
                     <a href="Prenota.php">Prenota</a>
                 </li>
-                <li class="sidebar_login">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 
-                        1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 
-                        0 1-.437-.695Z" clip-rule="evenodd" />
-                    </svg>
-                </li>
             </ul>
             <!-- javascript for sidebar menu -->
             <script>
@@ -179,15 +172,6 @@
                     const sidebar = document.querySelector('.sidebar');
                     sidebar.style.display = 'none';
                 }
-            </script>
-
-            <script type="text/javascript">
-                const show_menu = document.querySelector('.sidebar_login');
-                nav = document.querySelector('.person');
-
-                show_menu.onclick = () => {
-                    nav.classList.toggle("show");
-                };
             </script>
             <!-- end javascript -->
 
@@ -226,56 +210,97 @@
     <div class="scatola">
         <div class="activity">
             <img src="immagini/sfondo_index/calcio.png" alt="Calcio">
-            <h2>Calcio</h2>
-            <p>"Scopri il campo da calcio perfetto per sfidare i tuoi avversari e vivere emozionanti partite con amici e squadre.<br> Con una superficie impeccabile, dimensioni regolamentari e strutture di supporto complete, il nostro campo offre l'ambiente ideale per vivere la passione del calcio al massimo livello."</p>
-            <p>Orari: <br>Bambini: Lun-Mer-Gio 16:00-18:00<br>Ragazzi: Mar-Gio-Ven 17:00-19:00</p>
-            <p>Costi:<br> Lezioni singole a partire da €20. <br>Corsi a partire da €50.</p>
+            <h1>Calcio</h1>
+            <p>"Scopri il campo da calcio perfetto per sfidare i tuoi avversari e vivere emozionanti partite con amici e squadre.
+                <br> Con una superficie impeccabile, dimensioni regolamentari e strutture di supporto complete, il nostro campo offre 
+                l'ambiente ideale per vivere la passione del calcio al massimo livello."
+            </p>
+            <p>Orari: 
+                <br>Bambini: Lun-Mer-Gio 16:00-18:00
+                <br>Ragazzi: Mar-Gio-Ven 17:00-19:00
+            </p>
+            <p>Costi:
+                <br> Lezioni singole a partire da €20. 
+                <br>Corsi a partire da €50.
+            </p>
             <p>Istruttori: Marco - Gianluca</p>
             <p>Nelle fasce libere i campi sono usufruibili su prenotazione</p>
             <a href="Prenota.php">Prenota un campo</a>
         </div>
         <div class="activity">
             <img src="immagini/sfondo_index/padel.png" alt="Paddel">
-            <h2>Paddle</h2>
-            <p>"Scopri il campo da padel, il luogo perfetto dove divertirti con amici e familiari. Con le sue dimensioni compatte e le pareti di vetro trasparenti offre un'esperienza unica di gioco, consentendo scambi veloci e coinvolgenti."</p>
-            <p>Orari:<br> Lun-Ven 9:00-20:00, Sab-Dom 10:00-18:00</p>
-            <p>Costi: <br>Lezioni singole a partire da €20.</p>
+            <h1>Paddle</h1>
+            <p>"Scopri il campo da padel, il luogo perfetto dove divertirti con amici e familiari. Con le sue dimensioni compatte e le pareti 
+                di vetro trasparenti offre un'esperienza unica di gioco, consentendo scambi veloci e coinvolgenti."
+            </p>
+            <p>Orari:
+                <br> Lun-Ven 9:00-20:00, Sab-Dom 10:00-18:00
+            </p>
+            <p>Costi: 
+                <br>Lezioni singole a partire da €20.
+            </p>
             <p>Istruttori: Alessandra - Vittoria</p>
             <a href="Prenota.php">Prenota un campo</a>
         </div>
         <div class="activity">
             <img src="immagini/sfondo_index/tennis.png" alt="Tennis">
-            <h2>Tennis</h2>
-            <p>"Esplora il campo da tennis progettato per offrire prestazioni ottimali e divertimento senza fine. Con una superficie impeccabile, linee chiare e una struttura ben curata, il nostro campo da tennis ti permette di allenarti, competere e goderti partite entusiasmanti in un ambiente accogliente e professionale."</p>
-            <p>Orari: <br>Bambini: Mar-Ven 16:00-18:00<br>Ragazzi: Lun-Gio 17:00-19:00 Mer 18:00-20:00</p>
-            <p>Costi:<br> Lezioni singole a partire da €20. <br>Corsi a partire da €50.</p>
+            <h1>Tennis</h1>
+            <p>"Esplora il campo da tennis progettato per offrire prestazioni ottimali e divertimento senza fine. Con una superficie impeccabile, 
+                linee chiare e una struttura ben curata, il nostro campo da tennis ti permette di allenarti, competere e goderti partite entusiasmanti 
+                in un ambiente accogliente e professionale."
+            </p>
+            <p>Orari: 
+                <br>Bambini: Mar-Ven 16:00-18:00
+                <br>Ragazzi: Lun-Gio 17:00-19:00 Mer 18:00-20:00
+            </p>
+            <p>Costi:
+                <br> Lezioni singole a partire da €20. 
+                <br>Corsi a partire da €50.
+            </p>
             <p>Istruttori: Federico - Matteo</p>
             <p>Nelle fasce libere i campi sono usufruibili su prenotazione</p>
             <a href="Prenota.php">Prenota un campo</a>
         </div>
         <div class="activity">
             <img src="immagini/sfondo_index/basket.png" alt="Basket">
-            <h2>Basket</h2>
-            <p>"Esplora il campo da basket, dove la passione e l'energia del gioco si fondono in un'unica esperienza. Lasciati trasportare dalla magia del basket mentre punti al canestro e celebri ogni punto con entusiasmo."</p>
-            <p>Orari:<br>Lun-Dom 6:00-22:00</p>
-            <p>Costi:<br>Abbonamenti mensili a partire da €30.</p>
+            <h1>Basket</h1>
+            <p>"Esplora il campo da basket, dove la passione e l'energia del gioco si fondono in un'unica esperienza. 
+                Lasciati trasportare dalla magia del basket mentre punti al canestro e celebri ogni punto con entusiasmo."
+            </p>
+            <p>Orari:
+                <br>Lun-Dom 6:00-22:00
+            </p>
+            <p>Costi:
+                <br>Abbonamenti mensili a partire da €30.
+            </p>
             <p>Istruttori: Giovanni - Fabio</p>
             <a href="Prenota.php">Prenota un campo</a>
         </div>
         <div class="activity">
             <img src="immagini/sfondo_index/piscina.jpg" alt="Nuoto">
-            <h2>Nuoto</h2>
-            <p>"Immergiti nell'atmosfera rinfrescante e vivace della nostra piscina. Che tu stia facendo qualche vasca per il fitness o semplicemente ti stia rilassando ti offriamo un'oasi di tranquillità e benessere."</p>
-            <p>Orari:<br>Lun-Ven 9:00-20:00, Sab-Dom 10:00-18:00</p>
-            <p>Costi:<br>Lezioni singole a partire da €20.</p>
+            <h1>Nuoto</h1>
+            <p>"Immergiti nell'atmosfera rinfrescante e vivace della nostra piscina. Che tu stia facendo qualche vasca per il fitness 
+                o semplicemente ti stia rilassando ti offriamo un'oasi di tranquillità e benessere."
+            </p>
+            <p>Orari:
+                <br>Lun-Ven 9:00-20:00, Sab-Dom 10:00-18:00
+            </p>
+            <p>Costi:
+                <br>Lezioni singole a partire da €20.
+            </p>
             <p>Istruttori: Valeria - Roberto</p>
             <a href="Prenota.php">Prenota un campo</a>
         </div>
         <div class="activity">
             <img src="immagini/sfondo_index/palestra.png" alt="Palestra">
-            <h2>Palestra</h2>
-            <p>"Dai pesi liberi alle macchine cardio, dalle lezioni di gruppo alle sessioni personali con istruttori esperti, la nostra palestra offre tutto ciò di cui hai bisogno per tonificare il corpo, aumentare la forza e migliorare la salute generale. Entra e scopri un ambiente accogliente e stimolante dove ogni allenamento ti avvicina sempre di più ai tuoi obiettivi di fitness e benessere."</p>
-            <p>Orari: <br>Lun-Ven 9:00-23:00, Sab-Dom 10:00-18:00</p>
+            <h1>Palestra</h1>
+            <p>"Dai pesi liberi alle macchine cardio, dalle lezioni di gruppo alle sessioni personali con istruttori esperti, la nostra 
+                palestra offre tutto ciò di cui hai bisogno per tonificare il corpo, aumentare la forza e migliorare la salute generale. 
+                Entra e scopri un ambiente accogliente e stimolante dove ogni allenamento ti avvicina sempre di più ai tuoi obiettivi di fitness e benessere."
+            </p>
+            <p>Orari: 
+                <br>Lun-Ven 9:00-23:00, Sab-Dom 10:00-18:00
+            </p>
             <p>Istruttori: Stefano - Sara</p>
             <a href="Prenota.php">Prenota un campo</a>
         </div>
@@ -421,7 +446,6 @@
                 </div>
             </div>
         </div>      
-        
     </footer>
 </body>
 </html>

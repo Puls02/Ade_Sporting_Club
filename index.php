@@ -160,13 +160,6 @@
                 <li>
                     <a href="Prenota.php">Prenota</a>
                 </li>
-                <li class="sidebar_login">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 
-                        1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 
-                        0 1-.437-.695Z" clip-rule="evenodd" />
-                    </svg>
-                </li>
             </ul>
             <!-- javascript for sidebar menu -->
             <script>
@@ -180,15 +173,6 @@
                     const sidebar = document.querySelector('.sidebar');
                     sidebar.style.display = 'none';
                 }
-            </script>
-
-            <script type="text/javascript">
-                const show_menu = document.querySelector('.sidebar_login');
-                nav = document.querySelector('.person');
-
-                show_menu.onclick = () => {
-                    nav.classList.toggle("show");
-                };
             </script>
             <!-- end javascript -->
 
@@ -501,36 +485,27 @@
         </div>
                 
         <div class="space"></div>
-        <!--Sezione 3-->
-        <!-- 
-        <div class="Sezione_3">
-            <hr size="4" color="black"> 
-            <div class="sponsor">
-                <h1>I Nostri Sponsor</h1>
-                
-            </div>
-            <hr size="4" color="black"> 
-        </div> 
-        -->
     </div>
 
     <!-- Footer section with contacts -->	
     <footer>
         <div class="map">
             <!-- Embedding a Google Map -->
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.235657742299!2d12.57007927646197!3d41.952273060766345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f64619ddc961d%3A0x997b053d9ac9f023!2sSporting%20Club%20Panda!5e0!3m2!1sit!2sit!4v1714034933636!5m2!1sit!2sit" width="400" height="250" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.235657742299!2d12.57007927646197!3d41.952273060766345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f64619ddc961d%3A0x997b053d9ac9f023!2sSporting%20Club%20Panda!5e0!3m2!1sit!2sit!4v1714034933636!5m2!1sit!2sit" 
+                width="400" height="250" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 
         <div class="ancora">
-            <a href="#beginning"><i class="fas fa-arrow-up"></i></a>		<!-- ancora per tornare all'inizio della pagina -->
+            <a href="#beginning"><i class="fas fa-arrow-up"></i></a>		
+            <!-- ancora per tornare all'inizio della pagina -->
         </div>
 
         <div class="contacts">
-            <h2>Contattaci</h2>
+            <h1>Contattaci</h1>
             <p>
-                marino.1984826@studenti.uniroma1.it<br>
-                pulsoni.1995669@studenti.uniroma1.it<br>
-                ricci.@studenti.uniroma1.it
+                marino.1984826@studenti.uniroma1.it
+                <br>pulsoni.1995669@studenti.uniroma1.it
+                <br>ricci.@studenti.uniroma1.it
             </p>
             <p>link alla repository di github</p>
             <hr>
