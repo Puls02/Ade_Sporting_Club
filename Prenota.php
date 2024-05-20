@@ -3,7 +3,9 @@
 
     $logged=isset($_SESSION['logged_in']);
     $gold=isset($_SESSION['gold']);
-    $id=$_SESSION['id'];
+    if(isset($_SESSION['id'])){
+        $id=$_SESSION['id'];
+    }
 
     include_once "php/config.php";
 ?>
@@ -43,6 +45,8 @@
                 // Se l'utente non è loggato, mostra il messaggio di avviso
                 alert("Devi effettuare l'accesso per visualizzare questa sezione.");
                 return false; // Impedisce l'azione predefinita del clic
+            } else {
+                return true;
             }
         }
     </script>
@@ -180,7 +184,7 @@
         </tr>
         <?php
             // Query per recuperare i dati dalla tabella Prenotazioni
-            $result = pg_query($conn, "SELECT * FROM prenotazione p join campo c on c.id = p.campo"); //prenotazione
+            $result = pg_query($conn, "SELECT * FROM prenotazione p join campo c on c.id = p.campo WHERE owner='true'"); //prenotazione
             if ($result) {
                 // Array associativo per memorizzare le prenotazioni per ogni orario
                 $prenotazioni_per_orario = array(
@@ -291,7 +295,7 @@
                                 }else{
                                     $sfondo = "#ffc300";//cella gialla
                                     // Aggiungi l'icona con il tooltip
-                                    echo "<td style='background-color: $sfondo' title='$tooltip' onclick='finestraDiAggiunta($id)'><i class='$icona'></i></td>";
+                                    echo "<td style='background-color: $sfondo' title='$tooltip' onclick='if(checkLogin()) {finestraDiAggiunta($id)}'><i class='$icona'></i></td>";
                                 }
 
                                               
@@ -422,7 +426,7 @@
                         <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
                         <div id="numPersoneWrapper">
                             <label for="numeroPersone">Numero di persone:</label>
-                            <input type="number" id="numeroPersone" name="numeroPersone" min="1" max="4"><br>
+                            <input type="number" id="numeroPersone" name="numeroPersone" min="1" max="2"><br>
                         </div>
                         
                         <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
@@ -571,35 +575,49 @@
     <script>
         // Funzione per mostrare la finestra modale
         function finestraDiAggiunta(id) {
-        // Mostra la finestra modale
-        var modal = document.getElementById("myModal");
-        modal.style.display = "block";
+            // Mostra la finestra modale
+            var modal = document.getElementById("myModal");
+            modal.style.display = "block";
 
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "php/modalCreation.php", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-                var response = JSON.parse(xhr.responseText);
-                var modalContent = document.getElementById("modalContent");
-                modalContent.innerHTML = `
-                    <p>Dettagli della prenotazione:</p>
-                    <p>ID della prenotazione: ${response.id}</p>
-                    <p>Sport: ${response.sport}</p>
-                    <p>Id del campo: ${response.campo}</p>
-                    <p>Numero di persone: ${response.num_persone}</p>
-                `;
-            }
-        };
-    xhr.send("id=" + id); // Invia l'ID della prenotazione come parametro
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "php/modalCreation.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    var modalContent = document.getElementById("modalContent");
+                    modalContent.innerHTML = `
+                        <p>Dettagli della prenotazione:</p>
+                        <p>ID della prenotazione: ${response.id}</p>
+                        <p>Sport: ${response.sport}</p>
+                        <p>Id del campo: ${response.campo}</p>
+                        <p>Numero di persone: ${response.num_persone}</p>
+                    `;
+                }
+            };
+            xhr.send("id=" + id); // Invia l'ID della prenotazione come parametro
 
-    // Azione per il pulsante
-    var button = document.getElementById("actionButton");
-    button.onclick = function() {
-        alert("Ti sei aggiunto con successo alla partita");
-        modal.style.display = "none";
-    };
-}
+            // Azione per il pulsante
+            var button = document.getElementById("actionButton");
+            button.onclick = function() {
+                var xhrAddUser = new XMLHttpRequest();
+                xhrAddUser.open("POST", "php/aggiuntaGiocatore.php", true);
+                xhrAddUser.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhrAddUser.onreadystatechange = function () {
+                    if (xhrAddUser.readyState === XMLHttpRequest.DONE && xhrAddUser.status === 200) {
+                        var response = JSON.parse(xhrAddUser.responseText);
+                        if (response.success) {
+                            alert(response.message);
+                            location.reload();
+                        } else {
+                            alert("Errore: " + response.message);
+                        }
+                    modal.style.display = "none";
+                    }
+                };
+                xhrAddUser.send("id=" + id);
+            };
+        }
 
         // Chiudi la finestra modale quando l'utente clicca sulla 'x'
         var span = document.getElementsByClassName("close")[0];

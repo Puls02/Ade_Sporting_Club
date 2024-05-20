@@ -17,7 +17,19 @@
         $prenotazione=$_POST['prenotazione'];
         if($prenotazione=="interoCampo"){
             $completa=true;
-            $query = "INSERT INTO Prenotazione (campo,data,ora_inizio,ora_fine,utente,completa,sport, owner) VALUES ('$id_campo','$data','$ora_inizio','$ora_fine','$id','true','$sport','true')";
+            if(explode("_",$campo)[0]=="calcetto"){
+                $numPersone=10;
+            }
+            if(explode("_",$campo)[0]=="paddle"){
+                $numPersone=4;
+            }
+            if(explode("_",$campo)[0]=="tennis"){
+                $numPersone=2;
+            }
+            if(explode("_",$campo)[0]=="basket"){
+                $numPersone=10;
+            }
+            $query = "INSERT INTO Prenotazione (campo,data,ora_inizio,ora_fine,utente,completa,sport,owner,num_persone) VALUES ('$id_campo','$data','$ora_inizio','$ora_fine','$id','true','$sport','true','$numPersone')";
             $result = pg_query($conn, $query);
         } else {
             if(explode("_",$campo)[0]=="calcetto"){

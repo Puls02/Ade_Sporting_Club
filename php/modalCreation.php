@@ -4,7 +4,7 @@
 include_once "config.php";
 
 $id = $_POST['id'];
-$result = pg_query($conn, "SELECT * FROM prenotazione WHERE id_prenotazione = $id");
+$result = pg_query($conn, "SELECT * FROM prenotazione WHERE id_prenotazione = $id and owner='true'");
 if ($result) {
     $row = pg_fetch_assoc($result);
     echo json_encode([
@@ -13,9 +13,7 @@ if ($result) {
         'campo' => $row['campo'],
         'num_persone' => $row['num_persone']
     ]);
-} else {
-    echo json_encode(['message' => 'Prenotazione non trovata.']);
 }
 
-
+pg_close($conn);
 ?>

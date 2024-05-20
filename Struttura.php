@@ -3,7 +3,9 @@
 
     $logged=isset($_SESSION['logged_in']);
     $gold=isset($_SESSION['gold']);
-    $id=$_SESSION['id'];
+    if(isset($_SESSION['id'])){
+        $id=$_SESSION['id'];
+    }
 
     include_once "php/config.php";
 ?>
