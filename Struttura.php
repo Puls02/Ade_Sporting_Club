@@ -64,17 +64,15 @@
                     <a class="toolbar_link_Prenota" href="Prenota.php">Prenota</a>
                 </li>
             </ul>
-            <div class="hamburger_menu">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                    <path fill-rule="evenodd" d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
-                </svg>
-            </div>
+
             <div class="login_btn">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                    <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd" />
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" >
+                    <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 
+                    16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 
+                    1-.437-.695Z" clip-rule="evenodd" />
                 </svg>
             </div>
-            <!--container for login features--> 
+            <!--container for login features-->
             <?php if(!$logged) :?>
                 <div class="person flex">
                     <ul class="login_menu">
@@ -96,7 +94,7 @@
                         </li>
                     </ul>
                 </div>
-
+                
             <?php else: ?>
                 <div class="person flex">
                     <ul class="login_menu">
@@ -121,16 +119,91 @@
                     </ul>
                 </div>
             <?php endif; ?>
-            
+
             <!--open the dropdown login menu on click-->
             <script type="text/javascript">
                 const show_menu = document.querySelector('.login_btn');
-                const nav = document.querySelector('.person');
+                nav = document.querySelector('.person');
 
                 show_menu.onclick = () => {
                     nav.classList.toggle("show");
                 };
             </script>
+            <!-- end javascript -->
+
+            <!-- navbar for small screen -->
+            <div class="hamburger_menu" onclick=showSidebar()>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path fill-rule="evenodd" d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 
+                        6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 
+                        0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
+                </svg>
+            </div>
+            <ul class="sidebar"> 
+                <li class="side_exit" onclick=hideSidebar()>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 
+                        1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 
+                        12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                    </svg>
+                </li>
+                <li>
+                    <h3 class="side_name">ADE Sporting Club</h3>
+                </li>
+                <li>
+                    <a href="index.php">Home</a>
+                </li>
+                <li>
+                    <a href="Struttura.php">Struttura</a>
+                </li>
+                <li>
+                    <a href="Attivita.php"> Attività</a>
+                </li>               
+                <li>
+                    <a href="Prenota.php">Prenota</a>
+                </li>
+                <li class="sidebar_login">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 
+                        1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 
+                        0 1-.437-.695Z" clip-rule="evenodd" />
+                    </svg>
+                </li>
+            </ul>
+            <!-- javascript for sidebar menu -->
+            <script>
+                function showSidebar() 
+                {
+                    const sidebar = document.querySelector('.sidebar');
+                    sidebar.style.display = 'flex';
+                }
+                function hideSidebar()
+                {
+                    const sidebar = document.querySelector('.sidebar');
+                    sidebar.style.display = 'none';
+                }
+            </script>
+
+            <script type="text/javascript">
+                const show_menu = document.querySelector('.sidebar_login');
+                nav = document.querySelector('.person');
+
+                show_menu.onclick = () => {
+                    nav.classList.toggle("show");
+                };
+            </script>
+            <!-- end javascript -->
+
+
+            <!--sticky navbar on scroll-->
+            <script type="text/javascript">
+                window.addEventListener("scroll", function(){
+                    var header = document.querySelector("header");
+                    header.classList.toggle("sticky", window.scrollY > 0);
+                });
+            </script>
+            <!-- end javascript --> 
+
         </nav>
         
     </header>
@@ -243,7 +316,7 @@
             <p>
                 marino.1984826@studenti.uniroma1.it<br>
                 pulsoni.1995669@studenti.uniroma1.it<br>
-                ricci.@studenti.uniroma1.it
+                ricci.1985803@studenti.uniroma1.it
             </p>
             <p>link alla repository di github</p>
             <hr>

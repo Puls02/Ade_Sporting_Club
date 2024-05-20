@@ -10,7 +10,6 @@
   justify-content: center;
   background: var(--body-color);
 }
-
 h1
 {
   font-family: "Chillax";
@@ -21,28 +20,23 @@ p
   font-family: "Synonym";
   font-size: var(--size-xl);
 }
-
 .cover-video
 {
   filter: brightness(.5);
 }
-
 .presentation
 {
   width: auto;
   height: 100%;
 }
-
 .presentation h1
 {
   margin-left: 1em;
 }
-
 hr
 {
   z-index: 2;
 }
-
 .fixed-image {
   background-attachment: fixed;
   background-position: center;
@@ -50,7 +44,6 @@ hr
   background-size: cover; 
   height: 400px; 
 }
-
 /*Sezione 1 del main*/
 .Sezione_1
 {
@@ -98,7 +91,6 @@ hr
   margin-left: 0.5em;
   margin-right: 1em;
 }
-
 /*---------------------------------------*/
 
 .space
@@ -106,6 +98,7 @@ hr
   width: 100%;
   height: 50px;
 }
+/*-----------------------------------------*/
 
 /*Responsive Image Slider*/
 .Sezione_2
@@ -113,7 +106,6 @@ hr
   width: 100%;
   height: fit-content;
 }
-
 .carosello
 {
   height: fit-content;
@@ -121,14 +113,12 @@ hr
   justify-content: center;
   align-items: center;
 }
-
 .img-slider
 {
   position: relative;
   width: 90%;
   height: 700px;
 }
-
 .img-slider .slide 
 {
   z-index: 1;
@@ -138,14 +128,12 @@ hr
   clip-path: circle(0.0% at 0 50%);
 
 }
-
 .img-slider .slide.active
 {
   clip-path: circle(150% at 0 50%);
   transition: 2s;
   transition-property: clip-path;
 }
-
 .img-slider .slide img
 {
   z-index: 1;
@@ -177,14 +165,12 @@ hr
   box-shadow: 0 0 20px #000;
   border-radius: 20px;
 }
-
 .img-slider .slide .info h1
 {
   color: #000;
   text-align: center;
   text-shadow: 0 0 15px #fff;
 }
-
 .img-slider .slide .info p
 {
   color: #000;
@@ -202,7 +188,6 @@ hr
   border-radius: 10px;
   background-color: var(--nav-color);
 }
-
 .img-slider .slider-nav
 {
   z-index: 2;
@@ -212,7 +197,6 @@ hr
   left: 50%;
   transform: translateX(-50%);
 }
-
 .img-slider .slider-nav .btn
 {
   background: rgba(255, 255, 255, 0.5);
@@ -246,7 +230,6 @@ hr
   {
     width: auto;
   }
-
   /*responsive css for imgage slider*/
   .img-slider
   {
@@ -270,7 +253,6 @@ hr
     bottom: 25px;
   }
 }
-
 @media (max-width: 1279px)
 {
   /*responsive css for general part*/
@@ -282,7 +264,6 @@ hr
   {
     font-size: var(--size-base);
   }
-
   /*responsive css for imgage slider*/
   .img-slider
   {
@@ -306,7 +287,6 @@ hr
     bottom: 20px;
   }
 }
-
 @media (max-width: 1023px)
 {
   /*responsive css for general part*/
@@ -318,7 +298,6 @@ hr
   {
     font-size: var(--size-sm);
   }
-
   /*responsive css for imgage slider*/
   .img-slider
   {
@@ -340,7 +319,6 @@ hr
     bottom: 15px;
   }
 }
-
 @media (max-width: 929px)
 {
   .img-container
@@ -359,7 +337,6 @@ hr
     margin-left: 1%;
   }
 }
-
 @media (max-width: 767px)
 {
   /*responsive css for general part*/
