@@ -247,8 +247,10 @@
 
                 $daysOfTheWeek[] = $day;
             }
+    
         ?>
         <tr>
+            <!--Creazione della prima riga nel seguente formato "Day Y-M-D"-->
             <th class="time-column">Ora\Giorno</th>
             <th>Lunedì <?php echo $daysOfTheWeek[0]?></th>
             <th>Martedì <?php echo $daysOfTheWeek[1]?></th>
@@ -264,8 +266,8 @@
             if ($result) {
                 // Array associativo per memorizzare le prenotazioni per ogni orario
                 $prenotazioni_per_orario = array(
-                    "8:00 - 9:00" => array(),
-                    "9:00 - 10:00" => array(),
+                    "08:00 - 09:00" => array(),
+                    "09:00 - 10:00" => array(),
                     "10:00 - 11:00" => array(),
                     "11:00 - 12:00" => array(),
                     "12:00 - 13:00" => array(),
@@ -355,7 +357,6 @@
                                         $icona = "fas fa-question"; // Icona generica
                                         break;
                                 }
-
                                 // Costruzione del testo del tooltip
                                 $tooltip = "ID: $id\nCampo: $campo\nSport: $sport\n";
                                 if ($completa == 't') {
