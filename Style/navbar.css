@@ -87,6 +87,7 @@ ul.topBotomBordersOut a:hover:after
   transform: translateY(0px);
 }
 /*-------------------------------------------------------*/
+/*hamburger menu for responsive toolbar on small screen*/
 .hamburger_menu
 {
   color: var(--nav2-color);
@@ -96,6 +97,61 @@ ul.topBotomBordersOut a:hover:after
   display: block;
   cursor: pointer;
 }
+.sidebar
+{
+  position:fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 250px;
+  z-index: 100;
+  background-color: rgba(68, 168, 190, 0.6);
+  backdrop-filter: blur(10px);
+  box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  list-style: none;
+}
+.sidebar a
+{
+  position: relative;
+  width: 100%;
+  color: #000;
+  font-size: var(--size-lg);
+  font-family: "PilcrowRounded";
+  cursor: pointer;
+  text-decoration: none;
+  top: 80px;
+}
+.side_name
+{
+  position: relative;
+  top: 50px;
+  color:#000;
+  font-family: "Panchang";
+  text-decoration: none;
+  font-size: var(--size-2xl);
+}
+.side_exit
+{
+  top: 20px;
+  width: 30px;
+  color:#000;
+  cursor: pointer;
+  position: relative;
+}
+.sidebar_login
+{
+  width: 40px;
+  height: 40px;
+  color: #000;
+  cursor: pointer;
+  position: relative;
+  top: 100px;
+}
+/*login for small screen*/
 
 /*----------------pulsante login------------------*/
 .login_btn
@@ -175,6 +231,10 @@ ul.topBotomBordersOut a:hover:after
   {
     display: none;
   }
+  .login_btn
+  {
+    display: none;
+  }
 }
 @media (max-width: 768px) 
 {
@@ -201,6 +261,10 @@ ul.topBotomBordersOut a:hover:after
 @media (min-width: 1024px)
 {
   .hamburger_menu
+  {
+    display: none;
+  }
+  .sidebar
   {
     display: none;
   }
