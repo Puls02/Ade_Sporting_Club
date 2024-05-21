@@ -82,7 +82,10 @@
         </div>
         <div class="section">
             <label class="title">INFORMAZIONI ABBONAMENTO</label>
-            <label>Tipo di abbonamento:</label>
+            <label>Che tipo di abbonamento vuoi sottoscrivere: </label>
+                    <input type="radio" name="corso_campo" value="corso"/><label>Voglio seguire i corsi</label>
+                    <input type="radio" name="corso_campo" value="campo"/><label>Prenoterò solo i campi</label>
+            <br><label>Tipo di abbonamento:</label>
             <select name="type" id="abbonamento"  required>
                 <option value="">Seleziona</option>
                 <option value="AM">Abbonamento mensile</option>

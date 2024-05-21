@@ -264,7 +264,9 @@
 <!-- CHAT -->
         <div class="chat" id="chat-column">
             <h2>Chat</h2>
-            <div class="wrapper">
+            <iframe name="chatframe" id="iframe-chat" style="width:100%; height:600px; display: none; border: none; "></iframe>
+            <div class="wrapper" id="chat-home" style="display: block;">
+                
                 <section class="users">
                 <header>
                     <div class="content">
@@ -299,5 +301,19 @@
         </div>
         
     </div>
+    <script>
+        document.body.addEventListener('click', function(e) {
+    if(e.target.classList.contains('chat-link')) {
+        document.getElementById('iframe-chat').style.display = 'block'; // Show the iframe
+        document.getElementById('chat-home').style.display = 'none'; // Hide the chat area
+    }
+});
+window.addEventListener('message', function(event) {
+    if (event.data === 'closeChat') {
+        document.getElementById('iframe-chat').style.display = 'none'; // Hide the iframe
+        document.getElementById('chat-home').style.display = 'block'; // Show the chat area
+    }
+});
+        </script>
 </body>
 </html>

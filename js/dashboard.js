@@ -86,24 +86,26 @@ dayElements.forEach(dayElement => {
                         console.error(response.error);
                         scheduleActivityDisplay.innerHTML = `<div class="error-message">${response.error}</div>`;
                     } else {
-                        const activities = response;
                         let activityHTML = '';
-        
+                        const activities = response;
+                        
                         activities.forEach(activity => {
-                            console.log(activity);
-                            const activityBackgroundColor = getActivityBackgroundColor(activity.sport);
-                            const startTime = activity.ora_inizio ? getTimeString(activity.ora_inizio) : 'Orario non disponibile';
-                            const endTime = activity.ora_fine ? getTimeString(activity.ora_fine) : '';
+                            const activityBackgroundColor = getActivityBackgroundColor(activity.sport || activity.nome);
+                            const startTime = activity.ora_inizio || activity.orainizio ? getTimeString(activity.ora_inizio || activity.orainizio) : 'Orario non disponibile';
+                            const endTime = activity.ora_fine || activity.orafine ? getTimeString(activity.ora_fine || activity.orafine) : '';
                             const time = endTime ? `${startTime} - ${endTime}` : startTime;
-        
+                            const sport = activity.sport || activity.nome;
+                            const category = activity.categoria ? `<div class="activity-category">${activity.categoria}</div>` : '';
+                
                             activityHTML += `
                                 <div class="activity" style="background-color: ${activityBackgroundColor};">
-                                    <div class="activity-name">${activity.sport}</div>
+                                    <div class="activity-name">${sport}</div>
+                                    ${category}
                                     <div class="activity-time">${time}</div>
                                 </div>
                             `;
                         });
-        
+                
                         scheduleActivityDisplay.innerHTML = activityHTML;
                     }
                 } else {

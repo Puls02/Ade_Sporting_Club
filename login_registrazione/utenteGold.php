@@ -238,7 +238,9 @@
 <!-- CHAT -->
         <div class="chat" id="chat-column">
             <h2>Chat</h2>
-            <div class="wrapper">
+            <iframe name="chatframe" id="iframe-chat" style="width:100%; height:600px; display: none; border: none; "></iframe>
+            <div class="wrapper" id="chat-home" style="display: block;">
+                
                 <section class="users">
                 <header>
                     <div class="content">
@@ -275,28 +277,37 @@
     </div>
 
     <script>
-    function updateProgressBar(startDate, endDate) {
-        var currentDate = new Date();
-        var start = new Date(startDate);
-        var end = new Date(endDate);
+    /* BARRA DI PROGRESSO */
+    var startDate = new Date("<?php echo $data_sottoscrizione; ?>");
+        var endDate = new Date("<?php echo $data_fine_abbonamento; ?>");
 
         // Stampa le variabili nella console del browser per il debug
-    console.log('Data sottoscrizione:', currentDate);
-    console.log('Data fine abbonamento:', start);
-    console.log('Data fine abbonamento:', end);
+        console.log('Data sottoscrizione:', startDate);
+        console.log('Data fine abbonamento:', endDate);
 
-        var elapsed = currentDate - start;
-        var totalDuration = end - start;
-        var progress = (elapsed / totalDuration) * 100;
-
-        // Assicura che la percentuale di avanzamento non superi il 100%
-        progress = Math.min(progress, 100);
+        function updateProgressBar(startDate, endDate) {
+            var cDate = new Date();
+            var progress = (cDate - startDate) / (endDate - startDate) * 100;
 
         var progressBar = document.querySelector('.progress-indicator');
         progressBar.style.width = progress + '%';
     }
 
-    updateProgressBar('24-04-2024', '<?php echo $data_fine_abbonamento; ?>');
+        updateProgressBar(startDate, endDate);
+
+        
+document.body.addEventListener('click', function(e) {
+    if(e.target.classList.contains('chat-link')) {
+        document.getElementById('iframe-chat').style.display = 'block'; // Show the iframe
+        document.getElementById('chat-home').style.display = 'none'; // Hide the chat area
+    }
+});
+window.addEventListener('message', function(event) {
+    if (event.data === 'closeChat') {
+        document.getElementById('iframe-chat').style.display = 'none'; // Hide the iframe
+        document.getElementById('chat-home').style.display = 'block'; // Show the chat area
+    }
+});
 </script>
 </body>
 </html>
