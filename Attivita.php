@@ -22,7 +22,6 @@
     <!--Link to style folder-->
     <link rel="StyleSheet" href="Style/utility.css">
     <link rel="StyleSheet" href="Style/navbar.css">
-    <link rel="StyleSheet" href="Style/login.css">
     <link rel="StyleSheet" href="Style/footer.css">
     <link rel="StyleSheet" href="Style/gallery.css">
     <link rel="stylesheet" href="Style/popup.css">
@@ -188,6 +187,8 @@
         </nav>
     </header>
     
+    <!-- Div per l'overlay -->
+    <div id="overlay" class="overlay"></div>
     <!-- Div nascosto del popup -->
     <div id="popup" class="popup">
         <iframe src="login_registrazione/login.php" width="580" height="500" frameborder="0" style="border:0; overflow:hidden;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -206,216 +207,216 @@
             }
         });
     </script>
-   
-    <div class="scatola">
-        <div class="activity">
-            <img src="immagini/sfondo_index/calcio.png" alt="Calcio">
-            <h1>Calcio</h1>
-            <p>"Scopri il campo da calcio perfetto per sfidare i tuoi avversari e vivere emozionanti partite con amici e squadre.
-                <br> Con una superficie impeccabile, dimensioni regolamentari e strutture di supporto complete, il nostro campo offre 
-                l'ambiente ideale per vivere la passione del calcio al massimo livello."
-            </p>
-            <p>Orari: 
-                <br>Bambini: Lun-Mer-Gio 16:00-18:00
-                <br>Ragazzi: Mar-Gio-Ven 17:00-19:00
-            </p>
-            <p>Costi:
-                <br> Lezioni singole a partire da €20. 
-                <br>Corsi a partire da €50.
-            </p>
-            <p>Istruttori: Marco - Gianluca</p>
-            <p>Nelle fasce libere i campi sono usufruibili su prenotazione</p>
-            <a href="Prenota.php">Prenota un campo</a>
+    <main>
+        <div class="scatola">
+            <div class="activity">
+                <img src="immagini/sfondo_index/calcio.png" alt="Calcio">
+                <h1>Calcio</h1>
+                <p>"Scopri il campo da calcio perfetto per sfidare i tuoi avversari e vivere emozionanti partite con amici e squadre.
+                    <br> Con una superficie impeccabile, dimensioni regolamentari e strutture di supporto complete, il nostro campo offre 
+                    l'ambiente ideale per vivere la passione del calcio al massimo livello."
+                </p>
+                <p>Orari: 
+                    <br>Bambini: Lun-Mer-Gio 16:00-18:00
+                    <br>Ragazzi: Mar-Gio-Ven 17:00-19:00
+                </p>
+                <p>Costi:
+                    <br> Lezioni singole a partire da €20. 
+                    <br>Corsi a partire da €50.
+                </p>
+                <p>Istruttori: Marco - Gianluca</p>
+                <p>Nelle fasce libere i campi sono usufruibili su prenotazione</p>
+                <a href="Prenota.php">Prenota un campo</a>
+            </div>
+            <div class="activity">
+                <img src="immagini/sfondo_index/padel.png" alt="Paddel">
+                <h1>Paddle</h1>
+                <p>"Scopri il campo da padel, il luogo perfetto dove divertirti con amici e familiari. Con le sue dimensioni compatte e le pareti 
+                    di vetro trasparenti offre un'esperienza unica di gioco, consentendo scambi veloci e coinvolgenti."
+                </p>
+                <p>Orari:
+                    <br> Lun-Ven 9:00-20:00, Sab-Dom 10:00-18:00
+                </p>
+                <p>Costi: 
+                    <br>Lezioni singole a partire da €20.
+                </p>
+                <p>Istruttori: Alessandra - Vittoria</p>
+                <a href="Prenota.php">Prenota un campo</a>
+            </div>
+            <div class="activity">
+                <img src="immagini/sfondo_index/tennis.png" alt="Tennis">
+                <h1>Tennis</h1>
+                <p>"Esplora il campo da tennis progettato per offrire prestazioni ottimali e divertimento senza fine. Con una superficie impeccabile, 
+                    linee chiare e una struttura ben curata, il nostro campo da tennis ti permette di allenarti, competere e goderti partite entusiasmanti 
+                    in un ambiente accogliente e professionale."
+                </p>
+                <p>Orari: 
+                    <br>Bambini: Mar-Ven 16:00-18:00
+                    <br>Ragazzi: Lun-Gio 17:00-19:00 Mer 18:00-20:00
+                </p>
+                <p>Costi:
+                    <br> Lezioni singole a partire da €20. 
+                    <br>Corsi a partire da €50.
+                </p>
+                <p>Istruttori: Federico - Matteo</p>
+                <p>Nelle fasce libere i campi sono usufruibili su prenotazione</p>
+                <a href="Prenota.php">Prenota un campo</a>
+            </div>
+            <div class="activity">
+                <img src="immagini/sfondo_index/basket.png" alt="Basket">
+                <h1>Basket</h1>
+                <p>"Esplora il campo da basket, dove la passione e l'energia del gioco si fondono in un'unica esperienza. 
+                    Lasciati trasportare dalla magia del basket mentre punti al canestro e celebri ogni punto con entusiasmo."
+                </p>
+                <p>Orari:
+                    <br>Lun-Dom 6:00-22:00
+                </p>
+                <p>Costi:
+                    <br>Abbonamenti mensili a partire da €30.
+                </p>
+                <p>Istruttori: Giovanni - Fabio</p>
+                <a href="Prenota.php">Prenota un campo</a>
+            </div>
+            <div class="activity">
+                <img src="immagini/sfondo_index/piscina.jpg" alt="Nuoto">
+                <h1>Nuoto</h1>
+                <p>"Immergiti nell'atmosfera rinfrescante e vivace della nostra piscina. Che tu stia facendo qualche vasca per il fitness 
+                    o semplicemente ti stia rilassando ti offriamo un'oasi di tranquillità e benessere."
+                </p>
+                <p>Orari:
+                    <br>Lun-Ven 9:00-20:00, Sab-Dom 10:00-18:00
+                </p>
+                <p>Costi:
+                    <br>Lezioni singole a partire da €20.
+                </p>
+                <p>Istruttori: Valeria - Roberto</p>
+                <a href="Prenota.php">Prenota un campo</a>
+            </div>
+            <div class="activity">
+                <img src="immagini/sfondo_index/palestra.png" alt="Palestra">
+                <h1>Palestra</h1>
+                <p>"Dai pesi liberi alle macchine cardio, dalle lezioni di gruppo alle sessioni personali con istruttori esperti, la nostra 
+                    palestra offre tutto ciò di cui hai bisogno per tonificare il corpo, aumentare la forza e migliorare la salute generale. 
+                    Entra e scopri un ambiente accogliente e stimolante dove ogni allenamento ti avvicina sempre di più ai tuoi obiettivi di fitness e benessere."
+                </p>
+                <p>Orari: 
+                    <br>Lun-Ven 9:00-23:00, Sab-Dom 10:00-18:00
+                </p>
+                <p>Istruttori: Stefano - Sara</p>
+                <a href="Prenota.php">Prenota un campo</a>
+            </div>
         </div>
-        <div class="activity">
-            <img src="immagini/sfondo_index/padel.png" alt="Paddel">
-            <h1>Paddle</h1>
-            <p>"Scopri il campo da padel, il luogo perfetto dove divertirti con amici e familiari. Con le sue dimensioni compatte e le pareti 
-                di vetro trasparenti offre un'esperienza unica di gioco, consentendo scambi veloci e coinvolgenti."
-            </p>
-            <p>Orari:
-                <br> Lun-Ven 9:00-20:00, Sab-Dom 10:00-18:00
-            </p>
-            <p>Costi: 
-                <br>Lezioni singole a partire da €20.
-            </p>
-            <p>Istruttori: Alessandra - Vittoria</p>
-            <a href="Prenota.php">Prenota un campo</a>
-        </div>
-        <div class="activity">
-            <img src="immagini/sfondo_index/tennis.png" alt="Tennis">
-            <h1>Tennis</h1>
-            <p>"Esplora il campo da tennis progettato per offrire prestazioni ottimali e divertimento senza fine. Con una superficie impeccabile, 
-                linee chiare e una struttura ben curata, il nostro campo da tennis ti permette di allenarti, competere e goderti partite entusiasmanti 
-                in un ambiente accogliente e professionale."
-            </p>
-            <p>Orari: 
-                <br>Bambini: Mar-Ven 16:00-18:00
-                <br>Ragazzi: Lun-Gio 17:00-19:00 Mer 18:00-20:00
-            </p>
-            <p>Costi:
-                <br> Lezioni singole a partire da €20. 
-                <br>Corsi a partire da €50.
-            </p>
-            <p>Istruttori: Federico - Matteo</p>
-            <p>Nelle fasce libere i campi sono usufruibili su prenotazione</p>
-            <a href="Prenota.php">Prenota un campo</a>
-        </div>
-        <div class="activity">
-            <img src="immagini/sfondo_index/basket.png" alt="Basket">
-            <h1>Basket</h1>
-            <p>"Esplora il campo da basket, dove la passione e l'energia del gioco si fondono in un'unica esperienza. 
-                Lasciati trasportare dalla magia del basket mentre punti al canestro e celebri ogni punto con entusiasmo."
-            </p>
-            <p>Orari:
-                <br>Lun-Dom 6:00-22:00
-            </p>
-            <p>Costi:
-                <br>Abbonamenti mensili a partire da €30.
-            </p>
-            <p>Istruttori: Giovanni - Fabio</p>
-            <a href="Prenota.php">Prenota un campo</a>
-        </div>
-        <div class="activity">
-            <img src="immagini/sfondo_index/piscina.jpg" alt="Nuoto">
-            <h1>Nuoto</h1>
-            <p>"Immergiti nell'atmosfera rinfrescante e vivace della nostra piscina. Che tu stia facendo qualche vasca per il fitness 
-                o semplicemente ti stia rilassando ti offriamo un'oasi di tranquillità e benessere."
-            </p>
-            <p>Orari:
-                <br>Lun-Ven 9:00-20:00, Sab-Dom 10:00-18:00
-            </p>
-            <p>Costi:
-                <br>Lezioni singole a partire da €20.
-            </p>
-            <p>Istruttori: Valeria - Roberto</p>
-            <a href="Prenota.php">Prenota un campo</a>
-        </div>
-        <div class="activity">
-            <img src="immagini/sfondo_index/palestra.png" alt="Palestra">
-            <h1>Palestra</h1>
-            <p>"Dai pesi liberi alle macchine cardio, dalle lezioni di gruppo alle sessioni personali con istruttori esperti, la nostra 
-                palestra offre tutto ciò di cui hai bisogno per tonificare il corpo, aumentare la forza e migliorare la salute generale. 
-                Entra e scopri un ambiente accogliente e stimolante dove ogni allenamento ti avvicina sempre di più ai tuoi obiettivi di fitness e benessere."
-            </p>
-            <p>Orari: 
-                <br>Lun-Ven 9:00-23:00, Sab-Dom 10:00-18:00
-            </p>
-            <p>Istruttori: Stefano - Sara</p>
-            <a href="Prenota.php">Prenota un campo</a>
-        </div>
-    </div>
-    
-    <div class="scatola">
-        <table>
-        <tr>
-            <th class="time-column">Ora\Giorno</th>
-            <th>Lunedì</th>
-            <th>Martedì</th>
-            <th>Mercoledì</th>
-            <th>Giovedì</th>
-            <th>Venerdì</th>
-        </tr>
-        <?php
-            // Query per recuperare i dati dalla tabella Orari
-            $result = pg_query($conn, "SELECT giorno_settimana, ora_inizio, ora_fine, nome, categoria FROM Orari");
+        
+        <div class="scatola">
+            <table>
+            <tr>
+                <th class="time-column">Ora\Giorno</th>
+                <th>Lunedì</th>
+                <th>Martedì</th>
+                <th>Mercoledì</th>
+                <th>Giovedì</th>
+                <th>Venerdì</th>
+            </tr>
+            <?php
+                // Query per recuperare i dati dalla tabella Orari
+                $result = pg_query($conn, "SELECT giorno_settimana, ora_inizio, ora_fine, nome, categoria FROM Orari");
 
-            if ($result) {
-                // Array associativo per memorizzare i dati dei corsi per ogni giorno
-                $corsi_per_orario = array(
-                    "15:00 - 16:00" => array(),
-                    "16:00 - 17:00" => array(),
-                    "17:00 - 18:00" => array(),
-                    "18:00 - 19:00" => array(),
-                    "19:00 - 20:00" => array()
-                );
+                if ($result) {
+                    // Array associativo per memorizzare i dati dei corsi per ogni giorno
+                    $corsi_per_orario = array(
+                        "15:00 - 16:00" => array(),
+                        "16:00 - 17:00" => array(),
+                        "17:00 - 18:00" => array(),
+                        "18:00 - 19:00" => array(),
+                        "19:00 - 20:00" => array()
+                    );
 
-                // Riempimento dell'array con i dati dei corsi
-                while ($row = pg_fetch_assoc($result)) {
-                    $giorno = $row["giorno_settimana"];
-                    $inizio_completo = $row["ora_inizio"];
-                    $fine_completo = $row["ora_fine"];
-                    // Mi assicuro che il nome e la categoria siano minuscoli per i css
-                    $nome_corso = strtolower($row["nome"]); 
-                    $categoria_corso = strtolower($row["categoria"]); 
+                    // Riempimento dell'array con i dati dei corsi
+                    while ($row = pg_fetch_assoc($result)) {
+                        $giorno = $row["giorno_settimana"];
+                        $inizio_completo = $row["ora_inizio"];
+                        $fine_completo = $row["ora_fine"];
+                        // Mi assicuro che il nome e la categoria siano minuscoli per i css
+                        $nome_corso = strtolower($row["nome"]); 
+                        $categoria_corso = strtolower($row["categoria"]); 
 
-                    $inizio = substr($inizio_completo, 0, 5); // Estrae solo i primi 5 caratteri (HH:MM)
-                    $fine = substr($fine_completo, 0, 5); // Estrae solo i primi 5 caratteri (HH:MM)
+                        $inizio = substr($inizio_completo, 0, 5); // Estrae solo i primi 5 caratteri (HH:MM)
+                        $fine = substr($fine_completo, 0, 5); // Estrae solo i primi 5 caratteri (HH:MM)
 
 
-                    // Debug: stampa delle variabili
-                    // echo "Giorno: $giorno, Inizio: $inizio, Fine: $fine, Nome corso: $nome_corso, Categoria corso: $categoria_corso <br>";
+                        // Debug: stampa delle variabili
+                        // echo "Giorno: $giorno, Inizio: $inizio, Fine: $fine, Nome corso: $nome_corso, Categoria corso: $categoria_corso <br>";
 
-                    // Costruzione della stringa per l'orario
-                    $orario = "$inizio - $fine";
+                        // Costruzione della stringa per l'orario
+                        $orario = "$inizio - $fine";
 
-                    // Aggiunta del corso all'array associativo
-                    $corsi_per_orario[$orario][$giorno][] = array("nome" => $nome_corso, "categoria" => $categoria_corso);
-                }
-
-                // Creazione della tabella HTML
-                foreach ($corsi_per_orario as $orario => $corsi_per_giorno) {
-                    echo "<tr>";
-                    echo "<td>$orario</td>";
-                    foreach (["lunedi", "martedi", "mercoledi", "giovedi", "venerdi"] as $giorno) {
-                        echo "<td>";
-                        if (isset($corsi_per_giorno[$giorno])) {
-                            echo "<table class='inner-table'>";
-                            foreach ($corsi_per_giorno[$giorno] as $corso) {
-                                $nome_corso = $corso["nome"];
-                                $categoria_corso = strtolower($corso["categoria"]); // Assicurati che la categoria sia in minuscolo
-                                $classe_corso = "corso-$nome_corso-$categoria_corso"; // Costruisci il nome della classe CSS
-                                echo "<td class='$classe_corso'>$nome_corso</td>";
-                            }
-                            echo "</table>";
-                        }
-                        echo "</td>";
+                        // Aggiunta del corso all'array associativo
+                        $corsi_per_orario[$orario][$giorno][] = array("nome" => $nome_corso, "categoria" => $categoria_corso);
                     }
-                    echo "</tr>";
-                }
-            } else {
-                echo "Nessun corso trovato.";
-            }
 
-            // Chiusura della connessione al database
-            pg_close($conn);
-        ?>
-        </table>
-        <!-- Legenda -->
-        <div class="legend">
-            <div class="legend-item">
-                <div class="legend-circle" style="background-color: #90EE90;"></div> Calcio Bambini: campo 1
-            </div>
-            <div class="legend-item">
-                <div class="legend-circle" style="background-color: #008000;"></div> Calcio Ragazzi: campo 2
-            </div>
-            <div class="legend-item">
-                <div class="legend-circle" style="background-color: #FFA500;"></div> Tennis Bambini
-            </div>
-            <div class="legend-item">
-                <div class="legend-circle" style="background-color: #FF8C00;"></div> Tennis Ragazzi
-            </div>
-            <div class="legend-item">
-                <div class="legend-circle" style="background-color: #ADD8E6;"></div> Nuoto Bambini
-            </div>
-            <div class="legend-item">
-                <div class="legend-circle" style="background-color: #4682B4;"></div> Nuoto Ragazzi
-            </div>
-            <div class="legend-item">
-                <div class="legend-circle" style="background-color: #FF7F50;"></div> Basket Bambini
-            </div>
-            <div class="legend-item">
-                <div class="legend-circle" style="background-color: #FF4500;"></div> Basket Ragazzi
-            </div>
-            <div class="legend-item">
-                <div class="legend-circle" style="background-color: #FFFF00;"></div> Paddle Bambini
-            </div>
-            <div class="legend-item">
-                <div class="legend-circle" style="background-color: #FFD700;"></div> Paddle Ragazzi
+                    // Creazione della tabella HTML
+                    foreach ($corsi_per_orario as $orario => $corsi_per_giorno) {
+                        echo "<tr>";
+                        echo "<td>$orario</td>";
+                        foreach (["lunedi", "martedi", "mercoledi", "giovedi", "venerdi"] as $giorno) {
+                            echo "<td>";
+                            if (isset($corsi_per_giorno[$giorno])) {
+                                echo "<table class='inner-table'>";
+                                foreach ($corsi_per_giorno[$giorno] as $corso) {
+                                    $nome_corso = $corso["nome"];
+                                    $categoria_corso = strtolower($corso["categoria"]); // Assicurati che la categoria sia in minuscolo
+                                    $classe_corso = "corso-$nome_corso-$categoria_corso"; // Costruisci il nome della classe CSS
+                                    echo "<td class='$classe_corso'>$nome_corso</td>";
+                                }
+                                echo "</table>";
+                            }
+                            echo "</td>";
+                        }
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "Nessun corso trovato.";
+                }
+
+                // Chiusura della connessione al database
+                pg_close($conn);
+            ?>
+            </table>
+            <!-- Legenda -->
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-circle" style="background-color: #90EE90;"></div> Calcio Bambini: campo 1
+                </div>
+                <div class="legend-item">
+                    <div class="legend-circle" style="background-color: #008000;"></div> Calcio Ragazzi: campo 2
+                </div>
+                <div class="legend-item">
+                    <div class="legend-circle" style="background-color: #FFA500;"></div> Tennis Bambini
+                </div>
+                <div class="legend-item">
+                    <div class="legend-circle" style="background-color: #FF8C00;"></div> Tennis Ragazzi
+                </div>
+                <div class="legend-item">
+                    <div class="legend-circle" style="background-color: #ADD8E6;"></div> Nuoto Bambini
+                </div>
+                <div class="legend-item">
+                    <div class="legend-circle" style="background-color: #4682B4;"></div> Nuoto Ragazzi
+                </div>
+                <div class="legend-item">
+                    <div class="legend-circle" style="background-color: #FF7F50;"></div> Basket Bambini
+                </div>
+                <div class="legend-item">
+                    <div class="legend-circle" style="background-color: #FF4500;"></div> Basket Ragazzi
+                </div>
+                <div class="legend-item">
+                    <div class="legend-circle" style="background-color: #FFFF00;"></div> Paddle Bambini
+                </div>
+                <div class="legend-item">
+                    <div class="legend-circle" style="background-color: #FFD700;"></div> Paddle Ragazzi
+                </div>
             </div>
         </div>
-    </div>
-
+    </main>           
 <!-- Footer section with contacts -->	
 <footer>
         <div class="map">

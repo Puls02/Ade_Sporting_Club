@@ -1,5 +1,6 @@
+
 /*Style for the Struttura page*/
-.main
+main
 {
   width: 100%;
   height: auto;
@@ -33,19 +34,22 @@ hr
 {
     width: 100%;
     height: 800px;
+    position: relative;
 }
 .bg_img
 {
     width: 100%;
     height: 100%;
 }
-.presentation
+/* CSS for the presentation box */
+.presentation 
 {
   position: absolute;
   top: 20%;
   right: 40%;
   background-color: rgba(68, 168, 190, 0.8);
   height: fit-content;
+  z-index: 1; /* Ensure it stays below the popup */
 }
 /*-------------------------------------*/
 

@@ -25,7 +25,7 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center; /* Allinea verticalmente gli elementi */
-    margin-top: 20px; /* Spazio sopra la sezione formalità */
+    margin-top: 10px;
 }
 
 .cc {
@@ -45,11 +45,8 @@ footer {
     border: 1px solid #efefee;
     padding: 10px; /* Aggiungi padding per uno spazio interno */
     text-align: center; /* Centra il contenuto all'interno del link */
-}
-
-.ancora a {
-    text-decoration: none;
-    color: inherit; /* Mantiene il colore del testo */
+    cursor: pointer;
+    z-index: 10;
 }
 
 .ancora a i {
@@ -60,7 +57,7 @@ footer {
     border: none;
     height: 1px;
     background-color: #efefef; /* same as border color */
-    margin: 20px 0; /* Spazio sopra e sotto l'hr */
+    margin-top: 10px; /* Spazio sopra e sotto l'hr */
 }
 /*------------------------------------------*/
 

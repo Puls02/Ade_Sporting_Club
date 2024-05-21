@@ -22,7 +22,6 @@
     <!--Link to style folder-->
     <link rel="StyleSheet" href="Style/utility.css">
     <link rel="StyleSheet" href="Style/navbar.css">
-    <link rel="StyleSheet" href="Style/login.css">
     <link rel="StyleSheet" href="Style/footer.css">
     <link rel="StyleSheet" href="Style/struttura.css">
     <link rel="stylesheet" href="Style/popup.css"> 
@@ -192,15 +191,18 @@
         
     </header>
 
+    <!-- Div per l'overlay -->
+    <div id="overlay" class="overlay"></div>
     <!-- Div nascosto del popup -->
     <div id="popup" class="popup">
         <iframe src="login_registrazione/login.php" width="580" height="500" frameborder="0" style="border:0; overflow:hidden;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
-    <div class="main">
+    <main>
+       
         <div class="Sezione_1">
             <img class="bg_img" src="immagini/galleria/presentazione/banner2.jpg">
-            <div class="box presentation">
+            <div class="presentation">
                 <h1>Cosa offre il nostro club</h1>
                 <p>Benvenuti nel nostro centro sportivo di prim'ordine situato nel cuore di Roma.
                     <br>
@@ -283,7 +285,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 <!-- Footer section with contacts -->	  
 <footer>
         <div class="map">

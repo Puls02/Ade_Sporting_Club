@@ -12,7 +12,6 @@
     <title>Profilo Utente</title>
     <link rel="StyleSheet" href="../Style/utility.css">
     <link rel="StyleSheet" href="../Style/navbar.css">
-    <link rel="StyleSheet" href="../Style/login.css">
     <link rel="StyleSheet" href="../Style/utente.css">
 
     <!-- <link rel="StyleSheet" href="../chat/stile.css"> -->

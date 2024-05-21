@@ -8,7 +8,6 @@
     
     <link rel="StyleSheet" href="../Style/utility.css">
     <link rel="StyleSheet" href="../Style/navbar.css">
-    <link rel="StyleSheet" href="../Style/login.css">
     <link rel="StyleSheet" href="../Style/registration.css">
     
 

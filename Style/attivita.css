@@ -59,6 +59,7 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
     border: 1px solid #ddd;
+    table-layout: fixed;
 }
 th, td {
     border: 1px solid #ddd;

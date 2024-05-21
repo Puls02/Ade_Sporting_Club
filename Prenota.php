@@ -23,10 +23,7 @@
     <link rel="StyleSheet" href="Style/modal.css">
     <link rel="StyleSheet" href="Style/utility.css">
     <link rel="StyleSheet" href="Style/navbar.css">
-    <link rel="StyleSheet" href="Style/login.css">
     <link rel="StyleSheet" href="Style/footer.css">
-    <link rel="StyleSheet" href="Style/index.css">
-    <link rel="StyleSheet" href="Style/gallery.css">
     <link rel="stylesheet" href="Style/popup.css">
     <link rel="stylesheet" href="Style/prenota.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- per le cione delle attivita -->
@@ -206,362 +203,365 @@
         </nav>
     </header>
 
+    <!-- Div per l'overlay -->
+    <div id="overlay" class="overlay"></div>
     <!-- Div nascosto del popup -->
     <div id="popup" class="popup">
         <iframe src="login_registrazione/login.php" width="580" height="500" frameborder="0" style="border:0; overflow:hidden;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
-    <div class="zona">
-    <table>
-        <?php 
-            //Costruzione dell'array per i giorni della settimana "GiornoSettimana - data"
-            date_default_timezone_set('Europe/Rome');
-                
-            // Ottieni la data del lunedì di questa settimana
-            $mondayOfThisWeek = date('Y-m-d', strtotime('monday this week'));
+    <main>
+        <div class="zona">
+        <table>
+            <?php 
+                //Costruzione dell'array per i giorni della settimana "GiornoSettimana - data"
+                date_default_timezone_set('Europe/Rome');
+                    
+                // Ottieni la data del lunedì di questa settimana
+                $mondayOfThisWeek = date('Y-m-d', strtotime('monday this week'));
 
-            // Inizializza un array per memorizzare i giorni della settimana corrente
-            $daysOfTheWeek = array();
+                // Inizializza un array per memorizzare i giorni della settimana corrente
+                $daysOfTheWeek = array();
 
-            // Cicla per ottenere tutti i giorni della settimana corrente
-            for ($i = 0; $i < 7; $i++) {
-                // Aggiungi i giorni alla data del lunedì
-                $day = date('Y-m-d', strtotime($mondayOfThisWeek . " +$i days"));
-                // Aggiungi il giorno all'array
+                // Cicla per ottenere tutti i giorni della settimana corrente
+                for ($i = 0; $i < 7; $i++) {
+                    // Aggiungi i giorni alla data del lunedì
+                    $day = date('Y-m-d', strtotime($mondayOfThisWeek . " +$i days"));
+                    // Aggiungi il giorno all'array
 
-                $daysOfTheWeek[] = $day;
-            }
-    
-        ?>
-        <tr>
-            <!--Creazione della prima riga nel seguente formato "Day Y-M-D"-->
-            <th class="time-column">Ora\Giorno</th>
-            <th>Lunedì <?php echo $daysOfTheWeek[0]?></th>
-            <th>Martedì <?php echo $daysOfTheWeek[1]?></th>
-            <th>Mercoledì <?php echo $daysOfTheWeek[2]?></th>
-            <th>Giovedì <?php echo $daysOfTheWeek[3]?></th>
-            <th>Venerdì <?php echo $daysOfTheWeek[4]?></th>
-            <th>Sabato <?php echo $daysOfTheWeek[5]?></th>
-            <th>Domenica <?php echo $daysOfTheWeek[6]?></th>
-        </tr>
-        <?php
-            // Query per recuperare i dati dalla tabella Prenotazioni
-            $result = pg_query($conn, "SELECT * FROM prenotazione p join campo c on c.id = p.campo WHERE owner='true'"); //prenotazione
-            if ($result) {
-                // Array associativo per memorizzare le prenotazioni per ogni orario
-                $prenotazioni_per_orario = array(
-                    "08:00 - 09:00" => array(),
-                    "09:00 - 10:00" => array(),
-                    "10:00 - 11:00" => array(),
-                    "11:00 - 12:00" => array(),
-                    "12:00 - 13:00" => array(),
-                    "13:00 - 14:00" => array(),
-                    "14:00 - 15:00" => array(),
-                    "15:00 - 16:00" => array(),
-                    "16:00 - 17:00" => array(),
-                    "17:00 - 18:00" => array(),
-                    "18:00 - 19:00" => array(),
-                    "19:00 - 20:00" => array(),
-                    "20:00 - 21:00" => array(),
-                    "21:00 - 22:00" => array(),
-                    "22:00 - 23:00" => array(),
-                );
-
-                // Riempimento dell'array con i dati delle prenotazioni
-                while ($row = pg_fetch_assoc($result)) {
+                    $daysOfTheWeek[] = $day;
+                }
         
-                    $id_prenotazione = $row["id_prenotazione"];
-                    $data = $row["data"];
-                    $campo =$row["campo"];
-                    // devo prendere il giorno della settimana
-                    $giornoSettimana=date('l', strtotime($data));
-                    $giorno = "$giornoSettimana - $data";
-                    $inizio_completo = $row["ora_inizio"];
-                    $fine_completo = $row["ora_fine"];
-                    $utente = $row["utente"];
-                    $completa = $row["completa"];
-                    $num_persone = $row["num_persone"];
+            ?>
+            <tr>
+                <!--Creazione della prima riga nel seguente formato "Day Y-M-D"-->
+                <th class="time-column">Ora\Giorno</th>
+                <th>Lunedì <?php echo $daysOfTheWeek[0]?></th>
+                <th>Martedì <?php echo $daysOfTheWeek[1]?></th>
+                <th>Mercoledì <?php echo $daysOfTheWeek[2]?></th>
+                <th>Giovedì <?php echo $daysOfTheWeek[3]?></th>
+                <th>Venerdì <?php echo $daysOfTheWeek[4]?></th>
+                <th>Sabato <?php echo $daysOfTheWeek[5]?></th>
+                <th>Domenica <?php echo $daysOfTheWeek[6]?></th>
+            </tr>
+            <?php
+                // Query per recuperare i dati dalla tabella Prenotazioni
+                $result = pg_query($conn, "SELECT * FROM prenotazione p join campo c on c.id = p.campo WHERE owner='true'"); 
+                if ($result) {
+                    // Array associativo per memorizzare le prenotazioni per ogni orario
+                    $prenotazioni_per_orario = array(
+                        "08:00 - 09:00" => array(),
+                        "09:00 - 10:00" => array(),
+                        "10:00 - 11:00" => array(),
+                        "11:00 - 12:00" => array(),
+                        "12:00 - 13:00" => array(),
+                        "13:00 - 14:00" => array(),
+                        "14:00 - 15:00" => array(),
+                        "15:00 - 16:00" => array(),
+                        "16:00 - 17:00" => array(),
+                        "17:00 - 18:00" => array(),
+                        "18:00 - 19:00" => array(),
+                        "19:00 - 20:00" => array(),
+                        "20:00 - 21:00" => array(),
+                        "21:00 - 22:00" => array(),
+                        "22:00 - 23:00" => array(),
+                    );
 
-                    $sport = $row["tipo"];
+                    // Riempimento dell'array con i dati delle prenotazioni
+                    while ($row = pg_fetch_assoc($result)) {            
+                        $id_prenotazione = $row["id_prenotazione"];
+                        $data = $row["data"];
+                        $campo =$row["campo"];
+                        // devo prendere il giorno della settimana
+                        $giornoSettimana=date('l', strtotime($data));
+                        $giorno = "$giornoSettimana - $data";
+                        $inizio_completo = $row["ora_inizio"];
+                        $fine_completo = $row["ora_fine"];
+                        $utente = $row["utente"];
+                        $completa = $row["completa"];
+                        $num_persone = $row["num_persone"];
 
-                    $inizio = substr($inizio_completo, 0, 5); // Estrae solo i primi 5 caratteri (HH:MM)
-                    $fine = substr($fine_completo, 0, 5); // Estrae solo i primi 5 caratteri (HH:MM)
-                    
-                    // Costruzione della stringa per l'orario
-                    $orario = "$inizio - $fine";
-                    
-                    // Aggiunta della prenotazione all'array associativo
-                    $prenotazioni_per_orario[$orario][$giorno][] = array("id" => $id_prenotazione,"numero_campo" => $campo, "sport" => $sport, "completa" => $completa, "persone" => $num_persone);
-                }
-                
-                
-                // Creazione della tabella HTML
-                foreach ($prenotazioni_per_orario as $orario => $prenotazioni_per_giorno) {
-                    echo "<tr>";
-                    echo "<td>$orario</td>";
-                    foreach (["Monday - " . $daysOfTheWeek[0], "Tuesday - ". $daysOfTheWeek[1], "Wednesday - ". $daysOfTheWeek[2], "Thurstday - ". $daysOfTheWeek[3], "Friday - ". $daysOfTheWeek[4], "Saturday - ". $daysOfTheWeek[5], "Sunday - ". $daysOfTheWeek[6]] as $giorno) {
+                        $sport = $row["tipo"];
+
+                        $inizio = substr($inizio_completo, 0, 5); // Estrae solo i primi 5 caratteri (HH:MM)
+                        $fine = substr($fine_completo, 0, 5); // Estrae solo i primi 5 caratteri (HH:MM)
                         
-                        echo "<td>";
-                        if (isset($prenotazioni_per_giorno[$giorno])) {                            
-                            echo "<table class='inner-table'>";
-
-                            // Creazione di una cella per ogni prenotazione
-                            foreach ($prenotazioni_per_giorno[$giorno] as $prenotazione) {
-                                $id = $prenotazione["id"];
-                                $sport = $prenotazione["sport"];
-                                $campo= $prenotazione["numero_campo"];
-                                $completa = $prenotazione["completa"];
-                                $persone = $prenotazione["persone"];
-
-                                // Determina l'icona corretta per lo sport
-                                $icona = "";
-                                switch ($sport) {
-                                    case "Calcetto":
-                                        $icona = "fas fa-futbol"; // Icona per calcio
-                                        break;
-                                    case "Paddle":
-                                        $icona = "fas fa-table-tennis"; // Icona per paddle
-                                        break;
-                                    case "Tennis":
-                                        $icona = "fas fa-baseball-ball"; // Icona per tennis
-                                        break;
-                                    case "Nuoto":
-                                        $icona = "fas fa-swimmer"; // Icona per nuoto
-                                        break;
-                                    case "Basket":
-                                        $icona = "fas fa-basketball-ball"; // Icona per basket
-                                        break;
-                                    case "Palestra":
-                                        $icona ="fa-solid fa-dumbbell";
-                                        break;
-                                    case "Piscina":
-                                        $icona ="fa-solid fa-person-swimming";
-                                        break;
-                                    default:
-                                        $icona = "fas fa-question"; // Icona generica
-                                        break;
-                                }
-                                // Costruzione del testo del tooltip
-                                $tooltip = "ID: $id\nCampo: $campo\nSport: $sport\n";
-                                if ($completa == 't') {
-                                    $tooltip .= "Stato: Completa";
-                                } else {
-                                    $tooltip .= "Numero Persone: $persone";
-                                }
-
-                                if($completa == 't'){
-                                    $sfondo = "#99d98c";//cella verde
-                                    // Aggiungi l'icona con il tooltip
-                                    echo "<td style='background-color: $sfondo' title='$tooltip'><i class='$icona'></i></td>";
-                                }else{
-                                    $sfondo = "#ffc300";//cella gialla
-                                    // Aggiungi l'icona con il tooltip
-                                    echo "<td style='background-color: $sfondo' title='$tooltip' onclick='if(checkLogin()) {finestraDiAggiunta($id)}'><i class='$icona'></i></td>";
-                                }
-
-                                              
-                            }
-                            echo "</table>";
-                        }
-
-                        echo "</td>";
+                        // Costruzione della stringa per l'orario
+                        $orario = "$inizio - $fine";
+                        
+                        // Aggiunta della prenotazione all'array associativo
+                        $prenotazioni_per_orario[$orario][$giorno][] = array("id" => $id_prenotazione,"numero_campo" => $campo, "sport" => $sport, "completa" => $completa, "persone" => $num_persone);
                     }
-                    echo "</tr>";
-                }
-            } else {
-                echo "Nessuna prenotazione trovata.";
-            }
-        ?>
-        </table>
+                    
+                    
+                    // Creazione della tabella HTML
+                    foreach ($prenotazioni_per_orario as $orario => $prenotazioni_per_giorno) {
+                        echo "<tr>";
+                        echo "<td>$orario</td>";
+                        foreach (["Monday - " . $daysOfTheWeek[0], "Tuesday - ". $daysOfTheWeek[1], "Wednesday - ". $daysOfTheWeek[2], "Thursday - ". $daysOfTheWeek[3], "Friday - ". $daysOfTheWeek[4], "Saturday - ". $daysOfTheWeek[5], "Sunday - ". $daysOfTheWeek[6]] as $giorno) {
+                            
+                            echo "<td>";
+                            if (isset($prenotazioni_per_giorno[$giorno])) {                            
+                                echo "<table class='inner-table'>";
 
-        <!-- Finestra Modale -->
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <div id="modalContent">
-                    <!-- Qui verranno inseriti dinamicamente i dettagli della prenotazione -->
+                                // Creazione di una cella per ogni prenotazione
+                                foreach ($prenotazioni_per_giorno[$giorno] as $prenotazione) {
+                                    $id = $prenotazione["id"];
+                                    $sport = $prenotazione["sport"];
+                                    $campo= $prenotazione["numero_campo"];
+                                    $completa = $prenotazione["completa"];
+                                    $persone = $prenotazione["persone"];
+
+                                    // Determina l'icona corretta per lo sport
+                                    $icona = "";
+                                    switch ($sport) {
+                                        case "Calcetto":
+                                            $icona = "fas fa-futbol"; // Icona per calcio
+                                            break;
+                                        case "Paddle":
+                                            $icona = "fas fa-table-tennis"; // Icona per paddle
+                                            break;
+                                        case "Tennis":
+                                            $icona = "fas fa-baseball-ball"; // Icona per tennis
+                                            break;
+                                        case "Nuoto":
+                                            $icona = "fas fa-swimmer"; // Icona per nuoto
+                                            break;
+                                        case "Basket":
+                                            $icona = "fas fa-basketball-ball"; // Icona per basket
+                                            break;
+                                        case "Palestra":
+                                            $icona ="fa-solid fa-dumbbell";
+                                            break;
+                                        case "Piscina":
+                                            $icona ="fa-solid fa-person-swimming";
+                                            break;
+                                        default:
+                                            $icona = "fas fa-question"; // Icona generica
+                                            break;
+                                    }
+                                    // Costruzione del testo del tooltip
+                                    $tooltip = "ID: $id\nCampo: $campo\nSport: $sport\n";
+                                    if ($completa == 't') {
+                                        $tooltip .= "Stato: Completa";
+                                    } else {
+                                        $tooltip .= "Numero Persone: $persone";
+                                    }
+
+                                    if($completa == 't'){
+                                        $sfondo = "#99d98c";//cella verde
+                                        // Aggiungi l'icona con il tooltip
+                                        echo "<td style='background-color: $sfondo' title='$tooltip'><i class='$icona'></i></td>";
+                                    }else{
+                                        $sfondo = "#ffc300";//cella gialla
+                                        // Aggiungi l'icona con il tooltip
+                                        echo "<td style='background-color: $sfondo' title='$tooltip' onclick='if(checkLogin()) {finestraDiAggiunta($id)}'><i class='$icona'></i></td>";
+                                    }
+
+                                                
+                                }
+                                echo "</table>";
+                            }
+
+                            echo "</td>";
+                        }
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "Nessuna prenotazione trovata.";
+                }
+            ?>
+            </table>
+
+            <!-- Finestra Modale -->
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div id="modalContent">
+                        <!-- Qui verranno inseriti dinamicamente i dettagli della prenotazione -->
+                    </div>
+                    <button id="actionButton">Aggiungimi alla prenotazione</button>
                 </div>
-                <button id="actionButton">Aggiungimi alla prenotazione</button>
             </div>
         </div>
-    </div>
 
-    <div class="zona">
-        <p>La tebella sovrastante riporta le disponibilita settimanali (lun-dom) dei vari campi da gioco.<br>Se la prenotazione risulta verde vuol dire che è stata validata e tale campo è quindi occupato. Al contrario se la prenotazione c'è ma risulta ancora gialla vuol dire che non è completa e ci si può aggiungere</p>
-    </div>
+        <div class="zona">
+            <p>La tebella sovrastante riporta le disponibilita settimanali (lun-dom) dei vari campi da gioco.<br>Se la prenotazione risulta verde vuol dire che è stata validata e tale campo è quindi occupato. Al contrario se la prenotazione c'è ma risulta ancora gialla vuol dire che non è completa e ci si può aggiungere</p>
+        </div>
 
-    <!-- io inserirei a destra di ogni tendina un post it con le informazioni relative ai costi dei campi -->
-    <div>
-        <ul class="toggle-list" >
-            <li class="toggle-item" onclick="return checkLogin();">
-                <input type="radio" id="calcio" name="attivita">
-                <label for="calcio" >Calcetto<span class="arrow" ></span></label>
-                <div class="content">
-                    <form action="php/prenotazione.php" method="post" name="formPrenotazione">
-                        <label for="dataCalcio">Data:</label>
-                        <input type="date" id="dataCalcio" name="data" required><br>
-                        <label for="orario">Orario prenotazione:</label>
-                        <select class="orario" name="ora" required>
-                            <option value="">Seleziona un orario</option>
-                        </select><br>
-                        <label for="campo">Seleziona campo:</label><br>
-                        <select id="campo" name="campo" required>
-                            <option value="calcetto_1">Campo 1</option>
-                            <option value="calcetto_2">Campo 2</option>
-                            <option value="calcetto_3">Campo 3</option>
-                        </select><br>
-                        <label for="prenotazione">Tipo di prenotazione:</label><br>
-                        <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>
-                        <label for="interoCampo">Prenotazione dell'intero campo</label><br>
-                        <input type="radio" id="codaGioco" name="prenotazione" value="codaGioco">
-                        <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
-                        <div id="numPersoneWrapper">
-                            <label for="numeroPersone">Numero di persone:</label>
-                            <input type="number" id="numeroPersone" name="numeroPersone" min="1" max="9"><br>
-                        </div>
-                        
-                        <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
-                        <input type="reset" value="Azzera i campi">
-                    </form>
-                </div>
-            </li>
-            <li class="toggle-item" onclick="return checkLogin();">
-                <input type="radio" id="paddle" name="attivita">
-                <label for="paddle">Paddle<span class="arrow"></span></label>
-                <div class="content">
-                    <form method="post" action="php/prenotazione.php" name="formPrenotazione">
-                        <label for="dataPaddle">Data:</label>
-                        <input type="date" id="dataPaddle" name="data" required><br>
-                        <label for="orario">Orario prenotazione:</label>
-                        <select class="orario" name="ora" required>
-                            <option value="">Seleziona un orario</option>
-                        </select><br>
-                        <label for="campo">Seleziona campo:</label><br>
-                        <select id="campo" name="campo" required>
-                            <option value="paddle_4">Campo 1</option>
-                            <option value="paddle_5">Campo 2</option>
-                            <option value="paddle_6">Campo 3</option>
-                        </select><br>
-                        <label for="prenotazione">Tipo di prenotazione:</label><br>
-                        <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>
-                        <label for="interoCampo">Prenotazione dell'intero campo</label><br>
-                        <input type="radio" id="codaGioco" name="prenotazione" value="codaGioco">
-                        <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
-                        <div id="numPersoneWrapper">
-                            <label for="numeroPersone">Numero di persone:</label>
-                            <input type="number" id="numeroPersone" name="numeroPersone" min="1" max="3"><br>
-                        </div>
-                        
-                        <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
-                        <input type="reset" value="Azzera i campi">
-                    </form>
-                </div>
-            </li>
-            <li class="toggle-item" onclick="return checkLogin();">
-                <input type="radio" id="tennis" name="attivita">
-                <label for="tennis">Tennis<span class="arrow"></span></label>
-                <div class="content">
-                    <form method="post" action="php/prenotazione.php" name="formPrenotazione">
-                        <label for="dataTennis">Data:</label>
-                        <input type="date" id="dataTennis" name="data" required><br>
-                        <label for="orario">Orario prenotazione:</label>
-                        <<select class="orario" name="ora" required>
-                            <option value="">Seleziona un orario</option>
-                        </select><br>
-                        <label for="sceltacampo">Tipo di prenotazione:</label><br>
-                        <input type="radio" id="terra" name="sceltacampo" value="terra" required>
-                        <label for="terra">Campo in terra</label><br>
-                        <input type="radio" id="cemento" name="sceltacampo" value="cemento">
-                        <label for="cemento">Campo in cemento</label><br>
-                        <label for="campo">Seleziona campo:</label><br>
-                        <select id="campo" name="campo" required>
-                            <option value="tennis_7">Campo 1</option>
-                            <option value="tennis_8">Campo 2</option>
-                            <option value="tennis_9">Campo 3</option>
-                            <option value="tennis_10">Campo 4</option> <!-- con js fai il controllo, i primi due so di terra e gli altri due in cemento -->
-                        </select><br>
-                        <label for="prenotazione">Tipo di prenotazione:</label><br>
-                        <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>
-                        <label for="interoCampo">Prenotazione dell'intero campo</label><br>
-                        <input type="radio" id="codaGioco" name="prenotazione" value="codaGioco">
-                        <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
-                        <div id="numPersoneWrapper">
-                            <label for="numeroPersone">Numero di persone:</label>
-                            <input type="number" id="numeroPersone" name="numeroPersone" min="1" max="2"><br>
-                        </div>
-                        
-                        <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
-                        <input type="reset" value="Azzera i campi">
-                    </form>
-                </div>
-            </li>
-            <li class="toggle-item" onclick="return checkLogin();">
-                <input type="radio" id="basket" name="attivita">
-                <label for="basket">Basket<span class="arrow"></span></label>
-                <div class="content">
-                    <form method="post" action="php/prenotazione.php" name="formPrenotazione">
-                        <label for="dataBasket">Data:</label>
-                        <input type="date" id="dataBasket" name="data" required><br>
-                        <label for="orario">Orario prenotazione:</label>
-                        <select class="orario" name="ora" required>
-                            <option value="">Seleziona un orario</option>
-                        </select><br>
-                        <label for="campo">Seleziona campo:</label><br>
-                        <select id="campo" name="campo" required>
-                            <option value="basket_11">Campo_1</option>
-                            <option value="basket_12">Campo_2</option>
-                        </select><br>
-                        <label for="prenotazione">Tipo di prenotazione:</label><br>
-                        <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>
-                        <label for="interoCampo">Prenotazione dell'intero campo</label><br>
-                        <input type="radio" id="codaGioco" name="prenotazione" value="codaGioco">
-                        <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
-                        <div id="numPersoneWrapper">
-                            <label for="numeroPersone">Numero di persone:</label>
-                            <input type="number" id="numeroPersone" name="numeroPersone" min="1" max="9"><br>
-                        </div>
-                        
-                        <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
-                        <input type="reset" value="Azzera i campi">
-                    </form>
-                </div>
-            </li>
-            <li class="toggle-item" onclick="return checkLogin();">
-                <input type="radio" id="nuoto" name="attivita">
-                <label for="nuoto">Nuoto<span class="arrow"></span></label>
-                <div class="content">
-                    <form method="post" action="php/prenotazione.php" name="formPrenotazione">
-                        <label for="dataNuoto">Data:</label>
-                        <input type="date" id="dataNuoto" name="data" required><input type="checkbox" class="hidden" id="campo" name="campo" value="piscina_13" checked><br>
-                        <!-- se possibile mettiamo in elenco solo le fasce disponibili -->
-                        <label for="orarioNuoto">Scegli una fascia oraria:</label>
-                        <select class="orario"  name="ora" required>
-                            <option value="">Seleziona orario</option>
-                        </select><br>
-                        <input type="submit" value="Prenota"> 
-                        <input type="reset" value="Azzera i campi">
-                    </form>
-                </div>
-            </li>
-            <li class="toggle-item" onclick="return checkLogin();">
-                <input type="radio" id="palestra" name="attivita">
-                <label for="palestra">Palestra<span class="arrow"></span></label>
-                <div class="content">
-                    <form method="post" action="php/prenotazione.php" name="formPrenotazione">
-                        <label for="dataPalestra">Data:</label> 
-                        <input type="date" id="dataPalestra" name="data" required><input type="checkbox" class="hidden" id="campo" name="campo" value="palestra_14" checked><br>
-                        <!-- se possibile mettiamo in elenco solo le fasce disponibili -->
-                        <label for="orarioPalestra">Scegli una fascia oraria:</label>
-                        <select class="orario" name="ora" required>
-                            <option value="">Seleziona un orario</option>
-                        </select><br>
-                        <input type="submit" value="Prenota"> 
-                        <input type="reset" value="Azzera i campi">
-                    </form>
-                </div>
-            </li>
-        </ul>
-    </div>
+        <!-- io inserirei a destra di ogni tendina un post it con le informazioni relative ai costi dei campi -->
+        <div>
+            <ul class="toggle-list" >
+                <li class="toggle-item" onclick="return checkLogin();">
+                    <input type="radio" id="calcio" name="attivita">
+                    <label for="calcio" >Calcetto<span class="arrow" ></span></label>
+                    <div class="content">
+                        <form action="php/prenotazione.php" method="post" name="formPrenotazione">
+                            <label for="dataCalcio">Data:</label>
+                            <input type="date" id="dataCalcio" name="data" required><br>
+                            <label for="orario">Orario prenotazione:</label>
+                            <select class="orario" name="ora" required>
+                                <option value="">Seleziona un orario</option>
+                            </select><br>
+                            <label for="campo">Seleziona campo:</label><br>
+                            <select id="campo" name="campo" required>
+                                <option value="calcetto_1">Campo 1</option>
+                                <option value="calcetto_2">Campo 2</option>
+                                <option value="calcetto_3">Campo 3</option>
+                            </select><br>
+                            <label for="prenotazione">Tipo di prenotazione:</label><br>
+                            <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>
+                            <label for="interoCampo">Prenotazione dell'intero campo</label><br>
+                            <input type="radio" id="codaGioco" name="prenotazione" value="codaGioco">
+                            <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
+                            <div id="numPersoneWrapper">
+                                <label for="numeroPersone">Numero di persone:</label>
+                                <input type="number" id="numeroPersone" name="numeroPersone" min="1" max="9"><br>
+                            </div>
+                            
+                            <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
+                            <input type="reset" value="Azzera i campi">
+                        </form>
+                    </div>
+                </li>
+                <li class="toggle-item" onclick="return checkLogin();">
+                    <input type="radio" id="paddle" name="attivita">
+                    <label for="paddle">Paddle<span class="arrow"></span></label>
+                    <div class="content">
+                        <form method="post" action="php/prenotazione.php" name="formPrenotazione">
+                            <label for="dataPaddle">Data:</label>
+                            <input type="date" id="dataPaddle" name="data" required><br>
+                            <label for="orario">Orario prenotazione:</label>
+                            <select class="orario" name="ora" required>
+                                <option value="">Seleziona un orario</option>
+                            </select><br>
+                            <label for="campo">Seleziona campo:</label><br>
+                            <select id="campo" name="campo" required>
+                                <option value="paddle_4">Campo 1</option>
+                                <option value="paddle_5">Campo 2</option>
+                                <option value="paddle_6">Campo 3</option>
+                            </select><br>
+                            <label for="prenotazione">Tipo di prenotazione:</label><br>
+                            <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>
+                            <label for="interoCampo">Prenotazione dell'intero campo</label><br>
+                            <input type="radio" id="codaGioco" name="prenotazione" value="codaGioco">
+                            <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
+                            <div id="numPersoneWrapper">
+                                <label for="numeroPersone">Numero di persone:</label>
+                                <input type="number" id="numeroPersone" name="numeroPersone" min="1" max="3"><br>
+                            </div>
+                            
+                            <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
+                            <input type="reset" value="Azzera i campi">
+                        </form>
+                    </div>
+                </li>
+                <li class="toggle-item" onclick="return checkLogin();">
+                    <input type="radio" id="tennis" name="attivita">
+                    <label for="tennis">Tennis<span class="arrow"></span></label>
+                    <div class="content">
+                        <form method="post" action="php/prenotazione.php" name="formPrenotazione">
+                            <label for="dataTennis">Data:</label>
+                            <input type="date" id="dataTennis" name="data" required><br>
+                            <label for="orario">Orario prenotazione:</label>
+                            <<select class="orario" name="ora" required>
+                                <option value="">Seleziona un orario</option>
+                            </select><br>
+                            <label for="sceltacampo">Tipo di prenotazione:</label><br>
+                            <input type="radio" id="terra" name="sceltacampo" value="terra" required>
+                            <label for="terra">Campo in terra</label><br>
+                            <input type="radio" id="cemento" name="sceltacampo" value="cemento">
+                            <label for="cemento">Campo in cemento</label><br>
+                            <label for="campo">Seleziona campo:</label><br>
+                            <select id="campo" name="campo" required>
+                                <option value="tennis_7">Campo 1</option>
+                                <option value="tennis_8">Campo 2</option>
+                                <option value="tennis_9">Campo 3</option>
+                                <option value="tennis_10">Campo 4</option> <!-- con js fai il controllo, i primi due so di terra e gli altri due in cemento -->
+                            </select><br>
+                            <label for="prenotazione">Tipo di prenotazione:</label><br>
+                            <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>
+                            <label for="interoCampo">Prenotazione dell'intero campo</label><br>
+                            <input type="radio" id="codaGioco" name="prenotazione" value="codaGioco">
+                            <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
+                            <div id="numPersoneWrapper">
+                                <label for="numeroPersone">Numero di persone:</label>
+                                <input type="number" id="numeroPersone" name="numeroPersone" min="1" max="2"><br>
+                            </div>
+                            
+                            <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
+                            <input type="reset" value="Azzera i campi">
+                        </form>
+                    </div>
+                </li>
+                <li class="toggle-item" onclick="return checkLogin();">
+                    <input type="radio" id="basket" name="attivita">
+                    <label for="basket">Basket<span class="arrow"></span></label>
+                    <div class="content">
+                        <form method="post" action="php/prenotazione.php" name="formPrenotazione">
+                            <label for="dataBasket">Data:</label>
+                            <input type="date" id="dataBasket" name="data" required><br>
+                            <label for="orario">Orario prenotazione:</label>
+                            <select class="orario" name="ora" required>
+                                <option value="">Seleziona un orario</option>
+                            </select><br>
+                            <label for="campo">Seleziona campo:</label><br>
+                            <select id="campo" name="campo" required>
+                                <option value="basket_11">Campo_1</option>
+                                <option value="basket_12">Campo_2</option>
+                            </select><br>
+                            <label for="prenotazione">Tipo di prenotazione:</label><br>
+                            <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>
+                            <label for="interoCampo">Prenotazione dell'intero campo</label><br>
+                            <input type="radio" id="codaGioco" name="prenotazione" value="codaGioco">
+                            <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
+                            <div id="numPersoneWrapper">
+                                <label for="numeroPersone">Numero di persone:</label>
+                                <input type="number" id="numeroPersone" name="numeroPersone" min="1" max="9"><br>
+                            </div>
+                            
+                            <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
+                            <input type="reset" value="Azzera i campi">
+                        </form>
+                    </div>
+                </li>
+                <li class="toggle-item" onclick="return checkLogin();">
+                    <input type="radio" id="nuoto" name="attivita">
+                    <label for="nuoto">Nuoto<span class="arrow"></span></label>
+                    <div class="content">
+                        <form method="post" action="php/prenotazione.php" name="formPrenotazione">
+                            <label for="dataNuoto">Data:</label>
+                            <input type="date" id="dataNuoto" name="data" required><input type="checkbox" class="hidden" id="campo" name="campo" value="piscina_13" checked><br>
+                            <!-- se possibile mettiamo in elenco solo le fasce disponibili -->
+                            <label for="orarioNuoto">Scegli una fascia oraria:</label>
+                            <select class="orario"  name="ora" required>
+                                <option value="">Seleziona orario</option>
+                            </select><br>
+                            <input type="submit" value="Prenota"> 
+                            <input type="reset" value="Azzera i campi">
+                        </form>
+                    </div>
+                </li>
+                <li class="toggle-item" onclick="return checkLogin();">
+                    <input type="radio" id="palestra" name="attivita">
+                    <label for="palestra">Palestra<span class="arrow"></span></label>
+                    <div class="content">
+                        <form method="post" action="php/prenotazione.php" name="formPrenotazione">
+                            <label for="dataPalestra">Data:</label> 
+                            <input type="date" id="dataPalestra" name="data" required><input type="checkbox" class="hidden" id="campo" name="campo" value="palestra_14" checked><br>
+                            <!-- se possibile mettiamo in elenco solo le fasce disponibili -->
+                            <label for="orarioPalestra">Scegli una fascia oraria:</label>
+                            <select class="orario" name="ora" required>
+                                <option value="">Seleziona un orario</option>
+                            </select><br>
+                            <input type="submit" value="Prenota"> 
+                            <input type="reset" value="Azzera i campi">
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </main>
 
 <!-- Footer section with contacts -->	
 <footer>

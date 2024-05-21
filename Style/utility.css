@@ -93,3 +93,19 @@ svg {
   background-color: white; /* Per coprire la parte della linea sotto il testo */
   padding: 0 10px; /* Padding per spaziare il testo dalla linea */
 }
+
+p {
+  padding: 2%;
+  color: black;
+  font-family: "Synonym";
+}
+
+/* per sfocare lo sfondo */
+.blur-background {
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+}
+
+main {
+  font-family: "Synonym";
+}

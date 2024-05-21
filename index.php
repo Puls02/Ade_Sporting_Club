@@ -23,7 +23,6 @@
     <!-- Link to style folder -->
     <link rel="StyleSheet" href="Style/utility.css">
     <link rel="StyleSheet" href="Style/Stickynavbar.css">
-    <link rel="StyleSheet" href="Style/login.css">
     <link rel="StyleSheet" href="Style/footer.css">
     <link rel="StyleSheet" href="Style/index.css">
     <link rel="stylesheet" href="Style/popup.css"> 
@@ -195,15 +194,21 @@
             <source src="immagini/galleria/Banner.mp4" type="video/mp4">
         </video>
     </section>
-    
+
+    <!-- Div per l'overlay -->
+    <div id="overlay" class="overlay"></div>
     <!-- Div nascosto del popup -->
     <div id="popup" class="popup">
         <iframe src="login_registrazione/login.php" width="580" height="500" frameborder="0" style="border:0; overflow:hidden;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
-    <hr size="4" color="black"> 
-    <!--Contenuto della home page-->
-    <div class="main">
+
+
+    <main>
+
+
+        <hr size="4" color="black"> 
+        <!--Contenuto della home page-->
         <div class="presentation">
             <h1>ADE Sporting Club Center</h1>
             <p>Se sei alla ricerca di un luogo dove coltivare la tua passione per lo sport, mantenersi in forma e rilassarsi 
@@ -485,7 +490,7 @@
         </div>
                 
         <div class="space"></div>
-    </div>
+    </main>
 
     <!-- Footer section with contacts -->	
     <footer>
@@ -503,9 +508,9 @@
         <div class="contacts">
             <h1>Contattaci</h1>
             <p>
-                marino.1984826@studenti.uniroma1.it
-                <br>pulsoni.1995669@studenti.uniroma1.it
-                <br>ricci.@studenti.uniroma1.it
+                marino.1984826@studenti.uniroma1.it<br>
+                pulsoni.1995669@studenti.uniroma1.it<br>
+                ricci.@studenti.uniroma1.it
             </p>
             <p>link alla repository di github</p>
             <hr>

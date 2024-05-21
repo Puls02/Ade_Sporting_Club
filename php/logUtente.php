@@ -7,6 +7,7 @@
 
     $username = $_POST['indirizzomail'];
     $password = $_POST['password'];
+    //$remember_me = isset($_POST['remember_me']); 
 
     $query = "SELECT * FROM utente WHERE email = '$username'";
     $result = pg_query($conn, $query);
@@ -41,6 +42,11 @@
             $_SESSION['livello'] = $abbonamento['livello'];
             $query= "SELECT * FROM Cliente_Gold WHERE id='$id'";
             $result = pg_query($conn, $query);
+
+            // Imposta il cookie se "Ricordami" è selezionato
+            //if ($remember_me) {
+                //setcookie('remember_me', $user['id'], time() + (86400 * 30), "/", "", true, true); // cookie valido per 30 giorni
+            //}
 
             // Reindirizza alla pagina successiva
             if(pg_num_rows($result) === 1 && $result){
