@@ -11,11 +11,20 @@ $id_prenotazione = $_POST['id'];
 $result = pg_query_params($conn, "SELECT * FROM prenotazione WHERE id_prenotazione = $1", array($id_prenotazione));
 if($result){
     $rows=pg_fetch_all($result);
+    
     for($i = 0; $i < count($rows); $i++){
         if($rows[$i]['utente']==$id_utente){
             echo json_encode(['success' => false, 'message' => 'Non puoi aggiungerti alla prenotazione in quanto ne fai già parte!']);
             exit();
         }
+    }
+    //verifico che chi si vuole aggiungere alla prenotazione non abbia già una prenotazione in quello slot
+    $check="SELECT * FROM prenotazione WHERE data='{$rows[0]['data']}' and ora_inizio='{$rows[0]['ora_inizio']}' and ora_fine='{$rows[0]['ora_fine']}' and utente='$id_utente'";
+    $res= pg_query($conn, $check);
+    $num_rows=pg_num_rows($res);
+    if($num_rows>0){
+        echo json_encode(['success' => false, 'message' => 'Hai già una prenotazione in questo slot']);
+        exit();
     }
     // Incrementa il numero di persone
     $num_persone = $rows[0]['num_persone'] + 1;

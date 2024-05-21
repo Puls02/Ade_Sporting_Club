@@ -12,6 +12,59 @@
     $campo=$_POST['campo'];
     $id_campo=explode("_",$campo)[1];
     $sport=explode("_",$campo)[0];
+
+    //controllo se l'utente ha già una prenotazione in quello slot
+    $query="SELECT * FROM prenotazione WHERE data='$data' and ora_inizio='$ora_inizio' and ora_fine='$ora_fine' and utente='{$_SESSION['id']}'";
+    $result= pg_query($conn, $query);
+    $num_rows=pg_num_rows($result);
+    if($num_rows>0){
+        $_SESSION['message'] = "hai già una prenotazione in questo slot!";
+        pg_close($conn);
+        header("Location: ../Prenota.php");
+        exit();
+    }
+
+    if($sport!='palestra' && $sport!='piscina'){
+        
+        //controllo se c'è già una prenotazione completa
+        $query="SELECT * FROM prenotazione WHERE sport='$sport' and data='$data' and owner='true' and ora_inizio='$ora_inizio' and ora_fine='$ora_fine' and completa='true' and campo='$id_campo'";
+        $result= pg_query($conn, $query);
+        $num_rows=pg_num_rows($result);
+        if($num_rows>0){
+            $_SESSION['message'] = "Lo slot selezionato è già occupato!";
+            pg_close($conn);
+            header("Location: ../Prenota.php");
+            exit();
+        }
+        //controllo che tipo di prenotazione viene effettuata
+        $prenotazione=$_POST['prenotazione'];
+        //cerco le prenotazioni incomplete
+        $query="SELECT * FROM prenotazione WHERE sport='$sport' and data='$data' and owner='true' and ora_inizio='$ora_inizio' and ora_fine='$ora_fine' and completa='false' and campo='$id_campo'";
+        $result= pg_query($conn, $query);
+        $num_rows=pg_num_rows($result);
+        if($num_rows>0){
+            $row=pg_fetch_assoc($result); 
+            if($prenotazione=="interoCampo"){
+                $query= "DELETE FROM prenotazione WHERE id_prenotazione='{$row['id_prenotazione']}'";
+                $result= pg_query($conn, $query);
+            } else{
+                $_SESSION['message'] = "Lo slot selezionato è già occupato!";
+                pg_close($conn);
+                header("Location: ../Prenota.php");
+                exit();
+            }
+        }    
+    } else {
+        $query="SELECT * FROM prenotazione WHERE sport='$sport' and data='$data' and ora_inizio='$ora_inizio' and ora_fine='$ora_fine'";
+        $result= pg_query($conn, $query);
+        $num_rows=pg_num_rows($result);
+        if($num_rows>=10){
+            $_SESSION['message'] = "Lo slot che hai selezionato è pieno!";
+            pg_close($conn);
+            header("Location: ../Prenota.php");
+            exit();
+        }
+    }
     
     if(isset($_POST['prenotazione'])){
         $prenotazione=$_POST['prenotazione'];
@@ -60,6 +113,11 @@
         die("Errore nella registrazione Utente!" . pg_last_error($conn));
     }
     
+    pg_close($conn);
+
+    $_SESSION['message'] = "La prenotazione è andata a buon fine!";
+
     header("Location: ../Prenota.php");
-    exit;
+    exit();
+    
 ?>
