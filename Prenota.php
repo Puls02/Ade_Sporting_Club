@@ -7,6 +7,10 @@
         $id=$_SESSION['id'];
     }
 
+    if(isset($_SESSION['message'])){
+        echo "<p class='slotPrenotazione'>" . htmlspecialchars($_SESSION['message']) . "</p>";
+        unset($_SESSION['message']);
+    }
     include_once "php/config.php";
 ?>
 <!DOCTYPE html>
