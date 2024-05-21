@@ -1,3 +1,7 @@
+function getTimeString(timeString) {
+    const [hours, minutes] = timeString.split(':');
+    return hours + ':' + minutes; // Ritorna l'ora nel formato HH:MM
+}
 // Definizione della classe per le attività
 class Activity {
     constructor(name) {
@@ -49,7 +53,7 @@ const activityBackgroundColors = {
     'calcio': '#a7c957',
     'tennis': '#fec89a',
     'basket': '#fcd5ce',
-    'nuoto':'#90e0ef',
+    'piscina':'#90e0ef',
     'paddle':'#fff3b0',
     'palestra':'#dee2ff',
     // Aggiungi altri nomi di attività e colori di sfondo desiderati
@@ -77,41 +81,38 @@ dayElements.forEach(dayElement => {
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                    const activities = JSON.parse(xhr.responseText);
-                    let activityHTML = '';
-    
-                    activities.forEach(activity => {
-                        const activityBackgroundColor = getActivityBackgroundColor(activity.corso);
-                        // Verifica se sia l'orario di inizio che quello di fine sono definiti e non vuoti
-                        const startTime = activity.orarioinizio ? getTimeString(activity.orarioinizio) : 'Orario non disponibile';
-                        const endTime = activity.orariofine ? getTimeString(activity.orariofine) : '';
-                    
-                        // Verifica se l'orario di fine è definito e non vuoto, se sì, aggiungi anche l'orario di fine
-                        const time = endTime ? `${startTime} - ${endTime}` : startTime;
-                    
-                        activityHTML += `
-                            <div class="activity" style="background-color: ${activityBackgroundColor};">
-                                <div class="activity-name">${activity.corso}</div>
-                                <div class="activity-time">${time}</div>
-                            </div>
-                        `;
-                    });
-                    
-                    // Funzione per estrarre solo ore e minuti da un'ora nel formato HH:MM
-                    function getTimeString(timeString) {
-                        const [hours, minutes] = timeString.split(':');
-                        return `${hours}:${minutes}`;
+                    const response = JSON.parse(xhr.responseText);
+                    if (response.error) {
+                        console.error(response.error);
+                        scheduleActivityDisplay.innerHTML = `<div class="error-message">${response.error}</div>`;
+                    } else {
+                        const activities = response;
+                        let activityHTML = '';
+        
+                        activities.forEach(activity => {
+                            console.log(activity);
+                            const activityBackgroundColor = getActivityBackgroundColor(activity.sport);
+                            const startTime = activity.ora_inizio ? getTimeString(activity.ora_inizio) : 'Orario non disponibile';
+                            const endTime = activity.ora_fine ? getTimeString(activity.ora_fine) : '';
+                            const time = endTime ? `${startTime} - ${endTime}` : startTime;
+        
+                            activityHTML += `
+                                <div class="activity" style="background-color: ${activityBackgroundColor};">
+                                    <div class="activity-name">${activity.sport}</div>
+                                    <div class="activity-time">${time}</div>
+                                </div>
+                            `;
+                        });
+        
+                        scheduleActivityDisplay.innerHTML = activityHTML;
                     }
-                    
-                    
-                    
-                    
-                    scheduleActivityDisplay.innerHTML = activityHTML;
                 } else {
                     console.error('Errore durante il recupero dei dati delle attività.');
                 }
             }
         };
+        
+
         xhr.open('GET', '../php/get-activities.php?date=' + formattedDate, true);
         xhr.send();
     });

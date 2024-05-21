@@ -204,8 +204,7 @@
             
             while ($rows = pg_fetch_assoc($result)) {
                 $prenotazioni[] = $rows;
-            }
-            
+            }            
             json_encode($prenotazioni);
 
             pg_close($conn);

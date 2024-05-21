@@ -351,11 +351,11 @@
                                     if($completa == 't'){
                                         $sfondo = "#99d98c";//cella verde
                                         // Aggiungi l'icona con il tooltip
-                                        echo "<td style='background-color: $sfondo' title='$tooltip'><i class='$icona'></i></td>";
+                                        echo "<td style='background-color: $sfondo; ' title='$tooltip'><i class='$icona'></i></td>";
                                     }else{
                                         $sfondo = "#ffc300";//cella gialla
                                         // Aggiungi l'icona con il tooltip
-                                        echo "<td style='background-color: $sfondo' title='$tooltip' onclick='if(checkLogin()) {finestraDiAggiunta($id)}'><i class='$icona'></i></td>";
+                                        echo "<td style='background-color: $sfondo; cursor: pointer;' title='$tooltip' onclick='if(checkLogin()) {finestraDiAggiunta($id)}'><i class='$icona'></i></td>";
                                     }
 
                                                 

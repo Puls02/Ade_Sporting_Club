@@ -72,7 +72,7 @@
                     <input type="radio" name="sesso" value="F"/><label>Femmina</label>
             <br/>
             <label>Residenza: </label><input type="text" name="residenza" size="40" maxlength="40" required></br>
-            <label>Nato/a a: </label><input type="text" placeholder="luogo" name="nascita" required/> il <input type="date" name="nata" required><br/>
+            <label>Nato/a a: </label><input type="text" name="nascita" required/> il <input type="date" name="nata" required><br/>
             <label>Telefono: </label><input type="tel" name="telefono" size="15" maxlength="15" required></br>
         </div>
         <div class="section">
