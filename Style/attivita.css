@@ -55,7 +55,7 @@
 
 /* parte della tabella */
 table {
-    width: 75%;
+    width: 85%;
     border-collapse: collapse;
     border-spacing: 0;
     border: 1px solid #ddd;
@@ -105,7 +105,7 @@ td {
     background-color: #fff;
     border: 1px solid #ddd;
     padding: 1%;
-    width: 14%;
+    width: 8%;
     border-radius: 10px;
 }
 .legend-item {

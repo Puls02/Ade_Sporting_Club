@@ -230,7 +230,6 @@
 
 <!-- CHAT -->
         <div class="chat" id="chat-column">
-            <h2>Chat</h2>
             <iframe name="chatframe" id="iframe-chat" style="width:100%; height:600px; display: none; border: none; "></iframe>
             <div class="wrapper" id="chat-home" style="display: block;">
                 

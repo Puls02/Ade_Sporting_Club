@@ -193,9 +193,10 @@
             <div id="event-container" class="grid-view">
                 <!-- Contenuto degli eventi verrà caricato qui -->
                 <?php
-                
+                // Get the current date
+                $currentDate = date('d-m-Y');
                 // Define the SQL query
-                $query = 'SELECT * FROM evento';
+                $query = "SELECT * FROM evento WHERE TO_DATE(giorno, 'DD-MM-YYYY') > CURRENT_DATE";
 
                 // Execute the query
                 $result = pg_query($conn,$query) or die('Query failed: ' . pg_last_error());
@@ -208,14 +209,17 @@
                     echo '<div class="event">';
                     echo '<h2>' . $event['titolo'] . '</h2>';
                     echo '<p>Data: ' . $event['giorno'] . '</p>';
-                    echo '<p>Orario: ' . $event['orario_inizio'] . '</p>';
+                    // Format the time to show only hours and minutes
+                    $time = strtotime($event['orario_inizio']);
+                    echo '<p>Orario: ' . date('H:i', $time) . '</p>';
                     echo '<p>' . $event['descrizione'] . '</p>';
                     echo '</div>';
                 }
                 ?>
             </div>
 
-            <button id="toggle-view-btn" onclick="toggleView()">Visualizzazione: Griglia</button>
+            <button id="toggle-view-btn-eventi" onclick="toggleViewEventi()">Visualizzazione: Griglia</button>
+
         </div>
 
 <!-- WEEKLY SCHEDULE -->        
@@ -237,7 +241,6 @@
 
 <!-- CHAT -->
         <div class="chat" id="chat-column">
-            <h2>Chat</h2>
             <iframe name="chatframe" id="iframe-chat" style="width:100%; height:600px; display: none; border: none; "></iframe>
             <div class="wrapper" id="chat-home" style="display: block;">
                 

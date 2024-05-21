@@ -94,8 +94,9 @@
     </header>  
 
     <div class="grid_istruttore">
+    
 <!-- USER PROFILE -->
-        <div class="user_profile">
+        <div class="instructor_profile">
                 <!-- caricamento foto profilo -->
                 <div class="section">
                     <?php
@@ -135,71 +136,37 @@
                     <p><strong>Data di nascita:</strong> <?php echo $_SESSION['data_nascita']; ?></p>
                     <p><strong>E-mail:</strong> <?php echo $_SESSION['mail']; ?></p>
                     <p><strong>Numero di telefono:</strong> <?php echo $_SESSION['phone']; ?></p>
-                </div>
-        </div>
-<!-- PER I SOCI GOLD -->
-        <div class="informazioni">
-            <div id="course-container" class="grid-view">
-                <!-- Contenuto degli eventi verrà caricato qui -->
-                <?php
-               // CAMBIARE E INSERIRE I CORSI CHE L'ISTRUTTORE PUO' GESTIRE
+                    <br><hr><br>
+                    <h2>Informazioni professionali</h2>
+                    <?php
+                        // Define the SQL query
+                        $query = "SELECT DISTINCT ins.corso FROM istruttore ist JOIN insegna ins ON ins.istruttore = ist.id WHERE ist.id = {$_SESSION['id']}";
 
-                // Define the SQL query
-                $query = "SELECT ist.nome,ins.corso,o.categoria,o.giorno_settimana,o.ora_inizio,o.ora_fine FROM (istruttore ist join insegna ins on ins.istruttore = ist.id) join orari o on o.nome = ins.corso where ist.id = {$_SESSION['id']}";
-                
+                        // Execute the query
+                        $result = pg_query($conn, $query) or die('Query failed: ' . pg_last_error());
 
-                // Execute the query
-                $result = pg_query($conn,$query) or die('Query failed: ' . pg_last_error());
+                        // Fetch all the result rows as an associative array
+                        $courses = pg_fetch_all($result);
 
-                // Fetch all the result rows as an associative array
-                $events = pg_fetch_all($result);
-
-                // Create an associative array to group the events
-                $groupedEvents = [];
-
-                // Group the events by corso and categoria
-                foreach ($events as $event) {
-                    $key = $event['corso'] . '-' . $event['categoria'];
-
-                    if (!isset($groupedEvents[$key])) {
-                        $groupedEvents[$key] = [
-                            'corso' => $event['corso'],
-                            'categoria' => $event['categoria'],
-                            'times' => []
-                        ];
-                    }
-
-                    $groupedEvents[$key]['times'][] = [
-                        'giorno_settimana' => $event['giorno_settimana'],
-                        'ora_inizio' => $event['ora_inizio'],
-                        'ora_fine' => $event['ora_fine']
-                    ];
-                }
-
-                // Display the grouped events
-                foreach ($groupedEvents as $event) {
-                    echo '<div class="event">';
-                    echo '<h2>' . $event['corso'] . '</h2>';
-                    echo '<p>Categoria: ' . $event['categoria'] . '</p>';
-
-                    foreach ($event['times'] as $time) {
-                        echo '<p>Data: ' . $time['giorno_settimana'] . '</p>';
-                        echo '<p>Orario: ' . $time['ora_inizio'] . ' - ' . $time['ora_fine'] . ' </p>';
-                    }
-
-                    echo '</div>';
-                }
-                ?>
+                        // Check if the instructor has any courses
+                        if ($courses) {
+                            foreach ($courses as $course) {
+                                echo "<p><strong>Corso:</strong> " . $course['corso'] . "</p>";
+                            }
+                        } else {
+                            echo "<p>L'istruttore non tiene nessun corso.</p>";
+                        }
+                    ?>
             </div>
-
-            <button id="toggle-view-btn-corsi" onclick="toggleViewCorsi()">Visualizzazione: Griglia</button>
         </div>
         <div class="eventi">
             <div id="event-container" class="grid-view">
                 <!-- Contenuto degli eventi verrà caricato qui -->
                 <?php
+                // Get the current date
+                $currentDate = date('d-m-Y');
                 // Define the SQL query
-                $query = 'SELECT * FROM evento';
+                $query = "SELECT * FROM evento WHERE TO_DATE(giorno, 'DD-MM-YYYY') > CURRENT_DATE";
 
                 // Execute the query
                 $result = pg_query($conn,$query) or die('Query failed: ' . pg_last_error());
@@ -212,7 +179,9 @@
                     echo '<div class="event">';
                     echo '<h2>' . $event['titolo'] . '</h2>';
                     echo '<p>Data: ' . $event['giorno'] . '</p>';
-                    echo '<p>Orario: ' . $event['orario_inizio'] . '</p>';
+                    // Format the time to show only hours and minutes
+                    $time = strtotime($event['orario_inizio']);
+                    echo '<p>Orario: ' . date('H:i', $time) . '</p>';
                     echo '<p>' . $event['descrizione'] . '</p>';
                     echo '</div>';
                 }
@@ -263,7 +232,6 @@
 
 <!-- CHAT -->
         <div class="chat" id="chat-column">
-            <h2>Chat</h2>
             <iframe name="chatframe" id="iframe-chat" style="width:100%; height:600px; display: none; border: none; "></iframe>
             <div class="wrapper" id="chat-home" style="display: block;">
                 
