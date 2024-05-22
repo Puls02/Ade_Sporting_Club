@@ -330,7 +330,8 @@
                         "16:00 - 17:00" => array(),
                         "17:00 - 18:00" => array(),
                         "18:00 - 19:00" => array(),
-                        "19:00 - 20:00" => array()
+                        "19:00 - 20:00" => array(),
+                        "20:00 - 21:00" => array()
                     );
 
                     // Riempimento dell'array con i dati dei corsi
@@ -393,10 +394,16 @@
                     <div class="legend-circle" style="background-color: #008000;"></div> Calcio Ragazzi
                 </div>
                 <div class="legend-item">
+                    <div class="legend-circle" style="background-color: #094409;"></div> Calcio Amatoriale
+                </div>
+                <div class="legend-item">
                     <div class="legend-circle" style="background-color: #FFA500;"></div> Tennis Bambini
                 </div>
                 <div class="legend-item">
                     <div class="legend-circle" style="background-color: #FF8C00;"></div> Tennis Ragazzi
+                </div>
+                <div class="legend-item">
+                    <div class="legend-circle" style="background-color: #e26511;"></div> Tennis Amatoriale
                 </div>
                 <div class="legend-item">
                     <div class="legend-circle" style="background-color: #ADD8E6;"></div> Nuoto Bambini
@@ -405,16 +412,25 @@
                     <div class="legend-circle" style="background-color: #4682B4;"></div> Nuoto Ragazzi
                 </div>
                 <div class="legend-item">
+                    <div class="legend-circle" style="background-color: #2a87d3;"></div> Nuoto Amatoriale
+                </div>
+                <div class="legend-item">
                     <div class="legend-circle" style="background-color: #FF7F50;"></div> Basket Bambini
                 </div>
                 <div class="legend-item">
                     <div class="legend-circle" style="background-color: #FF4500;"></div> Basket Ragazzi
                 </div>
                 <div class="legend-item">
+                    <div class="legend-circle" style="background-color: red;"></div> Basket Amatoriale
+                </div>
+                <div class="legend-item">
                     <div class="legend-circle" style="background-color: #FFFF00;"></div> Paddle Bambini
                 </div>
                 <div class="legend-item">
                     <div class="legend-circle" style="background-color: #FFD700;"></div> Paddle Ragazzi
+                </div>
+                <div class="legend-item">
+                    <div class="legend-circle" style="background-color: #d3a50c;"></div> Paddle Amatoriale
                 </div>
             </div>
         </div>

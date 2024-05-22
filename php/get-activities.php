@@ -42,7 +42,32 @@ if(isset($_GET['date'])) {
         } else {
             // utente
             $result = pg_query_params($conn, "SELECT * FROM prenotazione WHERE utente = $1 AND data = $2", array($_SESSION['id'], $selectedDate));
-            $result2 = pg_query_params($conn,"SELECT o.Nome AS nome, o.categoria AS categoria, o.giorno_settimana AS giorno, o.ora_inizio AS OraInizio, o.ora_fine AS OraFine FROM Utente u JOIN Cliente c ON u.ID = c.ID JOIN Sottoscrizione s ON c.ID = s.Cliente JOIN Prevede p ON s.Abbonamento = p.Abbonamento JOIN Orari o ON p.Corso = o.Nome WHERE u.ID = $1 AND o.giorno_settimana = '".$dayOfWeekItalian."'", array($_SESSION['id']));
+            //$result2 = pg_query_params($conn,"SELECT o.Nome AS nome, o.categoria AS categoria, o.giorno_settimana AS giorno, o.ora_inizio AS OraInizio, o.ora_fine AS OraFine FROM Utente u JOIN Cliente c ON u.ID = c.ID JOIN Sottoscrizione s ON c.ID = s.Cliente JOIN Prevede p ON s.Abbonamento = p.Abbonamento JOIN Orari o ON p.Corso = o.Nome WHERE u.corsi = TRUE AND u.ID = $1 AND o.giorno_settimana = '".$dayOfWeekItalian."'", array($_SESSION['id']));
+            $result2 = pg_query_params($conn,"
+            SELECT
+    o.Nome AS nome,
+    o.categoria AS categoria,
+    o.giorno_settimana AS giorno,
+    o.ora_inizio AS OraInizio,
+    o.ora_fine AS OraFine
+FROM
+    Utente u
+JOIN
+    Cliente c ON u.ID = c.ID
+JOIN
+    Sottoscrizione s ON c.ID = s.Cliente
+JOIN
+    Abbonamento a ON s.Abbonamento = a.Codice
+JOIN
+    Prevede p ON a.Codice = p.Abbonamento
+JOIN
+    Orari o ON p.Corso = o.Nome
+WHERE
+    u.Corsi = TRUE
+    AND u.ID = $1
+    AND o.giorno_settimana = '".$dayOfWeekItalian."'
+    AND o.categoria = a.categoria;
+", array($_SESSION['id']));
         }
         
         if ($result && $result2) {

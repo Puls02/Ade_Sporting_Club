@@ -222,6 +222,7 @@ const show_menu = document.querySelector('.login_btn');
                 <div class="section">
                     <h2>Dettagli abbonamento</h2>
                     <p><strong>Livello di abbonamento:</strong> <?php echo $_SESSION['livello']; ?></p>
+                    <p><strong>Categoria di corso:</strong> <?php echo $row2['categoria']; ?></p>
                     <p><strong>Data sottoscrizione abbonamento:</strong> <?php echo $data_sottoscrizione; ?></p>
                     <p><strong>Data fine abbonamento:</strong><?php echo $data_fine_abbonamento ?></p>
                     <div class="subscription-progress">

@@ -50,7 +50,7 @@
 
 /* parte della tabella */
 table {
-    width: 85%;
+    width: 80%;
     border-collapse: collapse;
     border-spacing: 0;
     border: 1px solid #ddd;
@@ -98,6 +98,13 @@ td {
     overflow: hidden; 
     text-overflow: ellipsis; 
 }
+.corso-calcio-amatoriale { 
+    background-color: #094409; 
+    color: #fff; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
 .corso-tennis-bambini { 
     background-color: #FFA500; 
     color: #333;
@@ -107,6 +114,13 @@ td {
 }
 .corso-tennis-ragazzi { 
     background-color: #FF8C00; 
+    color: #fff; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+.corso-tennis-amatoriale { 
+    background-color: #e26511; 
     color: #fff; 
     white-space: nowrap; 
     overflow: hidden; 
@@ -126,6 +140,13 @@ td {
     overflow: hidden; 
     text-overflow: ellipsis; 
 }
+.corso-nuoto-amatoriale { 
+    background-color: #2a87d3; 
+    color: #fff; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
 .corso-basket-bambini { 
     background-color: #FF7F50; 
     color: #333; 
@@ -135,6 +156,13 @@ td {
 }
 .corso-basket-ragazzi { 
     background-color: #FF4500; 
+    color: #fff; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+.corso-basket-amatoriale { 
+    background-color: red; 
     color: #fff; 
     white-space: nowrap; 
     overflow: hidden; 
@@ -154,13 +182,19 @@ td {
     overflow: hidden; 
     text-overflow: ellipsis; 
 }
-
+.corso-paddle-amatoriale { 
+    background-color: #d3a50c; 
+    color: #fff; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
 /* Stile per la legenda */
 .legend {
     background-color: #fff;
     border: 1px solid #ddd;
     padding: 1%;
-    width: 8%;
+    width: 12%;
     border-radius: 10px;
 }
 .legend-item {
