@@ -4,7 +4,13 @@
 
     $id=$_SESSION['id'];
 
-    $query = "UPDATE utente SET status = FALSE WHERE id='$id'";
+    if ($id < 30) {
+        // Aggiorna lo stato dell'istruttore
+        $query = "UPDATE istruttore SET status = FALSE WHERE id='$id'";
+    } else {
+        // Aggiorna lo stato dell'utente
+        $query = "UPDATE utente SET status = FALSE WHERE id='$id'";
+    }
     $result = pg_query($conn, $query);
 
      // Avvia la sessione

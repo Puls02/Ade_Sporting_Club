@@ -35,10 +35,16 @@ if(isset($_GET['date'])) {
         // Map the day of the week to Italian
         $dayOfWeekItalian = $daysOfWeekMap[$dayOfWeekEnglish];
 
-        // Esegui la query per recuperare i dati delle attività per la data selezionata
-        $result = pg_query_params($conn, "SELECT * FROM prenotazione WHERE utente = $1 AND data = $2", array($_SESSION['id'], $selectedDate));
-        $result2 = pg_query_params($conn,"SELECT o.Nome AS nome, o.categoria AS categoria, o.giorno_settimana AS giorno, o.ora_inizio AS OraInizio, o.ora_fine AS OraFine FROM Utente u JOIN Cliente c ON u.ID = c.ID JOIN Sottoscrizione s ON c.ID = s.Cliente JOIN Prevede p ON s.Abbonamento = p.Abbonamento JOIN Orari o ON p.Corso = o.Nome WHERE u.ID = $1 AND o.giorno_settimana = '".$dayOfWeekItalian."'", array($_SESSION['id']));
-
+        if ($_SESSION['id'] < 30) {
+            // istruttore
+            $result = pg_query_params($conn, "SELECT * FROM prenotazione WHERE utente = $1 AND data = $2", array($_SESSION['id'], $selectedDate));
+            $result2 = pg_query_params($conn,"SELECT o.Nome AS nome, o.categoria AS categoria, o.giorno_settimana AS giorno, o.ora_inizio AS OraInizio, o.ora_fine AS OraFine FROM Istruttore i JOIN Insegna s ON i.ID = s.Istruttore JOIN Orari o ON s.Corso = o.Nome WHERE i.ID = $1 AND o.giorno_settimana = '".$dayOfWeekItalian."'", array($_SESSION['id']));
+        } else {
+            // utente
+            $result = pg_query_params($conn, "SELECT * FROM prenotazione WHERE utente = $1 AND data = $2", array($_SESSION['id'], $selectedDate));
+            $result2 = pg_query_params($conn,"SELECT o.Nome AS nome, o.categoria AS categoria, o.giorno_settimana AS giorno, o.ora_inizio AS OraInizio, o.ora_fine AS OraFine FROM Utente u JOIN Cliente c ON u.ID = c.ID JOIN Sottoscrizione s ON c.ID = s.Cliente JOIN Prevede p ON s.Abbonamento = p.Abbonamento JOIN Orari o ON p.Corso = o.Nome WHERE u.ID = $1 AND o.giorno_settimana = '".$dayOfWeekItalian."'", array($_SESSION['id']));
+        }
+        
         if ($result && $result2) {
             $activities = array();
             // Fetch dei risultati della prima query e salvataggio in un array

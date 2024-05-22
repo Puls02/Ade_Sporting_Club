@@ -88,7 +88,7 @@ document.getElementById('closeButtonIst').addEventListener('click', function() {
   window.parent.postMessage('closePopup', '*'); // Comunica al genitore di chiudere il popup
 });
 
-/* per gestire i link */
+/* per gestire i link all'interno del popup */
 document.addEventListener('DOMContentLoaded', function() {
   var linkToClosePopup = document.getElementById('linkToClosePopup');
   linkToClosePopup.addEventListener('click', function(event) {

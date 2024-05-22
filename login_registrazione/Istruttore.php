@@ -130,14 +130,14 @@
                 <!-- dettagli utente -->
                 
                 <div class="section">
-                    <h2>Informazioni personali</h2>
+                    <h2>Info personali</h2>
                     <p><strong>Nome:</strong> <?php echo  $_SESSION['name'] ?></p>
                     <p><strong>Cognome:</strong> <?php echo $_SESSION['surname']; ?></p>
                     <p><strong>Data di nascita:</strong> <?php echo $_SESSION['data_nascita']; ?></p>
                     <p><strong>E-mail:</strong> <?php echo $_SESSION['mail']; ?></p>
                     <p><strong>Numero di telefono:</strong> <?php echo $_SESSION['phone']; ?></p>
                     <br><hr><br>
-                    <h2>Informazioni professionali</h2>
+                    <h2>Info professionali</h2>
                     <?php
                         // Define the SQL query
                         $query = "SELECT DISTINCT ins.corso FROM istruttore ist JOIN insegna ins ON ins.istruttore = ist.id WHERE ist.id = {$_SESSION['id']}";
