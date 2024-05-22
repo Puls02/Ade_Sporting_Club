@@ -6,7 +6,10 @@
     if(isset($_SESSION['id'])){
         $id=$_SESSION['id'];
     }
-    
+    if(isset($_SESSION['credenziali'])){
+        echo "<p class='slotPrenotazione'>" . htmlspecialchars($_SESSION['credenziali']) . "</p>";
+        unset($_SESSION['credenziali']);
+    }
     include_once "php/config.php";
 ?>
 
