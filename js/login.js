@@ -60,6 +60,7 @@ function collegaBottoneAPopup() {
   });
 }
 
+
 //
 /* per gestire los cambio delle pagine */
 document.getElementById('buttonSwitch').addEventListener('click', function() {

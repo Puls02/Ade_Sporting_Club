@@ -1,51 +1,44 @@
-nav
-{
+nav {
   height: 100px;
   width: 100%;
-  /*flexbox code*/
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /*larghezza variabile della navbar in base alla finestra del browser*/
-  padding: 0 20px; 
-  /*navbar fissa*/
-  z-index: 10;
+  padding: 0 20px;
   position: fixed;
+  z-index: 10;
 }
-/*--------------------------------------*/
-.logo
-{
+
+/* Container for logo and toolbar */
+.logo, .toolbar, .linksito {
   display: flex;
-  text-decoration: none;
-  list-style: none;
   align-items: center;
+}
+
+.logo {
+  list-style: none;
   padding: 0;
 }
-.logo_img
-{
+
+.logo_img {
   width: var(--size-8xl);
-  box-align: left;
 }
-.logo_name
-{ 
-  color:#fff;
+
+.logo_name {
+  color: #fff;
   font-family: "Panchang";
   text-decoration: none;
   font-size: var(--size-4xl);
 }
-/*--------------------------------------*/
-.toolbar
-{  
-  display: flex;
-  text-decoration: none;
-  align-items: center;
+
+.toolbar {
   list-style: none;
   margin: 0 auto;
- 	padding: 5px;
-	text-align: center;
+  padding: 5px;
+  text-align: center;
 }
-.toolbar a
-{
+
+.toolbar a {
   color: #fff;
   text-decoration: none;
   font-size: var(--size-xl);
@@ -56,10 +49,8 @@ nav
   cursor: pointer;
 }
 
-/*-----------Toolbar animation css code------------*/
-ul.topBotomBordersOut a:before, 
-ul.topBotomBordersOut a:after
-{
+ul.topBotomBordersOut a:before,
+ul.topBotomBordersOut a:after {
   position: absolute;
   left: 0px;
   width: 100%;
@@ -69,38 +60,38 @@ ul.topBotomBordersOut a:after
   opacity: 0;
   transition: all 0.3s;
 }
-ul.topBotomBordersOut a:before
-{
+
+ul.topBotomBordersOut a:before {
   top: 0px;
   transform: translateY(10px);
 }
-ul.topBotomBordersOut a:after
-{
+
+ul.topBotomBordersOut a:after {
   bottom: 0px;
   transform: translateY(-10px);
 }
-ul.topBotomBordersOut a:hover:before, 
-ul.topBotomBordersOut a:hover:after
-{
+
+ul.topBotomBordersOut a:hover:before,
+ul.topBotomBordersOut a:hover:after {
   opacity: 1;
   transform: translateY(0px);
 }
-/*-------------------------------------------------------*/
 
-/*hamburger menu for responsive toolbar on small screen*/
-.hamburger_menu
-{
+.linksito {
+  margin-right: 80px;
+}
+
+.hamburger_menu {
   color: #fff;
   margin-right: 3%;
   width: 50px;
   height: 50px;
   display: block;
   cursor: pointer;
-  border: 1px solid green;
 }
-.sidebar
-{
-  position:fixed;
+
+.sidebar {
+  position: fixed;
   top: 0;
   right: 0;
   height: 100vh;
@@ -115,8 +106,8 @@ ul.topBotomBordersOut a:hover:after
   justify-content: flex-start;
   list-style: none;
 }
-.sidebar a
-{
+
+.sidebar a {
   position: relative;
   width: 100%;
   color: #fff;
@@ -126,25 +117,25 @@ ul.topBotomBordersOut a:hover:after
   text-decoration: none;
   top: 80px;
 }
-.side_name
-{
+
+.side_name {
   position: relative;
   top: 50px;
-  color:#fff;
+  color: #fff;
   font-family: "Panchang";
   text-decoration: none;
   font-size: var(--size-2xl);
 }
-.side_exit
-{
+
+.side_exit {
   top: 20px;
   width: 30px;
-  color:#fff;
+  color: #fff;
   cursor: pointer;
   position: relative;
 }
-.sidebar_login
-{
+
+.sidebar_login {
   width: 40px;
   height: 40px;
   color: #fff;
@@ -152,51 +143,45 @@ ul.topBotomBordersOut a:hover:after
   position: relative;
   top: 100px;
 }
-/*login for small screen*/
 
-/*----------------pulsante login------------------*/
-.login_btn
-{
+.login_btn {
   display: flex;
   align-items: center;
-  margin-right: 80px;
+  margin-right: 40px;
   width: 50px;
   height: 50px;
   color: #fff;
   cursor: pointer;
   border-radius: 50%;
-  border: 1px solid red;
   position: relative;
 }
-/*dropdown menu for login*/
-.person
-{
+
+.person {
   position: absolute;
   top: 100%;
-  right: 4%;
+  right: 10%;
   width: 250px;
   background: var(--nav-color);
   display: none;
   border-radius: 10px;
-
 }
-.login_menu
-{
+
+.login_menu {
   list-style: none;
   padding: 0 10px 10px 10px;
   margin: 0;
   text-decoration: none;
 }
-.login_menu p
-{
+
+.login_menu p {
   font-size: var(--size-base);
 }
-.login_menu p.bold
-{
+
+.login_menu p.bold {
   font-size: var(--size-lg);
 }
-.login_menu .Sign
-{
+
+.login_menu .Sign {
   border-radius: 20px;
   margin-top: 10px;
   text-align: center;
@@ -205,122 +190,106 @@ ul.topBotomBordersOut a:hover:after
   width: 100%;
   cursor: pointer;
 }
-.show 
-{
+
+.show {
   display: block;
 }
-/*---------------------------*/
 
-/*------Sticky navbar--------*/
-header.sticky nav
-{
+header.sticky nav {
   background-color: var(--nav-color);
   height: 80px;
   transition: 0.6s;
 }
-header.sticky .logo_img
-{
+
+header.sticky .logo_img {
   width: 80px;
 }
-header.sticky .logo_name
-{
+
+header.sticky .logo_name {
   font-size: var(--size-2xl);
 }
+
 header.sticky .logo li a,
-header.sticky .toolbar li a
-{
-  color:#000;
+header.sticky .toolbar li a {
+  color: #000;
 }
-header.sticky ul.topBotomBordersOut a:before, 
-header.sticky ul.topBotomBordersOut a:after
-{
+
+header.sticky ul.topBotomBordersOut a:before,
+header.sticky ul.topBotomBordersOut a:after {
   background: #000000;
 }
-header.sticky .login_btn
-{
+
+header.sticky .login_btn {
   color: var(--nav2-color);
 }
 
-header.sticky .person
-{
+header.sticky .person {
   border-top: 2px solid black;
   top: 105%;
 }
 
-header.sticky .hamburger_menu
-{
+header.sticky .hamburger_menu {
   color: var(--nav2-color);
 }
-header.sticky .sidebar 
-{
+
+header.sticky .sidebar {
   background-color: rgba(68, 168, 190, 0.6);
 }
-header.sticky .sidebar a
-{
+
+header.sticky .sidebar a {
   color: #000;
 }
-header.sticky .side_name
-{
-  color:#000;
-}
-header.sticky .side_exit
-{
-  color:#000;
-}
-/*---------------------------*/
 
-/*----------Responsive navbar-------------*/
-@media (max-width: 1536px) 
-{
-  .logo_name
-  { 
+header.sticky .side_name {
+  color: #000;
+}
+
+header.sticky .side_exit {
+  color: #000;
+}
+
+@media (max-width: 1536px) {
+  .logo_name {
     font-size: var(--size-3xl);
   }
 }
-@media (max-width: 1280px) 
-{
-  .logo_name
-  { 
+
+@media (max-width: 1280px) {
+  .logo_name {
     font-size: var(--size-2xl);
   }
-
 }
-@media (max-width: 1023px) 
-{
-  .toolbar
-  {
+
+@media (max-width: 1023px) {
+  .toolbar {
     display: none;
   }
 }
-@media (max-width: 768px) 
-{
-  .logo_name
-  {
+
+@media (max-width: 768px) {
+  .logo_name {
     font-size: var(--size-xl);
   }
 }
-@media (max-width: 640px) 
-{
-  .logo_name
-  {
+
+@media (max-width: 640px) {
+  .logo_name {
     font-size: var(--size-lg);
   }
 }
-@media (max-width: 475px) 
-{
-  .logo_name
-  {
+
+@media (max-width: 475px) {
+  .logo_name {
     display: none;
   }
 }
-@media (min-width: 1024px)
-{
-  .hamburger_menu
-  {
+
+@media (min-width: 1024px) {
+  .hamburger_menu {
     display: none;
   }
-  .sidebar
-  {
+
+  .sidebar {
     display: none;
   }
 }
