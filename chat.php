@@ -6,7 +6,7 @@ if (!isset($_SESSION['id'])) {
 }
 ?>
 <?php include_once "header.php"; ?>
-<head><link rel="stylesheet" href="Style/utente.css"></head>
+<head><link rel="stylesheet" href="Style/utente.css"><link rel="stylesheet" href="Style/utility.css"></head>
 <body>
   <div class="wrapper">
     <section class="chat-area">

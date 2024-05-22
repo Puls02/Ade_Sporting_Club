@@ -41,16 +41,16 @@
         <div class="container istruttore">
             <form action="../php/logIstruttore.php" method="post" name="log" id="popup" class="formlogin" target="_top"> <!-- importante per i comportamenti automatici del form -->
                 <h1 class="title">login</h1>
-                <img src="../immagini/login/close.png"  alt="x per chiudere" class="close" id="closeButton">
+                <img src="../immagini/login/close.png"  alt="x per chiudere" class="close" id="closeButtonIst">
                 <div class="box">
                     <input id="id" type="text" class="field" name="codice" size="30" maxlength="30" required>
                     <label for="id" class="labellogin">Inserisci il tuo codice: </label>
                     <img class="imagelogin" src="../immagini/login/mail.png" alt="icona mail">
                 </div>
                 <div class="box">
-                    <input type="password" id="password" class="field" name="password" size="15" maxlength="15" required>
+                    <input type="password" id="passwordIst" class="field" name="password" size="15" maxlength="15" required>
                     <label for="password" class="labellogin">Password: </label> 
-                    <img src="../immagini/login/hidden.png" alt="Mostra/Nascondi password" class="password-toggle" onclick="togglePasswordVisibility()">
+                    <img src="../immagini/login/hidden.png" alt="Mostra/Nascondi password" class="password-toggle" onclick="togglePasswordVisibilityIst()">
                 </div>
                 <input class="loginbutton" type="submit" value="Accedi"> 
                 <br>

@@ -109,3 +109,14 @@ p {
 main {
   font-family: "Synonym";
 }
+
+h2 {
+  font-family: "Chillax";
+  font-size: var(--size-2xl);
+  margin-left: 2%;
+}
+h1 {
+  font-family: "Chillax";
+  margin-top: 0;
+  font-size: var(--size-3xl);
+}

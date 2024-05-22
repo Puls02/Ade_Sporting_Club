@@ -184,9 +184,9 @@
         </div>
 <!-- PER I SOCI GOLD -->
         <div class="informazioni">
-            <h3>I TUOI VANTAGGI</h3>
-            <p>in qualità di utente gold hai: libero accesso al bar della palestra, sconti all'interno della nostra area ristoro, <br> precdenza nelle prenotazioni e corsi privati messi a disposizone dagli insegnanti, nonchè accesso esclusivo gli eventi organizzati dal circolo. <br>
-            nella sezione qui a destra potrai vedere tutti gli eventi a cui hai accesso</p>
+            <h2>I TUOI VANTAGGI</h2>
+            <p>In qualità di utente gold hai: <br>> libero accesso al bar della palestra <br>> sconti all'interno della nostra area ristoro <br>> precedenza nelle prenotazioni <br>> corsi privati messi a disposizone dagli insegnanti <br>> accesso esclusivo gli eventi organizzati dal circolo <br>
+            <br>Nella sezione qui a destra potrai vedere tutti gli eventi a cui hai accesso</p>
 
         </div>
         <div class="eventi">

@@ -187,6 +187,9 @@ hr
 { 
   border-radius: 10px;
   background-color: var(--nav-color);
+  margin-right: 10px;
+  cursor: pointer;
+  height: 40px;
 }
 .img-slider .slider-nav
 {

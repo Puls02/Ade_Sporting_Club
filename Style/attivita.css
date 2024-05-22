@@ -31,11 +31,6 @@
     border-radius: 10px;
     margin-bottom: 20px;
 }
-.activity h1 {
-    margin-top: 0;
-    font-size: var(--size-3xl);
-    color: #333;
-}
 .activity p {
     color: #666;
     margin-bottom: 15px;

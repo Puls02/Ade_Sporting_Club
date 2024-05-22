@@ -37,6 +37,7 @@
             $id=$user['id'];
             //setta lo stato dell'utente a true
             $query = "UPDATE istruttore SET status = TRUE WHERE id='$id'";
+            $result = pg_query($conn, $query);
 
             // Reindirizza alla pagina successiva
             header("Location: ../login_registrazione/Istruttore.php");        

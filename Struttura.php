@@ -204,14 +204,10 @@
             <img class="bg_img" src="immagini/galleria/presentazione/banner2.jpg">
             <div class="presentation">
                 <h1>Cosa offre il nostro club</h1>
-                <p>Benvenuti nel nostro centro sportivo di prim'ordine situato nel cuore di Roma.
-                    <br>
-                    Immersa tra le vivaci strade di questa città storica, la nostra struttura offre un rifugio per gli appassionati di fitness, gli atleti e le famiglie.
-                    <br>
+                <p>La nostra struttura, immersa nel cuore di Roma, offre un rifugio per gli appassionati di fitness, gli atleti e le famiglie.
                     <br>
                     Ci impegniamo a fornire un ambiente dinamico e inclusivo in cui persone di tutte le età e abilità possono perseguire i propri obiettivi e scoprire la gioia 
-                    di uno stile di vita attivo. Che tu sia un atleta esperto desideroso di perfezionare le tue abilità o qualcuno che intraprende un viaggio per migliorare la propria 
-                    salute e il benessere, troverai pane per i tuoi denti.
+                    di uno stile di vita attivo. 
                     Le nostre strutture all'avanguardia vantano attrezzature all'ultimo grido, servizi moderni e personale qualificato impegnato ad aiutarti a raggiungere le tue 
                     aspirazioni di fitness. Dall'attrezzatura da palestra all'avanguardia a campi sportivi versatili e ampie aree di allenamento, offriamo una gamma diversificata di 
                     attività e programmi adattati alle tue esigenze.
@@ -253,7 +249,10 @@
             
                 <div class="service">
                     <h1 id="rec-title"><i class="fas fa-user"></i> Reception</h1>
-                    <p id="rec-desc">Il nostro staff cordiale è a vostra disposizione per assistervi con qualsiasi richiesta o informazione sulle attività del circolo.</p>
+                    <p id="rec-desc">Il nostro staff cordiale è a vostra disposizione per assistervi con qualsiasi richiesta o informazione sulle attività del circolo.
+                    <br><br> 
+                    Orari: 8:00 - 23:00
+                    </p>
                 </div>
             
                 <div class="service">

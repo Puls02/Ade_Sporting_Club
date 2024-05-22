@@ -16,6 +16,19 @@ function togglePasswordVisibility() {
     toggleIcon.src = "../immagini/login/eye.png"; // Cambia il percorso dell'immagine per l'occhio aperto
   }
 };
+// funzione per la visbilità del campo password
+function togglePasswordVisibilityIst() {
+  var passwordField = document.getElementById("passwordIst");
+  var toggleIcon = document.querySelector(".password-toggle");
+  
+  if (passwordField.type === "password") {
+    passwordField.type = "text";
+    toggleIcon.src = "../immagini/login/hidden.png"; // Cambia il percorso dell'immagine per l'occhio chiuso
+  } else {
+    passwordField.type = "password";
+    toggleIcon.src = "../immagini/login/eye.png"; // Cambia il percorso dell'immagine per l'occhio aperto
+  }
+};
 
 // Funzione per collegare il bottone al popup
 function collegaBottoneAPopup() {
@@ -68,6 +81,10 @@ document.getElementById('buttonSwitch').addEventListener('click', function() {
 
 /* per chiudere il popup */
 document.getElementById('closeButton').addEventListener('click', function() {
+  window.parent.postMessage('closePopup', '*'); // Comunica al genitore di chiudere il popup
+});
+
+document.getElementById('closeButtonIst').addEventListener('click', function() {
   window.parent.postMessage('closePopup', '*'); // Comunica al genitore di chiudere il popup
 });
 
