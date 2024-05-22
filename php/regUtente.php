@@ -40,14 +40,29 @@ $telefono = $_POST['telefono'];
 if(checkTel($conn,$telefono)){
     die("Il numero di telefono esiste già nel database.");
 }
-//inserimento utente
-$query = "INSERT INTO Utente (nome, cognome, sesso, residenza, luogo_nascita, data_nascita, email, telefono, password) VALUES ($nome_escape,$cognome_escape, '$sesso', $residenza_escape, $luogo_nascita_escape, '$data_nascita', '$email', '$telefono', '$password')";
-$result = pg_query($conn, $query);
-if (!$result) {
-    //annulla la transazine se si verifica qualche errore
-    pg_query($conn, "ROLLBACK");
-    die("Errore nella registrazione Utente!" . pg_last_error($conn));
+
+$corsi=$_POST['corso_campo'];
+
+if($corsi=='corso'){
+    //inserimento utente
+    $query = "INSERT INTO Utente (nome, cognome, sesso, residenza, luogo_nascita, data_nascita, email, telefono, password,corsi) VALUES ($nome_escape,$cognome_escape, '$sesso', $residenza_escape, $luogo_nascita_escape, '$data_nascita', '$email', '$telefono', '$password','true')";
+    $result = pg_query($conn, $query);
+    if (!$result) {
+        //annulla la transazine se si verifica qualche errore
+        pg_query($conn, "ROLLBACK");
+        die("Errore nella registrazione Utente!" . pg_last_error($conn));
+    }
+} else if($corsi=='campo'){
+    //inserimento utente
+    $query = "INSERT INTO Utente (nome, cognome, sesso, residenza, luogo_nascita, data_nascita, email, telefono, password,corsi) VALUES ($nome_escape,$cognome_escape, '$sesso', $residenza_escape, $luogo_nascita_escape, '$data_nascita', '$email', '$telefono', '$password','false')";
+    $result = pg_query($conn, $query);
+    if (!$result) {
+        //annulla la transazine se si verifica qualche errore
+        pg_query($conn, "ROLLBACK");
+        die("Errore nella registrazione Utente!" . pg_last_error($conn));
+    }
 }
+
 
 //inserimento cliente
 $doc1= $_POST['identity'];
@@ -63,75 +78,79 @@ if ($result) {
     die("Errore durante la registrazione Cliente:"  . pg_last_error($conn));
 }
 
-//dati abbonamento
-$tipo_abbonamento=$_POST['type'];
-$livello= $_POST['abbonamentospecifico'];
-$sconto='false';
+if($corsi=='corso'){
+    //dati abbonamento
+    $tipo_abbonamento=$_POST['type'];
+    $livello= $_POST['abbonamentospecifico'];
+    $sconto='false';
+    $categoria=$_POST['categoria'];
 
-if($livello=='gold'){
-    $sconto='true';
-    $query = "INSERT INTO Cliente_Gold (id) VALUES ('$cli_id')";
+    if($livello=='gold'){
+        $sconto='true';
+        $query = "INSERT INTO Cliente_Gold (id) VALUES ('$cli_id')";
+        $result = pg_query($conn, $query);
+        if (!$result) {
+            pg_query($conn, "ROLLBACK");
+            die("Errore durante la registrazione Cliente_gold:"  . pg_last_error($conn));
+        }
+    }
+    $abb_cod="";
+    $query = "INSERT INTO Abbonamento (tipo, livello, sconto, categoria) VALUES ('$tipo_abbonamento','$livello', '$sconto','$categoria') RETURNING Codice";
+    $result = pg_query($conn, $query);
+    if ($result) {
+        $row = pg_fetch_assoc($result);
+        $abb_cod = $row['codice'];
+    } else {
+        pg_query($conn, "ROLLBACK");
+        die("Errore durante la registrazione dell'abbonamento:"  . pg_last_error($conn));
+    }
+
+    //inserisce sottoscrizione
+    $query = "INSERT INTO Sottoscrizione (Cliente, Abbonamento) VALUES ('$cli_id','$abb_cod')";
     $result = pg_query($conn, $query);
     if (!$result) {
         pg_query($conn, "ROLLBACK");
-        die("Errore durante la registrazione Cliente_gold:"  . pg_last_error($conn));
+        die("Errore durante la sottoscrizione:"  . pg_last_error($conn));
     }
-}
-$abb_cod="";
-$query = "INSERT INTO Abbonamento (tipo, livello, sconto) VALUES ('$tipo_abbonamento','$livello', '$sconto') RETURNING Codice";
-$result = pg_query($conn, $query);
-if ($result) {
-    $row = pg_fetch_assoc($result);
-    $abb_cod = $row['codice'];
-} else {
-    pg_query($conn, "ROLLBACK");
-    die("Errore durante la registrazione dell'abbonamento:"  . pg_last_error($conn));
-}
 
-//inserisce sottoscrizione
-$query = "INSERT INTO Sottoscrizione (Cliente, Abbonamento) VALUES ('$cli_id','$abb_cod')";
-$result = pg_query($conn, $query);
-if (!$result) {
-    pg_query($conn, "ROLLBACK");
-    die("Errore durante la sottoscrizione:"  . pg_last_error($conn));
-}
-
-if($sconto=='true'){
-    $query = "INSERT INTO Sottoscrizione_Gold (Cliente, Abbonamento) VALUES ('$cli_id','$abb_cod')";
-    $result = pg_query($conn, $query);
-    if (!$result) {
-        pg_query($conn, "ROLLBACK");
-        die("Errore durante la sottoscrizione_gold:"  . pg_last_error($conn));
+    if($sconto=='true'){
+        $query = "INSERT INTO Sottoscrizione_Gold (Cliente, Abbonamento) VALUES ('$cli_id','$abb_cod')";
+        $result = pg_query($conn, $query);
+        if (!$result) {
+            pg_query($conn, "ROLLBACK");
+            die("Errore durante la sottoscrizione_gold:"  . pg_last_error($conn));
+        }
     }
-}
 
-//dati corso
-if($livello=='single' || $livello=='gym'){
-    $corso= implode($_POST['corso']);
-    $query = "INSERT INTO Prevede (corso, Abbonamento) VALUES ('$corso','$abb_cod')";
-    $result = pg_query($conn, $query);
-    if (!$result) {
-        pg_query($conn, "ROLLBACK");
-        die("Errore durante la registrazione del corso:"  . pg_last_error($conn));
-    }
+    //dati corso
+    if($livello=='single' || $livello=='gym'){
+        $corso= implode($_POST['corso']);
+        $query = "INSERT INTO Prevede (corso, Abbonamento) VALUES ('$corso','$abb_cod')";
+        $result = pg_query($conn, $query);
+        if (!$result) {
+            pg_query($conn, "ROLLBACK");
+            die("Errore durante la registrazione del corso:"  . pg_last_error($conn));
+        }
     
-} else {
-    $corso= $_POST['corso'];
-    $corso1=$corso[0];
-    $query = "INSERT INTO Prevede (corso, Abbonamento) VALUES ('$corso1','$abb_cod')";
-    $result = pg_query($conn, $query);
-    if (!$result) {
-        pg_query($conn, "ROLLBACK");
-        die("Errore durante la registrazione dei corsi:"  . pg_last_error($conn));
-    } 
-    $corso2=$corso[1];
-    $query = "INSERT INTO Prevede (corso, Abbonamento) VALUES ('$corso2','$abb_cod')";
-    $result = pg_query($conn, $query);
-    if (!$result) {
-        pg_query($conn, "ROLLBACK");
-        die("Errore durante la registrazione dei corsi:"  . pg_last_error($conn));
-    } 
+    } else {
+        $corso= $_POST['corso'];
+        $corso1=$corso[0];
+        $query = "INSERT INTO Prevede (corso, Abbonamento) VALUES ('$corso1','$abb_cod')";
+        $result = pg_query($conn, $query);
+        if (!$result) {
+            pg_query($conn, "ROLLBACK");
+            die("Errore durante la registrazione dei corsi:"  . pg_last_error($conn));
+        } 
+        $corso2=$corso[1];
+        $query = "INSERT INTO Prevede (corso, Abbonamento) VALUES ('$corso2','$abb_cod')";
+        $result = pg_query($conn, $query);
+        if (!$result) {
+            pg_query($conn, "ROLLBACK");
+            die("Errore durante la registrazione dei corsi:"  . pg_last_error($conn));
+        } 
+    }
 }
+
 //conferma la transazione se tutto è andato a buon fine
 pg_query($conn, "COMMIT");
 

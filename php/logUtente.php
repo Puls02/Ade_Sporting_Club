@@ -27,37 +27,41 @@
             $_SESSION['phone'] = $user['telefono'];
             $_SESSION['id'] = $user['id'];
             $id=$user['id'];
+            $_SESSION['abb']='prenotazione';
             //setta lo stato dell'utente a true
             $query = "UPDATE utente SET status = TRUE WHERE id='$id'";
             $result = pg_query($conn, $query);
-            //imposto le variabili di sessione per l'abbonamento
-            $query = "SELECT * FROM sottoscrizione WHERE cliente = '$id'";
-            $result = pg_query($conn, $query);
-            $sottoscrizione=pg_fetch_assoc($result);
-            $codice=$sottoscrizione['abbonamento'];
+            if($user['corsi']=='t'){
+                //imposto le variabili di sessione per l'abbonamento
+                $_SESSION['abb']='corso';
+                $query = "SELECT * FROM sottoscrizione WHERE cliente = '$id'";
+                $result = pg_query($conn, $query);
+                $sottoscrizione=pg_fetch_assoc($result);
+                $codice=$sottoscrizione['abbonamento'];
             
-            $query = "SELECT * FROM abbonamento WHERE codice = '$codice'";
-            $result = pg_query($conn, $query);
-            $abbonamento=pg_fetch_assoc($result);
-            $_SESSION['livello'] = $abbonamento['livello'];
-            $query= "SELECT * FROM Cliente_Gold WHERE id='$id'";
-            $result = pg_query($conn, $query);
-
+                $query = "SELECT * FROM abbonamento WHERE codice = '$codice'";
+                $result = pg_query($conn, $query);
+                $abbonamento=pg_fetch_assoc($result);
+                $_SESSION['livello'] = $abbonamento['livello'];
+                $query= "SELECT * FROM Cliente_Gold WHERE id='$id'";
+                $result = pg_query($conn, $query);
+                if(pg_num_rows($result) === 1 && $result){
+                    $_SESSION['gold']=true;
+                    header("Location: ../login_registrazione/utenteGold.php");
+                    exit();
+                }
+            }
+            
+            
             // Imposta il cookie se "Ricordami" è selezionato
             //if ($remember_me) {
                 //setcookie('remember_me', $user['id'], time() + (86400 * 30), "/", "", true, true); // cookie valido per 30 giorni
             //}
 
             // Reindirizza alla pagina successiva
-            if(pg_num_rows($result) === 1 && $result){
-                $_SESSION['gold']=true;
-                header("Location: ../login_registrazione/utenteGold.php");
-                exit;
-            }else{
-                header("Location: ../login_registrazione/utenteNonGold.php");
-                exit;
-            }
             
+            header("Location: ../login_registrazione/utenteNonGold.php");
+            exit();
             
         } else {
             die("Password errata.");

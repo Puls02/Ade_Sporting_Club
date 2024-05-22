@@ -646,7 +646,7 @@
             // Mostra la finestra modale
             var modal = document.getElementById("myModal");
             modal.style.display = "block";
-
+            //richiesta ajax
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "php/modalCreation.php", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
