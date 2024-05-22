@@ -64,10 +64,16 @@
             exit();
             
         } else {
-            die("Password errata.");
+            $_SESSION['credenziali'] = "Pssword errata";
+            pg_close($conn);
+            header("Location: ../Index.php");
+            exit();
         }
     } else {
-        die("Utente non trovato.");
+        $_SESSION['credenziali'] = "Utente non trovato";
+        pg_close($conn);
+        header("Location: ../Index.php");
+        exit();
     }
 
 

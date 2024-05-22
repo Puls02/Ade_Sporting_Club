@@ -172,7 +172,7 @@
                     <input type="radio" name="corso_campo" value="corso"/><label>Voglio seguire i corsi</label>
                     <input type="radio" name="corso_campo" value="campo"/><label>Prenoterò solo i campi</label>
             <br><label>Tipo di abbonamento:</label>
-            <select name="type" id="abbonamento"  required>
+            <select name="type" id="abbonamento" onclick="return checkRegistration()" >
                 <option value="">Seleziona</option>
                 <option value="AM">Abbonamento mensile</option>
                 <option value="AT">Abbonamento trimestrale</option>
@@ -180,7 +180,7 @@
                 <option value="AA">Abbonamento annuale</option>
             </select><br>
             <label>Livello: </label>
-            <select name="abbonamentospecifico" id="listastatus" onclick="checkType()" onchange="resetCheckboxes(); checkSubscription()" required>
+            <select name="abbonamentospecifico" id="listastatus" onclick="checkType()" onchange="resetCheckboxes(); checkSubscription()">
                 <option value="">Seleziona</option>
                 <option value="single">Abbonamento singolo</option>
                 <option value="double">Abbonamento doppio</option>
@@ -209,9 +209,9 @@
                     </label>
             <br/>
             <label>Selezionare la categoria dei corsi: </label><br>
-                    <input type="radio" name="categoria" value="bambini"/><label>Bambini</label>
-                    <input type="radio" name="categoria" value="ragazzi"/><label>Ragazzi</label>
-                    <input type="radio" name="categoria" value="amatoriale"/><label>Amatoriale</label>
+                    <input type="radio" name="categoria" value="bambini" /><label>Bambini</label>
+                    <input type="radio" name="categoria" value="ragazzi" /><label>Ragazzi</label>
+                    <input type="radio" name="categoria" value="amatoriale" /><label>Amatoriale</label>
             <br/>
             Se sei un cliente inserisci il documento d'identità e il certificato medico:
             <br>
@@ -222,6 +222,24 @@
         <input type="submit" value="invia form" >
         <input type="reset" value="reset form">
     </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        // Ottieni l'elemento con il nome "nata"
+        var inputDate = document.getElementsByName("nata")[0];
+
+        // Seleziona la data corrente
+        var now = new Date();
+
+        // Imposta la data minima come la data corrente meno 12 anni
+        var maxDate = new Date(now.getTime());
+        maxDate.setFullYear(maxDate.getFullYear() - 12);
+        var maxData = maxDate.toISOString().split('T')[0];
+
+        // Imposta l'attributo max dell'input date
+        inputDate.max = maxData;
+    });
+</script>
     
 </body>
 </html>

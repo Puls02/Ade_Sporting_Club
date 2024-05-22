@@ -1,7 +1,7 @@
 function checkType(){    
     v=document.getElementById("abbonamento").value;
     if(v == ""){
-        alert("Devi selezionaaare un tipo di abbonamento");
+        alert("Devi selezionare un tipo di abbonamento");
         return false
     }
 }
@@ -118,4 +118,14 @@ function checkForm(event){
 
     //Se dovete aggiungere del codice aggiungetelo sopra questa riga
     checkboxes[5].disabled=false;
+}
+
+function checkRegistration(){
+    corso_campo=document.getElementsByName("corso_campo");
+    for (var i = 0; i < corso_campo.length; i++) {
+        if (corso_campo[i].checked && corso_campo[i].value === 'campo') {
+            alert("Non puoi sottoscrivere un abbonamento se desideri prenotare soltanto i campi");
+            return false;
+        }
+    }
 }

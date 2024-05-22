@@ -11,6 +11,10 @@
         echo "<p class='slotPrenotazione'>" . htmlspecialchars($_SESSION['message']) . "</p>";
         unset($_SESSION['message']);
     }
+    if(isset($_SESSION['credenziali'])){
+        echo "<p class='slotPrenotazione'>" . htmlspecialchars($_SESSION['credenziali']) . "</p>";
+        unset($_SESSION['credenziali']);
+    }
     include_once "php/config.php";
 ?>
 <!DOCTYPE html>
