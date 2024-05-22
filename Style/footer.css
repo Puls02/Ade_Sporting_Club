@@ -45,7 +45,7 @@ footer {
     padding: 10px; /* Aggiungi padding per uno spazio interno */
     text-align: center; /* Centra il contenuto all'interno del link */
     cursor: pointer;
-    z-index: 10;
+    z-index: 5;
 }
 
 .ancora a i {
@@ -53,6 +53,14 @@ footer {
 }
 
 .footer hr {
+    border: none;
+    height: 1px;
+    background-color: #efefef; /* same as border color */
+    margin-top: 10px; /* Spazio sopra e sotto l'hr */
+}
+.divider
+{
+    display: none;
     border: none;
     height: 1px;
     background-color: #efefef; /* same as border color */
@@ -67,7 +75,10 @@ footer {
 }
 @media (max-width: 1279px)
 {
-
+    .map
+    {
+        margin-left: 5%
+    }
 }
 @media (max-width: 1023px)
 {
@@ -81,10 +92,14 @@ footer {
         margin-left: auto;
         margin-right: auto;
     }
+    .divider
+    {
+        display:block;
+    }
 }
 @media (max-width: 929px)
 {
- 
+     
 }
 @media (max-width: 767px)
 {
@@ -93,10 +108,17 @@ footer {
 
 @media (max-width: 640px)
 {
+    .map
+    {
+        margin-left: 0;
+    }
 
 }
 
-@media (max-width: 475px) 
+@media only screen and (max-width: 475px) 
 {
-  
+    .ancora
+    {
+        display: none;
+    }
 }

@@ -195,6 +195,8 @@
         </video>
     </section>
 
+    <hr size="4" color="black"> 
+
     <!-- Div per l'overlay -->
     <div id="overlay" class="overlay"></div>
     <!-- Div nascosto del popup -->
@@ -202,12 +204,7 @@
         <iframe src="login_registrazione/login.php" width="580" height="500" frameborder="0" style="border:0; overflow:hidden;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
-
-
     <main>
-
-
-        <hr size="4" color="black"> 
         <!--Contenuto della home page-->
         <div class="presentation">
             <h1>ADE Sporting Club Center</h1>
@@ -451,40 +448,6 @@
                             currentSlide = i;
                         });
                     });
-
-                    //javascript for automatic sliding
-                    var repeat = function(activeClass)
-                    {
-                        let active = document.getElementsByClassName('active');
-                        let i = 1;
-
-                        var repeater = () => 
-                        {
-                            setTimeout(function()
-                            {
-                                [...active].forEach((activeSlide) => 
-                                {
-                                    activeSlide.classList.remove('active');
-                                });
-
-                                slides[i].classList.add('active');
-                                btns[i].classList.add('active');
-                                i++;
-
-                                if(slides.length == i)
-                                {
-                                    i = 0;
-                                }
-                                if(i >= slides.length)
-                                {
-                                    return;
-                                }
-                                repeater();
-                            }, 10000);
-                        }
-                        repeater();
-                    }
-                    repeat();
                 </script>
             </div>
         </div>
@@ -499,7 +462,7 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.235657742299!2d12.57007927646197!3d41.952273060766345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f64619ddc961d%3A0x997b053d9ac9f023!2sSporting%20Club%20Panda!5e0!3m2!1sit!2sit!4v1714034933636!5m2!1sit!2sit" 
                 width="400" height="250" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-
+        <hr class="divider">
         <div class="ancora">
             <a href="#beginning"><i class="fas fa-arrow-up"></i></a>		
             <!-- ancora per tornare all'inizio della pagina -->
@@ -510,7 +473,7 @@
             <p>
                 marino.1984826@studenti.uniroma1.it<br>
                 pulsoni.1995669@studenti.uniroma1.it<br>
-                ricci.@studenti.uniroma1.it
+                ricci.1985803@studenti.uniroma1.it
             </p>
             <p>link alla repository di github</p>
             <hr>

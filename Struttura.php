@@ -176,17 +176,6 @@
                 }
             </script>
             <!-- end javascript -->
-
-
-            <!--sticky navbar on scroll-->
-            <script type="text/javascript">
-                window.addEventListener("scroll", function(){
-                    var header = document.querySelector("header");
-                    header.classList.toggle("sticky", window.scrollY > 0);
-                });
-            </script>
-            <!-- end javascript --> 
-
         </nav>
         
     </header>
@@ -199,7 +188,6 @@
     </div>
 
     <main>
-       
         <div class="Sezione_1">
             <img class="bg_img" src="immagini/galleria/presentazione/banner2.jpg">
             <div class="presentation">
@@ -265,7 +253,7 @@
                         Cena: 19:00 - 00:00
                     </p>
                 </div>
-                <div class="space"></div>
+                <div class="space resp"></div>
                 <hr size="1" color="black"> 
                 <div class="space"></div>
                 <!-- Galleria di Immagini: DA SCEGLIERE -->
@@ -292,6 +280,8 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.235657742299!2d12.57007927646197!3d41.952273060766345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f64619ddc961d%3A0x997b053d9ac9f023!2sSporting%20Club%20Panda!5e0!3m2!1sit!2sit!4v1714034933636!5m2!1sit!2sit" width="400" height="250" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 
+        <hr class="divider">
+        
         <div class="ancora">
             <a href="#beginning"><i class="fas fa-arrow-up"></i></a>		<!-- ancora per tornare all'inizio della pagina -->
         </div>

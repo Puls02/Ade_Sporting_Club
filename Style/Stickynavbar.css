@@ -312,6 +312,10 @@ header.sticky .side_exit
   {
     display: none;
   }
+  .sidebar
+  {
+    width: 95%;
+  }
 }
 @media (min-width: 1024px)
 {
