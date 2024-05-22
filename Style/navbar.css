@@ -251,6 +251,12 @@ ul.topBotomBordersOut a:hover:after
   {
     font-size: var(--size-lg);
   }
+  .sidebar
+  {
+    width: 100%;
+    left: 0px;
+  }
+  
 }
 @media (max-width: 475px) 
 {

@@ -151,15 +151,6 @@ ul.topBotomBordersOut a:hover:after
   cursor: pointer;
   position: relative;
 }
-.sidebar_login
-{
-  width: 40px;
-  height: 40px;
-  color: #fff;
-  cursor: pointer;
-  position: relative;
-  top: 100px;
-}
 /*login for small screen*/
 
 /*----------------pulsante login------------------*/
@@ -312,6 +303,11 @@ header.sticky .side_exit
   .logo_name
   {
     font-size: var(--size-lg);
+  }
+  header.sticky .sidebar
+  {
+    width: 100%;
+    left: 0px;
   }
 }
 @media (max-width: 475px) 

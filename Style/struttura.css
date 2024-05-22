@@ -289,9 +289,9 @@ hr
     right: 10%;
   }
   /*responsive css for Section2*/
-  .fisso 
+  .resp
   {
-    width: 600px;
+    height: 90px;
   }
 }
 
@@ -308,7 +308,7 @@ hr
   border: 1px solid red;
 }
 */
-
+/*
 .Sezione_2
 {
   border: 1px solid blue;
@@ -330,3 +330,4 @@ hr
 {
   border: 1px solid red;
 }
+*/
