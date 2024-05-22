@@ -217,7 +217,7 @@ hr
 /*---------------------------------------*/
 
 /*responsive css for index*/
-@media (max-width: 1535px)
+@media only screen and (max-width: 1535px)
 {
   /*responsive css for general part*/
   h1
@@ -362,6 +362,7 @@ hr
     width: auto;
     margin-top: 1%;
     margin-left: 1%;
+    margin-right: 1%;
   }
   .img-slider .slider-nav
   {
@@ -384,9 +385,10 @@ hr
   .img-slider .slide .info
   {
     margin-top: 20%;
-    margin-left: 15%;
     width: auto;
     height: 50px;
+    left: 10%;
+    right: 10%;
   }
   .img-slider .slide .info p
   {
@@ -412,15 +414,15 @@ hr
   }
   .img-slider .slide .info
   {
-    margin: 8%;
-    padding-top: 2%;
-    padding-bottom: 10%;
-    padding-left: 1%;
-    padding-right: 1%;
+    margin-top: 8%;
+    left: 30px;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   .img-slider .slide .info h1
   {
-    font-size: var(--size-2xl);
+    font-size: var(--size-xl);
   }
 }
 

@@ -82,61 +82,62 @@
                     <a class="toolbar_link_Prenota" href="Prenota.php">Prenota</a>
                 </li>
             </ul>
-            <div class="login_btn">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" >
-                    <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 
-                    16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 
-                    1-.437-.695Z" clip-rule="evenodd" />
-                </svg>
-            </div>
-            <!--container for login features-->
-            <?php if(!$logged) :?>
-                <div class="person flex">
-                    <ul class="login_menu">
-                        <li>
-                            <p class="bold"><b>Registrati o Accedi</b></p>
-                        </li>
-                        <li> 
-                            <p>Scopri tutte le funzionalità del sito</p>
-                        </li>
-                        <hr size="1" color="black">
-                        <li>
-                            <a href="login_registrazione/registration.php">
-                                <button class="Sign up">Registrati</button>
-                            </a>
-                        </li>
-                        <!-- POPUP DEL LOGIN -->
-                        <li>
-                            <button class="Sign in" id="mostraPopupButton">Accedi</button>
-                        </li>
-                    </ul>
+            <div class="linksito">
+                <div class="login_btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" >
+                        <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 
+                        16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 
+                        1-.437-.695Z" clip-rule="evenodd" />
+                    </svg>
                 </div>
-                
-            <?php else: ?>
-                <div class="person flex">
-                    <ul class="login_menu">
-                        <!-- rimanda al profilo personale -->
-                        <?php if($id < 30): ?>
-                            <a href="login_registrazione/Istruttore.php">
-                                <button class="Sign profile">Profilo</button>
-                            </a>
-                        <?php elseif($id > 30 && !$gold): ?>
-                            <a href="login_registrazione/utenteNonGold.php">
-                                <button class="Sign profile">Profilo</button>
-                            </a>
-                        <?php else: ?>
-                            <a href="login_registrazione/utenteGold.php">
-                                <button class="Sign profile">Profilo</button>
-                            </a>
-                        <?php endif;?>
-                        <!-- Logout -->
-                        <form action="php/logout.php" method="post" >
-                            <button class="Sign out" type="submit">Logout</button>
-                        </form>
-                    </ul>
-                </div>
-            <?php endif; ?>
-
+                <!--container for login features-->
+                <?php if(!$logged) :?>
+                    <div class="person flex">
+                        <ul class="login_menu">
+                            <li>
+                                <p class="bold"><b>Registrati o Accedi</b></p>
+                            </li>
+                            <li> 
+                                <p>Scopri tutte le funzionalità del sito</p>
+                            </li>
+                            <hr size="1" color="black">
+                            <li>
+                                <a href="login_registrazione/registration.php">
+                                    <button class="Sign up">Registrati</button>
+                                </a>
+                            </li>
+                            <!-- POPUP DEL LOGIN -->
+                            <li>
+                                <button class="Sign in" id="mostraPopupButton">Accedi</button>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                <?php else: ?>
+                    <div class="person flex">
+                        <ul class="login_menu">
+                            <!-- rimanda al profilo personale -->
+                            <?php if($id < 30): ?>
+                                <a href="login_registrazione/Istruttore.php">
+                                    <button class="Sign profile">Profilo</button>
+                                </a>
+                            <?php elseif($id > 30 && !$gold): ?>
+                                <a href="login_registrazione/utenteNonGold.php">
+                                    <button class="Sign profile">Profilo</button>
+                                </a>
+                            <?php else: ?>
+                                <a href="login_registrazione/utenteGold.php">
+                                    <button class="Sign profile">Profilo</button>
+                                </a>
+                            <?php endif;?>
+                            <!-- Logout -->
+                            <form action="php/logout.php" method="post" >
+                                <button class="Sign out" type="submit">Logout</button>
+                            </form>
+                        </ul>
+                    </div>
+                <?php endif; ?>
+                                 
             <!--open the dropdown login menu on click-->
             <script type="text/javascript">
                 const show_menu = document.querySelector('.login_btn');
@@ -155,6 +156,7 @@
                         6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 
                         0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
                 </svg>
+            </div>
             </div>
             <ul class="sidebar"> 
                 <li class="side_exit" onclick=hideSidebar()>
@@ -390,10 +392,11 @@
         </div>
 
         <div class="zona">
-            <p>La tebella sovrastante riporta le disponibilita settimanali (lun-dom) dei vari campi da gioco.<br>Se la prenotazione risulta verde vuol dire che è stata validata e tale campo è quindi occupato. Al contrario se la prenotazione c'è ma risulta ancora gialla vuol dire che non è completa e ci si può aggiungere</p>
+            <h2>Prenota un campo</h2>
+            <p>La tabella sovrastante riporta le disponibilita settimanali (lun-dom) dei vari campi da gioco. Seleziona un'attività e un campo per prenotare un'ora di gioco.<br> 
+            <br>Se la prenotazione risulta verde vuol dire che è stata validata e tale campo è quindi occupato. Al contrario se la prenotazione c'è ma risulta ancora gialla vuol dire che non è completa e ci si può aggiungere.
+            <br>Per aggiungersi ad una prenotazione basta cliccare sulla cella gialla e verrà aperta una finestra modale per la prenotazione.</p>
         </div>
-
-        <!-- io inserirei a destra di ogni tendina un post it con le informazioni relative ai costi dei campi -->
         <div>
             <ul class="toggle-list" >
                 <li class="toggle-item" onclick="return checkLogin();">
@@ -418,7 +421,7 @@
                             <label for="interoCampo">Prenotazione dell'intero campo</label><br>
                             <input type="radio" id="codaGioco" name="prenotazione" value="codaGioco">
                             <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
-                            <div id="numPersoneWrapper">
+                            <div class="numPersoneWrapper">
                                 <label for="numeroPersone">Numero di persone:</label>
                                 <input type="number" id="numeroPersone" name="numeroPersone" min="1" max="9"><br>
                             </div>
@@ -450,7 +453,7 @@
                             <label for="interoCampo">Prenotazione dell'intero campo</label><br>
                             <input type="radio" id="codaGioco" name="prenotazione" value="codaGioco">
                             <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
-                            <div id="numPersoneWrapper">
+                            <div class="numPersoneWrapper">
                                 <label for="numeroPersone">Numero di persone:</label>
                                 <input type="number" id="numeroPersone" name="numeroPersone" min="1" max="3"><br>
                             </div>
@@ -468,7 +471,7 @@
                             <label for="dataTennis">Data:</label>
                             <input type="date" id="dataTennis" name="data" required><br>
                             <label for="orario">Orario prenotazione:</label>
-                            <<select class="orario" name="ora" required>
+                            <select class="orario" name="ora" required>
                                 <option value="">Seleziona un orario</option>
                             </select><br>
                             <label for="sceltacampo">Tipo di prenotazione:</label><br>
@@ -488,7 +491,7 @@
                             <label for="interoCampo">Prenotazione dell'intero campo</label><br>
                             <input type="radio" id="codaGioco" name="prenotazione" value="codaGioco">
                             <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
-                            <div id="numPersoneWrapper">
+                            <div class="numPersoneWrapper">
                                 <label for="numeroPersone">Numero di persone:</label>
                                 <input type="number" id="numeroPersone" name="numeroPersone" min="1" max="2"><br>
                             </div>
@@ -519,7 +522,7 @@
                             <label for="interoCampo">Prenotazione dell'intero campo</label><br>
                             <input type="radio" id="codaGioco" name="prenotazione" value="codaGioco">
                             <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
-                            <div id="numPersoneWrapper">
+                            <div class="numPersoneWrapper">
                                 <label for="numeroPersone">Numero di persone:</label>
                                 <input type="number" id="numeroPersone" name="numeroPersone" min="1" max="9"><br>
                             </div>

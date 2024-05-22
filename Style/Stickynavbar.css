@@ -86,6 +86,14 @@ ul.topBotomBordersOut a:hover:after
   transform: translateY(0px);
 }
 /*-------------------------------------------------------*/
+/*contenitore per hamburger menu e login*/
+.linksito 
+{
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+}
+
 
 /*hamburger menu for responsive toolbar on small screen*/
 .hamburger_menu
@@ -96,7 +104,6 @@ ul.topBotomBordersOut a:hover:after
   height: 50px;
   display: block;
   cursor: pointer;
-  border: 1px solid green;
 }
 .sidebar
 {
@@ -143,15 +150,6 @@ ul.topBotomBordersOut a:hover:after
   cursor: pointer;
   position: relative;
 }
-.sidebar_login
-{
-  width: 40px;
-  height: 40px;
-  color: #fff;
-  cursor: pointer;
-  position: relative;
-  top: 100px;
-}
 /*login for small screen*/
 
 /*----------------pulsante login------------------*/
@@ -159,13 +157,12 @@ ul.topBotomBordersOut a:hover:after
 {
   display: flex;
   align-items: center;
-  margin-right: 80px;
+  margin-right: 10px;
   width: 50px;
   height: 50px;
   color: #fff;
   cursor: pointer;
   border-radius: 50%;
-  border: 1px solid red;
   position: relative;
 }
 /*dropdown menu for login*/
@@ -281,11 +278,11 @@ header.sticky .side_exit
 {
   .logo_name
   { 
-    font-size: var(--size-2xl);
+    font-size: var(--size-xl);
   }
 
 }
-@media (max-width: 1023px) 
+@media (max-width: 1024px) 
 {
   .toolbar
   {
@@ -305,6 +302,11 @@ header.sticky .side_exit
   {
     font-size: var(--size-lg);
   }
+  header.sticky .sidebar
+  {
+    width: 100%;
+    left: 0px;
+  }
 }
 @media (max-width: 475px) 
 {
@@ -313,7 +315,7 @@ header.sticky .side_exit
     display: none;
   }
 }
-@media (min-width: 1024px)
+@media (min-width: 1023px)
 {
   .hamburger_menu
   {

@@ -37,17 +37,17 @@
     <!--Header, there is the navbar menu and login-->
     <header id="beginning"> 
         <nav class="nav responsive">
-            <!--container for logo and name-->
-            <ul class="logo container"> 
+            <!-- container for logo and name -->
+            <ul class="logo container">
                 <li>
                     <img class="logo_img" src="immagini/logo/Ade.jpg">
                 </li>
                 <li>
-                    <a class="logo_name">ADE Sporting Club</a>                
+                    <a class="logo_name">ADE Sporting Club</a>
                 </li>
             </ul>
-            <!--container for navbar, topBotomBordersOut is the name of the toolbar animation-->
-            <ul class="toolbar container topBotomBordersOut"> 
+            <!-- container for navbar, topBotomBordersOut is the name of the toolbar animation -->
+            <ul class="toolbar container topBotomBordersOut">
                 <li>
                     <a class="toolbar_link_Home" href="index.php">Home</a>
                 </li>
@@ -56,92 +56,75 @@
                 </li>
                 <li>
                     <a class="toolbar_link_Attivita" href="Attivita.php"> Attività</a>
-                </li>               
+                </li>
                 <li>
                     <a class="toolbar_link_Prenota" href="Prenota.php">Prenota</a>
                 </li>
             </ul>
-            
-            <div class="login_btn">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" >
-                    <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 
-                    16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 
-                    1-.437-.695Z" clip-rule="evenodd" />
-                </svg>
-            </div>
-            <!--container for login features-->
-            <?php if(!$logged) :?>
-                <div class="person flex">
-                    <ul class="login_menu">
-                        <li>
-                            <p class="bold"><b>Registrati o Accedi</b></p>
-                        </li>
-                        <li> 
-                            <p>Scopri tutte le funzionalità del sito</p>
-                        </li>
-                        <hr size="1" color="black">
-                        <li>
-                            <a href="login_registrazione/registration.php">
-                                <button class="Sign up">Registrati</button>
-                            </a>
-                        </li>
-                        <!-- POPUP DEL LOGIN -->
-                        <li>
-                            <button class="Sign in" id="mostraPopupButton">Accedi</button>
-                        </li>
-                    </ul>
-                </div>
-                
-            <?php else: ?>
-                <div class="person flex">
-                    <ul class="login_menu">
-                        <!-- rimanda al profilo personale -->
-                        <?php if($id < 30): ?>
-                            <a href="login_registrazione/Istruttore.php">
-                                <button class="Sign profile">Profilo</button>
-                            </a>
-                        <?php elseif($id > 30 && !$gold): ?>
-                            <a href="login_registrazione/utenteNonGold.php">
-                                <button class="Sign profile">Profilo</button>
-                            </a>
-                        <?php else: ?>
-                            <a href="login_registrazione/utenteGold.php">
-                                <button class="Sign profile">Profilo</button>
-                            </a>
-                        <?php endif;?>
-                        <!-- Logout -->
-                        <form action="php/logout.php" method="post" >
-                            <button class="Sign out" type="submit">Logout</button>
-                        </form>
-                    </ul>
-                </div>
-            <?php endif; ?>
 
-            <!--open the dropdown login menu on click-->
-            <script type="text/javascript">
-                const show_menu = document.querySelector('.login_btn');
-                nav = document.querySelector('.person');
-
-                show_menu.onclick = () => {
-                    nav.classList.toggle("show");
-                };
-            </script>
-            <!-- end javascript -->
-
-            <!-- navbar for small screen -->
-            <div class="hamburger_menu" onclick=showSidebar()>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                    <path fill-rule="evenodd" d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 
-                        6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 
-                        0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
-                </svg>
-            </div>
-            <ul class="sidebar"> 
-                <li class="side_exit" onclick=hideSidebar()>
+            <div class="linksito">
+                <div class="login_btn">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 
-                        1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 
-                        12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+
+                <div class="person flex">
+                    <ul class="login_menu">
+                        <!-- Condizione PHP per mostrare il menu di login -->
+                        <?php if (!$logged) : ?>
+                            <li>
+                                <p class="bold"><b>Registrati o Accedi</b></p>
+                            </li>
+                            <li>
+                                <p>Scopri tutte le funzionalità del sito</p>
+                            </li>
+                            <hr size="1" color="black">
+                            <li>
+                                <a href="login_registrazione/registration.php">
+                                    <button class="Sign up">Registrati</button>
+                                </a>
+                            </li>
+                            <li>
+                                <button class="Sign in" id="mostraPopupButton">Accedi</button>
+                            </li>
+                        <?php else: ?>
+                            <!-- Condizione PHP per mostrare il profilo -->
+                            <li>
+                                <?php if ($id < 30) : ?>
+                                    <a href="login_registrazione/Istruttore.php">
+                                        <button class="Sign profile">Profilo</button>
+                                    </a>
+                                <?php elseif ($id > 30 && !$gold) : ?>
+                                    <a href="login_registrazione/utenteNonGold.php">
+                                        <button class="Sign profile">Profilo</button>
+                                    </a>
+                                <?php else : ?>
+                                    <a href="login_registrazione/utenteGold.php">
+                                        <button class="Sign profile">Profilo</button>
+                                    </a>
+                                <?php endif; ?>
+                            </li>
+                            <li>
+                                <form action="php/logout.php" method="post">
+                                    <button class="Sign out" type="submit">Logout</button>
+                                </form>
+                            </li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+
+                <div class="hamburger_menu" onclick="showSidebar()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+            </div>
+
+            <ul class="sidebar">
+                <li class="side_exit" onclick="hideSidebar()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
                     </svg>
                 </li>
                 <li>
@@ -155,37 +138,41 @@
                 </li>
                 <li>
                     <a href="Attivita.php"> Attività</a>
-                </li>               
+                </li>
                 <li>
                     <a href="Prenota.php">Prenota</a>
                 </li>
             </ul>
-            <!-- javascript for sidebar menu -->
+
+            <!-- JavaScript for sidebar menu -->
             <script>
-                function showSidebar() 
-                {
+                function showSidebar() {
                     const sidebar = document.querySelector('.sidebar');
                     sidebar.style.display = 'flex';
                 }
-                function hideSidebar()
-                {
+
+                function hideSidebar() {
                     const sidebar = document.querySelector('.sidebar');
                     sidebar.style.display = 'none';
                 }
+
+                // Dropdown menu for login
+                const show_menu = document.querySelector('.login_btn');
+                const nav = document.querySelector('.person');
+
+                show_menu.onclick = () => {
+                    nav.classList.toggle("show");
+                };
             </script>
-            <!-- end javascript -->
 
-
-            <!--sticky navbar on scroll-->
+            <!-- Sticky navbar on scroll -->
             <script type="text/javascript">
-                window.addEventListener("scroll", function(){
+                window.addEventListener("scroll", function () {
                     var header = document.querySelector("header");
                     header.classList.toggle("sticky", window.scrollY > 0);
                 });
             </script>
-            <!-- end javascript --> 
-
-        </nav>
+    </nav>
     </header>
 
     <!--Banner del sito-->
@@ -195,6 +182,8 @@
         </video>
     </section>
 
+    <hr size="4" color="black"> 
+
     <!-- Div per l'overlay -->
     <div id="overlay" class="overlay"></div>
     <!-- Div nascosto del popup -->
@@ -202,12 +191,7 @@
         <iframe src="login_registrazione/login.php" width="580" height="500" frameborder="0" style="border:0; overflow:hidden;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
-
-
     <main>
-
-
-        <hr size="4" color="black"> 
         <!--Contenuto della home page-->
         <div class="presentation">
             <h1>ADE Sporting Club Center</h1>
@@ -451,40 +435,6 @@
                             currentSlide = i;
                         });
                     });
-
-                    //javascript for automatic sliding
-                    var repeat = function(activeClass)
-                    {
-                        let active = document.getElementsByClassName('active');
-                        let i = 1;
-
-                        var repeater = () => 
-                        {
-                            setTimeout(function()
-                            {
-                                [...active].forEach((activeSlide) => 
-                                {
-                                    activeSlide.classList.remove('active');
-                                });
-
-                                slides[i].classList.add('active');
-                                btns[i].classList.add('active');
-                                i++;
-
-                                if(slides.length == i)
-                                {
-                                    i = 0;
-                                }
-                                if(i >= slides.length)
-                                {
-                                    return;
-                                }
-                                repeater();
-                            }, 10000);
-                        }
-                        repeater();
-                    }
-                    repeat();
                 </script>
             </div>
         </div>
@@ -499,7 +449,7 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.235657742299!2d12.57007927646197!3d41.952273060766345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f64619ddc961d%3A0x997b053d9ac9f023!2sSporting%20Club%20Panda!5e0!3m2!1sit!2sit!4v1714034933636!5m2!1sit!2sit" 
                 width="400" height="250" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-
+        <hr class="divider">
         <div class="ancora">
             <a href="#beginning"><i class="fas fa-arrow-up"></i></a>		
             <!-- ancora per tornare all'inizio della pagina -->
@@ -510,7 +460,7 @@
             <p>
                 marino.1984826@studenti.uniroma1.it<br>
                 pulsoni.1995669@studenti.uniroma1.it<br>
-                ricci.@studenti.uniroma1.it
+                ricci.1985803@studenti.uniroma1.it
             </p>
             <p>link alla repository di github</p>
             <hr>

@@ -14,6 +14,9 @@
 .hidden{
     display: none;
 }
+.numPersoneWrapper {
+    display: none;
+}
 
 /* prenotazione attività */
 .toggle-list {
