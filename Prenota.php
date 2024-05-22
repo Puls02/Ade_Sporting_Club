@@ -390,10 +390,11 @@
         </div>
 
         <div class="zona">
-            <p>La tebella sovrastante riporta le disponibilita settimanali (lun-dom) dei vari campi da gioco.<br>Se la prenotazione risulta verde vuol dire che è stata validata e tale campo è quindi occupato. Al contrario se la prenotazione c'è ma risulta ancora gialla vuol dire che non è completa e ci si può aggiungere</p>
+            <h2>Prenota un campo</h2>
+            <p>La tabella sovrastante riporta le disponibilita settimanali (lun-dom) dei vari campi da gioco. Seleziona un'attività e un campo per prenotare un'ora di gioco.<br> 
+            <br>Se la prenotazione risulta verde vuol dire che è stata validata e tale campo è quindi occupato. Al contrario se la prenotazione c'è ma risulta ancora gialla vuol dire che non è completa e ci si può aggiungere.
+            <br>Per aggiungersi ad una prenotazione basta cliccare sulla cella gialla e verrà aperta una finestra modale per la prenotazione.</p>
         </div>
-
-        <!-- io inserirei a destra di ogni tendina un post it con le informazioni relative ai costi dei campi -->
         <div>
             <ul class="toggle-list" >
                 <li class="toggle-item" onclick="return checkLogin();">
