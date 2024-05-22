@@ -27,6 +27,7 @@
 
   
 /*responsive css for struct*/
+/*
 @media (max-width: 1536px)
 {
   
@@ -49,10 +50,7 @@
 
 @media (max-width: 768px)
 {
-  p
-  {
-    font-size: var(--size-base) ;
-  }
+
 }
 
 @media (max-width: 640px)
@@ -64,3 +62,4 @@
 {
 
 }
+*/
