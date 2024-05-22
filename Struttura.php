@@ -158,6 +158,14 @@
                     const sidebar = document.querySelector('.sidebar');
                     sidebar.style.display = 'none';
                 }
+
+                // funzione per mostrare il menu a tendina
+const show_menu = document.querySelector('.login_btn');
+  nav = document.querySelector('.person');
+
+  show_menu.onclick = () => {
+    nav.classList.toggle("show");
+};
             </script>
             <!-- end javascript -->
         </nav>

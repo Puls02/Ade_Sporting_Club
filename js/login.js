@@ -30,6 +30,8 @@ function togglePasswordVisibilityIst() {
   }
 };
 
+
+
 // Funzione per collegare il bottone al popup
 function collegaBottoneAPopup() {
   // Seleziona il bottone desiderato

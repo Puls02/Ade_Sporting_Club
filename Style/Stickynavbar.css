@@ -104,7 +104,6 @@ ul.topBotomBordersOut a:hover:after
   height: 50px;
   display: block;
   cursor: pointer;
-  border: 1px solid green;
 }
 .sidebar
 {
@@ -164,7 +163,6 @@ ul.topBotomBordersOut a:hover:after
   color: #fff;
   cursor: pointer;
   border-radius: 50%;
-  border: 1px solid red;
   position: relative;
 }
 /*dropdown menu for login*/
