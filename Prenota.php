@@ -403,7 +403,7 @@
                     <input type="radio" id="calcio" name="attivita">
                     <label for="calcio" >Calcetto<span class="arrow" ></span></label>
                     <div class="content">
-                        <form action="php/prenotazione.php" method="post" name="formPrenotazione">
+                        <form action="php/prenotazione.php" method="post" name="formPrenotazione" onsubmit="return checkNumGiocatori()">
                             <label for="dataCalcio">Data:</label>
                             <input type="date" id="dataCalcio" name="data" required><br>
                             <label for="orario">Orario prenotazione:</label>
@@ -426,7 +426,7 @@
                                 <input type="number" id="numeroPersone" name="numeroPersone" min="1" max="9"><br>
                             </div>
                             
-                            <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
+                            <input type="submit" value="Prenota" > <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
                             <input type="reset" value="Azzera i campi">
                         </form>
                     </div>
@@ -435,7 +435,7 @@
                     <input type="radio" id="paddle" name="attivita">
                     <label for="paddle">Paddle<span class="arrow"></span></label>
                     <div class="content">
-                        <form method="post" action="php/prenotazione.php" name="formPrenotazione">
+                        <form method="post" action="php/prenotazione.php" name="formPrenotazione" onsubmit="return checkNumGiocatori()">
                             <label for="dataPaddle">Data:</label>
                             <input type="date" id="dataPaddle" name="data" required><br>
                             <label for="orario">Orario prenotazione:</label>
@@ -467,19 +467,13 @@
                     <input type="radio" id="tennis" name="attivita">
                     <label for="tennis">Tennis<span class="arrow"></span></label>
                     <div class="content">
-                        <form method="post" action="php/prenotazione.php" name="formPrenotazione">
+                        <form method="post" action="php/prenotazione.php" name="formPrenotazione" onsubmit="return checkNumGiocatori()">
                             <label for="dataTennis">Data:</label>
                             <input type="date" id="dataTennis" name="data" required><br>
                             <label for="orario">Orario prenotazione:</label>
                             <select class="orario" name="ora" required>
                                 <option value="">Seleziona un orario</option>
                             </select><br>
-                            <label for="sceltacampo">Tipo di prenotazione:</label><br>
-                            <input type="radio" id="terra" name="sceltacampo" value="terra" required>
-                            <label for="terra">Campo in terra</label><br>
-                            <input type="radio" id="cemento" name="sceltacampo" value="cemento">
-                            <label for="cemento">Campo in cemento</label><br>
-                            <label for="campo">Seleziona campo:</label><br>
                             <select id="campo" name="campo" required>
                                 <option value="tennis_7">Campo 1</option>
                                 <option value="tennis_8">Campo 2</option>
@@ -505,7 +499,7 @@
                     <input type="radio" id="basket" name="attivita">
                     <label for="basket">Basket<span class="arrow"></span></label>
                     <div class="content">
-                        <form method="post" action="php/prenotazione.php" name="formPrenotazione">
+                        <form method="post" action="php/prenotazione.php" name="formPrenotazione" onsubmit="return checkNumGiocatori()">
                             <label for="dataBasket">Data:</label>
                             <input type="date" id="dataBasket" name="data" required><br>
                             <label for="orario">Orario prenotazione:</label>
@@ -605,24 +599,52 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Ottieni tutti gli elementi con la classe "orario"
-            var selectOrari = document.querySelectorAll(".orario");
+            var datePickers = document.querySelectorAll("input[name='data']");
+            var selectOrariList = document.querySelectorAll(".orario");
 
-            // Per ogni elemento, popola la lista degli orari con i valori appropriati
-            selectOrari.forEach(function(selectOrario) {
+            function populateOrari(datePicker, selectOrario) {
+                // Ottieni l'orario corrente
+                var now = new Date();
+                var currentHour = now.getHours();
+                var currentMinute = now.getMinutes();
+                var today = now.toISOString().split('T')[0];
+
+                // Funzione per controllare se un orario è passato
+                function isPast(hour, minute) {
+                    return hour < currentHour || (hour === currentHour && minute <= currentMinute);
+                }
+
+                // Svuota l'elemento <select>
+                selectOrario.innerHTML = '';
+
+                // Popola la lista degli orari con i valori appropriati
                 for (var hour = 8; hour < 23; hour++) {
                     for (var minute = 0; minute < 60; minute += 15) { // Solo minuti multipli di 15
                         if (minute === 0) { // Solo minuti uguali a 00
                             var formattedHour = ('0' + hour).slice(-2);
-                            hourSucc=hour+1;
+                            var hourSucc = hour + 1;
                             var formattedHourSucc = ('0' + hourSucc).slice(-2);
-                            selectOrario.innerHTML += '<option value="' + formattedHour + ':00' +'-'+ formattedHourSucc + ':00">' + formattedHour + ':00' + '-' + formattedHourSucc + ':00</option>';
+                            var optionText = formattedHour + ':00 - ' + formattedHourSucc + ':00';
+
+                            // Disabilita l'opzione se è passata e la data è oggi
+                            var disabled = (datePicker.value === today && isPast(hour, 0)) ? ' disabled' : '';
+                            selectOrario.innerHTML += '<option value="' + formattedHour + ':00 - ' + formattedHourSucc + ':00"' + disabled + '>' + optionText + '</option>';
                         }
                     }
                 }
+            }
+
+            // Popola gli orari inizialmente e aggiorna ogni volta che la data cambia
+            datePickers.forEach(function(datePicker, index) {
+                var selectOrario = selectOrariList[index];
+                datePicker.addEventListener('change', function() {
+                    populateOrari(datePicker, selectOrario);
+                });
+                populateOrari(datePicker, selectOrario);
             });
         });
     </script>
+
 
     <script>
         // Ottieni tutti gli input di tipo date
@@ -631,8 +653,7 @@
         // Ottieni la data corrente
         var now = new Date();
         // Imposta la data minima come la data corrente (nel formato richiesto dall'input di tipo date)
-        // Aggiungi un giorno per permettere solo date future
-        var minDate = new Date(now.getTime() + 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+        var minDate = new Date(now.getTime()).toISOString().split('T')[0];
 
         // Itera su ogni campo data e imposta la data minima
         inputDateFields.forEach(function(inputData) {
@@ -703,6 +724,25 @@
         }
     </script>
 
+<script>
+        function checkNumGiocatori() {
+            var giocatori = document.getElementsByName("prenotazione");
+            var numeroPersone = document.getElementById("numeroPersone");
+
+            // Verifica quale radio button è selezionato
+            for (var i = 0; i < giocatori.length; i++) {
+                if (giocatori[i].checked && giocatori[i].value === 'codaGioco') {
+                    // Se è selezionato 'codaGioco', controlla il numero di giocatori
+                    if (numeroPersone.value === "" || isNaN(numeroPersone.value)) {
+                        // Mostra un messaggio di errore
+                        alert("Devi inserire il numero di giocatori");
+                        return false; // Impedisce l'invio del modulo
+                    }
+                }
+            }
+            return true; // Consente l'invio del modulo se tutto è valido
+        }
+</script>
     
 
 </body>
