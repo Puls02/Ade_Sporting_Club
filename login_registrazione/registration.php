@@ -169,8 +169,8 @@
         <div class="section">
             <label class="title">INFORMAZIONI ABBONAMENTO</label>
             <label>Che tipo di abbonamento vuoi sottoscrivere: </label><br>
-                    <input type="radio" name="corso_campo" value="corso"/><label>Voglio seguire i corsi</label>
-                    <input type="radio" name="corso_campo" value="campo"/><label>Prenoterò solo i campi</label>
+                    <input type="radio" name="corso_campo" value="corso" onclick="toggleFields()"/><label>Voglio seguire i corsi</label>
+                    <input type="radio" name="corso_campo" value="campo" onclick="toggleFields()"/><label>Prenoterò solo i campi</label>
             <br><label>Tipo di abbonamento:</label>
             <select name="type" id="abbonamento" onclick="return checkRegistration()" >
                 <option value="">Seleziona</option>
@@ -213,10 +213,10 @@
                     <input type="radio" name="categoria" value="ragazzi" /><label>Ragazzi</label>
                     <input type="radio" name="categoria" value="amatoriale" /><label>Amatoriale</label>
             <br/>
-            Se sei un cliente inserisci il documento d'identità e il certificato medico:
+            Per completare la registrazione avremo bisogno di un documento d'identità e del certificato medico, inseriscili qui sotto in formato pdf o immagine oppure portali in reception:
             <br>
-            <input type="file" id="identity" name="identity" value="Documento d'identità" accept=".pdf, .png, .jpeg" multiple>
-            <input type="file" id="certmed" name="certmed" value="Certificato medico" accept=".pdf, .png, .jpeg" multiple>
+            <input type="file" id="identity" name="identity" value="Documento d'identità" accept=".pdf, .png, .jpeg, .jpg" multiple>
+            <input type="file" id="certmed" name="certmed" value="Certificato medico" accept=".pdf, .png, .jpeg, .jpg" multiple>
             <br>
         </div>
         <input type="submit" value="invia form" >

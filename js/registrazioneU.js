@@ -1,3 +1,25 @@
+// corsi o singole prenotazioni
+function toggleFields() {
+    const corsoCampo = document.querySelector('input[name="corso_campo"]:checked').value;
+    const formFields = document.querySelectorAll('#abbonamento, #listastatus, input[name="corso[]"], input[name="categoria"]');
+
+    formFields.forEach(field => {
+        if (corsoCampo === 'campo') {
+            field.disabled = true;
+            if (field.type === 'select-one' || field.type === 'select-multiple') {
+                field.selectedIndex = 0;
+            } else if (field.type === 'radio' || field.type === 'checkbox') {
+                field.checked = false;
+            } else {
+                field.value = '';
+            }
+        } else {
+            field.disabled = false;
+        }
+    });
+}
+
+// se scegli i corsi
 function checkType(){    
     v=document.getElementById("abbonamento").value;
     if(v == ""){
