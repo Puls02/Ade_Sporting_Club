@@ -1,3 +1,29 @@
+// se ci arrivi con un ancora il form si apre di default
+document.addEventListener("DOMContentLoaded", function() {
+  // Controlla se c'è un hash nell'URL
+  const hash = window.location.hash;
+
+  if (hash) {
+      // Rimuovi il simbolo "#" dall'hash
+      const targetId = hash.substring(1);
+      
+      // Trova l'input radio corrispondente e selezionalo
+      const targetInput = document.getElementById(targetId);
+      if (targetInput) {
+          targetInput.checked = true;
+          
+          // Trova il contenuto associato e mostralo
+          const targetContent = targetInput.querySelector(".content");
+          if (targetContent) {
+              targetContent.style.display = "block";
+          }
+      }
+  }
+});
+
+
+
+
 // Chiudi il form quando si clicca sull'attività
 
     document.querySelectorAll('.toggle-item input[type="radio"]').forEach(function(radio) {

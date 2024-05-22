@@ -280,7 +280,7 @@
                                 <a href="attivita.php">
                                     <button>Vai alla pagina del corso</button>
                                 </a>
-                                <a href="prenota.php">
+                                <a href="prenota.php#prenota_calcio">
                                     <button>Prenota un campo</button>
                                 </a>
                             </div>
@@ -302,7 +302,7 @@
                                 <a href="attivita.php">
                                     <button>Vai alla pagina del corso</button>
                                 </a>
-                                <a href="prenota.php">
+                                <a href="prenota.php#prenota_paddle">
                                     <button>Prenota un campo</button>
                                 </a>
                             </div>
@@ -324,7 +324,7 @@
                                 <a href="attivita.php">
                                     <button>Vai alla pagina del corso</button>
                                 </a>
-                                <a href="prenota.php">
+                                <a href="prenota.php#prenota_tennis">
                                     <button>Prenota un campo</button>
                                 </a>
                             </div>
@@ -345,7 +345,7 @@
                                 <a href="attivita.php">
                                     <button>Vai alla pagina del corso</button>
                                 </a>
-                                <a href="prenota.php">
+                                <a href="prenota.php#prenota_basket">
                                     <button>Prenota un campo</button>
                                 </a>
                             </div>
@@ -367,7 +367,7 @@
                                 <a href="attivita.php">
                                     <button>Vai alla pagina del corso</button>
                                 </a>
-                                <a href="prenota.php">
+                                <a href="prenota.php#prenota_nuoto">
                                     <button>Prenota un campo</button>
                                 </a>
                             </div>
@@ -388,7 +388,7 @@
                                 <a href="attivita.php">
                                     <button>Vai alla pagina del corso</button>
                                 </a>
-                                <a href="prenota.php">
+                                <a href="prenota.php#prenota_palestra">
                                     <button>Prenota un campo</button>
                                 </a>
                             </div>

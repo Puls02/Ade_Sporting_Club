@@ -64,7 +64,7 @@
             exit();
             
         } else {
-            $_SESSION['credenziali'] = "Pssword errata";
+            $_SESSION['credenziali'] = "Password errata";
             pg_close($conn);
             header("Location: ../Index.php");
             exit();

@@ -403,7 +403,7 @@
         </div>
         <div>
             <ul class="toggle-list" >
-                <li class="toggle-item" onclick="return checkLogin();">
+                <li id="prenota_calcio" class="toggle-item" onclick="return checkLogin();">
                     <input type="radio" id="calcio" name="attivita">
                     <label for="calcio" >Calcetto<span class="arrow" ></span></label>
                     <div class="content">
@@ -435,7 +435,7 @@
                         </form>
                     </div>
                 </li>
-                <li class="toggle-item" onclick="return checkLogin();">
+                <li id="prenota_paddle" class="toggle-item" onclick="return checkLogin();">
                     <input type="radio" id="paddle" name="attivita">
                     <label for="paddle">Paddle<span class="arrow"></span></label>
                     <div class="content">
@@ -467,7 +467,7 @@
                         </form>
                     </div>
                 </li>
-                <li class="toggle-item" onclick="return checkLogin();">
+                <li id="prenota_tennis" class="toggle-item" onclick="return checkLogin();">
                     <input type="radio" id="tennis" name="attivita">
                     <label for="tennis">Tennis<span class="arrow"></span></label>
                     <div class="content">
@@ -499,7 +499,7 @@
                         </form>
                     </div>
                 </li>
-                <li class="toggle-item" onclick="return checkLogin();">
+                <li id="prenota_basket" class="toggle-item" onclick="return checkLogin();">
                     <input type="radio" id="basket" name="attivita">
                     <label for="basket">Basket<span class="arrow"></span></label>
                     <div class="content">
@@ -530,7 +530,7 @@
                         </form>
                     </div>
                 </li>
-                <li class="toggle-item" onclick="return checkLogin();">
+                <li id="prenota_nuoto" class="toggle-item" onclick="return checkLogin();">
                     <input type="radio" id="nuoto" name="attivita">
                     <label for="nuoto">Nuoto<span class="arrow"></span></label>
                     <div class="content">
@@ -547,7 +547,7 @@
                         </form>
                     </div>
                 </li>
-                <li class="toggle-item" onclick="return checkLogin();">
+                <li id="prenota_palestra" class="toggle-item" onclick="return checkLogin();">
                     <input type="radio" id="palestra" name="attivita">
                     <label for="palestra">Palestra<span class="arrow"></span></label>
                     <div class="content">
@@ -569,7 +569,7 @@
     </main>
 
 <!-- Footer section with contacts -->	
-<footer>
+<footer id="abcdef">
         <div class="map">
             <!-- Embedding a Google Map -->
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.235657742299!2d12.57007927646197!3d41.952273060766345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f64619ddc961d%3A0x997b053d9ac9f023!2sSporting%20Club%20Panda!5e0!3m2!1sit!2sit!4v1714034933636!5m2!1sit!2sit" width="400" height="250" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

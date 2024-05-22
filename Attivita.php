@@ -224,14 +224,14 @@
                 <p>Orari: 
                     <br>Bambini: Lun-Mer-Gio 16:00-18:00
                     <br>Ragazzi: Mar-Gio-Ven 17:00-19:00
+                    <br>Amatoriale: Lun-Ven 19:00-21:00
                 </p>
                 <p>Costi:
-                    <br> Lezioni singole a partire da €20. 
+                    <br>Lezioni singole a partire da €20. 
                     <br>Corsi a partire da €50.
                 </p>
                 <p>Istruttori: Marco - Gianluca</p>
-                <p>Nelle fasce libere i campi sono usufruibili su prenotazione</p>
-                <a href="Prenota.php">Prenota un campo</a>
+                <a href="Prenota.php#prenota_calcio">Prenota un campo</a>
             </div>
             <div class="activity">
                 <img src="immagini/sfondo_index/padel.png" alt="Paddel">
@@ -240,13 +240,16 @@
                     di vetro trasparenti offre un'esperienza unica di gioco, consentendo scambi veloci e coinvolgenti."
                 </p>
                 <p>Orari:
-                    <br> Lun-Ven 9:00-20:00, Sab-Dom 10:00-18:00
+                    <br>Bambini: Mar 19:00-20:00
+                    <br>Ragazzi: Lun-Ven 19:00-20:00
+                    <br>Amatoriale: Lun 20:00-21:00
                 </p>
-                <p>Costi: 
-                    <br>Lezioni singole a partire da €20.
+                <p>Costi:
+                    <br>Lezioni singole a partire da €20. 
+                    <br>Corsi a partire da €50.
                 </p>
                 <p>Istruttori: Alessandra - Vittoria</p>
-                <a href="Prenota.php">Prenota un campo</a>
+                <a href="Prenota.php#prenota_paddle">Prenota un campo</a>
             </div>
             <div class="activity">
                 <img src="immagini/sfondo_index/tennis.png" alt="Tennis">
@@ -258,14 +261,14 @@
                 <p>Orari: 
                     <br>Bambini: Mar-Ven 16:00-18:00
                     <br>Ragazzi: Lun-Gio 17:00-19:00 Mer 18:00-20:00
+                    <br>Amatoriale: Mar-Gio 17:00-19:00
                 </p>
                 <p>Costi:
-                    <br> Lezioni singole a partire da €20. 
+                    <br>Lezioni singole a partire da €20. 
                     <br>Corsi a partire da €50.
                 </p>
                 <p>Istruttori: Federico - Matteo</p>
-                <p>Nelle fasce libere i campi sono usufruibili su prenotazione</p>
-                <a href="Prenota.php">Prenota un campo</a>
+                <a href="Prenota.php#prenota_tennis">Prenota un campo</a>
             </div>
             <div class="activity">
                 <img src="immagini/sfondo_index/basket.png" alt="Basket">
@@ -273,14 +276,17 @@
                 <p>"Esplora il campo da basket, dove la passione e l'energia del gioco si fondono in un'unica esperienza. 
                     Lasciati trasportare dalla magia del basket mentre punti al canestro e celebri ogni punto con entusiasmo."
                 </p>
-                <p>Orari:
-                    <br>Lun-Dom 6:00-22:00
+                <p>Orari: 
+                    <br>Bambini: Lun-Mer-Ven 16:00-18:00
+                    <br>Ragazzi: Lun-Mar 17:00-19:00 Mer 18:00-20:00
+                    <br>Amatoriale: Mer-Ven 17:00-19:00
                 </p>
                 <p>Costi:
-                    <br>Abbonamenti mensili a partire da €30.
+                    <br>Lezioni singole a partire da €20. 
+                    <br>Corsi a partire da €30.
                 </p>
                 <p>Istruttori: Giovanni - Fabio</p>
-                <a href="Prenota.php">Prenota un campo</a>
+                <a href="Prenota.php#prenota_basket">Prenota un campo</a>
             </div>
             <div class="activity">
                 <img src="immagini/sfondo_index/piscina.jpg" alt="Nuoto">
@@ -288,14 +294,16 @@
                 <p>"Immergiti nell'atmosfera rinfrescante e vivace della nostra piscina. Che tu stia facendo qualche vasca per il fitness 
                     o semplicemente ti stia rilassando ti offriamo un'oasi di tranquillità e benessere."
                 </p>
-                <p>Orari:
-                    <br>Lun-Ven 9:00-20:00, Sab-Dom 10:00-18:00
+                <p>Orari: 
+                    <br>Bambini: Mar-Ven 16:00-18:00
+                    <br>Ragazzi: Lun-Gio 17:00-19:00 Mer 18:00-20:00
                 </p>
                 <p>Costi:
-                    <br>Lezioni singole a partire da €20.
+                    <br>Lezioni singole a partire da €20. 
+                    <br>Corsi a partire da €30.
                 </p>
                 <p>Istruttori: Valeria - Roberto</p>
-                <a href="Prenota.php">Prenota un campo</a>
+                <a href="Prenota.php#prenota_nuoto">Prenota un campo</a>
             </div>
             <div class="activity">
                 <img src="immagini/sfondo_index/palestra.png" alt="Palestra">
@@ -308,7 +316,7 @@
                     <br>Lun-Ven 9:00-23:00, Sab-Dom 10:00-18:00
                 </p>
                 <p>Istruttori: Stefano - Sara</p>
-                <a href="Prenota.php">Prenota un campo</a>
+                <a href="Prenota.php#prenota_palestra">Prenota un campo</a>
             </div>
         </div>
         
