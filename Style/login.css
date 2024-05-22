@@ -7,67 +7,7 @@ body {
     position: relative;
     margin: 0;
 }
-.switch {
-    z-index: 4;
-    position: absolute;
-    margin-top: 0;
-    min-width: 90%;
-    min-height: 50vh;
-    background-color: #ffffff; /* Sfondo semi-trasparente */
-    border-radius: 10px; /* Bordi arrotondati */
-    border: 6px solid #0096c7; /* Bordo semi-trasparente */
-    padding: 1%;
-}
-.container {
-    position: absolute;
-    padding: 1%;
-    margin-top: 50px;
-    margin-left: 20px;
-    width: auto;
-    min-width: 90%;
-    min-height: 300px;
-    background-color: #ffffff; /* Sfondo semi-trasparente */
-    border-radius: 10px; /* Bordi arrotondati */
-    border: 6px solid #0096c7; /* Bordo semi-trasparente */
-    z-index: 5;
-    color: black;
-}
-
-.istruttore {
-    display: none;
-}
-button {
-    cursor: pointer;
-    background: transparent;
-    color: rgb(0, 0, 0);
-    border: none;
-    border-bottom: 1px solid rgb(0, 0, 0);
-}
-
-.formlogin {
-    border: none;
-    color: rgb(252, 252, 252); 
-    width: auto;
-    height: auto;
-}
-
-/* Stili per l'icona "x" */
-.close {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    top: 1%;
-    right: 1%;
-}
-
-/* Nasconde l'occhio di default: N.B. non funziona su tutti i browser */
-input[type="password"]::-webkit-contacts-auto-fill-button,
-input[type="password"]::-webkit-credentials-auto-fill-button {
-    display: none !important;
-}
-
-.title {
+h1 {
     padding: 2%;
     display: inline-block;
     position: relative;
@@ -78,13 +18,15 @@ input[type="password"]::-webkit-credentials-auto-fill-button {
     text-transform: uppercase;
     font-family: "Chillax";
 }
-
+p {
+    padding: 2%;
+    color: black;    
+}
 .box {
     position: relative;
     margin-top: 40px; /* distanza tra i due campi */
     margin-right: 1%;
 }
-
 .labellogin {
     position: absolute;
     left: 15px;
@@ -117,7 +59,7 @@ input[type="password"]::-webkit-credentials-auto-fill-button {
     color: #000000;
     background: transparent;
     transform: translateX(-10%) translateY(-90%) scale(100%);
-  }
+}
 
 .loginbutton {
     display: block;
@@ -144,11 +86,72 @@ input[type="password"]::-webkit-credentials-auto-fill-button {
     height: 20px;
 }
 
-p {
-    padding: 2%;
-    color: black;    
+/*----------primo contenitore---------------*/
+.container {
+    position: absolute;
+    padding: 1%;
+    margin-top: 50px;
+    margin-left: 20px;
+    width: auto;
+    min-width: 90%;
+    min-height: 300px;
+    background-color: #ffffff; /* Sfondo semi-trasparente */
+    border-radius: 10px; /* Bordi arrotondati */
+    border: 6px solid #0096c7; /* Bordo semi-trasparente */
+    z-index: 5;
+    color: black;
+}
+/*--------------------------------------*/
+
+/*-------------secondo contenitore--------------*/
+.istruttore {
+    display: none;
+}
+button {
+    cursor: pointer;
+    background: transparent;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-bottom: 1px solid rgb(0, 0, 0);
 }
 
+.formlogin {
+    border: none;
+    color: rgb(252, 252, 252); 
+    width: auto;
+    height: auto;
+}
+/*----------------------------------*/
+
+/*----------terzo contenitore-----------------*/
+.switch {
+    z-index: 4;
+    position: absolute;
+    margin-top: 0;
+    min-width: 90%;
+    min-height: 50vh;
+    background-color: #ffffff; /* Sfondo semi-trasparente */
+    border-radius: 10px; /* Bordi arrotondati */
+    border: 6px solid #0096c7; /* Bordo semi-trasparente */
+    padding: 1%;
+}
+/*-------------------------------------------*/
+
+/* Stili per l'icona "x" */
+.close {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    top: 1%;
+    right: 1%;
+}
+
+/* Nasconde l'occhio di default: N.B. non funziona su tutti i browser */
+input[type="password"]::-webkit-contacts-auto-fill-button,
+input[type="password"]::-webkit-credentials-auto-fill-button {
+    display: none !important;
+}
 
 /*responsive css for login*/
 @media (max-width: 1536px)
@@ -173,10 +176,7 @@ p {
 
 @media (max-width: 768px)
 {
-  p
-  {
-    font-size: var(--size-base) ;
-  }
+
 }
 
 @media (max-width: 640px)

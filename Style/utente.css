@@ -304,6 +304,10 @@ body {
     color: #ccc;
     padding-left: 10px;
   }
+  .chat-link {
+    text-decoration: none;
+    z-index: 100;
+  }
 
 /* Chat Area CSS Start */
 .chat-area header{

@@ -243,27 +243,29 @@ const show_menu = document.querySelector('.login_btn');
             <div id="event-container" class="grid-view">
                 <!-- Contenuto degli eventi verrà caricato qui -->
                 <?php
-                // Get the current date
-                $currentDate = date('d-m-Y');
-                // Define the SQL query
-                $query = "SELECT * FROM evento WHERE TO_DATE(giorno, 'DD-MM-YYYY') > CURRENT_DATE";
+                // Definisci la query SQL
+                $query = "SELECT * FROM evento WHERE giorno > CURRENT_DATE";
 
-                // Execute the query
-                $result = pg_query($conn,$query) or die('Query failed: ' . pg_last_error());
+                // Esegui la query
+                $result = pg_query($conn, $query) or die('Query failed: ' . pg_last_error());
 
                 // Fetch all the result rows as an associative array
                 $events = pg_fetch_all($result);
 
                 // Mostra gli eventi
-                foreach ($events as $event) {
-                    echo '<div class="event">';
-                    echo '<h2>' . $event['titolo'] . '</h2>';
-                    echo '<p>Data: ' . $event['giorno'] . '</p>';
-                    // Format the time to show only hours and minutes
-                    $time = strtotime($event['orario_inizio']);
-                    echo '<p>Orario: ' . date('H:i', $time) . '</p>';
-                    echo '<p>' . $event['descrizione'] . '</p>';
-                    echo '</div>';
+                if ($events) {
+                    foreach ($events as $event) {
+                        echo '<div class="event">';
+                        echo '<h2>' . htmlspecialchars($event['titolo']) . '</h2>';
+                        echo '<p>Data: ' . htmlspecialchars($event['giorno']) . '</p>';
+                        // Format the time to show only hours and minutes
+                        $time = strtotime($event['orario_inizio']);
+                        echo '<p>Orario: ' . date('H:i', $time) . '</p>';
+                        echo '<p>' . htmlspecialchars($event['descrizione']) . '</p>';
+                        echo '</div>';
+                    }
+                } else {
+                    echo 'Nessun evento trovato.';
                 }
                 ?>
             </div>
