@@ -29,7 +29,7 @@
             <!--container for logo and name-->
             <ul class="logo container"> 
                 <li>
-                    <img class="logo_img" src="immagini/logo/Ade.jpg">
+                    <img class="logo_img" src="../immagini/logo/Ade.jpg">
                 </li>
                 <li>
                     <a class="logo_name">ADE Sporting Club</a>                
@@ -197,7 +197,6 @@ const show_menu = document.querySelector('.login_btn');
                                     // Gestione dell'errore o comportamento predefinito
                                     break;
                             }
-
                             // Calcola la data di fine dell'abbonamento aggiungendo la durata al data di inizio
                             $data_fine = $data_inizio->add($durata_abbonamento);
                             // per visualizzarla correttamente va riconvertita nel giusto formato
@@ -325,6 +324,7 @@ const show_menu = document.querySelector('.login_btn');
 
     <script>
         /* BARRA DI PROGRESSO */
+        <?php if($corsi=='corso'):?>
         var startDate = new Date("<?php echo $data_sottoscrizione; ?>");
         var endDate = new Date("<?php echo $data_fine_abbonamento; ?>");
 
@@ -341,7 +341,7 @@ const show_menu = document.querySelector('.login_btn');
     }
 
         updateProgressBar(startDate, endDate);
-
+    <?php endif; ?>
         
 document.body.addEventListener('click', function(e) {
     if(e.target.classList.contains('chat-link')) {
@@ -355,6 +355,6 @@ window.addEventListener('message', function(event) {
         document.getElementById('chat-home').style.display = 'block'; // Show the chat area
     }
 });
-    </script>
+</script>
 </body>
 </html>
