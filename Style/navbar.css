@@ -7,7 +7,7 @@ nav
   justify-content: space-between;
   align-items: center;
   /*larghezza variabile della navbar in base alla finestra del browser*/
-  padding: 0 calc((100vw - 97vw) / 2); 
+  padding: 0 20px; 
   /*navbar fissa*/
   z-index: 10;
   background: var(--nav-color);
