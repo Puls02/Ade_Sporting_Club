@@ -27,7 +27,7 @@
             <!--container for logo and name-->
             <ul class="logo container"> 
                 <li>
-                    <img class="logo_img" src="immagini/logo/Ade.jpg">
+                    <img class="logo_img" src="../immagini/logo/Ade.jpg">
                 </li>
                 <li>
                     <a class="logo_name">ADE Sporting Club</a>                
