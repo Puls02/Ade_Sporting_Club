@@ -20,6 +20,8 @@
   --nav2-color: #0d0d5b;
   --body-color: #fff; 
   --foot-color: #f27877;
+  --smooth-color: rgba(68, 168, 190, 0.6);
+  --smooth2-color: rgba(68, 168, 190, 0.2);
 
   /* sizes */
   --size-xxs: 0.5rem;

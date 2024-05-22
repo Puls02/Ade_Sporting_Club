@@ -1,5 +1,6 @@
 /* Stili per il popup */
-.popup {
+.popup 
+{
     display: none; /* Inizialmente nascosto */
     position: fixed; /* Posizionamento fisso per sovrapporre tutto */
     top: 50%; /* Centrare verticalmente */
@@ -9,10 +10,11 @@
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);  Aggiungi ombra per effetto */
     padding: 20px; /* Spazio interno */
     border-radius: 10px; /* Angoli arrotondati */
-  }
-  
-  /* Overlay per lo sfondo sfocato */
-  .overlay {
+}
+
+/* Overlay per lo sfondo sfocato */
+  .overlay 
+{
     position: fixed; /* Posizionamento fisso per coprire tutto */
     top: 0;
     left: 0;
@@ -21,4 +23,44 @@
     background: rgba(0, 0, 0, 0.5); /* Sfondo semitrasparente */
     z-index: 500; /* Posizionarlo sotto il popup ma sopra tutto il resto */
     display: none;
+}
+
+  
+/*responsive css for struct*/
+@media (max-width: 1536px)
+{
+  
+}
+
+@media (max-width: 1280px)
+{
+  
+}
+
+@media (max-width: 1024px)
+{
+
+}
+
+@media (max-width: 930px)
+{
+
+}
+
+@media (max-width: 768px)
+{
+  p
+  {
+    font-size: var(--size-base) ;
   }
+}
+
+@media (max-width: 640px)
+{
+
+}
+
+@media (max-width: 475px) 
+{
+
+}

@@ -86,6 +86,8 @@ ul.topBotomBordersOut a:hover:after
   transform: translateY(0px);
 }
 /*-------------------------------------------------------*/
+
+/*--------------sidebar------------------------------*/
 /*contenitore per hamburger menu e login*/
 .linksito 
 {
@@ -93,8 +95,6 @@ ul.topBotomBordersOut a:hover:after
   align-items: center;
   margin-right: 30px;
 }
-
-
 /*hamburger menu for responsive toolbar on small screen*/
 .hamburger_menu
 {
@@ -113,7 +113,7 @@ ul.topBotomBordersOut a:hover:after
   height: 100vh;
   width: 250px;
   z-index: 100;
-  background-color: rgba(68, 168, 190, 0.2);
+  background-color: var(--smooth-color);
   backdrop-filter: blur(10px);
   box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
   display: none;
@@ -126,7 +126,7 @@ ul.topBotomBordersOut a:hover:after
 {
   position: relative;
   width: 100%;
-  color: #fff;
+  color: #000;
   font-size: var(--size-lg);
   font-family: "PilcrowRounded";
   cursor: pointer;
@@ -137,7 +137,7 @@ ul.topBotomBordersOut a:hover:after
 {
   position: relative;
   top: 50px;
-  color:#fff;
+  color:#000;
   font-family: "Panchang";
   text-decoration: none;
   font-size: var(--size-2xl);
@@ -146,11 +146,20 @@ ul.topBotomBordersOut a:hover:after
 {
   top: 20px;
   width: 30px;
-  color:#fff;
+  color:#000;
   cursor: pointer;
   position: relative;
 }
-/*login for small screen*/
+.sidebar_login
+{
+  width: 40px;
+  height: 40px;
+  color: #000;
+  cursor: pointer;
+  position: relative;
+  top: 100px;
+}
+/*-----------------------------------------------*/
 
 /*----------------pulsante login------------------*/
 .login_btn
@@ -166,16 +175,28 @@ ul.topBotomBordersOut a:hover:after
   position: relative;
 }
 /*dropdown menu for login*/
+.login_btn
+{
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 50%;
+}
+/*dropdown menu for login*/
 .person
 {
   position: absolute;
-  top: 100%;
-  right: 4%;
+  right: 5%;
   width: 250px;
   background: var(--nav-color);
   display: none;
   border-radius: 10px;
-
+  border-top: 2px solid black;
+  top: 105%;
 }
 .login_menu
 {
@@ -213,7 +234,7 @@ header.sticky nav
 {
   background-color: var(--nav-color);
   height: 80px;
-  transition: 0.6s;
+  transition: all 0.3s;
 }
 header.sticky .logo_img
 {
@@ -223,6 +244,7 @@ header.sticky .logo_name
 {
   font-size: var(--size-2xl);
 }
+/*-------*/
 header.sticky .logo li a,
 header.sticky .toolbar li a
 {
@@ -233,24 +255,24 @@ header.sticky ul.topBotomBordersOut a:after
 {
   background: #000000;
 }
+/*-------*/
 header.sticky .login_btn
 {
   color: var(--nav2-color);
 }
-
 header.sticky .person
 {
   border-top: 2px solid black;
   top: 105%;
 }
-
+/*--------*/
 header.sticky .hamburger_menu
 {
   color: var(--nav2-color);
 }
 header.sticky .sidebar 
 {
-  background-color: rgba(68, 168, 190, 0.6);
+  background-color: var(--smooth-color);
 }
 header.sticky .sidebar a
 {

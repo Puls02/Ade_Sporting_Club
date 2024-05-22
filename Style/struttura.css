@@ -163,7 +163,6 @@ hr
     right: 38%;
   }
   /*responsive css for Section2*/
-
 }
 
 @media (max-width: 1280px)
@@ -182,7 +181,20 @@ hr
   { 
     right: 35%;
   }
-    /*responsive css for Section2*/
+  /*responsive css for Section2*/
+  .service p
+  {
+    padding: 0;
+    margin: 0;
+  }
+  .fisso
+  {
+    width: 65%;
+  }
+  .resp
+  {
+    height: 60px;
+  }
   
 }
 
@@ -202,7 +214,11 @@ hr
   { 
     right: 30%;
   }
-    /*responsive css for Section2*/
+  /*responsive css for Section2*/
+  #descrizione-fissa img 
+  {
+    width: 150px;
+  }
   
 }
 
@@ -218,9 +234,23 @@ hr
     top: 15%; 
     right: 25%;
   }
-    /*responsive css for Section2*/
-  
-
+  /*responsive css for Section2*/
+  .service h1
+  {
+    font-size: var(--size-lg);
+  }
+  .service p
+  {
+    font-size: var(--size-xs);
+  }
+  .fisso 
+  {
+    width: 70%;
+  }
+  #descrizione-fissa img 
+  {
+    width: 100px;
+  }
 }
 
 @media (max-width: 768px)
@@ -240,8 +270,11 @@ hr
     top: 10%;
     right: 20%;
   }
-    /*responsive css for Section2*/
-  
+  /*responsive css for Section2*/
+  #descrizione-fissa img 
+  {
+    display: none;
+  }
 }
 
 @media (max-width: 640px)
@@ -291,7 +324,11 @@ hr
   /*responsive css for Section2*/
   .resp
   {
-    height: 90px;
+    height: 100px;
+  }
+  .fisso
+  {
+    width: 60%;
   }
 }
 
