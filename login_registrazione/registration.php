@@ -82,7 +82,7 @@
         </div>
         <div class="section">
             <label class="title">INFORMAZIONI ABBONAMENTO</label>
-            <label>Che tipo di abbonamento vuoi sottoscrivere: </label>
+            <label>Che tipo di abbonamento vuoi sottoscrivere: </label><br>
                     <input type="radio" name="corso_campo" value="corso"/><label>Voglio seguire i corsi</label>
                     <input type="radio" name="corso_campo" value="campo"/><label>Prenoterò solo i campi</label>
             <br><label>Tipo di abbonamento:</label>
@@ -122,7 +122,11 @@
                         <input type="checkbox" name="corso[]" value="Palestra" >Palestra
                     </label>
             <br/>
-        
+            <label>Selezionare la categoria dei corsi: </label><br>
+                    <input type="radio" name="categoria" value="bambini"/><label>Bambini</label>
+                    <input type="radio" name="categoria" value="ragazzi"/><label>Ragazzi</label>
+                    <input type="radio" name="categoria" value="amatoriale"/><label>Amatoriale</label>
+            <br/>
             Se sei un cliente inserisci il documento d'identità e il certificato medico:
             <br>
             <input type="file" id="identity" name="identity" value="Documento d'identità" accept=".pdf, .png, .jpeg" multiple>

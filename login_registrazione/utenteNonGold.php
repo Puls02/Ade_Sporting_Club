@@ -1,6 +1,7 @@
 <?php
     session_start();
     $logged=isset($_SESSION['logged_in']);
+    $corsi=$_SESSION['abb'];
     include_once "../php/config.php";
 ?>
 
@@ -13,6 +14,7 @@
     <link rel="StyleSheet" href="../Style/utility.css">
     <link rel="StyleSheet" href="../Style/navbar.css">
     <link rel="StyleSheet" href="../Style/utente.css">
+    <link rel="StyleSheet" href="../Style/modal.css">
 
     <!-- <link rel="StyleSheet" href="../chat/stile.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -171,16 +173,20 @@
                 
                 <div class="section">
                     <h2>Dettagli abbonamento</h2>
-                    <p><strong>Livello di abbonamento:</strong> <?php echo $_SESSION['livello']; ?></p>
-                    <p><strong>Data sottoscrizione abbonamento:</strong> <?php echo $data_sottoscrizione; ?></p>
-                    <p><strong>Data fine abbonamento:</strong><?php echo $data_fine_abbonamento ?></p>
-                    <div class="subscription-progress">
-                        <h4>stato avanzamento:</h4>
-                        <div class="progress-bar">
-                            <div class="progress-indicator"></div>
+                    <?php if($corsi=='corso'): ?>
+                        <p><strong>Livello di abbonamento:</strong> <?php echo $_SESSION['livello']; ?></p>
+                        <p><strong>Data sottoscrizione abbonamento:</strong> <?php echo $data_sottoscrizione; ?></p>
+                        <p><strong>Data fine abbonamento:</strong><?php echo $data_fine_abbonamento ?></p>
+                        <div class="subscription-progress">
+                            <h4>stato avanzamento:</h4>
+                            <div class="progress-bar">
+                                <div class="progress-indicator"></div>
+                            </div>
                         </div>
-                    </div>
-            </div>
+                    <?php else:?>
+                        <p><strong>Il tuo profilo non prevede alcun tipo di abbonamento</strong></p>
+                    <?php endif; ?>
+                </div>
         </div>
 
 <!-- WEEKLY SCHEDULE -->

@@ -7,7 +7,7 @@ CREATE TYPE livello_abbonamento_enum AS ENUM ('single','double','gym','opengym',
 CREATE TYPE privilegi_gold_enum AS ENUM ('Si','No');
 CREATE TYPE corso_enum AS ENUM ('Calcio','Basket','Tennis','Paddle','Nuoto','Palestra');
 CREATE TYPE tipo_enum AS ENUM ('Calcetto','Paddle','Tennis','Basket','Piscina','Palestra');
-CREATE TYPE categoria_enum AS ENUM ('bambini','ragazzi');
+CREATE TYPE categoria_enum AS ENUM ('bambini','ragazzi','amatoriale');
 
 create table Messaggi (
 	msg_id SERIAL primary key,
@@ -27,6 +27,7 @@ create table Utente(
 	Data_nascita date not null,
 	Email varchar(40) unique,
 	Foto_profilo BYTEA,
+	Corsi boolean default false,
 	Status boolean default false,
 	Telefono varchar(20) unique
 );
@@ -99,7 +100,6 @@ create table Prenotazione(
 	Utente SERIAL not null,
 	num_persone int,
 	Completa boolean,
-	--foreign key(Utente) references Utente(ID) on delete cascade,
 	foreign key(Campo) references Campo(ID) on delete cascade
 );
 
@@ -125,6 +125,7 @@ create table Abbonamento(
 	Tipo tipo_abbonamento_enum,
 	Livello livello_abbonamento_enum,
 	data_sottoscrizione TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	categoria categoria_enum not null,
 	Sconto boolean
 );
 
@@ -156,7 +157,7 @@ create table Sottoscrizione_Gold(
 
 create table Orari (
     Nome corso_enum not null,
-    categoria categoria_enum,
+    categoria categoria_enum not null,
     giorno_settimana VARCHAR(20),
     ora_inizio TIME,
     ora_fine TIME,

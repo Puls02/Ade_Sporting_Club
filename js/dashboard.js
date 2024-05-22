@@ -87,9 +87,40 @@ dayElements.forEach(dayElement => {
                         scheduleActivityDisplay.innerHTML = `<div class="error-message">${response.error}</div>`;
                     } else {
                         let activityHTML = '';
-                        const activities = response;
+                        const prenotazioni = response.prenotazioni;
                         
-                        activities.forEach(activity => {
+                        prenotazioni.forEach(activity => {
+                            const user=activity.utente;
+                            const activityBackgroundColor = getActivityBackgroundColor(activity.sport || activity.nome);
+                            const startTime = activity.ora_inizio || activity.orainizio ? getTimeString(activity.ora_inizio || activity.orainizio) : 'Orario non disponibile';
+                            const endTime = activity.ora_fine || activity.orafine ? getTimeString(activity.ora_fine || activity.orafine) : '';
+                            const time = endTime ? `${startTime} - ${endTime}` : startTime;
+                            const sport = activity.sport || activity.nome;
+                            const category = activity.categoria ? `<div class="activity-category">${activity.categoria}</div>` : '';
+                            const id_reservation =activity.id_prenotazione;
+                            activityHTML += `
+                                <div class="activity" style="background-color: ${activityBackgroundColor};">
+                                    <div class="activity-name">${sport}</div>
+                                    ${category}
+                                    <div class="activity-time">${time}</div>
+                                    <button> MODIFICA </button>
+                                    <button onclick="deleteReservation(${id_reservation},${user})"> ELIMINA </button>
+                                </div>
+                                <div id="myModal" class="modal">
+                                    <div class="modal-content">
+                                        <span class="close">&times;</span>
+                                        <div id="modalContent">
+                                            Sei sicuro di voler eliminare la prenotazione?
+                                        </div>
+                                        <button id="actionButton">SI</button>
+                                        <button id="noButton">NO</button>
+                                    </div>
+                                </div>
+                            `;
+                        });
+
+                        const corsi = response.corsi;
+                        corsi.forEach(activity => {
                             const activityBackgroundColor = getActivityBackgroundColor(activity.sport || activity.nome);
                             const startTime = activity.ora_inizio || activity.orainizio ? getTimeString(activity.ora_inizio || activity.orainizio) : 'Orario non disponibile';
                             const endTime = activity.ora_fine || activity.orafine ? getTimeString(activity.ora_fine || activity.orafine) : '';
@@ -128,6 +159,56 @@ function formatDate(date) {
     const dayOfMonth = date.getDate();
     return `${dayName} ${dayOfMonth}`;
 }
+
+}
+
+function deleteReservation(id_reservation,user){
+    // Mostra la finestra modale
+    var modal = document.getElementById("myModal");
+    modal.style.display = "block";
+
+    // Chiudi la finestra modale quando l'utente clicca sulla 'x'
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }
+    //bottone no
+    var noButton = document.getElementById("noButton");
+    noButton.onclick = function(){
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    };
+
+    //bottone si
+    var siButton = document.getElementById("actionButton");
+    siButton.onclick = function(){
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "../php/eliminaPrenotazione.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                if (response.success) {
+                    alert(response.message);
+                    location.reload();
+                } else {
+                    alert("Errore: " + response.message);
+                }
+                modal.style.display = "none";
+            }
+        };
+        const params = `id_prenotazione=${encodeURIComponent(id_reservation)}&utente=${encodeURIComponent(user)}`;
+        xhr.send(params);
+    };
+
+    // Chiudi la finestra modale quando l'utente clicca fuori dalla finestra
+    window.onclick = function(event) {
+        var modal = document.getElementById("myModal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 
 }
 

@@ -46,17 +46,18 @@ if(isset($_GET['date'])) {
         }
         
         if ($result && $result2) {
-            $activities = array();
+            $prenotazioni = array();
+            $corsi = array();
             // Fetch dei risultati della prima query e salvataggio in un array
             while ($row = pg_fetch_assoc($result)) {
-                $activities[] = $row;
+                $prenotazioni[] = $row;
             }
             // Fetch dei risultati della seconda query e salvataggio nello stesso array
             while ($row = pg_fetch_assoc($result2)) {
-                $activities[] = $row;
+                $corsi[] = $row;
             }
             // Restituisci i dati delle attività come JSON
-            echo json_encode($activities);
+            echo json_encode(['prenotazioni' => $prenotazioni,'corsi' => $corsi]);
         } else {
             error_log("Errore nella query: " . pg_last_error($conn));
             echo json_encode(array("error" => "Nessuna attività trovata per la data selezionata."));
