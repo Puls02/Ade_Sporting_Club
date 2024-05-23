@@ -29,7 +29,7 @@ body {
   display: grid;
   grid-template-areas: 'g b c' 'f f d';
   grid-template-columns: 1fr 1fr 1fr; /* Tre colonne di larghezza relativa */
-  grid-template-rows: 0.4fr 0.8fr; /* Due righe di altezza relativa */
+  grid-template-rows: 0.4fr 0.4fr; /* Due righe di altezza relativa */
   border-radius: 10px;
   margin: 1%;
   padding: 1%;
@@ -105,7 +105,7 @@ body {
   position: relative;
   padding: 2%;
   margin-right: 1%;
-  overflow: auto;
+  overflow-y: auto;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   min-height: 30vh;
 } 

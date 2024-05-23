@@ -39,35 +39,20 @@ if(isset($_GET['date'])) {
             // istruttore
             $result = pg_query_params($conn, "SELECT * FROM prenotazione WHERE utente = $1 AND data = $2", array($_SESSION['id'], $selectedDate));
             $result2 = pg_query_params($conn,"SELECT o.Nome AS nome, o.categoria AS categoria, o.giorno_settimana AS giorno, o.ora_inizio AS OraInizio, o.ora_fine AS OraFine FROM Istruttore i JOIN Insegna s ON i.ID = s.Istruttore JOIN Orari o ON s.Corso = o.Nome WHERE i.ID = $1 AND o.giorno_settimana = '".$dayOfWeekItalian."'", array($_SESSION['id']));
+        
+            // Verifica se l'istruttore insegna palestra (perchè palestra non è tra i corsi insegnati ma vorrei fargli fa qualcosa)
+            $isPalestraInstructor = false;
+            $palestraQuery = pg_query_params($conn, "SELECT 1 FROM Istruttore i JOIN Insegna s ON i.ID = s.Istruttore WHERE i.ID = $1 AND s.Corso = 'Palestra'", array($_SESSION['id']));
+            if ($palestraQuery && pg_num_rows($palestraQuery) > 0) {
+                $isPalestraInstructor = true;
+            }
         } else {
             // utente
             $result = pg_query_params($conn, "SELECT * FROM prenotazione WHERE utente = $1 AND data = $2", array($_SESSION['id'], $selectedDate));
-            //$result2 = pg_query_params($conn,"SELECT o.Nome AS nome, o.categoria AS categoria, o.giorno_settimana AS giorno, o.ora_inizio AS OraInizio, o.ora_fine AS OraFine FROM Utente u JOIN Cliente c ON u.ID = c.ID JOIN Sottoscrizione s ON c.ID = s.Cliente JOIN Prevede p ON s.Abbonamento = p.Abbonamento JOIN Orari o ON p.Corso = o.Nome WHERE u.corsi = TRUE AND u.ID = $1 AND o.giorno_settimana = '".$dayOfWeekItalian."'", array($_SESSION['id']));
             $result2 = pg_query_params($conn,"
-            SELECT
-    o.Nome AS nome,
-    o.categoria AS categoria,
-    o.giorno_settimana AS giorno,
-    o.ora_inizio AS OraInizio,
-    o.ora_fine AS OraFine
-FROM
-    Utente u
-JOIN
-    Cliente c ON u.ID = c.ID
-JOIN
-    Sottoscrizione s ON c.ID = s.Cliente
-JOIN
-    Abbonamento a ON s.Abbonamento = a.Codice
-JOIN
-    Prevede p ON a.Codice = p.Abbonamento
-JOIN
-    Orari o ON p.Corso = o.Nome
-WHERE
-    u.Corsi = TRUE
-    AND u.ID = $1
-    AND o.giorno_settimana = '".$dayOfWeekItalian."'
-    AND o.categoria = a.categoria;
-", array($_SESSION['id']));
+            SELECT o.Nome AS nome, o.categoria AS categoria, o.giorno_settimana AS giorno, o.ora_inizio AS OraInizio, o.ora_fine AS OraFine
+            FROM Utente u JOIN Cliente c ON u.ID = c.ID JOIN Sottoscrizione s ON c.ID = s.Cliente JOIN Abbonamento a ON s.Abbonamento = a.Codice JOIN Prevede p ON a.Codice = p.Abbonamento JOIN Orari o ON p.Corso = o.Nome 
+            WHERE u.Corsi = TRUE AND u.ID = $1 AND o.giorno_settimana = '".$dayOfWeekItalian."' AND o.categoria = a.categoria;", array($_SESSION['id']));
         }
         
         if ($result && $result2) {
@@ -80,6 +65,15 @@ WHERE
             // Fetch dei risultati della seconda query e salvataggio nello stesso array
             while ($row = pg_fetch_assoc($result2)) {
                 $corsi[] = $row;
+            }
+            // Aggiungi l'attività "Palestra" se l'utente è un istruttore di palestra
+            if (isset($isPalestraInstructor) && $isPalestraInstructor) {
+                $corsi[] = array(
+                    'nome' => 'palestra',
+                    'giorno' => $dayOfWeekItalian,
+                    'orainizio' => '08:00:00',
+                    'orafine' => '22:00:00'
+                );
             }
             // Restituisci i dati delle attività come JSON
             echo json_encode(['prenotazioni' => $prenotazioni,'corsi' => $corsi]);

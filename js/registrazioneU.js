@@ -1,7 +1,8 @@
-// corsi o singole prenotazioni
+// corsi o singole prenotazioni: se clicchi su prenotazioni si disabiliteranno i campi per i corsi, se clicchi su corsi la scelta per la categoria diventerà obbligatoria
 function toggleFields() {
     const corsoCampo = document.querySelector('input[name="corso_campo"]:checked').value;
-    const formFields = document.querySelectorAll('#abbonamento, #listastatus, input[name="corso[]"], input[name="categoria"]');
+    const formFields = document.querySelectorAll('#abbonamento, #listastatus, input[name="corso[]"], #identity, #certmed');
+    const categoriaFields = document.querySelectorAll('input[name="categoria"]');
 
     formFields.forEach(field => {
         if (corsoCampo === 'campo') {
@@ -10,11 +11,24 @@ function toggleFields() {
                 field.selectedIndex = 0;
             } else if (field.type === 'radio' || field.type === 'checkbox') {
                 field.checked = false;
+            } else if (field.type === 'file') {
+                field.value = '';
             } else {
                 field.value = '';
             }
         } else {
             field.disabled = false;
+        }
+    });
+
+    categoriaFields.forEach(field => {
+        if (corsoCampo === 'campo') {
+            field.disabled = true;
+            field.required = false;
+            field.checked = false;
+        } else {
+            field.disabled = false;
+            field.required = true;
         }
     });
 }

@@ -1,6 +1,7 @@
 <?php
     // Array per memorizzare le parti dell'output
     $online_users = [];
+    $offline_users_messages = [];
     $offline_users = [];
 
     while ($row = pg_fetch_assoc($query)) {
@@ -40,11 +41,13 @@
         // Aggiungi l'output alla lista appropriata
         if ($row['status'] === 't') {
             $online_users[] = $user_output;
+        } else if ($result !== "Nessun messaggio disponibile") {
+            $offline_users_messages[] = $user_output;
         } else {
             $offline_users[] = $user_output;
         }
     }
 
-    // Concatena gli utenti online e offline e genera l'output finale
-    $output = implode('', array_merge($online_users, $offline_users));
+    // In ordine nelle conversazione troveremo gli utenti online, gli utenti con cui abbiamo scambiato messaggi e infine gli altri utenti disponibili
+    $output = implode('', array_merge($online_users, $offline_users_messages, $offline_users));
 ?>

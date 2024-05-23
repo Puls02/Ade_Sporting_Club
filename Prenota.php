@@ -407,7 +407,7 @@
                     <input type="radio" id="calcio" name="attivita">
                     <label for="calcio" >Calcetto<span class="arrow" ></span></label>
                     <div class="content">
-                        <form action="php/prenotazione.php" method="post" name="formPrenotazione" onsubmit="return checkNumGiocatori()">
+                        <form action="php/prenotazione.php" method="post" name="formPrenotazione" onsubmit="return checkNumGiocatori(this)">
                             <label for="dataCalcio">Data:</label>
                             <input type="date" id="dataCalcio" name="data" required><br>
                             <label for="orario">Orario prenotazione:</label>
@@ -439,7 +439,7 @@
                     <input type="radio" id="paddle" name="attivita">
                     <label for="paddle">Paddle<span class="arrow"></span></label>
                     <div class="content">
-                        <form method="post" action="php/prenotazione.php" name="formPrenotazione" onsubmit="return checkNumGiocatori()">
+                        <form method="post" action="php/prenotazione.php" name="formPrenotazione" onsubmit="return checkNumGiocatori(this)">
                             <label for="dataPaddle">Data:</label>
                             <input type="date" id="dataPaddle" name="data" required><br>
                             <label for="orario">Orario prenotazione:</label>
@@ -471,7 +471,7 @@
                     <input type="radio" id="tennis" name="attivita">
                     <label for="tennis">Tennis<span class="arrow"></span></label>
                     <div class="content">
-                        <form method="post" action="php/prenotazione.php" name="formPrenotazione" onsubmit="return checkNumGiocatori()">
+                        <form method="post" action="php/prenotazione.php" name="formPrenotazione" onsubmit="return checkNumGiocatori(this)">
                             <label for="dataTennis">Data:</label>
                             <input type="date" id="dataTennis" name="data" required><br>
                             <label for="orario">Orario prenotazione:</label>
@@ -491,7 +491,7 @@
                             <label for="codaGioco">Aggiungi alla coda di gioco</label><br>
                             <div class="numPersoneWrapper">
                                 <label for="numeroPersone">Numero di persone:</label>
-                                <input type="number" id="numeroPersone" name="numeroPersone" min="1" max="2"><br>
+                                <input type="number" id="numeroPersone" name="numeroPersone" min="1" max="1"><br>
                             </div>
                             
                             <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
@@ -503,7 +503,7 @@
                     <input type="radio" id="basket" name="attivita">
                     <label for="basket">Basket<span class="arrow"></span></label>
                     <div class="content">
-                        <form method="post" action="php/prenotazione.php" name="formPrenotazione" onsubmit="return checkNumGiocatori()">
+                        <form method="post" action="php/prenotazione.php" name="formPrenotazione" onsubmit="return checkNumGiocatori(this)">
                             <label for="dataBasket">Data:</label>
                             <input type="date" id="dataBasket" name="data" required><br>
                             <label for="orario">Orario prenotazione:</label>
@@ -728,10 +728,10 @@
         }
     </script>
 
-<script>
-        function checkNumGiocatori() {
-            var giocatori = document.getElementsByName("prenotazione");
-            var numeroPersone = document.getElementById("numeroPersone");
+    <script>
+        function checkNumGiocatori(form) {
+            var giocatori = form.querySelectorAll('input[name="prenotazione"]');
+            var numeroPersone = form.querySelector('input[name="numeroPersone"]');
 
             // Verifica quale radio button è selezionato
             for (var i = 0; i < giocatori.length; i++) {
@@ -746,8 +746,7 @@
             }
             return true; // Consente l'invio del modulo se tutto è valido
         }
-</script>
-    
+    </script> 
 
 </body>
 </html>

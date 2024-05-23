@@ -169,8 +169,8 @@
         <div class="section">
             <label class="title">INFORMAZIONI ABBONAMENTO</label>
             <label>Che tipo di abbonamento vuoi sottoscrivere: </label><br>
-                    <input type="radio" name="corso_campo" value="corso" onclick="toggleFields()"/><label>Voglio seguire i corsi</label>
-                    <input type="radio" name="corso_campo" value="campo" onclick="toggleFields()"/><label>Prenoterò solo i campi</label>
+                    <input type="radio" name="corso_campo" value="corso" onclick="toggleFields()" required/><label>Voglio seguire i corsi</label>
+                    <input type="radio" name="corso_campo" value="campo" onclick="toggleFields()" required/><label>Prenoterò solo i campi</label>
             <br><label>Tipo di abbonamento:</label>
             <select name="type" id="abbonamento" onclick="return checkRegistration()" >
                 <option value="">Seleziona</option>
