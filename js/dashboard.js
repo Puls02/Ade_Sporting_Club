@@ -103,7 +103,6 @@ dayElements.forEach(dayElement => {
                                     <div class="activity-name">${sport}</div>
                                     ${category}
                                     <div class="activity-time">${time}</div>
-                                    <button> MODIFICA </button>
                                     <button onclick="deleteReservation(${id_reservation},${user})"> ELIMINA </button>
                                 </div>
                                 <div id="myModal" class="modal">
@@ -161,7 +160,7 @@ function formatDate(date) {
 }
 
 }
-
+// per eliminare la prenotazione
 function deleteReservation(id_reservation,user){
     // Mostra la finestra modale
     var modal = document.getElementById("myModal");

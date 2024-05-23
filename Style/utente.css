@@ -28,8 +28,8 @@ body {
 .grid_istruttore {
   display: grid;
   grid-template-areas: 'g b c' 'f f d';
-  grid-template-columns: 1fr 1fr 1fr; /* Tre colonne di larghezza relativa */
-  grid-template-rows: 0.4fr 0.4fr; /* Due righe di altezza relativa */
+  grid-template-columns: repeat(3, 1fr); /* Tre colonne di larghezza relativa */
+  grid-template-rows: repeat(2, 0.4fr); /* Due righe di altezza relativa */
   border-radius: 10px;
   margin: 1%;
   padding: 1%;
@@ -71,7 +71,6 @@ body {
   background-color: white;
   border-radius: 10px;
   position: relative;
-  margin-bottom: 2%;
   padding: 2%;
   top: -20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
@@ -134,6 +133,7 @@ body {
 /*PROFILO*/
 .section {
   flex-grow: 1;
+  width: 50%;
   padding: 2%;
 }
 

@@ -106,16 +106,16 @@
                         <h3 class="side_name">ADE Sporting Club</h3>
                     </li>
                     <li>
-                    <a href="index.php">Home</a>
+                    <a href="../index.php">Home</a>
                 </li>
                 <li>
-                    <a href="Struttura.php">Struttura</a>
+                    <a href="../Struttura.php">Struttura</a>
                 </li>
                 <li>
-                    <a href="Attivita.php"> Attività</a>
+                    <a href="../Attivita.php"> Attività</a>
                 </li>               
                 <li>
-                    <a href="Prenota.php">Prenota</a>
+                    <a href="../Prenota.php">Prenota</a>
                 </li>
             </ul>
             <!-- javascript for sidebar menu -->

@@ -103,7 +103,7 @@
                                 <a href="login_registrazione/Istruttore.php">
                                     <button class="Sign profile">Profilo</button>
                                 </a>
-                            <?php elseif($id > 30 && !$gold): ?>
+                            <?php elseif($id >= 30 && !$gold): ?>
                                 <a href="login_registrazione/utenteNonGold.php">
                                     <button class="Sign profile">Profilo</button>
                                 </a>

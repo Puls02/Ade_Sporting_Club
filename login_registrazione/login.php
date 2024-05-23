@@ -32,7 +32,6 @@
                     <label for="password" class="labellogin">Password: </label> 
                     <img src="../immagini/login/hidden.png" alt="Mostra/Nascondi password" class="password-toggle" onclick="togglePasswordVisibility()">
                 </div>
-                <label class="labellogin"><input type="checkbox" name="remember_me" id="remember_me"> Ricordami</label>
                 <input class="loginbutton" type="submit" value="Accedi"> 
                 <p>Non hai ancora un account? <a id="linkToClosePopup" href="registration.php">Registrati qui</a></p>
             </form>
