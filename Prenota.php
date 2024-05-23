@@ -1,6 +1,6 @@
 <?php
     session_start();
-
+    $_SESSION['url']=$_SERVER['REQUEST_URI'];
     $logged=isset($_SESSION['logged_in']);
     $gold=isset($_SESSION['gold']);
     if(isset($_SESSION['id'])){
@@ -8,11 +8,15 @@
     }
 
     if(isset($_SESSION['message'])){
-        echo "<p class='slotPrenotazione'>" . htmlspecialchars($_SESSION['message']) . "</p>";
+        echo "<p class='errore'  id='messaggiAlto'>" . htmlspecialchars($_SESSION['message']) . "</p>";
         unset($_SESSION['message']);
     }
+    if(isset($_SESSION['conferma'])){
+        echo "<p class='conferma'  id='messaggiAlto'>" . htmlspecialchars($_SESSION['conferma']) . "</p>";
+        unset($_SESSION['conferma']);
+    }
     if(isset($_SESSION['credenziali'])){
-        echo "<p class='slotPrenotazione'>" . htmlspecialchars($_SESSION['credenziali']) . "</p>";
+        echo "<p class='errore' id='messaggiAlto'>" . htmlspecialchars($_SESSION['credenziali']) . "</p>";
         unset($_SESSION['credenziali']);
     }
     include_once "php/config.php";
@@ -29,6 +33,7 @@
 
     <!--Link to style folder-->
     <link rel="StyleSheet" href="Style/modal.css">
+    <link rel="StyleSheet" href="Style/scorrimentoAlto.css">
     <link rel="StyleSheet" href="Style/utility.css">
     <link rel="StyleSheet" href="Style/navbar.css">
     <link rel="StyleSheet" href="Style/footer.css">
@@ -40,6 +45,7 @@
     <script src="js/login.js" defer></script>
     <script src="js/navbar.js" defer></script>
     <script src="js/prenotazioni.js" defer></script>
+    <script src="js/messaggi.js" defer></script>
 
     <!--Script javascript-->
     <script>

@@ -1,3 +1,12 @@
+<?php
+    session_start();
+
+    if(isset($_SESSION['message'])){
+        echo "<p class='errore'  id='messaggiAlto'>" . htmlspecialchars($_SESSION['message']) . "</p>";
+        unset($_SESSION['message']);
+    }
+    include_once "../php/config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,10 +18,12 @@
     <link rel="StyleSheet" href="../Style/utility.css">
     <link rel="StyleSheet" href="../Style/navbar.css">
     <link rel="StyleSheet" href="../Style/registration.css">
+    <link rel="StyleSheet" href="../Style/scorrimentoAlto.css">
     
 
     <script src="../js/registrazioneU.js" defer></script>
     <script src="../js/navbar.js" defer></script>
+    <script src="../js/messaggi.js" defer></script>
 
 </head>
 <body>
@@ -148,7 +159,7 @@
 
     <div class="main">
         <div class="fixed-image">
-            <form action="../php/regUtente.php" method="post" name="registr" onsubmit="checkForm(event)"> <!-- importante per i comportamenti automatici del form -->
+            <form action="../php/regUtente.php" method="post" name="registr" onsubmit="return checkUsername(); checkForm(event)"> <!-- importante per i comportamenti automatici del form -->
                 <h1>REGISTRAZIONE</h1>
                 <h3>compila il form e unisciti alla nostra comunity</h3>
                 <br>
@@ -274,6 +285,7 @@
             inputDate.max = maxData;
             });
         </script>
+
         <!-- end of javascript -->
     </div>
 </body>

@@ -66,13 +66,13 @@
         } else {
             $_SESSION['credenziali'] = "Password errata";
             pg_close($conn);
-            header("Location: ../Index.php");
+            header("Location: {$_SESSION['url']}");
             exit();
         }
     } else {
         $_SESSION['credenziali'] = "Utente non trovato";
         pg_close($conn);
-        header("Location: ../Index.php");
+        header("Location: {$_SESSION['url']}");
         exit();
     }
 

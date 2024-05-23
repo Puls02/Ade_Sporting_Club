@@ -115,7 +115,7 @@
     
     pg_close($conn);
 
-    $_SESSION['message'] = "La prenotazione è andata a buon fine!";
+    $_SESSION['conferma'] = "La prenotazione è andata a buon fine!";
 
     header("Location: ../Prenota.php");
     exit();

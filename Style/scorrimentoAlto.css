@@ -1,0 +1,25 @@
+.errore {
+    position: fixed;
+    z-index: 99;
+    transform: translateX(-50%);
+    left: 50%;
+    padding: 2%;
+    background-color: #eb0808; /* Colore di sfondo */
+    color: white; /* Colore del testo */
+    border-radius: 3%;
+    top: 3%;
+    display: none;
+}
+
+.conferma {
+    position: fixed;
+    z-index: 99;
+    transform: translateX(-50%);
+    left: 50%;
+    padding: 2%;
+    background-color: #08eb39; /* Colore di sfondo */
+    color: white; /* Colore del testo */
+    border-radius: 3%;
+    top: 3%;
+    display: none;
+}

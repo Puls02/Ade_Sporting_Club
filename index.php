@@ -1,14 +1,18 @@
 <?php
     session_start();
-
+    $_SESSION['url']=$_SERVER['REQUEST_URI'];
     $logged=isset($_SESSION['logged_in']);
     $gold=isset($_SESSION['gold']);
     if(isset($_SESSION['id'])){
         $id=$_SESSION['id'];
     }
     if(isset($_SESSION['credenziali'])){
-        echo "<p class='slotPrenotazione'>" . htmlspecialchars($_SESSION['credenziali']) . "</p>";
+        echo "<p class='errore' id='messaggiAlto'>" . htmlspecialchars($_SESSION['credenziali']) . "</p>";
         unset($_SESSION['credenziali']);
+    }
+    if(isset($_SESSION['registrazione'])){
+        echo "<p class='conferma' id='messaggiAlto'>" . htmlspecialchars($_SESSION['registrazione']) . "</p>";
+        unset($_SESSION['registrazione']);
     }
     include_once "php/config.php";
 ?>
@@ -25,6 +29,7 @@
 
     <!-- Link to style folder -->
     <link rel="StyleSheet" href="Style/utility.css">
+    <link rel="StyleSheet" href="Style/scorrimentoAlto.css">
     <link rel="StyleSheet" href="Style/Stickynavbar.css">
     <link rel="StyleSheet" href="Style/footer.css">
     <link rel="StyleSheet" href="Style/index.css">
@@ -33,6 +38,7 @@
 
     <!-- Link ai file javascript -->
     <script src="js/login.js" defer></script>
+    <script src="js/messaggi.js" defer></script>
 
 </head>
 
@@ -479,6 +485,6 @@
         </div>      
         
     </footer>
-
+    
 </body>
 </html>

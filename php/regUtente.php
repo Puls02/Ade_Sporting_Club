@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 function checkMail($conn,$email){
     $query = "SELECT * FROM utente where email='$email'";
     $result = pg_query($conn, $query);
@@ -33,12 +33,16 @@ $luogo_nascita_escape=pg_escape_literal($conn,$luogo_nascita);
 $data_nascita = $_POST['nata'];
 $email = $_POST['indirizzomail'];
 if(checkMail($conn,$email)){
-    die("L'email esiste già nel database.");
+    $_SESSION['message']="Questo indirizzo email è già registrato. Si prega di utilizzare un altro indirizzo email.";
+    header("Location: ../login_registrazione/registration.php");
+    exit;
 }
 $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 $telefono = $_POST['telefono'];
 if(checkTel($conn,$telefono)){
-    die("Il numero di telefono esiste già nel database.");
+    $_SESSION['message']="Questo numero di telefono è già registrato. Si prega di utilizzare un altro numero.";
+    header("Location: ../login_registrazione/registration.php");
+    exit;
 }
 
 $corsi=$_POST['corso_campo'];
@@ -154,7 +158,7 @@ if($corsi=='corso'){
 //conferma la transazione se tutto è andato a buon fine
 pg_query($conn, "COMMIT");
 
-echo "Utente registrato con sucesso";
+$_SESSION['registrazione']="Utente registrato con sucesso";
 
 header("Location: ../index.php");
 exit;
