@@ -86,6 +86,9 @@ th, td {
     padding: 10px;
     text-align: center;
     border-radius: 10px;
+    white-space: nowrap; /* Impedisce che il testo vada a capo */
+    overflow: hidden; /* Nasconde il testo che non rientra nella larghezza */
+    text-overflow: ellipsis; /* Aggiunge i puntini di sospensione */
 }
 th {
     background-color: #f2f2f2;

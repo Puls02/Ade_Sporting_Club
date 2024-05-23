@@ -217,7 +217,7 @@
     <div id="overlay" class="overlay"></div>
     <!-- Div nascosto del popup -->
     <div id="popup" class="popup">
-        <iframe src="login_registrazione/login.php" width="580" height="500" frameborder="0" style="border:0; overflow:hidden;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="login_registrazione/login.php" frameborder="0" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
     <main>

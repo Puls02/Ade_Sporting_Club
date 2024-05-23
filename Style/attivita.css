@@ -61,6 +61,9 @@ th, td {
     padding: 10px;
     text-align: center;
     border-radius: 10px;
+    white-space: nowrap; /* Impedisce che il testo vada a capo */
+    overflow: hidden; /* Nasconde il testo che non rientra nella larghezza */
+    text-overflow: ellipsis; /* Aggiunge i puntini di sospensione */
 }
 th {
     background-color: #f2f2f2;
@@ -196,6 +199,7 @@ td {
     padding: 1%;
     width: 12%;
     border-radius: 10px;
+    float: right; /* Posiziona la legenda a destra */
 }
 .legend-item {
     margin-bottom: 10px;
@@ -209,34 +213,14 @@ td {
 }
 /*---------------------------------------*/
 
-/*responsive css for attività*/
-@media (max-width: 1535px)
-{
-
-}
-@media (max-width: 1279px)
-{
-
-}
-@media (max-width: 1023px)
-{
-    
-}
-@media (max-width: 929px)
-{
- 
-}
-@media (max-width: 767px)
-{
-  
-}
-
-@media (max-width: 640px)
-{
-
-}
-
-@media (max-width: 475px) 
-{
-  
+/* Media query */
+@media (max-width: 950px) {
+    .legend {
+        width: 100%; /* Occupa l'intera larghezza dello schermo */
+        float: none; /* Rimuove il float per far sì che la legenda vada sotto la tabella */
+        margin-top: 20px; /* Aggiunge un margine superiore per separare la legenda dalla tabella */
+    }
+    table {
+        width: 100%;
+    }
 }

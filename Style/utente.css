@@ -486,3 +486,97 @@ body {
 .activity-name {
   font-weight: bold;
 }
+
+/**/
+@media (max-width: 912px) 
+{
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr); 
+    grid-template-areas: 'a a' 'b c' 'd d';
+    border-radius: 10px;
+    margin: 1%;
+    gap: 10px;
+    background-color: rgba(177, 173, 173, 0.1);
+  }
+  .grid_gold {
+    display: grid;
+    grid-template-areas: 'a a' 'e f' 'b c' 'd d';
+    grid-template-columns: repeat(2, 1fr); /* Tre colonne di larghezza relativa */
+    grid-template-rows: repeat(4, 1fr); /* Tre righe di altezza relativa */
+    border-radius: 10px;
+    margin: 1%;
+    gap: 10px;
+    background-color: rgba(177, 173, 173, 0.1);
+    height: 100%; /* Imposta l'altezza della griglia al 100% dell'altezza del body */
+  }
+  .grid_istruttore {
+    display: grid;
+    grid-template-areas: 'g g' 'b c' 'f f' 'd d';
+    grid-template-columns: 1fr 1fr; /* Tre colonne di larghezza relativa */
+    grid-template-rows: 0.4fr 0.4fr 0.4fr 0.4fr; /* Due righe di altezza relativa */
+    border-radius: 10px;
+    margin: 1%;
+    padding: 1%;
+    gap: 10px;
+    background-color: rgba(177, 173, 173, 0.1);
+  }
+}
+@media (max-width: 822px) 
+{
+  .grid {
+    display: grid;
+    grid-template-rows: repeat(4, 0.5fr); 
+    grid-template-areas: 'a' 'b' 'c' 'd';
+    border-radius: 10px;
+    margin: 1%;
+    gap: 10px;
+    background-color: rgba(177, 173, 173, 0.1);
+  }
+  .grid_gold {
+    display: grid;
+    grid-template-areas: 'a' 'e'  'f' 'b'  'c' 'd';
+    grid-template-rows: repeat(5, 0.5fr); /* Tre righe di altezza relativa */
+    border-radius: 10px;
+    margin: 1%;
+    gap: 10px;
+    background-color: rgba(177, 173, 173, 0.1);
+    height: 100%; /* Imposta l'altezza della griglia al 100% dell'altezza del body */
+  }
+  .grid_istruttore {
+    display: grid;
+    grid-template-areas: 'g' 'b' 'c' 'f' 'd';
+    grid-template-rows: repeat(5, 0.5fr); /* Tre righe di altezza relativa */
+    border-radius: 10px;
+    margin: 1%;
+    padding: 1%;
+    gap: 10px;
+    background-color: rgba(177, 173, 173, 0.1);
+  }
+  .instructor_profile {
+    grid-area: g;
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    height: calc(100% - 10px); /* Altezza della griglia meno il margine superiore */
+  }
+  .user_profile {
+    grid-area: a;
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+    margin: 1%;
+    display: flex;
+    flex-direction: column; /* Disposizione verticale dei figli */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  }
+  .section {
+    flex-grow: 1;
+    padding: 2%;
+    width: 90vw;
+  }
+}
