@@ -16,10 +16,9 @@
 :root 
 {
   /*color palette*/ 
-  --nav-color: #44a8be;
-  --nav2-color: #0d0d5b;
+  --nav-color: rgb(68, 168, 190);
+  --nav2-color: rgb(13, 13, 91);
   --body-color: #fff; 
-  --foot-color: #f27877;
   --smooth-color: rgba(68, 168, 190, 0.6);
   --smooth2-color: rgba(68, 168, 190, 0.2);
 
@@ -81,19 +80,16 @@ svg {
   src: url(../Font/Chillax/Chillax-Semibold.woff);
 }
 
-.line-with-text {
-  position: relative;
-  height: 2px;
-  background-color: black;
-  text-align: center;
+h1 {
+  font-family: "Chillax";
+  margin-top: 0;
+  font-size: var(--size-3xl);
 }
 
-/* Stile per la parola */
-.line-text {
-  position: absolute;
-  top: -0.5em; /* Altezza del testo divisa per 2 per centrarlo verticalmente */
-  background-color: white; /* Per coprire la parte della linea sotto il testo */
-  padding: 0 10px; /* Padding per spaziare il testo dalla linea */
+h2 {
+  font-family: "Chillax";
+  font-size: var(--size-2xl);
+  margin-left: 2%;
 }
 
 p {
@@ -108,17 +104,3 @@ p {
   -webkit-filter: blur(8px);
 }
 
-main {
-  font-family: "Synonym";
-}
-
-h2 {
-  font-family: "Chillax";
-  font-size: var(--size-2xl);
-  margin-left: 2%;
-}
-h1 {
-  font-family: "Chillax";
-  margin-top: 0;
-  font-size: var(--size-3xl);
-}

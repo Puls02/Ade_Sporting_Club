@@ -231,7 +231,7 @@ ul.topBotomBordersOut a:hover:after
   }
 
 }
-@media (max-width: 1024px) 
+@media (max-width: 1025px) 
 {
   .toolbar
   {
@@ -265,7 +265,7 @@ ul.topBotomBordersOut a:hover:after
     display: none;
   }
 }
-@media (min-width: 1023px)
+@media (min-width: 1025px)
 {
   .hamburger_menu
   {

@@ -304,7 +304,7 @@ header.sticky .side_exit
   }
 
 }
-@media (max-width: 1024px) 
+@media (max-width: 1025px) 
 {
   .toolbar
   {
@@ -337,7 +337,7 @@ header.sticky .side_exit
     display: none;
   }
 }
-@media (min-width: 1023px)
+@media (min-width: 1025px)
 {
   .hamburger_menu
   {

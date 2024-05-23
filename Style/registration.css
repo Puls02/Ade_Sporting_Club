@@ -1,18 +1,16 @@
-form {
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Bordo semi-trasparente */
-    background-color: rgba(53, 133, 151, 0.6);
-    backdrop-filter: blur(10px); /* Effetto sfocatura */
-    width: auto;
-    height: auto;
-    margin: 2%;
-    padding: 2%;
-    font-family: "Synonym";
-}
+/*css file for registration.php*/
 
-.banner {
-    margin-top: 2%;
-    height: 300px;
+.main
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+}
+.fixed-image{
+    width: 100%;
+    height: 100%;
     background-image: url('../immagini/galleria/banner_reg.jpg');
     background-attachment: fixed;
     background-position: center;
@@ -20,6 +18,36 @@ form {
     background-size: cover;
 }
 
+h1 
+{
+    font-family: "Chillax";
+    margin-top: 0;
+    font-size: var(--size-3xl);
+}
+  
+h3 
+{
+    font-family: "Synonym";
+    font-size: var(--size-lg);
+}
+  
+form {
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Bordo semi-trasparente */
+    background-color: rgba(68, 168, 190, 0.7);
+    backdrop-filter: blur(10px); /* Effetto sfocatura */
+    width: 60%;
+    height: auto;
+    margin-top: 5%;
+    margin-inline: auto;
+    padding: 2%;
+    font-family: "Synonym";
+    backdrop-filter: blur(5);
+}
+.space
+{
+    width: 100%;
+}
 .section {
     border: 1px solid black;
     border-radius: 10px;
@@ -32,7 +60,7 @@ form {
 .title {
     position: absolute;
     top: -20px;
-    font-size: 20px;
+    font-size: var(--size-lg);
     width: auto;
     background-color: rgba(255, 255, 255);
     border: 1px solid black;
@@ -45,12 +73,12 @@ label {
     margin-right: 3px;
     margin-left: 3px;
     color: #000000;
-    font-size: 14px;
+    font-size: var(--size-sm);
 }
 
 input {
     margin-top: 15px;
-    font-size: 14px;
+    font-size: var(--size-sm);
     border-radius: 10px;
     border: none;
 }
@@ -86,4 +114,136 @@ input:focus {
     cursor: pointer;
     width: 20px;
     height: 20px;
+}
+/*---------------------------------------*/
+
+/*responsive css for index*/
+@media only screen and (max-width: 1535px)
+{
+    .space
+    {
+        height: 5px;
+    }
+
+}
+@media only screen and (max-width: 1279px)
+{
+    .space
+    {
+        height: 8px;
+    }
+}
+@media only screen and (max-width: 1024px)
+{
+    form
+    {
+        width: 65%;
+    }
+    .space
+    {
+        height: 10px;
+    }
+    input
+    {
+        font-size: var(--size-xs);
+    }
+
+}
+@media only screen and (max-width: 929px)
+{
+    h1
+    {
+        font-size: var(--size-2xl);
+    }
+    h3 
+    {
+        font-size: var(--size-base);
+    }
+    form
+    {
+        width: 70%;
+    }
+
+}
+@media only screen and (max-width: 767px)
+{
+    .title 
+    {
+        font-size: var(--size-base);
+    }
+    label
+    {
+        font-size: var(--size-xs);
+    }
+}
+
+@media only screen and (max-width: 640px)
+{
+    h1
+    {
+        font-size: var(--size-xl);
+    }
+    h3 
+    {
+        font-size: var(--size-sm);
+    }
+    form 
+    {
+        width: 80%;
+    }
+    .space
+    {
+        height: 12px;
+    }
+    input 
+    {
+        font-size: var(--size-xxs);
+    }
+}
+
+@media only screen and (max-width: 475px) 
+{
+
+}
+
+/*--------------------------------------*/
+/*debug*/
+/*
+.main
+{
+    border: 1px solid red;
+}
+.fixed-image
+{
+    border: 1px solid blue;
+}
+
+form
+{
+    border: 1px solid red;
+}
+h1
+{
+    border: 1px solid red;
+}
+h3
+{
+    border: 1px solid red;
+}
+.section
+{
+    border: 1px solid green;
+}
+*/
+.space
+{
+    border: 1px solid yellow;
+}
+label
+{
+    border: 1px solid pink;
+}
+input
+{
+    border: 1px solid red;
 }
