@@ -131,30 +131,37 @@ function resetCheckboxes(){
 
 }
 
-function checkForm(event){
-    if(document.getElementsByName('sesso')[0].checked==false && document.getElementsByName('sesso')[1].checked==false){
-        event.preventDefault(); //blocca l'invio del modulo
+function checkForm(event) {
+    if (document.getElementsByName('sesso')[0].checked == false && document.getElementsByName('sesso')[1].checked == false) {
+        event.preventDefault(); // blocca l'invio del modulo
         alert("Sesso mancante");
         return false;
     }
 
-    checkboxes=document.querySelectorAll('input[type="checkbox"]');
-    check=0;
-    checkboxes.forEach(checkbox => {
-        if(checkbox.checked==true){
-            check++;
-        }
-    })
+    // Only check checkboxes if the radio button with name 'corso_campo' and value 'corso' is selected
+    let radioCorso = document.querySelector('input[name="corso_campo"][value="corso"]');
+    if (radioCorso.checked) {
+        let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        let check = 0;
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked == true) {
+                check++;
+            }
+        });
 
-    if(check==0){
-        event.preventDefault();
-        alert("Non hai selezionato nessun corso");
-        return false;
+        // If no checkbox is selected and the radio button is checked, prevent form submission
+        if (check == 0) {
+            event.preventDefault();
+            alert("Non hai selezionato nessun corso");
+            return false;
+        }
     }
 
-    //Se dovete aggiungere del codice aggiungetelo sopra questa riga
-    checkboxes[5].disabled=false;
+    // Se dovete aggiungere del codice aggiungetelo sopra questa riga
+    let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes[5].disabled = false;
 }
+
 
 function checkRegistration(){
     corso_campo=document.getElementsByName("corso_campo");
