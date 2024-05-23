@@ -84,8 +84,6 @@
             }
             $query = "INSERT INTO Prenotazione (campo,data,ora_inizio,ora_fine,utente,completa,sport,owner,num_persone) VALUES ('$id_campo','$data','$ora_inizio','$ora_fine','$id','true','$sport','true','$numPersone')";
             $result = pg_query($conn, $query);
-        } else if () {
-
         } else {
             if(explode("_",$campo)[0]=="calcetto"){
                 $numPersone=$_POST['numeroPersone'];
