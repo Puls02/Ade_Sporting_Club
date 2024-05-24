@@ -214,7 +214,7 @@ const show_menu = document.querySelector('.login_btn');
                 <!-- Contenuto degli eventi verrà caricato qui -->
                 <?php
                 // Definisci la query SQL
-                $query = "SELECT * FROM evento WHERE giorno > CURRENT_DATE";
+                $query = "SELECT * FROM evento WHERE giorno >= CURRENT_DATE";
 
                 // Esegui la query
                 $result = pg_query($conn, $query) or die('Query failed: ' . pg_last_error());

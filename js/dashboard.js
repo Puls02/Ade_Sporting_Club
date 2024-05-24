@@ -76,6 +76,10 @@ dayElements.forEach(dayElement => {
         const formattedDate = currentDate.toISOString().slice(0,10); // Formatta la data nel formato YYYY-MM-DD
         scheduleDateDisplay.textContent = formatDate(currentDate);
 
+        // Ottieni la data corrente senza tempo per confronto
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
         // Effettua una richiesta AJAX per ottenere i dati delle attività per la data selezionata dal server PHP
         const xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
@@ -98,12 +102,24 @@ dayElements.forEach(dayElement => {
                             const sport = activity.sport || activity.nome;
                             const category = activity.categoria ? `<div class="activity-category">${activity.categoria}</div>` : '';
                             const id_reservation =activity.id_prenotazione;
+
+                            const activityDate = new Date(activity.data);
+                            // printa giorno attivita:il valore di activityDate
+                            console.log("giorno attivita",activityDate);
+                            
+                            // printa il valore di currentDate
+                            console.log("giorno corrente",today);
+                            let deleteButtonHTML = '';
+                            if (activityDate >= today) {
+                                deleteButtonHTML = `<button onclick="deleteReservation(${id_reservation}, ${user})"> ELIMINA </button>`;
+                            }
+
                             activityHTML += `
                                 <div class="activity" style="background-color: ${activityBackgroundColor};">
                                     <div class="activity-name">${sport}</div>
                                     ${category}
                                     <div class="activity-time">${time}</div>
-                                    <button onclick="deleteReservation(${id_reservation},${user})"> ELIMINA </button>
+                                    ${deleteButtonHTML}
                                 </div>
                                 <div id="myModal" class="modal">
                                     <div class="modal-content">
