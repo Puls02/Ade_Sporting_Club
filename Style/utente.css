@@ -1,60 +1,68 @@
 body {
-    font-family: "Synonym";
+    font-family: 'Synonym';
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
     height: 100vh; /* Assicurati che il body occupi l'intera altezza della finestra */
 }
 .grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-areas: 'a a a' 'b c d';
-  border-radius: 10px;
-  margin: 1%;
-  gap: 10px;
-  background-color: rgba(177, 173, 173, 0.1);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: 'a a a' 'b c d';
+    border-radius: 10px;
+    margin: 1%;
+    gap: 10px;
+    background-color: rgba(177, 173, 173, 0.1);
 }
 .grid_gold {
-  display: grid;
-  grid-template-areas: 'a a a' 'e f f' 'b c d';
-  grid-template-columns: repeat(3, 1fr); /* Tre colonne di larghezza relativa */
-  grid-template-rows: repeat(3, 1fr); /* Tre righe di altezza relativa */
-  border-radius: 10px;
-  margin: 1%;
-  gap: 10px;
-  background-color: rgba(177, 173, 173, 0.1);
-  height: 100%; /* Imposta l'altezza della griglia al 100% dell'altezza del body */
+    display: grid;
+    grid-template-areas: 'a a a' 'e f f' 'b c d';
+    grid-template-columns: repeat(
+        3,
+        1fr
+    ); /* Tre colonne di larghezza relativa */
+    grid-template-rows: repeat(3, 1fr); /* Tre righe di altezza relativa */
+    border-radius: 10px;
+    margin: 1%;
+    gap: 10px;
+    background-color: rgba(177, 173, 173, 0.1);
+    height: 100%; /* Imposta l'altezza della griglia al 100% dell'altezza del body */
 }
 .grid_istruttore {
-  display: grid;
-  grid-template-areas: 'g b c' 'f f d';
-  grid-template-columns: repeat(3, 1fr); /* Tre colonne di larghezza relativa */
-  grid-template-rows: repeat(2, 0.4fr); /* Due righe di altezza relativa */
-  border-radius: 10px;
-  margin: 1%;
-  padding: 1%;
-  gap: 10px;
-  background-color: rgba(177, 173, 173, 0.1);
+    display: grid;
+    grid-template-areas: 'g b c' 'f f d';
+    grid-template-columns: repeat(
+        3,
+        1fr
+    ); /* Tre colonne di larghezza relativa */
+    grid-template-rows: repeat(2, 0.4fr); /* Due righe di altezza relativa */
+    border-radius: 10px;
+    margin: 1%;
+    padding: 1%;
+    gap: 10px;
+    background-color: rgba(177, 173, 173, 0.1);
 }
 .user_profile {
-  grid-area: a;
-  background-color: white;
-  border-radius: 10px;
-  position: relative;
-  margin: 1%;
-  display: flex;
-  justify-content: space-between; /* Distribuisci gli elementi lungo l'asse principale */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    grid-area: a;
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+    margin: 1%;
+    display: flex;
+    justify-content: space-between; /* Distribuisci gli elementi lungo l'asse principale */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 .instructor_profile {
-  grid-area: g;
-  background-color: white;
-  border-radius: 10px;
-  position: relative;
-  display: flex;
-  justify-content: space-between; /* Distribuisci gli elementi lungo l'asse principale */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-  height: calc(100% - 10px); /* Altezza della griglia meno il margine superiore */
+    grid-area: g;
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    justify-content: space-between; /* Distribuisci gli elementi lungo l'asse principale */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    height: calc(
+        100% - 10px
+    ); /* Altezza della griglia meno il margine superiore */
 }
 .calendario {
     grid-area: b;
@@ -67,15 +75,17 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 .weekly-schedule {
-  grid-area: c;
-  background-color: white;
-  border-radius: 10px;
-  position: relative;
-  padding: 2%;
-  top: -20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-  overflow-y: auto;
-  height: calc(100% - 40px); /* Altezza della griglia meno il margine superiore */
+    grid-area: c;
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+    padding: 2%;
+    top: -20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    overflow-y: auto;
+    height: calc(
+        100% - 40px
+    ); /* Altezza della griglia meno il margine superiore */
 }
 .chat {
     grid-area: d;
@@ -95,143 +105,143 @@ body {
     padding: 3%;
     margin-left: 3%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-} 
+}
 .eventi {
-  grid-area: f;
-  background-color: white;
-  border-radius: 10px;
-  border: 1px solid #efefef;
-  position: relative;
-  padding: 2%;
-  margin-right: 1%;
-  overflow-y: auto;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-  min-height: 30vh;
-} 
+    grid-area: f;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #efefef;
+    position: relative;
+    padding: 2%;
+    margin-right: 1%;
+    overflow-y: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    min-height: 30vh;
+}
 /*EVENTI*/
 /* Stile per la griglia */
 .grid-view {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
 }
 
 /* Stile per la visualizzazione a elenco */
 .list-view {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Stile per gli eventi */
 .event {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 2%;
-  margin: 1%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 2%;
+    margin: 1%;
 }
 
 /*PROFILO*/
 .section {
-  flex-grow: 1;
-  width: 50%;
-  padding: 2%;
+    flex-grow: 1;
+    width: 50%;
+    padding: 2%;
 }
 
 .section label {
-  margin-top: 200px;
-  margin-right: 10px; /* Margine a destra per separare l'etichetta dall'input */
+    margin-top: 200px;
+    margin-right: 10px; /* Margine a destra per separare l'etichetta dall'input */
 }
 
 .section button {
-  margin-top: 10px;
-  margin-left: 16%;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 20px;
-  border: 1px solid #efefef;
-  width: 30%;
+    margin-top: 10px;
+    margin-left: 16%;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    border: 1px solid #efefef;
+    width: 30%;
 }
 
 /* PER LA BARRA DI PROGRESSO */
 .subscription-progress {
-  width: 100%;
-  margin-top: 20px;
+    width: 100%;
+    margin-top: 20px;
 }
 
 .progress-bar {
-  width: 100%;
-  height: 20px;
-  background-color: #ddd;
-  border-radius: 10px;
-  position: relative;
+    width: 100%;
+    height: 20px;
+    background-color: #ddd;
+    border-radius: 10px;
+    position: relative;
 }
 
 .progress-indicator {
-  height: 100%;
-  background-color: rgb(18, 143, 80); /* Colore della barra di progresso */
-  border-radius: 10px; /* Arrotondamento degli angoli */
-  position: absolute;
-  top: 0;
-  left: 0;
+    height: 100%;
+    background-color: rgb(18, 143, 80); /* Colore della barra di progresso */
+    border-radius: 10px; /* Arrotondamento degli angoli */
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 /* STILE PER LA CHAT */
-.wrapper{
+.wrapper {
     background: #ffffff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    font-family: "Synonym";
-  }
-  
-  /* Users List CSS Start */
-  .users{
+    font-family: 'Synonym';
+}
+
+/* Users List CSS Start */
+.users {
     padding: 30px;
-  }
-  .users header,
-  .users-list a{
+}
+.users header,
+.users-list a {
     display: flex;
     align-items: center;
     padding-bottom: 20px;
     border-bottom: 2px solid #e6e6e6;
     justify-content: space-between;
-  }
-  .wrapper img{
+}
+.wrapper img {
     object-fit: cover;
     border-radius: 50%;
-  }
-  .users header img{
+}
+.users header img {
     height: 70px;
     width: 70px;
-  }
-  :is(.users, .users-list) .content{
+}
+:is(.users, .users-list) .content {
     display: flex;
     align-items: center;
-  }
-  :is(.users, .users-list) .content .details{
+}
+:is(.users, .users-list) .content .details {
     color: #000;
     margin-left: 20px;
-  }
-  :is(.users, .users-list) .details span{
+}
+:is(.users, .users-list) .details span {
     font-size: 18px;
     font-weight: 500;
-  }
-  .users .search{
+}
+.users .search {
     margin: 20px 0;
     display: flex;
     position: relative;
     align-items: center;
     justify-content: space-between;
-    
+
     /* questo bordo dovrebbe sparire una volta che clicchi sulla lente di ingrandimento */
     border: 1px solid #e6e6e6;
     border-radius: 10px;
     padding-left: 6px;
     padding-right: 4px;
-  }
-  .users .search .text{
+}
+.users .search .text {
     font-size: 18px;
-  }
-  .users .search input{
+}
+.users .search input {
     position: absolute;
     height: 42px;
     width: calc(100% - 50px);
@@ -243,12 +253,12 @@ body {
     opacity: 0;
     pointer-events: none;
     transition: all 0.2s ease;
-  }
-  .users .search input.show{
+}
+.users .search input.show {
     opacity: 1;
     pointer-events: auto;
-  }
-  .users .search button{
+}
+.users .search button {
     position: relative;
     z-index: 1;
     width: 47px;
@@ -262,321 +272,328 @@ body {
     border-radius: 0 5px 5px 0;
     transition: all 0.2s ease;
     border-left: 1px solid #e6e6e6;
-  }
-  .users .search button.active{
+}
+.users .search button.active {
     background: #ffffff;
     color: #000000;
-  }
-  .search button.active i::before{
+}
+.search button.active i::before {
     content: '\f00d'; /* unicode per l'icona x*/
-  }
-  .users-list{
+}
+.users-list {
     max-height: 350px;
     overflow-y: auto;
-  }
-  :is(.users-list, .chat-box)::-webkit-scrollbar{
+}
+:is(.users-list, .chat-box)::-webkit-scrollbar {
     width: 0px;
-  }
-  .users-list a{
+}
+.users-list a {
     padding-bottom: 10px;
     margin-bottom: 15px;
     padding-right: 15px;
     border-bottom: 1px solid #e6e6e6;
-  }
-  .users-list a:last-child{
+}
+.users-list a:last-child {
     margin-bottom: 0px;
     border-bottom: none;
-  }
-  .users-list a img{
+}
+.users-list a img {
     height: 50px;
     width: 50px;
-  }
-  .users-list a .details p{
+}
+.users-list a .details p {
     color: #67676a;
-  }
-  .users-list a .status-dot{
+}
+.users-list a .status-dot {
     font-size: 12px;
     color: #468669;
     padding-left: 10px;
-  }
-  .users-list a .status-dot-offline{
+}
+.users-list a .status-dot-offline {
     font-size: 12px;
     color: #ccc;
     padding-left: 10px;
-  }
-  .chat-link {
+}
+.chat-link {
     text-decoration: none;
     z-index: 100;
-  }
+}
 
 /* Chat Area CSS Start */
-.chat-area header{
-  display: flex;
-  align-items: center;
-  padding: 18px 30px;
+.chat-area header {
+    display: flex;
+    align-items: center;
+    padding: 18px 30px;
 }
-.chat-area header .back-icon{
-  color: #333;
-  font-size: 18px;
+.chat-area header .back-icon {
+    color: #333;
+    font-size: 18px;
 }
-.chat-area header img{
-  height: 45px;
-  width: 45px;
-  margin: 0 15px;
+.chat-area header img {
+    height: 45px;
+    width: 45px;
+    margin: 0 15px;
 }
-.chat-area header .details span{
-  font-size: 17px;
-  font-weight: 500;
+.chat-area header .details span {
+    font-size: 17px;
+    font-weight: 500;
 }
-.chat-box{
-  position: relative;
-  min-height: 350px;
-  overflow-y: auto;
-  padding: 10px 30px 20px 30px;
-  background: #f7f7f7;
-  box-shadow: inset 0 32px 32px -32px rgb(0 0 0 / 5%),
-              inset 0 -32px 32px -32px rgb(0 0 0 / 5%);
+.chat-box {
+    position: relative;
+    min-height: 350px;
+    overflow-y: auto;
+    padding: 10px 30px 20px 30px;
+    background: #f7f7f7;
+    box-shadow: inset 0 32px 32px -32px rgb(0 0 0 / 5%),
+        inset 0 -32px 32px -32px rgb(0 0 0 / 5%);
 }
-.chat-box .text{
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  width: calc(100% - 50px);
-  text-align: center;
-  transform: translate(-50%, -50%);
+.chat-box .text {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    width: calc(100% - 50px);
+    text-align: center;
+    transform: translate(-50%, -50%);
 }
-.chat-box .chat{
-  margin: 15px 0;
+.chat-box .chat {
+    margin: 15px 0;
 }
-.chat-box .chat p{
-  word-wrap: break-word;
-  padding: 8px 16px;
-  box-shadow: 0 0 32px rgb(0 0 0 / 8%),
-              0rem 16px 16px -16px rgb(0 0 0 / 10%);
+.chat-box .chat p {
+    word-wrap: break-word;
+    padding: 8px 16px;
+    box-shadow: 0 0 32px rgb(0 0 0 / 8%), 0rem 16px 16px -16px rgb(0 0 0 / 10%);
 }
-.chat-box .outgoing{
-  display: flex;
-  border: none;
-  background: none;
+.chat-box .outgoing {
+    display: flex;
+    border: none;
+    background: none;
 }
-.chat-box .outgoing .details{
-  margin-left: auto;
-  max-width: calc(100% - 130px);
+.chat-box .outgoing .details {
+    margin-left: auto;
+    max-width: calc(100% - 130px);
 }
 
-.outgoing .details p{
-  background: #333;
-  color: #fff;
-  border-radius: 18px 18px 0 18px;
+.outgoing .details p {
+    background: #333;
+    color: #fff;
+    border-radius: 18px 18px 0 18px;
 }
-.chat-box .incoming{
-  display: flex;
-  align-items: flex-end;
+.chat-box .incoming {
+    display: flex;
+    align-items: flex-end;
 }
-.chat-box .incoming .details{
-  margin-right: auto;
-  margin-left: 10px;
-  max-width: calc(100% - 130px);
+.chat-box .incoming .details {
+    margin-right: auto;
+    margin-left: 10px;
+    max-width: calc(100% - 130px);
 }
-.incoming .details p{
-  background: #fff;
-  color: #333;
-  border-radius: 18px 18px 18px 0;
+.incoming .details p {
+    background: #fff;
+    color: #333;
+    border-radius: 18px 18px 18px 0;
 }
-.typing-area{
-  padding: 18px 30px;
-  display: flex;
-  justify-content: space-between;
+.typing-area {
+    padding: 18px 30px;
+    display: flex;
+    justify-content: space-between;
 }
-.typing-area input{
-  height: 45px;
-  width: calc(100% - 58px);
-  font-size: 16px;
-  padding: 0 13px;
-  border: 1px solid #e6e6e6;
-  outline: none;
-  border-radius: 5px 0 0 5px;
+.typing-area input {
+    height: 45px;
+    width: calc(100% - 58px);
+    font-size: 16px;
+    padding: 0 13px;
+    border: 1px solid #e6e6e6;
+    outline: none;
+    border-radius: 5px 0 0 5px;
 }
-.typing-area button{
-  color: #fff;
-  width: 55px;
-  border: none;
-  outline: none;
-  background: #333;
-  font-size: 19px;
-  cursor: pointer;
-  opacity: 0.7;
-  pointer-events: none;
-  border-radius: 0 5px 5px 0;
-  transition: all 0.3s ease;
+.typing-area button {
+    color: #fff;
+    width: 55px;
+    border: none;
+    outline: none;
+    background: #333;
+    font-size: 19px;
+    cursor: pointer;
+    opacity: 0.7;
+    pointer-events: none;
+    border-radius: 0 5px 5px 0;
+    transition: all 0.3s ease;
 }
-.typing-area button.active{
-  opacity: 1;
-  pointer-events: auto;
+.typing-area button.active {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 /*CALENDARIO*/
 #calendar {
-  display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr)); /* Modifica */
-  grid-auto-rows: 70px; /* Altezza delle righe del calendario */
-  
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr)); /* Modifica */
+    grid-auto-rows: 70px; /* Altezza delle righe del calendario */
 }
 
 .giorno {
-  padding: 0;
-  margin: 0;
-  border: none;
-  text-align: center;
-  position: relative;
-  display: flex; /* Aggiunta */
-  justify-content: center; /* Aggiunta */
-  align-items: center; /* Aggiunta */
+    padding: 0;
+    margin: 0;
+    border: none;
+    text-align: center;
+    position: relative;
+    display: flex; /* Aggiunta */
+    justify-content: center; /* Aggiunta */
+    align-items: center; /* Aggiunta */
 }
 
 .giorno-header {
-  font-weight: bold;
-  background-color: #ffd166;
+    font-weight: bold;
+    background-color: #ffd166;
 }
 
 .current-month {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .current-month:hover {
-  background-color: #f0f0f0;
-  border-radius: 10px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
 }
 
 .today {
-  background-color: #fdf0d5;
-  border-radius: 10px;
+    background-color: #fdf0d5;
+    border-radius: 10px;
 }
 
 .weekly-schedule {
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
 .schedule-header {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .schedule-date {
-  font-size: 20px;
-  font-weight: bold;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .schedule-activity {
-  margin-top: 25px;
+    margin-top: 25px;
 }
 
 .activity {
-  border-radius: 10px;
-  padding: 2%;
-  margin: 2%;
+    border-radius: 10px;
+    padding: 2%;
+    margin: 2%;
 }
 
 .activity-item {
-  margin-bottom: 5px;
-  background-color: yellow;
+    margin-bottom: 5px;
+    background-color: yellow;
 }
 
 .activity-name {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 /**/
-@media (max-width: 912px) 
-{
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr); 
-    grid-template-areas: 'a a' 'b c' 'd d';
-    border-radius: 10px;
-    margin: 1%;
-    gap: 10px;
-    background-color: rgba(177, 173, 173, 0.1);
-  }
-  .grid_gold {
-    display: grid;
-    grid-template-areas: 'a a' 'e f' 'b c' 'd d';
-    grid-template-columns: repeat(2, 1fr); /* Tre colonne di larghezza relativa */
-    grid-template-rows: repeat(4, 1fr); /* Tre righe di altezza relativa */
-    border-radius: 10px;
-    margin: 1%;
-    gap: 10px;
-    background-color: rgba(177, 173, 173, 0.1);
-    height: 100%; /* Imposta l'altezza della griglia al 100% dell'altezza del body */
-  }
-  .grid_istruttore {
-    display: grid;
-    grid-template-areas: 'g g' 'b c' 'f f' 'd d';
-    grid-template-columns: 1fr 1fr; /* Tre colonne di larghezza relativa */
-    grid-template-rows: 0.4fr 0.4fr 0.4fr 0.4fr; /* Due righe di altezza relativa */
-    border-radius: 10px;
-    margin: 1%;
-    padding: 1%;
-    gap: 10px;
-    background-color: rgba(177, 173, 173, 0.1);
-  }
+@media (max-width: 912px) {
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-areas: 'a a' 'b c' 'd d';
+        border-radius: 10px;
+        margin: 1%;
+        gap: 10px;
+        background-color: rgba(177, 173, 173, 0.1);
+    }
+    .grid_gold {
+        display: grid;
+        grid-template-areas: 'a a' 'e f' 'b c' 'd d';
+        grid-template-columns: repeat(
+            2,
+            1fr
+        ); /* Tre colonne di larghezza relativa */
+        grid-template-rows: repeat(4, 1fr); /* Tre righe di altezza relativa */
+        border-radius: 10px;
+        margin: 1%;
+        gap: 10px;
+        background-color: rgba(177, 173, 173, 0.1);
+        height: 100%; /* Imposta l'altezza della griglia al 100% dell'altezza del body */
+    }
+    .grid_istruttore {
+        display: grid;
+        grid-template-areas: 'g g' 'b c' 'f f' 'd d';
+        grid-template-columns: 1fr 1fr; /* Tre colonne di larghezza relativa */
+        grid-template-rows: 0.4fr 0.4fr 0.4fr 0.4fr; /* Due righe di altezza relativa */
+        border-radius: 10px;
+        margin: 1%;
+        padding: 1%;
+        gap: 10px;
+        background-color: rgba(177, 173, 173, 0.1);
+    }
 }
-@media (max-width: 822px) 
-{
-  .grid {
-    display: grid;
-    grid-template-rows: repeat(4, 0.5fr); 
-    grid-template-areas: 'a' 'b' 'c' 'd';
-    border-radius: 10px;
-    margin: 1%;
-    gap: 10px;
-    background-color: rgba(177, 173, 173, 0.1);
-  }
-  .grid_gold {
-    display: grid;
-    grid-template-areas: 'a' 'e'  'f' 'b'  'c' 'd';
-    grid-template-rows: repeat(5, 0.5fr); /* Tre righe di altezza relativa */
-    border-radius: 10px;
-    margin: 1%;
-    gap: 10px;
-    background-color: rgba(177, 173, 173, 0.1);
-    height: 100%; /* Imposta l'altezza della griglia al 100% dell'altezza del body */
-  }
-  .grid_istruttore {
-    display: grid;
-    grid-template-areas: 'g' 'b' 'c' 'f' 'd';
-    grid-template-rows: repeat(5, 0.5fr); /* Tre righe di altezza relativa */
-    border-radius: 10px;
-    margin: 1%;
-    padding: 1%;
-    gap: 10px;
-    background-color: rgba(177, 173, 173, 0.1);
-  }
-  .instructor_profile {
-    grid-area: g;
-    background-color: white;
-    border-radius: 10px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    height: calc(100% - 10px); /* Altezza della griglia meno il margine superiore */
-  }
-  .user_profile {
-    grid-area: a;
-    background-color: white;
-    border-radius: 10px;
-    position: relative;
-    margin: 1%;
-    display: flex;
-    flex-direction: column; /* Disposizione verticale dei figli */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-  }
-  .section {
-    flex-grow: 1;
-    padding: 2%;
-    width: 90vw;
-  }
+@media (max-width: 822px) {
+    .grid {
+        display: grid;
+        grid-template-rows: repeat(4, 0.5fr);
+        grid-template-areas: 'a' 'b' 'c' 'd';
+        border-radius: 10px;
+        margin: 1%;
+        gap: 10px;
+        background-color: rgba(177, 173, 173, 0.1);
+    }
+    .grid_gold {
+        display: grid;
+        grid-template-areas: 'a' 'e' 'f' 'b' 'c' 'd';
+        grid-template-rows: repeat(
+            5,
+            0.5fr
+        ); /* Tre righe di altezza relativa */
+        border-radius: 10px;
+        margin: 1%;
+        gap: 10px;
+        background-color: rgba(177, 173, 173, 0.1);
+        height: 100%; /* Imposta l'altezza della griglia al 100% dell'altezza del body */
+    }
+    .grid_istruttore {
+        display: grid;
+        grid-template-areas: 'g' 'b' 'c' 'f' 'd';
+        grid-template-rows: repeat(
+            5,
+            0.5fr
+        ); /* Tre righe di altezza relativa */
+        border-radius: 10px;
+        margin: 1%;
+        padding: 1%;
+        gap: 10px;
+        background-color: rgba(177, 173, 173, 0.1);
+    }
+    .instructor_profile {
+        grid-area: g;
+        background-color: white;
+        border-radius: 10px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+        height: calc(
+            100% - 10px
+        ); /* Altezza della griglia meno il margine superiore */
+    }
+    .user_profile {
+        grid-area: a;
+        background-color: white;
+        border-radius: 10px;
+        position: relative;
+        margin: 1%;
+        display: flex;
+        flex-direction: column; /* Disposizione verticale dei figli */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    }
+    .section {
+        flex-grow: 1;
+        padding: 2%;
+        width: 90vw;
+    }
 }

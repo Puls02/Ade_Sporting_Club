@@ -4,22 +4,18 @@
 
     $id=$_SESSION['id'];
 
+    //Update the status of the instructor or user
     if ($id < 30) {
-        // Aggiorna lo stato dell'istruttore
         $query = "UPDATE istruttore SET status = FALSE WHERE id='$id'";
     } else {
-        // Aggiorna lo stato dell'utente
         $query = "UPDATE utente SET status = FALSE WHERE id='$id'";
     }
     $result = pg_query($conn, $query);
 
-     // Avvia la sessione
-    session_unset(); // Cancella tutte le variabili di sessione
-    session_destroy(); // Distrugge la sessione
+    session_unset(); //Clears all session variables
+    session_destroy(); //Destroys the session
 
-    
-    // Reindirizza alla pagina di login
-    header("Location: ../index.php");
+    header("Location: ../index.php"); //Redirects to the login page
     exit;
     
 ?>

@@ -18,7 +18,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- serve per inserire un'icona nel title. Ho generato l'icona dal sito https://www.favicon-generator.org/ -->
     <link rel="icon" type="image/png" sizes="32x32" href="immagini/logo/favicon2.png">
     <title>Ade Sporting Club</title>
 
@@ -31,7 +30,7 @@
     <link rel="stylesheet" href="Style/popup.css"> 
     
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- per le icone delle attivita -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- for activity icons -->
 
     <!-- Link ai file javascript -->
     <script src="js/login.js" defer></script>
@@ -40,11 +39,9 @@
 </head>
 
 <body>
-
-    <!--Header, there is the navbar menu and login-->
     <header id="beginning"> 
         <nav class="nav responsive">
-            <!--container for logo and name-->
+            <!--container for logo and name -->
             <ul class="logo container"> 
                 <li>
                     <img class="logo_img" src="immagini/logo/Ade.jpg">
@@ -78,7 +75,7 @@
 
                 <div class="person flex">
                     <ul class="login_menu">
-                        <!-- Condizione PHP per mostrare il menu di login -->
+                        <!-- PHP condition to show login menu -->
                         <?php if (!$logged) : ?>
                             <li>
                                 <p class="bold"><b>Registrati o Accedi</b></p>
@@ -96,7 +93,7 @@
                                 <button class="Sign in" id="mostraPopupButton">Accedi</button>
                             </li>
                         <?php else: ?>
-                            <!-- Condizione PHP per mostrare il profilo -->
+                            <!-- PHP condition to show profile -->
                             <li>
                                 <?php if ($id < 30) : ?>
                                     <a href="login_registrazione/Istruttore.php">
@@ -177,9 +174,9 @@ const show_menu = document.querySelector('.login_btn');
         
     </header>
 
-    <!-- Div per l'overlay -->
+    <!-- Overlay div -->
     <div id="overlay" class="overlay"></div>
-    <!-- Div nascosto del popup -->
+    <!-- Hidden popup div -->
     <div id="popup" class="popup">
         <iframe src="login_registrazione/login.php" width="580" height="500" frameborder="0" style="border:0; overflow:hidden;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
@@ -253,7 +250,7 @@ const show_menu = document.querySelector('.login_btn');
                 <div class="space resp"></div>
                 <hr size="1" color="black"> 
                 <div class="space"></div>
-                <!-- Galleria di Immagini: DA SCEGLIERE -->
+                <!-- Image Gallery -->
                 <div class="gallery">
                     <img src="immagini/galleria/presentazione/piantina.jpg" alt="piantina">
                     <img src="immagini/galleria/presentazione/calcio.jpg" alt="calcio">
@@ -273,14 +270,10 @@ const show_menu = document.querySelector('.login_btn');
 <!-- Footer section with contacts -->	  
 <footer>
         <div class="map">
-            <!-- Embedding a Google Map -->
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.235657742299!2d12.57007927646197!3d41.952273060766345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f64619ddc961d%3A0x997b053d9ac9f023!2sSporting%20Club%20Panda!5e0!3m2!1sit!2sit!4v1714034933636!5m2!1sit!2sit" width="400" height="250" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-
-        <hr class="divider">
-        
         <div class="ancora">
-            <a href="#beginning"><i class="fas fa-arrow-up"></i></a>		<!-- ancora per tornare all'inizio della pagina -->
+            <a href="#beginning"><i class="fas fa-arrow-up"></i></a>		
         </div>
 
         <div class="contacts">
@@ -290,12 +283,11 @@ const show_menu = document.querySelector('.login_btn');
                 pulsoni.1995669@studenti.uniroma1.it<br>
                 ricci.1985803@studenti.uniroma1.it
             </p>
-            <p>link alla repository di github</p>
             <hr>
-            <!-- Social Media Links -->
             <div class="formalita">
                 <div class="cc">&copy; 2024 Sample Website. All Rights Reserved.</div>
                 <div class="social">
+                    <a href="https://github.com/Puls02/Ade_Sporting_Club"><i class="fa-brands fa-github"></i></a>
                     <i class="fa-brands fa-instagram"></i>
                     <i class="fa-brands fa-twitter"></i>
                     <i class="fa-brands fa-facebook"></i>

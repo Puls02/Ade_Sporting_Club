@@ -34,5 +34,5 @@ la validazione dei moduli in tempo reale e molto altro ancora.
 
 In sostanza, una richiesta AJAX consente di migliorare l'esperienza dell'utente rendendo le interazioni con il server più fluide e senza interruzioni visive.
 -----------------------------------------------------------------------
-
+shift+alt+f per formattare con prettier
 

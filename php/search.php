@@ -1,4 +1,5 @@
 <?php
+    //the following code allows you to search for users with whom to start a conversation by name or surname
     session_start();
     include_once "config.php";
 
@@ -7,10 +8,8 @@
     $output = "";
 
     if ($outgoing_id < 30) {
-        // Execute the first query if id is less than or equal to 30
         $sql = "SELECT * FROM Istruttore WHERE NOT id = '{$outgoing_id}' AND (nome ILIKE '%{$searchTerm}%' OR cognome ILIKE '%{$searchTerm}%') ";
     } else {
-        // Execute the second query if id is greater than 30
         $sql = "SELECT * FROM Utente WHERE NOT id = '{$outgoing_id}' AND (nome ILIKE '%{$searchTerm}%' OR cognome ILIKE '%{$searchTerm}%') ";
     }
     

@@ -1,4 +1,4 @@
-/*da telefono a computer*/ 
+/*da telefono a computer*/
 /*io uso un metodo da pc a telefono, cambio max-width*/
 /* xs */
 /* @media (min-width: 475px) {} */
@@ -13,43 +13,40 @@
 /* 2xl */
 /* @media (min-width: 1536px) {} */
 
-:root 
-{
-  /*color palette*/ 
-  --nav-color: rgb(68, 168, 190);
-  --nav2-color: rgb(13, 13, 91);
-  --body-color: #fff; 
-  --smooth-color: rgba(68, 168, 190, 0.6);
-  --smooth2-color: rgba(68, 168, 190, 0.2);
+:root {
+    /*color palette*/
+    --nav-color: rgb(68, 168, 190);
+    --nav2-color: rgb(13, 13, 91);
+    --body-color: #fff;
+    --smooth-color: rgba(68, 168, 190, 0.6);
+    --smooth2-color: rgba(68, 168, 190, 0.2);
 
-  /* sizes */
-  --size-xxs: 0.5rem;
-  --size-xs: 0.75rem;
-  --size-sm: 0.875rem;
-  --size-base: 1rem;
-  --size-lg: 1.125rem;
-  --size-xl: 1.25rem;
-  --size-2xl: 1.5rem;
-  --size-3xl: 1.875rem;
-  --size-4xl: 2.25rem;
-  --size-5xl: 3rem;
-  --size-6xl: 3.75rem;
-  --size-7xl: 4.5rem;
-  --size-8xl: 6rem;
-  --size-9xl: 8rem;
-  --size-10xl: 10rem;
+    /* sizes */
+    --size-xxs: 0.5rem;
+    --size-xs: 0.75rem;
+    --size-sm: 0.875rem;
+    --size-base: 1rem;
+    --size-lg: 1.125rem;
+    --size-xl: 1.25rem;
+    --size-2xl: 1.5rem;
+    --size-3xl: 1.875rem;
+    --size-4xl: 2.25rem;
+    --size-5xl: 3rem;
+    --size-6xl: 3.75rem;
+    --size-7xl: 4.5rem;
+    --size-8xl: 6rem;
+    --size-9xl: 8rem;
+    --size-10xl: 10rem;
 }
-  
-* 
-{
-  margin: 0;
-  line-height: calc(1em + 0.5rem);
+
+* {
+    margin: 0;
+    line-height: calc(1em + 0.5rem);
 }
-  
-html 
-{
-  scroll-behavior: smooth;
-  box-sizing: border-box;
+
+html {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
 }
 
 img,
@@ -57,50 +54,49 @@ picture,
 video,
 canvas,
 svg {
-  display: block; /* Imposta gli elementi multimediali come elementi di tipo blocco */
-  max-width: 100%; /* Imposta la larghezza massima degli elementi multimediali al 100% del loro contenitore genitore */
-  user-select: none; /* Impedisce la selezione dell'elemento da parte dell'utente */
+    display: block; /*Set media elements as block elements*/
+    max-width: 100%; /*Set the maximum width of media elements to 100% of their parent container */
+    user-select: none; /*Prevents the user from selecting the item*/
 }
 
-/*font usati tutti free license*/
+/*fonts all used free license*/
 @font-face {
-  font-family: Panchang;
-  src: url(../Font/Panchang/Panchang-Bold.woff);
+    font-family: Panchang;
+    src: url(../Font/Panchang/Panchang-Bold.woff);
 }
 @font-face {
-  font-family: PilcrowRounded;
-  src: url(../Font/PilcrowRounded/PilcrowRounded-Semibold.woff2);
+    font-family: PilcrowRounded;
+    src: url(../Font/PilcrowRounded/PilcrowRounded-Semibold.woff2);
 }
 @font-face {
-  font-family: Synonym;
-  src: url(../Font/Synonym/Synonym-Regular.woff);
+    font-family: Synonym;
+    src: url(../Font/Synonym/Synonym-Regular.woff);
 }
 @font-face {
-  font-family: Chillax;
-  src: url(../Font/Chillax/Chillax-Semibold.woff);
+    font-family: Chillax;
+    src: url(../Font/Chillax/Chillax-Semibold.woff);
 }
 
 h1 {
-  font-family: "Chillax";
-  margin-top: 0;
-  font-size: var(--size-3xl);
+    font-family: 'Chillax';
+    margin-top: 0;
+    font-size: var(--size-3xl);
 }
 
 h2 {
-  font-family: "Chillax";
-  font-size: var(--size-2xl);
-  margin-left: 2%;
+    font-family: 'Chillax';
+    font-size: var(--size-2xl);
+    margin-left: 2%;
 }
 
 p {
-  padding: 2%;
-  color: black;
-  font-family: "Synonym";
+    padding: 2%;
+    color: black;
+    font-family: 'Synonym';
 }
 
-/* per sfocare lo sfondo */
+/*to blur the background when the popup opens*/
 .blur-background {
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
 }
-

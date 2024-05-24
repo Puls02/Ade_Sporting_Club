@@ -1,335 +1,279 @@
-
 /*Style for the Struttura page*/
-main
-{
-  width: 100%;
-  height: auto;
-  padding-top: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+main {
+    width: 100%;
+    height: auto;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
-p
-{
-  font-family: "Synonym";
-  font-size: var(--size-xl);
+p {
+    font-family: 'Synonym';
+    font-size: var(--size-xl);
 }
-hr
-{
-  z-index: 2;
+hr {
+    z-index: 2;
 }
-.space
-{
-  width: 100%;
-  height: 50px;
+.space {
+    width: 100%;
+    height: 50px;
 }
 /* page description section */
-.Sezione_1
-{
+.Sezione_1 {
     width: 100%;
     height: 800px;
     position: relative;
 }
-.bg_img
-{
+.bg_img {
     width: 100%;
     height: 100%;
 }
 /* CSS for the presentation box */
-.presentation 
-{
-  position: absolute;
-  top: 20%;
-  right: 40%;
-  background-color: rgba(68, 168, 190, 0.9);
-  height: fit-content;
-  z-index: 1; /* Ensure it stays below the popup */
-  padding: 2%;
+.presentation {
+    position: absolute;
+    top: 20%;
+    right: 40%;
+    background-color: rgba(68, 168, 190, 0.9);
+    height: fit-content;
+    z-index: 1; /* Ensure it stays below the popup */
+    padding: 2%;
 }
 /*-------------------------------------*/
 
 /*services menu section*/
-.Sezione_2
-{
-  width: 100%;
-  height: auto;
+.Sezione_2 {
+    width: 100%;
+    height: auto;
 }
 
-.Services { 
-  position: relative; /* Aggiunto per il posizionamento assoluto del pseudo-elemento */
-  margin-left: 2%;
-  height: fit-content;
-  background-color: rgba(177, 173, 173, 0.1);
-  border-radius: 10px;
-  padding: 2%;
-  margin: 2%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.Services {
+    position: relative; /* Aggiunto per il posizionamento assoluto del pseudo-elemento */
+    margin-left: 2%;
+    height: fit-content;
+    background-color: rgba(177, 173, 173, 0.1);
+    border-radius: 10px;
+    padding: 2%;
+    margin: 2%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .Services::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 2px; /* Larghezza della linea */
-  background: black; /* Colore della linea */
-  z-index: -1; /* Assicura che la linea sia dietro i contenitori dei servizi */
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px; /* Larghezza della linea */
+    background: black; /* Colore della linea */
+    z-index: -1; /* Assicura che la linea sia dietro i contenitori dei servizi */
 }
 
 .service {
-  padding: 1%;
-  position: relative;
-  transition: height 0.3s;
-  height: 2em; /* Altezza iniziale pari all'altezza del titolo */
+    padding: 1%;
+    position: relative;
+    transition: height 0.3s;
+    height: 2em; /* Altezza iniziale pari all'altezza del titolo */
 }
 .service h1 {
-  color: #333;
-  margin: 0;
-  border-bottom: 2px solid rgb(0, 0, 0);
-  display: inline-block;
-  padding-bottom: 3px; /* Aggiunge un po' di spazio tra il testo e la linea */
-  cursor: pointer;
+    color: #333;
+    margin: 0;
+    border-bottom: 2px solid rgb(0, 0, 0);
+    display: inline-block;
+    padding-bottom: 3px; /* Aggiunge un po' di spazio tra il testo e la linea */
+    cursor: pointer;
 }
 .service p {
-  visibility: hidden;
+    visibility: hidden;
 }
 
 .fisso {
-  position: absolute;
-  top: 2%;
-  right: 2%;
-  background-color: rgb(255, 255, 255);
-  border: 1px solid #888;
-  border-radius: 10px;
-  width: 50%; 
-  height: auto;
-  display: none;
-  padding: 2%;
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 50%;
+    height: auto;
+    display: none;
+    padding: 2%;
 }
 /* Stile per l'immagine */
-#descrizione-fissa img 
-{
-  float: left; /* Posiziona l'immagine a sinistra */
-  margin-right: 10px; /* Aggiunge spazio a destra dell'immagine */
-  width: 200px; /* Larghezza dell'immagine */
-  height: auto; /* Altezza automatica per mantenere le proporzioni */
+#descrizione-fissa img {
+    float: left; /* Posiziona l'immagine a sinistra */
+    margin-right: 10px; /* Aggiunge spazio a destra dell'immagine */
+    width: 200px; /* Larghezza dell'immagine */
+    height: auto; /* Altezza automatica per mantenere le proporzioni */
 }
 
 /* Stile per la galleria */
-.gallery 
-{
-  display: flex;
-  height: 55vh;
-  width: 100%;
-  gap: 1%;
+.gallery {
+    display: flex;
+    height: 55vh;
+    width: 100%;
+    gap: 1%;
 }
 
-.gallery img 
-{
-  width: 0px;
-  flex-grow: 1; /* occupa tutto lo spazio che puoi */ 
-  object-fit: cover;
-  filter: brightness(50%);
-  transition: .7s ease;
+.gallery img {
+    width: 0px;
+    flex-grow: 1; /* occupa tutto lo spazio che puoi */
+    object-fit: cover;
+    filter: brightness(50%);
+    transition: 0.7s ease;
 }
 
-.gallery img:hover 
-{
-  cursor: pointer;
-  width: 30vw;
-  opacity: 1;
-  filter: brightness(100%);
-  filter: contrast(120%);
+.gallery img:hover {
+    cursor: pointer;
+    width: 30vw;
+    opacity: 1;
+    filter: brightness(100%);
+    filter: contrast(120%);
 }
 /*-------------------------------------------------*/
 
-
 /*responsive css for struct*/
-@media (max-width: 1536px)
-{
-  /*responsive css for general part*/
-  h1
-  {
-    font-size: var(--size-3xl);
-  }
-  p
-  {
-    font-size: var(--size-lg);
-  }
-  /*responsive css for Section1*/
-  .presentation
-  { 
-    right: 38%;
-  }
-  /*responsive css for Section2*/
+@media (max-width: 1536px) {
+    /*responsive css for general part*/
+    h1 {
+        font-size: var(--size-3xl);
+    }
+    p {
+        font-size: var(--size-lg);
+    }
+    /*responsive css for Section1*/
+    .presentation {
+        right: 38%;
+    }
+    /*responsive css for Section2*/
 }
 
-@media (max-width: 1280px)
-{
-  /*responsive css for general part*/
-  h1
-  {
-    font-size: var(--size-2xl);
-  }
-  p
-  {
-    font-size: var(--size-base);
-  }
-  /*responsive css for Section1*/
-  .presentation
-  { 
-    right: 35%;
-  }
-  /*responsive css for Section2*/
-  .service p
-  {
-    padding: 0;
-    margin: 0;
-  }
-  .fisso
-  {
-    width: 65%;
-  }
-  .resp
-  {
-    height: 60px;
-  }
-  
+@media (max-width: 1280px) {
+    /*responsive css for general part*/
+    h1 {
+        font-size: var(--size-2xl);
+    }
+    p {
+        font-size: var(--size-base);
+    }
+    /*responsive css for Section1*/
+    .presentation {
+        right: 35%;
+    }
+    /*responsive css for Section2*/
+    .service p {
+        padding: 0;
+        margin: 0;
+    }
+    .fisso {
+        width: 65%;
+    }
+    .resp {
+        height: 60px;
+    }
 }
 
-@media (max-width: 1024px)
-{
-  /*responsive css for general part*/
-  h1
-  {
-    font-size: var(--size-xl);
-  }
-  p
-  {
-    font-size: var(--size-sm);
-  }
-  /*responsive css for Section1*/
-  .presentation
-  { 
-    right: 30%;
-  }
-  /*responsive css for Section2*/
-  #descrizione-fissa img 
-  {
-    width: 150px;
-  }
-  
+@media (max-width: 1024px) {
+    /*responsive css for general part*/
+    h1 {
+        font-size: var(--size-xl);
+    }
+    p {
+        font-size: var(--size-sm);
+    }
+    /*responsive css for Section1*/
+    .presentation {
+        right: 30%;
+    }
+    /*responsive css for Section2*/
+    #descrizione-fissa img {
+        width: 150px;
+    }
 }
 
-@media (max-width: 930px)
-{
-  /*responsive css for Section1*/
-  .Sezione_1
-  {
-    height: 600px;
-  }
-  .presentation
-  { 
-    top: 15%; 
-    right: 25%;
-  }
-  /*responsive css for Section2*/
-  .service h1
-  {
-    font-size: var(--size-lg);
-  }
-  .service p
-  {
-    font-size: var(--size-xs);
-  }
-  .fisso 
-  {
-    width: 70%;
-  }
-  #descrizione-fissa img 
-  {
-    width: 100px;
-  }
+@media (max-width: 930px) {
+    /*responsive css for Section1*/
+    .Sezione_1 {
+        height: 600px;
+    }
+    .presentation {
+        top: 15%;
+        right: 25%;
+    }
+    /*responsive css for Section2*/
+    .service h1 {
+        font-size: var(--size-lg);
+    }
+    .service p {
+        font-size: var(--size-xs);
+    }
+    .fisso {
+        width: 70%;
+    }
+    #descrizione-fissa img {
+        width: 100px;
+    }
 }
 
-@media (max-width: 768px)
-{
-  /*responsive css for general part*/
-  h1
-  {
-    font-size: var(--size-lg);
-  }
-  p
-  {
-    font-size: var(--size-xs);
-  }
-  /*responsive css for Section1*/
-  .presentation
-  { 
-    top: 10%;
-    right: 20%;
-  }
-  /*responsive css for Section2*/
-  #descrizione-fissa img 
-  {
-    display: none;
-  }
+@media (max-width: 768px) {
+    /*responsive css for general part*/
+    h1 {
+        font-size: var(--size-lg);
+    }
+    p {
+        font-size: var(--size-xs);
+    }
+    /*responsive css for Section1*/
+    .presentation {
+        top: 10%;
+        right: 20%;
+    }
+    /*responsive css for Section2*/
+    #descrizione-fissa img {
+        display: none;
+    }
 }
 
-@media (max-width: 640px)
-{
-  /*responsive css for Section1*/
-  .Sezione_1
-  {
-    height: 550px;
-  }
-  .presentation
-  { 
-    right: 10%;
-  }
-  /*responsive css for Section2*/
-  #descrizione-fissa img 
-  {
-    display: none;
-  }
-  .resp
-  {
-    height: 70px;
-  }
-  .fisso 
-  {
-    width: 65%;
-    top: 0;
-    padding: 0;
-  }
+@media (max-width: 640px) {
+    /*responsive css for Section1*/
+    .Sezione_1 {
+        height: 550px;
+    }
+    .presentation {
+        right: 10%;
+    }
+    /*responsive css for Section2*/
+    #descrizione-fissa img {
+        display: none;
+    }
+    .resp {
+        height: 70px;
+    }
+    .fisso {
+        width: 65%;
+        top: 0;
+        padding: 0;
+    }
 }
 
-@media (max-width: 475px) 
-{
-  h1
-  {
-    font-size: var(--size-lg);
-  }
-  p
-  {
-    font-size: var(--size-xs);
-  }
-  /*responsive css for Section1*/
-  .presentation
-  { 
-    top: 10%;
-    right: 10%;
-  }
-  /*responsive css for Section2*/
-  .resp
-  {
-    height: 100px;
-  }
-  .fisso
-  {
-    width: 60%;
-  }
+@media (max-width: 475px) {
+    h1 {
+        font-size: var(--size-lg);
+    }
+    p {
+        font-size: var(--size-xs);
+    }
+    /*responsive css for Section1*/
+    .presentation {
+        top: 10%;
+        right: 10%;
+    }
+    /*responsive css for Section2*/
+    .resp {
+        height: 100px;
+    }
+    .fisso {
+        width: 60%;
+    }
 }
 
 /*debug*/

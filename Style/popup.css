@@ -1,80 +1,72 @@
-/* Stili per il popup */
-.popup 
-{
-    display: none; /* Inizialmente nascosto */
-    position: fixed; /* Posizionamento fisso per sovrapporre tutto */
-    top: 50%; /* Centrare verticalmente */
-    left: 50%; /* Centrare orizzontalmente */
-    transform: translate(-50%, -50%); /* Centrare correttamente */
-    z-index: 1000; /* Posizionarlo sopra il resto */
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);  Aggiungi ombra per effetto */
-    padding: 20px; /* Spazio interno */
-    border-radius: 10px; /* Angoli arrotondati */
+/* Popup */
+.popup {
+    display: none; /*Initially hidden*/
+    position: fixed; /*Fixed positioning to overlap everything*/
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /*Center the popup*/
+    z-index: 1000;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 .popup > iframe {
     width: 550px;
     height: 500px;
-    border: none; /* Rimuovi il bordo */
-    border-radius: 10px; /* Angoli arrotondati */
+    border: none;
+    border-radius: 10px;
     overflow: hidden;
 }
 
-/* Overlay per lo sfondo sfocato */
-  .overlay 
-{
-    position: fixed; /* Posizionamento fisso per coprire tutto */
+/* Overlay */
+.overlay {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Sfondo semitrasparente */
-    z-index: 500; /* Posizionarlo sotto il popup ma sopra tutto il resto */
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 500; /*Place it below the popup but above everything else*/
     display: none;
 }
 
-  
 /*responsive css for struct*/
-@media (max-width: 1024px)
-{
-  .popup > iframe {
-    width: 500px;
-    height: 450px;
-    border: none; /* Rimuovi il bordo */
-    border-radius: 10px; /* Angoli arrotondati */
-    overflow: hidden;
-}
-}
-
-@media (max-width: 768px)
-{
-  .popup > iframe {
-    width: 350px;
-    height: 500px;
-    border: none; /* Rimuovi il bordo */
-    border-radius: 10px; /* Angoli arrotondati */
-    overflow: hidden;
-}
+@media (max-width: 1024px) {
+    .popup > iframe {
+        width: 500px;
+        height: 450px;
+        border: none;
+        border-radius: 10px;
+        overflow: hidden;
+    }
 }
 
-@media (max-width: 640px)
-{
-  .popup > iframe {
-    width: 280px;
-    height: 480px;
-    border: none; /* Rimuovi il bordo */
-    border-radius: 10px; /* Angoli arrotondati */
-    overflow: hidden;
-}
+@media (max-width: 768px) {
+    .popup > iframe {
+        width: 350px;
+        height: 500px;
+        border: none;
+        border-radius: 10px;
+        overflow: hidden;
+    }
 }
 
-@media (max-width: 475px) 
-{
-  .popup > iframe {
-    width: 240px;
-    height: 400px;
-    border: none; /* Rimuovi il bordo */
-    border-radius: 10px; /* Angoli arrotondati */
-    overflow: hidden;
+@media (max-width: 640px) {
+    .popup > iframe {
+        width: 280px;
+        height: 480px;
+        border: none;
+        border-radius: 10px;
+        overflow: hidden;
+    }
 }
+
+@media (max-width: 475px) {
+    .popup > iframe {
+        width: 240px;
+        height: 400px;
+        border: none;
+        border-radius: 10px;
+        overflow: hidden;
+    }
 }

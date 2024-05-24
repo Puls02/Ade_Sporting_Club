@@ -333,11 +333,11 @@
                 <th>Venerdì</th>
             </tr>
             <?php
-                // Query per recuperare i dati dalla tabella Orari
+                //Query to retrieve data from the table Orari
                 $result = pg_query($conn, "SELECT giorno_settimana, ora_inizio, ora_fine, nome, categoria FROM Orari");
 
                 if ($result) {
-                    // Array associativo per memorizzare i dati dei corsi per ogni giorno
+                    //Associative array to store course data for each day
                     $corsi_per_orario = array(
                         "15:00 - 16:00" => array(),
                         "16:00 - 17:00" => array(),
@@ -347,30 +347,25 @@
                         "20:00 - 21:00" => array()
                     );
 
-                    // Riempimento dell'array con i dati dei corsi
+                    //Filling the array with course data
                     while ($row = pg_fetch_assoc($result)) {
                         $giorno = $row["giorno_settimana"];
                         $inizio_completo = $row["ora_inizio"];
                         $fine_completo = $row["ora_fine"];
-                        // Mi assicuro che il nome e la categoria siano minuscoli per i css
+                        //I make sure the name and category are lowercase for css
                         $nome_corso = strtolower($row["nome"]); 
                         $categoria_corso = strtolower($row["categoria"]); 
 
-                        $inizio = substr($inizio_completo, 0, 5); // Estrae solo i primi 5 caratteri (HH:MM)
-                        $fine = substr($fine_completo, 0, 5); // Estrae solo i primi 5 caratteri (HH:MM)
+                        $inizio = substr($inizio_completo, 0, 5);
+                        $fine = substr($fine_completo, 0, 5); 
 
-
-                        // Debug: stampa delle variabili
-                        // echo "Giorno: $giorno, Inizio: $inizio, Fine: $fine, Nome corso: $nome_corso, Categoria corso: $categoria_corso <br>";
-
-                        // Costruzione della stringa per l'orario
                         $orario = "$inizio - $fine";
 
-                        // Aggiunta del corso all'array associativo
+                        //Adding the course to the associative array
                         $corsi_per_orario[$orario][$giorno][] = array("nome" => $nome_corso, "categoria" => $categoria_corso);
                     }
 
-                    // Creazione della tabella HTML
+                    //Creation of the HTML table
                     foreach ($corsi_per_orario as $orario => $corsi_per_giorno) {
                         echo "<tr>";
                         echo "<td>$orario</td>";
@@ -380,8 +375,8 @@
                                 echo "<table class='inner-table'>";
                                 foreach ($corsi_per_giorno[$giorno] as $corso) {
                                     $nome_corso = $corso["nome"];
-                                    $categoria_corso = strtolower($corso["categoria"]); // Assicurati che la categoria sia in minuscolo
-                                    $classe_corso = "corso-$nome_corso-$categoria_corso"; // Costruisci il nome della classe CSS
+                                    $categoria_corso = strtolower($corso["categoria"]); 
+                                    $classe_corso = "corso-$nome_corso-$categoria_corso"; 
                                     echo "<td class='$classe_corso'>$nome_corso</td>";
                                 }
                                 echo "</table>";
@@ -394,11 +389,10 @@
                     echo "Nessun corso trovato.";
                 }
 
-                // Chiusura della connessione al database
                 pg_close($conn);
             ?>
             </table>
-            <!-- Legenda -->
+            <!--Legend-->
             <div class="legend">
                 <div class="legend-item">
                     <div class="legend-circle" style="background-color: #90EE90;"></div> Calcio Bambini
@@ -451,12 +445,11 @@
 <!-- Footer section with contacts -->	
 <footer>
         <div class="map">
-            <!-- Embedding a Google Map -->
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.235657742299!2d12.57007927646197!3d41.952273060766345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f64619ddc961d%3A0x997b053d9ac9f023!2sSporting%20Club%20Panda!5e0!3m2!1sit!2sit!4v1714034933636!5m2!1sit!2sit" width="400" height="250" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 
         <div class="ancora">
-            <a href="#beginning"><i class="fas fa-arrow-up"></i></a>		<!-- ancora per tornare all'inizio della pagina -->
+            <a href="#beginning"><i class="fas fa-arrow-up"></i></a>		
         </div>
 
         <div class="contacts">
@@ -466,12 +459,11 @@
                 pulsoni.1995669@studenti.uniroma1.it<br>
                 ricci.1985803@studenti.uniroma1.it
             </p>
-            <p>link alla repository di github</p>
             <hr>
-            <!-- Social Media Links -->
             <div class="formalita">
                 <div class="cc">&copy; 2024 Sample Website. All Rights Reserved.</div>
                 <div class="social">
+                    <a href="https://github.com/Puls02/Ade_Sporting_Club"><i class="fa-brands fa-github"></i></a>
                     <i class="fa-brands fa-instagram"></i>
                     <i class="fa-brands fa-twitter"></i>
                     <i class="fa-brands fa-facebook"></i>

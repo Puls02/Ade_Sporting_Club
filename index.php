@@ -23,7 +23,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Serve per inserire un'icona nel title. Ho generato l'icona dal sito https://www.favicon-generator.org/ -->
+    <!-- It is used to insert an icon in the title. We generated the icon from the site https://www.favicon-generator.org/ -->
     <link rel="icon" type="image/png" sizes="32x32" href="immagini/logo/favicon2.png">
     <title>Ade Sporting Club</title>
 
@@ -34,7 +34,7 @@
     <link rel="StyleSheet" href="Style/footer.css">
     <link rel="StyleSheet" href="Style/index.css">
     <link rel="stylesheet" href="Style/popup.css"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- per le cione delle attivita -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- for activity icons -->
 
     <!-- Link ai file javascript -->
     <script src="js/login.js" defer></script>
@@ -458,7 +458,6 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.235657742299!2d12.57007927646197!3d41.952273060766345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f64619ddc961d%3A0x997b053d9ac9f023!2sSporting%20Club%20Panda!5e0!3m2!1sit!2sit!4v1714034933636!5m2!1sit!2sit" 
                 width="400" height="250" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-        <hr class="divider">
         <div class="ancora">
             <a href="#beginning"><i class="fas fa-arrow-up"></i></a>		
             <!-- ancora per tornare all'inizio della pagina -->
@@ -471,12 +470,12 @@
                 pulsoni.1995669@studenti.uniroma1.it<br>
                 ricci.1985803@studenti.uniroma1.it
             </p>
-            <p>link alla repository di github</p>
             <hr>
             <!-- Social Media Links -->
             <div class="formalita">
                 <div class="cc">&copy; 2024 Sample Website. All Rights Reserved.</div>
                 <div class="social">
+                    <a href="https://github.com/Puls02/Ade_Sporting_Club"><i class="fa-brands fa-github"></i></a>
                     <i class="fa-brands fa-instagram"></i>
                     <i class="fa-brands fa-twitter"></i>
                     <i class="fa-brands fa-facebook"></i>

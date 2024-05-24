@@ -39,7 +39,7 @@
     <link rel="StyleSheet" href="Style/footer.css">
     <link rel="stylesheet" href="Style/popup.css">
     <link rel="stylesheet" href="Style/prenota.css"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- per le cione delle attivita -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!--for activity icons-->
 
     <!-- Link ai file javascript -->
     <script src="js/login.js" defer></script>
@@ -64,8 +64,6 @@
 </head>
 
 <body>
-
-    <!--Header, there is the navbar menu and login-->
     <header id="beginning"> 
     <nav class="nav responsive">
             <!--container for logo and name-->
@@ -116,7 +114,6 @@
                                     <button class="Sign up">Registrati</button>
                                 </a>
                             </li>
-                            <!-- POPUP DEL LOGIN -->
                             <li>
                                 <button class="Sign in" id="mostraPopupButton">Accedi</button>
                             </li>
@@ -126,7 +123,7 @@
                 <?php else: ?>
                     <div class="person flex">
                         <ul class="login_menu">
-                            <!-- rimanda al profilo personale -->
+                            <!--refers to your personal profile-->
                             <?php if($id < 30): ?>
                                 <a href="login_registrazione/Istruttore.php">
                                     <button class="Sign profile">Profilo</button>
@@ -219,9 +216,9 @@
         </nav>
     </header>
 
-    <!-- Div per l'overlay -->
+    <!-- Overlay div -->
     <div id="overlay" class="overlay"></div>
-    <!-- Div nascosto del popup -->
+    <!--Hidden popup div-->
     <div id="popup" class="popup">
         <iframe src="login_registrazione/login.php" frameborder="0" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
@@ -230,27 +227,16 @@
         <div class="zona">
         <table>
             <?php 
-                //Costruzione dell'array per i giorni della settimana "GiornoSettimana - data"
-                date_default_timezone_set('Europe/Rome');
-                    
-                // Ottieni la data del lunedì di questa settimana
-                $mondayOfThisWeek = date('Y-m-d', strtotime('monday this week'));
-
-                // Inizializza un array per memorizzare i giorni della settimana corrente
-                $daysOfTheWeek = array();
-
-                // Cicla per ottenere tutti i giorni della settimana corrente
+                date_default_timezone_set('Europe/Rome');  // Construction of the array for the days of the week "DayWeek -date"
+                $mondayOfThisWeek = date('Y-m-d', strtotime('monday this week'));  // Get this week's Monday date
+                $daysOfTheWeek = array(); // Initializes an array to store the days of the current week
                 for ($i = 0; $i < 7; $i++) {
-                    // Aggiungi i giorni alla data del lunedì
-                    $day = date('Y-m-d', strtotime($mondayOfThisWeek . " +$i days"));
-                    // Aggiungi il giorno all'array
-
+                    $day = date('Y-m-d', strtotime($mondayOfThisWeek . " +$i days")); // Add days to the date from Monday
                     $daysOfTheWeek[] = $day;
                 }
-        
             ?>
             <tr>
-                <!--Creazione della prima riga nel seguente formato "Day Y-M-D"-->
+                <!-- Creating header line in the following format "Day Y-M-D"-->
                 <th class="time-column">Ora\Giorno</th>
                 <th>Lunedì <?php echo $daysOfTheWeek[0]?></th>
                 <th>Martedì <?php echo $daysOfTheWeek[1]?></th>
@@ -261,10 +247,10 @@
                 <th>Domenica <?php echo $daysOfTheWeek[6]?></th>
             </tr>
             <?php
-                // Query per recuperare i dati dalla tabella Prenotazioni
+                // Query to retrieve data from the table Prenotazione
                 $result = pg_query($conn, "SELECT * FROM prenotazione p join campo c on c.id = p.campo WHERE owner='true'"); 
                 if ($result) {
-                    // Array associativo per memorizzare le prenotazioni per ogni orario
+                    // Associative array to store reservations for each time
                     $prenotazioni_per_orario = array(
                         "08:00 - 09:00" => array(),
                         "09:00 - 10:00" => array(),
@@ -283,12 +269,12 @@
                         "22:00 - 23:00" => array(),
                     );
 
-                    // Riempimento dell'array con i dati delle prenotazioni
+                    // Filling the array with booking data
                     while ($row = pg_fetch_assoc($result)) {            
                         $id_prenotazione = $row["id_prenotazione"];
                         $data = $row["data"];
                         $campo =$row["campo"];
-                        // devo prendere il giorno della settimana
+                        // Take the day of the week
                         $giornoSettimana=date('l', strtotime($data));
                         $giorno = "$giornoSettimana - $data";
                         $inizio_completo = $row["ora_inizio"];
@@ -299,18 +285,16 @@
 
                         $sport = $row["tipo"];
 
-                        $inizio = substr($inizio_completo, 0, 5); // Estrae solo i primi 5 caratteri (HH:MM)
-                        $fine = substr($fine_completo, 0, 5); // Estrae solo i primi 5 caratteri (HH:MM)
+                        $inizio = substr($inizio_completo, 0, 5); // Extracts only the first 5 characters (HH:MM)
+                        $fine = substr($fine_completo, 0, 5); 
                         
-                        // Costruzione della stringa per l'orario
-                        $orario = "$inizio - $fine";
-                        
-                        // Aggiunta della prenotazione all'array associativo
+                        // Construction of the time string
+                        $orario = "$inizio - $fine"; 
+                        // Adding the reservation to the associative array
                         $prenotazioni_per_orario[$orario][$giorno][] = array("id" => $id_prenotazione,"numero_campo" => $campo, "sport" => $sport, "completa" => $completa, "persone" => $num_persone);
                     }
                     
-                    
-                    // Creazione della tabella HTML
+                    // Creation of the HTML table
                     foreach ($prenotazioni_per_orario as $orario => $prenotazioni_per_giorno) {
                         echo "<tr>";
                         echo "<td>$orario</td>";
@@ -320,7 +304,7 @@
                             if (isset($prenotazioni_per_giorno[$giorno])) {                            
                                 echo "<table class='inner-table'>";
 
-                                // Creazione di una cella per ogni prenotazione
+                                // Creating a cell for each booking
                                 foreach ($prenotazioni_per_giorno[$giorno] as $prenotazione) {
                                     $id = $prenotazione["id"];
                                     $sport = $prenotazione["sport"];
@@ -328,23 +312,23 @@
                                     $completa = $prenotazione["completa"];
                                     $persone = $prenotazione["persone"];
 
-                                    // Determina l'icona corretta per lo sport
+                                    // Determine the correct icon for the sport
                                     $icona = "";
                                     switch ($sport) {
                                         case "Calcetto":
-                                            $icona = "fas fa-futbol"; // Icona per calcio
+                                            $icona = "fas fa-futbol"; 
                                             break;
                                         case "Paddle":
-                                            $icona = "fas fa-table-tennis"; // Icona per paddle
+                                            $icona = "fas fa-table-tennis"; 
                                             break;
                                         case "Tennis":
-                                            $icona = "fas fa-baseball-ball"; // Icona per tennis
+                                            $icona = "fas fa-baseball-ball"; 
                                             break;
                                         case "Nuoto":
-                                            $icona = "fas fa-swimmer"; // Icona per nuoto
+                                            $icona = "fas fa-swimmer"; 
                                             break;
                                         case "Basket":
-                                            $icona = "fas fa-basketball-ball"; // Icona per basket
+                                            $icona = "fas fa-basketball-ball"; 
                                             break;
                                         case "Palestra":
                                             $icona ="fa-solid fa-dumbbell";
@@ -353,24 +337,22 @@
                                             $icona ="fa-solid fa-person-swimming";
                                             break;
                                         default:
-                                            $icona = "fas fa-question"; // Icona generica
+                                            $icona = "fas fa-question";
                                             break;
                                     }
-                                    // Costruzione del testo del tooltip
+                                    // Construction of the tooltip text
                                     $tooltip = "ID: $id\nCampo: $campo\nSport: $sport\n";
                                     if ($completa == 't') {
                                         $tooltip .= "Stato: Completa";
                                     } else {
                                         $tooltip .= "Numero Persone: $persone";
                                     }
-
+                                    //Add the icon with the tooltip with a green background if the reservation is complete, otherwise with a yellow background
                                     if($completa == 't'){
-                                        $sfondo = "#99d98c";//cella verde
-                                        // Aggiungi l'icona con il tooltip
+                                        $sfondo = "#99d98c";                                        
                                         echo "<td style='background-color: $sfondo; ' title='$tooltip'><i class='$icona'></i></td>";
                                     }else{
-                                        $sfondo = "#ffc300";//cella gialla
-                                        // Aggiungi l'icona con il tooltip
+                                        $sfondo = "#ffc300";
                                         echo "<td style='background-color: $sfondo; cursor: pointer;' title='$tooltip' onclick='if(checkLogin()) {finestraDiAggiunta($id)}'><i class='$icona'></i></td>";
                                     }
 
@@ -394,7 +376,7 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <div id="modalContent">
-                        <!-- Qui verranno inseriti dinamicamente i dettagli della prenotazione -->
+                        <!-- The booking details will be dynamically inserted here -->
                     </div>
                     <button id="actionButton">Aggiungimi alla prenotazione</button>
                 </div>
@@ -409,6 +391,7 @@
         </div>
         <div>
             <ul class="toggle-list" >
+                <!-- in each activity we have made only the available time slots and days clickable -->
                 <li id="prenota_calcio" class="toggle-item" onclick="return checkLogin();">
                     <input type="radio" id="calcio" name="attivita">
                     <label for="calcio" >Calcetto<span class="arrow" ></span></label>
@@ -436,7 +419,7 @@
                                 <input type="number" id="numeroPersone" name="numeroPersone" min="1" max="9"><br>
                             </div>
                             
-                            <input type="submit" value="Prenota" > <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
+                            <input type="submit" value="Prenota" > 
                             <input type="reset" value="Azzera i campi">
                         </form>
                     </div>
@@ -468,7 +451,7 @@
                                 <input type="number" id="numeroPersone" name="numeroPersone" min="1" max="3"><br>
                             </div>
                             
-                            <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
+                            <input type="submit" value="Prenota"> 
                             <input type="reset" value="Azzera i campi">
                         </form>
                     </div>
@@ -488,7 +471,7 @@
                                 <option value="tennis_7">Campo 1</option>
                                 <option value="tennis_8">Campo 2</option>
                                 <option value="tennis_9">Campo 3</option>
-                                <option value="tennis_10">Campo 4</option> <!-- con js fai il controllo, i primi due so di terra e gli altri due in cemento -->
+                                <option value="tennis_10">Campo 4</option> 
                             </select><br>
                             <label for="prenotazione">Tipo di prenotazione:</label><br>
                             <input type="radio" id="interoCampo" name="prenotazione" value="interoCampo" required>
@@ -500,7 +483,7 @@
                                 <input type="number" id="numeroPersone" name="numeroPersone" min="1" max="1"><br>
                             </div>
                             
-                            <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
+                            <input type="submit" value="Prenota"> 
                             <input type="reset" value="Azzera i campi">
                         </form>
                     </div>
@@ -531,7 +514,7 @@
                                 <input type="number" id="numeroPersone" name="numeroPersone" min="1" max="9"><br>
                             </div>
                             
-                            <input type="submit" value="Prenota"> <!-- qua verifichiamo se l'utente ha fatto il login e poi magari mandiamo una mail di conferma con la ricevuta della prenotazione -->
+                            <input type="submit" value="Prenota"> 
                             <input type="reset" value="Azzera i campi">
                         </form>
                     </div>
@@ -543,11 +526,11 @@
                         <form method="post" action="php/prenotazione.php" name="formPrenotazione">
                             <label for="dataNuoto">Data:</label>
                             <input type="date" id="dataNuoto" name="data" required><input type="checkbox" class="hidden" id="campo" name="campo" value="piscina_13" checked><br>
-                            <!-- se possibile mettiamo in elenco solo le fasce disponibili -->
                             <label for="orarioNuoto">Scegli una fascia oraria:</label>
                             <select class="orario"  name="ora" required>
                                 <option value="">Seleziona orario</option>
                             </select><br>
+
                             <input type="submit" value="Prenota"> 
                             <input type="reset" value="Azzera i campi">
                         </form>
@@ -560,11 +543,11 @@
                         <form method="post" action="php/prenotazione.php" name="formPrenotazione">
                             <label for="dataPalestra">Data:</label> 
                             <input type="date" id="dataPalestra" name="data" required><input type="checkbox" class="hidden" id="campo" name="campo" value="palestra_14" checked><br>
-                            <!-- se possibile mettiamo in elenco solo le fasce disponibili -->
                             <label for="orarioPalestra">Scegli una fascia oraria:</label>
                             <select class="orario" name="ora" required>
                                 <option value="">Seleziona un orario</option>
                             </select><br>
+
                             <input type="submit" value="Prenota"> 
                             <input type="reset" value="Azzera i campi">
                         </form>
@@ -577,12 +560,10 @@
 <!-- Footer section with contacts -->	
 <footer id="abcdef">
         <div class="map">
-            <!-- Embedding a Google Map -->
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.235657742299!2d12.57007927646197!3d41.952273060766345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f64619ddc961d%3A0x997b053d9ac9f023!2sSporting%20Club%20Panda!5e0!3m2!1sit!2sit!4v1714034933636!5m2!1sit!2sit" width="400" height="250" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-
         <div class="ancora">
-            <a href="#beginning"><i class="fas fa-arrow-up"></i></a>		<!-- ancora per tornare all'inizio della pagina -->
+            <a href="#beginning"><i class="fas fa-arrow-up"></i></a>		
         </div>
 
         <div class="contacts">
@@ -592,12 +573,11 @@
                 pulsoni.1995669@studenti.uniroma1.it<br>
                 ricci.1985803@studenti.uniroma1.it
             </p>
-            <p>link alla repository di github</p>
             <hr>
-            <!-- Social Media Links -->
             <div class="formalita">
                 <div class="cc">&copy; 2024 Sample Website. All Rights Reserved.</div>
                 <div class="social">
+                    <a href="https://github.com/Puls02/Ade_Sporting_Club"><i class="fa-brands fa-github"></i></a>
                     <i class="fa-brands fa-instagram"></i>
                     <i class="fa-brands fa-twitter"></i>
                     <i class="fa-brands fa-facebook"></i>
@@ -657,27 +637,27 @@
 
 
     <script>
-        // Ottieni tutti gli input di tipo date
+        //Get all date type inputs
         var inputDateFields = document.querySelectorAll("input[type='date']");
 
-        // Ottieni la data corrente
+        //Get the current date
         var now = new Date();
-        // Imposta la data minima come la data corrente (nel formato richiesto dall'input di tipo date)
+        //Set the minimum date as the current date (in the format required by the date type input)
         var minDate = new Date(now.getTime()).toISOString().split('T')[0];
 
-        // Itera su ogni campo data e imposta la data minima
+        //Iterate over each date field and set the minimum date
         inputDateFields.forEach(function(inputData) {
             inputData.min = minDate;
         });
     </script>
 
     <script>
-        // Funzione per mostrare la finestra modale
+        //Function to show the modal window
         function finestraDiAggiunta(id) {
-            // Mostra la finestra modale
+            //Show the modal window
             var modal = document.getElementById("myModal");
             modal.style.display = "block";
-            //richiesta ajax
+            //ajax request
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "php/modalCreation.php", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -694,9 +674,9 @@
                     `;
                 }
             };
-            xhr.send("id=" + id); // Invia l'ID della prenotazione come parametro
+            xhr.send("id=" + id); //Send the booking ID as a parameter
 
-            // Azione per il pulsante
+            //Action for the button
             var button = document.getElementById("actionButton");
             button.onclick = function() {
                 var xhrAddUser = new XMLHttpRequest();
@@ -718,14 +698,14 @@
             };
         }
 
-        // Chiudi la finestra modale quando l'utente clicca sulla 'x'
+        //Close modal window when user clicks 'x'
         var span = document.getElementsByClassName("close")[0];
         span.onclick = function() {
             var modal = document.getElementById("myModal");
             modal.style.display = "none";
         }
 
-        // Chiudi la finestra modale quando l'utente clicca fuori dalla finestra
+        //Close the modal window when the user clicks out of the window
         window.onclick = function(event) {
             var modal = document.getElementById("myModal");
             if (event.target == modal) {
@@ -739,18 +719,17 @@
             var giocatori = form.querySelectorAll('input[name="prenotazione"]');
             var numeroPersone = form.querySelector('input[name="numeroPersone"]');
 
-            // Verifica quale radio button è selezionato
+            //Check which radio button is selected
             for (var i = 0; i < giocatori.length; i++) {
                 if (giocatori[i].checked && giocatori[i].value === 'codaGioco') {
-                    // Se è selezionato 'codaGioco', controlla il numero di giocatori
+                    //If 'game queue' is selected, it controls the number of players
                     if (numeroPersone.value === "" || isNaN(numeroPersone.value)) {
-                        // Mostra un messaggio di errore
                         alert("Devi inserire il numero di giocatori");
-                        return false; // Impedisce l'invio del modulo
+                        return false; //Prevents form submission
                     }
                 }
             }
-            return true; // Consente l'invio del modulo se tutto è valido
+            return true; //Allows the form to be submitted if everything is valid
         }
     </script> 
 

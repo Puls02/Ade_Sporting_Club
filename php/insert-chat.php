@@ -1,4 +1,5 @@
 <?php 
+    //the following code inserts the messages that are exchanged into the database
     session_start();
     if (isset($_SESSION['id'])) {
         include_once "config.php";

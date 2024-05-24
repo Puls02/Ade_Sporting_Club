@@ -10,7 +10,6 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-
 /* parte delle attività */
 .activity {
     background-color: #fff;
@@ -56,7 +55,8 @@ table {
     border: 1px solid #ddd;
     table-layout: fixed;
 }
-th, td {
+th,
+td {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: center;
@@ -84,113 +84,113 @@ td {
     font-size: 16px;
 }
 .inner-table td {
-    border: none; 
+    border: none;
 }
 /* Colori di sfondo per i nomi dei corsi */
-.corso-calcio-bambini { 
-    background-color: #90EE90; 
-    color: #333; 
+.corso-calcio-bambini {
+    background-color: #90ee90;
+    color: #333;
     white-space: nowrap; /* Impedisce che il testo vada a capo */
     overflow: hidden; /* Nasconde il testo che non rientra nella larghezza */
     text-overflow: ellipsis; /* Aggiunge i puntini di sospensione */
 }
-.corso-calcio-ragazzi { 
-    background-color: #008000; 
-    color: #fff; 
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
+.corso-calcio-ragazzi {
+    background-color: #008000;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.corso-calcio-amatoriale { 
-    background-color: #094409; 
-    color: #fff; 
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
+.corso-calcio-amatoriale {
+    background-color: #094409;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.corso-tennis-bambini { 
-    background-color: #FFA500; 
+.corso-tennis-bambini {
+    background-color: #ffa500;
     color: #333;
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis;  
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.corso-tennis-ragazzi { 
-    background-color: #FF8C00; 
-    color: #fff; 
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
+.corso-tennis-ragazzi {
+    background-color: #ff8c00;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.corso-tennis-amatoriale { 
-    background-color: #e26511; 
-    color: #fff; 
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
+.corso-tennis-amatoriale {
+    background-color: #e26511;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.corso-nuoto-bambini { 
-    background-color: #ADD8E6; 
-    color: #333; 
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
+.corso-nuoto-bambini {
+    background-color: #add8e6;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.corso-nuoto-ragazzi { 
-    background-color: #4682B4; 
-    color: #fff; 
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
+.corso-nuoto-ragazzi {
+    background-color: #4682b4;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.corso-nuoto-amatoriale { 
-    background-color: #2a87d3; 
-    color: #fff; 
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
+.corso-nuoto-amatoriale {
+    background-color: #2a87d3;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.corso-basket-bambini { 
-    background-color: #FF7F50; 
-    color: #333; 
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
+.corso-basket-bambini {
+    background-color: #ff7f50;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.corso-basket-ragazzi { 
-    background-color: #FF4500; 
-    color: #fff; 
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
+.corso-basket-ragazzi {
+    background-color: #ff4500;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.corso-basket-amatoriale { 
-    background-color: red; 
-    color: #fff; 
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
+.corso-basket-amatoriale {
+    background-color: red;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.corso-paddle-bambini { 
-    background-color: #FFFF00; 
-    color: #333; 
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
+.corso-paddle-bambini {
+    background-color: #ffff00;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.corso-paddle-ragazzi { 
-    background-color: #FFD700; 
-    color: #fff; 
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
+.corso-paddle-ragazzi {
+    background-color: #ffd700;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.corso-paddle-amatoriale { 
-    background-color: #d3a50c; 
-    color: #fff; 
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
+.corso-paddle-amatoriale {
+    background-color: #d3a50c;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 /* Stile per la legenda */
 .legend {

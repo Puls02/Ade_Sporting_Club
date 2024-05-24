@@ -1,5 +1,5 @@
 <?php
-    // Array per memorizzare le parti dell'output
+    //Array to store parts of the output
     $online_users = [];
     $offline_users_messages = [];
     $offline_users = [];
@@ -13,10 +13,10 @@
         $result = (pg_num_rows($query2) > 0) ? $row2['msg'] : "Nessun messaggio disponibile";
         $msg = (strlen($result) > 28) ? substr($result, 0, 28) . '...' : $result;
 
-        // Controllo sull'immagine del profilo
+        //Control over your profile picture
         $foto_profilo_bytea = $row['foto_profilo'];
         if ($foto_profilo_bytea !== null) {
-            // Decodifica i dati bytea
+            //Decodes bytea data
             $foto_decodata = pg_unescape_bytea($foto_profilo_bytea);
             $foto_profilo = 'data:image/jpeg;base64,' . base64_encode($foto_decodata);
         } else {
@@ -38,7 +38,7 @@
                         <div class="'.$classe.'"><i class="fas fa-circle"></i></div>
                     </a>';
 
-        // Aggiungi l'output alla lista appropriata
+        //Add the output to the appropriate list
         if ($row['status'] === 't') {
             $online_users[] = $user_output;
         } else if ($result !== "Nessun messaggio disponibile") {
@@ -48,6 +48,6 @@
         }
     }
 
-    // In ordine nelle conversazione troveremo gli utenti online, gli utenti con cui abbiamo scambiato messaggi e infine gli altri utenti disponibili
+    //In order in the conversation we will find the online users, the users with whom we have exchanged messages and finally the other available users
     $output = implode('', array_merge($online_users, $offline_users_messages, $offline_users));
 ?>

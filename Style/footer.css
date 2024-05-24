@@ -3,27 +3,28 @@ footer {
     background-color: var(--nav-color);
     color: #000;
     position: relative;
-    padding: 20px; /* Aggiungi un po' di padding per uno spazio interno */
+    padding: 20px;
     display: flex;
     justify-content: space-between;
 }
 
 .map {
     flex: 1;
-    margin: 1% 2% 0 10% ;
+    margin: 1% 2% 0 10%;
 }
 
 .contacts {
     flex: 2;
     padding: 1%;
     text-align: center;
-    position: relative; /* Necessario per il posizionamento assoluto dell'icona */
+    position: relative; /*Required for absolute positioning of the icon*/
+    margin: 2%;
 }
 
 .formalita {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Allinea verticalmente gli elementi */
+    align-items: center;
     margin-top: 10px;
 }
 
@@ -37,88 +38,68 @@ footer {
 
 .ancora {
     position: absolute;
-    top: 10px; /* Distanza dal bordo superiore del footer */
-    right: 10px; /* Distanza dal bordo destro del footer */
-    background-color: #f0f0f0; /* Colore di sfondo per l'icona */
+    top: 10px;
+    right: 10px;
+    background-color: #f0f0f0;
     border-radius: 10px;
     border: 1px solid #efefee;
-    padding: 10px; /* Aggiungi padding per uno spazio interno */
-    text-align: center; /* Centra il contenuto all'interno del link */
+    padding: 10px;
+    text-align: center; /*Centers the content within the link*/
     cursor: pointer;
     z-index: 5;
 }
 
+a {
+    color: #000;
+    text-decoration: none; /*Remove the underline*/
+}
+
 .ancora a i {
-    font-size: 20px; /* Dimensione dell'icona */
+    font-size: 20px;
 }
 
 .footer hr {
     border: none;
     height: 1px;
-    background-color: #efefef; /* same as border color */
-    margin-top: 10px; /* Spazio sopra e sotto l'hr */
-}
-.divider
-{
-    display: none;
-    border: none;
-    height: 1px;
-    background-color: #efefef; /* same as border color */
-    margin-top: 10px; /* Spazio sopra e sotto l'hr */
+    background-color: #efefef;
+    margin-top: 20px;
 }
 /*------------------------------------------*/
 
 /*responsive css for footer*/
-@media (max-width: 1535px)
-{
-
+@media (max-width: 1535px) {
 }
-@media (max-width: 1279px)
-{
-    .map
-    {
-        margin-left: 5%
+@media (max-width: 1279px) {
+    .map {
+        margin-left: 5%;
     }
 }
-@media (max-width: 1023px)
-{
-    footer 
-    {
+@media (max-width: 1023px) {
+    footer {
         flex-direction: column;
-    } 
-    .map
-    {
+    }
+    .map {
         max-width: fit-content;
         margin-left: auto;
         margin-right: auto;
     }
-    .divider
-    {
-        display:block;
+    .divider {
+        display: block;
     }
 }
-@media (max-width: 929px)
-{
-     
+@media (max-width: 929px) {
 }
-@media (max-width: 767px)
-{
-  
+@media (max-width: 767px) {
 }
 
-@media (max-width: 640px)
-{
-    .map
-    {
+@media (max-width: 640px) {
+    .map {
         margin-left: 0;
     }
-
 }
 
-@media only screen and (max-width: 475px) 
-{
-    .ancora
-    {
+@media only screen and (max-width: 475px) {
+    .ancora {
         display: none;
     }
 }

@@ -1,4 +1,5 @@
 <?php 
+    //retrieves the messages that the two users exchanged and prints them to show their conversation
     session_start();
     if (isset($_SESSION['id'])) {
         include_once "config.php";

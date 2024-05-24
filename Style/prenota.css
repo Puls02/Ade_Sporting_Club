@@ -1,4 +1,4 @@
-/* parte della tabella */
+/* TABLE */
 .zona {
     display: flex;
     flex-wrap: wrap;
@@ -10,15 +10,54 @@
     margin: 2%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-/*nasconde le checkbox in prenota*/
-.hidden{
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #ddd;
+    table-layout: fixed;
+}
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    white-space: nowrap; /*Prevents text from wrapping*/
+    overflow: hidden; /*Hides text that does not fit within the width*/
+    text-overflow: ellipsis; /*Add ellipses */
+}
+th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+td {
+    background-color: #fff;
+    color: #333;
+    min-width: 60px;
+}
+.time-column {
+    width: 10%;
+}
+/*Defining fixed width for internal table cells*/
+.inner-table {
+    margin: 0;
+    border: none;
+    font-size: 16px;
+}
+.inner-table td {
+    border: none;
+}
+
+/* ACTIVITY BOOKING */
+/*hides the checkboxes in the book*/
+.hidden {
     display: none;
 }
 .numPersoneWrapper {
     display: none;
 }
 
-/* prenotazione attività */
 .toggle-list {
     list-style-type: none;
     padding: 0;
@@ -32,7 +71,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.toggle-item > input[type="radio"] {
+.toggle-item > input[type='radio'] {
     display: none; /* per nascondere la scelta dell'attività (bottone) */
 }
 
@@ -45,17 +84,17 @@
     background-color: #057d92;
     color: #fff;
 }
-.toggle-item input[type="radio"]:checked + label {
+.toggle-item input[type='radio']:checked + label {
     background-color: rgba(13, 130, 165, 0.6);
 }
 
 .content {
     padding: 2%;
-    display: none; /* nasconde il contenuto delle attività di default */ 
+    display: none; /* nasconde il contenuto delle attività di default */
     transition: display 0.5s ease;
 }
 
-/* Stile per la freccia e le sue evoluzioni */
+/*Style for the arrow and its evolutions*/
 .arrow {
     width: 10px;
     height: 10px;
@@ -63,51 +102,12 @@
     border-width: 0 2px 2px 0;
     transition: transform 0.3s ease;
 }
-.toggle-item input[type="radio"]:checked + label .arrow {
-      transform: rotate(-135deg);
+.toggle-item input[type='radio']:checked + label .arrow {
+    transform: rotate(-135deg);
 }
-.toggle-item input[type="radio"]:not(:checked) + label .arrow {
-    transform: rotate(-45deg); 
+.toggle-item input[type='radio']:not(:checked) + label .arrow {
+    transform: rotate(-45deg);
 }
-.toggle-item input[type="radio"]:checked ~ .content {
+.toggle-item input[type='radio']:checked ~ .content {
     display: block;
-}
-
-/* parte della tabella */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-    border: 1px solid #ddd;
-    table-layout: fixed;
-}
-th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-    border-radius: 10px;
-    white-space: nowrap; /* Impedisce che il testo vada a capo */
-    overflow: hidden; /* Nasconde il testo che non rientra nella larghezza */
-    text-overflow: ellipsis; /* Aggiunge i puntini di sospensione */
-}
-th {
-    background-color: #f2f2f2;
-    color: #333;
-}
-td {
-    background-color: #fff; /* Sfondo bianco per le celle */
-    color: #333;
-    min-width: 60px; /* Imposta la larghezza massima delle celle */
-}
-.time-column {
-    width: 10%;
-}
-/* Definizione della larghezza fissa per le celle della tabella interna */
-.inner-table {
-    margin: 0;
-    border: none;
-    font-size: 16px;
-}
-.inner-table td {
-    border: none; 
 }

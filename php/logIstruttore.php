@@ -9,7 +9,6 @@
     $password = $_POST['password'];
 
     $query = "SELECT * FROM istruttore WHERE codice = '$username'";
-    // printa il risultato di $query
     
     $result = pg_query($conn, $query);
     if ($result) {
@@ -19,13 +18,13 @@
     }
 
     if ($result && pg_num_rows($result) === 1) {
-        // Recupera l'istruttore
+        //Retrieve the instructor
         $user = pg_fetch_assoc($result);
         echo $password;
         echo $user['password'];
         if ($password === $user['password']) {
             echo "Password corretta.sei dentro";
-            // Imposta la sessione
+            //Set up the session
             $_SESSION['logged_in'] = true;
             $_SESSION['username'] = $username;
             $_SESSION['name'] = $user['nome'];
@@ -35,11 +34,11 @@
             $_SESSION['phone'] = $user['telefono'];
             $_SESSION['id'] = $user['id'];
             $id=$user['id'];
-            //setta lo stato dell'utente a true
+            //set the user's status to true
             $query = "UPDATE istruttore SET status = TRUE WHERE id='$id'";
             $result = pg_query($conn, $query);
 
-            // Reindirizza alla pagina successiva
+            //Redirect to the next page
             header("Location: ../login_registrazione/Istruttore.php");        
         } else {
             die("Password errata.");

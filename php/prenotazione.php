@@ -1,9 +1,9 @@
 <?php
     session_start();
-    //connessione
+    //Connection
     include_once "config.php";
 
-    //recupero i dati della prenotazione
+    //I retrieve the booking data
     $id=$_SESSION['id'];
     $data=$_POST['data'];
     $ora=$_POST['ora'];
@@ -13,7 +13,7 @@
     $id_campo=explode("_",$campo)[1];
     $sport=explode("_",$campo)[0];
 
-    //controllo se l'utente ha già una prenotazione in quello slot
+    // Check if the user already has a reservation in that slot
     $query="SELECT * FROM prenotazione WHERE data='$data' and ora_inizio='$ora_inizio' and ora_fine='$ora_fine' and utente='{$_SESSION['id']}'";
     $result= pg_query($conn, $query);
     $num_rows=pg_num_rows($result);
@@ -26,7 +26,7 @@
 
     if($sport!='palestra' && $sport!='piscina'){
         
-        //controllo se c'è già una prenotazione completa
+        //I check if there is already a full reservation
         $query="SELECT * FROM prenotazione WHERE sport='$sport' and data='$data' and owner='true' and ora_inizio='$ora_inizio' and ora_fine='$ora_fine' and completa='true' and campo='$id_campo'";
         $result= pg_query($conn, $query);
         $num_rows=pg_num_rows($result);
@@ -36,9 +36,9 @@
             header("Location: ../Prenota.php");
             exit();
         }
-        //controllo che tipo di prenotazione viene effettuata
+        //I check what type of booking is made
         $prenotazione=$_POST['prenotazione'];
-        //cerco le prenotazioni incomplete
+        //I'm looking for incomplete reservations
         $query="SELECT * FROM prenotazione WHERE sport='$sport' and data='$data' and owner='true' and ora_inizio='$ora_inizio' and ora_fine='$ora_fine' and completa='false' and campo='$id_campo'";
         $result= pg_query($conn, $query);
         $num_rows=pg_num_rows($result);
@@ -108,7 +108,7 @@
     }
     
     if (!$result) {
-        //annulla la transazine se si verifica qualche errore
+        //cancel the transaction if any error occurs
         pg_query($conn, "ROLLBACK");
         die("Errore nella registrazione Utente!" . pg_last_error($conn));
     }

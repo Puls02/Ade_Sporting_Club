@@ -5,8 +5,22 @@ if (!isset($_SESSION['id'])) {
   header("location: login_registrazione/login.php");
 }
 ?>
-<?php include_once "header.php"; ?>
-<head><link rel="stylesheet" href="Style/utente.css"><link rel="stylesheet" href="Style/utility.css"></head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- It is used to insert an icon in the title. We generated the icon from the site https://www.favicon-generator.org/ -->
+    <link rel="icon" type="image/png" sizes="32x32" href="immagini/logo/favicon2.png">
+    <title>Ade Sporting Club</title>
+
+    <!-- Link to style folder -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <link rel="StyleSheet" href="Style/utility.css">
+    <link rel="StyleSheet" href="Style/utente.css">
+
+</head>
 <body>
   <div class="wrapper">
     <section class="chat-area">
@@ -17,10 +31,8 @@ if (!isset($_SESSION['id'])) {
           $user_id = pg_escape_string($conn, $_GET['user_id']);
 
           if ($user_id < 30) {
-            // Execute the first query if id is less than or equal to 30
             $query = "SELECT * FROM Istruttore WHERE id = '{$user_id}'";
           } else {
-              // Execute the second query if id is greater than 30
             $query = "SELECT * FROM Utente WHERE id = '{$user_id}'";
           }
 
@@ -30,19 +42,12 @@ if (!isset($_SESSION['id'])) {
             $row = pg_fetch_assoc($sql);
             $foto_profilo_bytea = $row['foto_profilo'];
 
-            // Se c'è un'immagine di profilo, la decodifichiamo e la mostriamo
+            //If there is a profile picture, we decode it and display it, otherwise we show a default photo
             if ($foto_profilo_bytea !== null) {
-                // Decodifica i dati bytea
+                //Decodes bytea data and print the image
                 $foto_decodata = pg_unescape_bytea($foto_profilo_bytea);
-                
-                // Salva i dati decodificati in un file temporaneo
-                $file_temporaneo = tempnam(sys_get_temp_dir(), 'foto_profilo_');
-                file_put_contents($file_temporaneo, $foto_decodata);
-                
-                // Stampa l'immagine 
                 echo "<img src='data:image/jpeg;base64," . base64_encode($foto_decodata) . "' alt='Foto Profilo' width='auto' height='200'><br>";
             } else {
-                // Se non c'è un'immagine di profilo, mostra un messaggio
                 echo '<img src="immagini/photo-camera.png" alt="Immagine di profilo predefinita" width="auto" height="200">';
             }
         } 
