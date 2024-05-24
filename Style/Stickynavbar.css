@@ -5,9 +5,9 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /*larghezza variabile della navbar in base alla finestra del browser*/
+   /*variable navbar width based on browser window*/
     padding: 0 20px;
-    /*navbar fissa*/
+    /*fixed navbar*/
     z-index: 10;
     position: fixed;
 }
@@ -78,7 +78,7 @@ ul.topBotomBordersOut a:hover:after {
 /*-------------------------------------------------------*/
 
 /*--------------sidebar------------------------------*/
-/*contenitore per hamburger menu e login*/
+/*hamburger container menu and login*/
 .linksito {
     display: flex;
     align-items: center;
@@ -144,7 +144,7 @@ ul.topBotomBordersOut a:hover:after {
 }
 /*-----------------------------------------------*/
 
-/*----------------pulsante login------------------*/
+/*----------------login button------------------*/
 .login_btn {
     display: flex;
     align-items: center;

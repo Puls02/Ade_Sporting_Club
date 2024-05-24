@@ -10,7 +10,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* parte delle attività */
+/* part of the activities */
 .activity {
     background-color: #fff;
     border-radius: 10px;
@@ -47,7 +47,7 @@
     background-color: #555;
 }
 
-/* parte della tabella */
+/* part of the table */
 table {
     width: 80%;
     border-collapse: collapse;
@@ -61,9 +61,9 @@ td {
     padding: 10px;
     text-align: center;
     border-radius: 10px;
-    white-space: nowrap; /* Impedisce che il testo vada a capo */
-    overflow: hidden; /* Nasconde il testo che non rientra nella larghezza */
-    text-overflow: ellipsis; /* Aggiunge i puntini di sospensione */
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden; /* Hides text that does not fit within the width */
+    text-overflow: ellipsis; /* Adds ellipses */
 }
 th {
     background-color: #f2f2f2;
@@ -71,13 +71,13 @@ th {
     min-width: 50px;
 }
 td {
-    background-color: #fff; /* Sfondo bianco per le celle */
+    background-color: #fff; /* White background for cells */
     color: #333;
 }
 .time-column {
     width: 10%;
 }
-/* Definizione della larghezza fissa per le celle della tabella interna */
+/* Defining fixed width for internal table cells */
 .inner-table {
     margin: 0;
     border: none;
@@ -86,13 +86,13 @@ td {
 .inner-table td {
     border: none;
 }
-/* Colori di sfondo per i nomi dei corsi */
+/* Background colors for course names */
 .corso-calcio-bambini {
     background-color: #90ee90;
     color: #333;
-    white-space: nowrap; /* Impedisce che il testo vada a capo */
-    overflow: hidden; /* Nasconde il testo che non rientra nella larghezza */
-    text-overflow: ellipsis; /* Aggiunge i puntini di sospensione */
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden; /* Hides text that does not fit within the width */
+    text-overflow: ellipsis; /* Adds ellipses */
 }
 .corso-calcio-ragazzi {
     background-color: #008000;
@@ -192,14 +192,14 @@ td {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-/* Stile per la legenda */
+/* Style for the legend */
 .legend {
     background-color: #fff;
     border: 1px solid #ddd;
     padding: 1%;
     width: 12%;
     border-radius: 10px;
-    float: right; /* Posiziona la legenda a destra */
+    float: right; /* Place the legend on the right */
 }
 .legend-item {
     margin-bottom: 10px;
@@ -216,9 +216,9 @@ td {
 /* Media query */
 @media (max-width: 950px) {
     .legend {
-        width: 100%; /* Occupa l'intera larghezza dello schermo */
-        float: none; /* Rimuove il float per far sì che la legenda vada sotto la tabella */
-        margin-top: 20px; /* Aggiunge un margine superiore per separare la legenda dalla tabella */
+        width: 100%; /* It takes up the entire width of the screen */
+        float: none; /* Removes the float to make the legend go below the table */
+        margin-top: 20px; /* Adds a top margin to separate the legend from the table */
     }
     table {
         width: 100%;

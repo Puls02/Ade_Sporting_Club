@@ -1,18 +1,18 @@
-// se ci arrivi con un ancora il form si apre di default
+// if you get there with an anchor the form opens by default
 document.addEventListener("DOMContentLoaded", function() {
-  // Controlla se c'è un hash nell'URL
+  // Check if there is a hash in the URL
   const hash = window.location.hash;
 
   if (hash) {
-      // Rimuovi il simbolo "#" dall'hash
+      //Remove the "#" symbol from the hash
       const targetId = hash.substring(1);
 
-      // Trova l'input radio corrispondente e selezionalo
+      // Find the corresponding radio input and select it
       const targetInput = document.getElementById(targetId);
       if (targetInput) {
           targetInput.checked = true;
 
-          // Trova il contenuto associato e mostralo
+          //Find the associated content and display it
           const targetContent = targetInput.querySelector(".content");
           if (targetContent) {
               targetContent.style.display = "block";
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 
-// Chiudi il form quando si clicca sull'attività
+//Close the form when clicking on the task
 document.querySelectorAll('.toggle-item input[type="radio"]').forEach(function(radio) {
     radio.addEventListener('click', function() {
       var content = this.parentNode.querySelector('.content');
@@ -37,12 +37,12 @@ document.querySelectorAll('.toggle-item input[type="radio"]').forEach(function(r
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Funzione per mostrare o nascondere il numPersoneWrapper
+  // Function to show or hide the numPeopleWrapper
   function toggleNumPersoneWrapper(wrapper, show) {
     wrapper.style.display = show ? 'block' : 'none';
   }
 
-  // Recupera tutti i form
+  //Recover all forms
   const forms = document.querySelectorAll('form[name="formPrenotazione"]');
 
   forms.forEach(form => {
@@ -50,10 +50,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const codaGiocoRadio = form.querySelector('input[value="codaGioco"]');
     const interoCampoRadio = form.querySelector('input[value="interoCampo"]');
 
-    // Inizializza la visibilità
+    //Initialize visibility
     toggleNumPersoneWrapper(numPersoneWrapper, false);
 
-    // Aggiungi event listener per il click sui radio buttons
+    //Add event listener for clicking on radio buttons
     codaGiocoRadio.addEventListener('click', function () {
       toggleNumPersoneWrapper(numPersoneWrapper, true);
     });
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
     interoCampoRadio.addEventListener('click', function () {
       toggleNumPersoneWrapper(numPersoneWrapper, false);
     });
-    // Nascondi il campo Numero di persone quando viene selezionata la prenotazione dell'intero campo
+    //Hide the Number of People field when booking the entire field is selected
     document.querySelectorAll('input[name="prenotazione"]').forEach(function(radio) {
       radio.addEventListener('change', function() {
         if (this.value === 'interoCampo') {

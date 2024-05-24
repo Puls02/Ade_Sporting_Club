@@ -130,7 +130,7 @@
                     sidebar.style.display = 'none';
                 }
 
-                // funzione per mostrare il menu a tendina
+                // function to show the drop-down menu
 const show_menu = document.querySelector('.login_btn');
   nav = document.querySelector('.person');
 
@@ -156,16 +156,16 @@ const show_menu = document.querySelector('.login_btn');
                             $row = pg_fetch_assoc($result);
                             $foto_profilo_bytea = $row['foto_profilo'];
 
-                            // Se c'è un'immagine di profilo, la decodifichiamo e la mostriamo
+                            // If there is a profile picture, we decode it and display it
                             if ($foto_profilo_bytea !== null) {
-                                // Decodifica i dati bytea
+                                // Decodes bytea data
                                 $foto_decodata = pg_unescape_bytea($foto_profilo_bytea);
                                 
-                                // Stampa l'immagine 
+                                //Print the image 
                                 echo "<img src='data:image/jpeg;base64," . base64_encode($foto_decodata) . "' alt='Foto Profilo' width='auto' height='200'><br>";
                                 echo "<label>Cambia l'immagine</label>";
                             } else {
-                                // Se non c'è un'immagine di profilo, mostra un messaggio
+                                //If there's no profile picture, show a message
                                 echo '<img src="../immagini/photo-camera.png" alt="Immagine di profilo predefinita" width="auto" height="200">';
                                 echo "<label>Inserisci un'immagine</label>";
                             }
@@ -177,7 +177,7 @@ const show_menu = document.querySelector('.login_btn');
                         <button type="submit" name="submit">Carica</button>
                     </form>
                 </div>
-                <!-- dettagli utente -->
+                <!-- user details -->
                 
                 <div class="section">
                     <h2>Info personali</h2>
@@ -211,18 +211,18 @@ const show_menu = document.querySelector('.login_btn');
         </div>
         <div class="eventi">
             <div id="event-container" class="grid-view">
-                <!-- Contenuto degli eventi verrà caricato qui -->
+                <!-- Event content will be uploaded here -->
                 <?php
-                // Definisci la query SQL
+                // Define the SQL query
                 $query = "SELECT * FROM evento WHERE giorno >= CURRENT_DATE";
 
-                // Esegui la query
+                // Run the query
                 $result = pg_query($conn, $query) or die('Query failed: ' . pg_last_error());
 
                 // Fetch all the result rows as an associative array
                 $events = pg_fetch_all($result);
 
-                // Mostra gli eventi
+                // Show events
                 if ($events) {
                     foreach ($events as $event) {
                         echo '<div class="event">';
@@ -277,7 +277,7 @@ const show_menu = document.querySelector('.login_btn');
             <div class="schedule-date">
 
             </div>
-            <!-- Qui verrà aggiunta la data e le attività -->
+            <!-- The date and activities will be added here -->
             <div class="schedule-activity">
 
             </div>
@@ -293,13 +293,13 @@ const show_menu = document.querySelector('.login_btn');
                     <div class="content">
                         <?php
                             if ($foto_profilo_bytea !== null) {
-                                // Decodifica i dati bytea
+                                // Decodes bytea data
                                 $foto_decodata = pg_unescape_bytea($foto_profilo_bytea);
                                 
-                                // Stampa l'immagine 
+                                // Print the image
                                 echo "<img src='data:image/jpeg;base64," . base64_encode($foto_decodata) . "' alt='Foto Profilo' width='auto' height='200'><br>";
                             } else {
-                                // Se non c'è un'immagine di profilo, mostra un messaggio
+                                // If there's no profile picture, show a message
                                 echo '<img class="foto-utente" src="../immagini/photo-camera.png" alt="Immagine di profilo predefinita" />';
                             }
                         ?>                        

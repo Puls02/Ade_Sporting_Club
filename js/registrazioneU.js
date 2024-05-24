@@ -1,4 +1,4 @@
-// corsi o singole prenotazioni: se clicchi su prenotazioni si disabiliteranno i campi per i corsi, se clicchi su corsi la scelta per la categoria diventerà obbligatoria
+// courses or individual reservations: if you click on reservations the fields for the courses will be disabled, if you click on courses the choice for the category will become mandatory
 function toggleFields() {
     const corsoCampo = document.querySelector('input[name="corso_campo"]:checked').value;
     const formFields = document.querySelectorAll('#abbonamento, #listastatus, input[name="corso[]"], #identity, #certmed');
@@ -33,7 +33,7 @@ function toggleFields() {
     });
 }
 
-// se scegli i corsi
+//if you choose the courses
 function checkType(){    
     v=document.getElementById("abbonamento").value;
     if(v == ""){
@@ -133,7 +133,7 @@ function resetCheckboxes(){
 
 function checkForm(event) {
     if (document.getElementsByName('sesso')[0].checked == false && document.getElementsByName('sesso')[1].checked == false) {
-        event.preventDefault(); // blocca l'invio del modulo
+        event.preventDefault(); //blocks the form from being sent
         alert("Sesso mancante");
         return false;
     }
@@ -157,7 +157,7 @@ function checkForm(event) {
         }
     }
 
-    // Se dovete aggiungere del codice aggiungetelo sopra questa riga
+    // If you need to add code, add it above this line
     let checkboxes = document.querySelectorAll('input[type="checkbox"]');
     checkboxes[5].disabled = false;
 }

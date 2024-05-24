@@ -18,7 +18,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- serve per inserire un'icona nel title. Ho generato l'icona dal sito https://www.favicon-generator.org/ -->
+    <!-- It is used to insert an icon in the title. I generated the icon from the site https://www.favicon-generator.org/ -->
     <link rel="icon" type="image/png" sizes="32x32" href="immagini/logo/favicon2.png">
     <title>Ade Sporting Club</title>
 
@@ -100,7 +100,7 @@
                 <?php else: ?>
                     <div class="person flex">
                         <ul class="login_menu">
-                            <!-- rimanda al profilo personale -->
+                            <!-- refers to your personal profile -->
                             <?php if($id < 30): ?>
                                 <a href="login_registrazione/Istruttore.php">
                                     <button class="Sign profile">Profilo</button>
@@ -194,14 +194,14 @@
         </nav>
     </header>
     
-    <!-- Div per l'overlay -->
+    <!-- Div for the overlay -->
     <div id="overlay" class="overlay"></div>
-    <!-- Div nascosto del popup -->
+    <!-- Hidden popup div -->
     <div id="popup" class="popup">
         <iframe src="login_registrazione/login.php" width="580" height="500" frameborder="0" style="border:0; overflow:hidden;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
-    <!-- vediamo se funziona, per prevenire comportamento del link -->
+    <!-- Let's see if it works, to prevent link behavior -->
     <script>
         function togglePopup() {
             var popupContainer = document.getElementById('popup');

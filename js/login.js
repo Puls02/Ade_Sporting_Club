@@ -1,60 +1,60 @@
-// Attivo la funzione
+// I activate the function
 window.onload = function () {
     collegaBottoneAPopup();
 };
 
-// funzione per la visbilità del campo password
+// function for visibility of the password field
 function togglePasswordVisibility() {
     var passwordField = document.getElementById('password');
     var toggleIcon = document.querySelector('.password-toggle');
 
     if (passwordField.type === 'password') {
         passwordField.type = 'text';
-        toggleIcon.src = '../immagini/login/hidden.png'; // Cambia il percorso dell'immagine per l'occhio chiuso
+        toggleIcon.src = '../immagini/login/hidden.png'; // Change the image path for the closed eye
     } else {
         passwordField.type = 'password';
-        toggleIcon.src = '../immagini/login/eye.png'; // Cambia il percorso dell'immagine per l'occhio aperto
+        toggleIcon.src = '../immagini/login/eye.png'; // Change the image path for the open eye
     }
 }
-// funzione per la visbilità del campo password
+// function for visibility of the password field
 function togglePasswordVisibilityIst() {
     var passwordField = document.getElementById('passwordIst');
     var toggleIcon = document.querySelector('.password-toggle');
 
     if (passwordField.type === 'password') {
         passwordField.type = 'text';
-        toggleIcon.src = '../immagini/login/hidden.png'; // Cambia il percorso dell'immagine per l'occhio chiuso
+        toggleIcon.src = '../immagini/login/hidden.png'; // Change the image path for the closed eye
     } else {
         passwordField.type = 'password';
-        toggleIcon.src = '../immagini/login/eye.png'; // Cambia il percorso dell'immagine per l'occhio aperto
+        toggleIcon.src = '../immagini/login/eye.png'; // Change the image path for the open eye
     }
 }
 
-// Funzione per collegare il bottone al popup
+// Function to connect the button to the popup
 function collegaBottoneAPopup() {
-    // Seleziona il bottone desiderato
+    // Select the desired button
     var bottone = document.getElementById('mostraPopupButton');
     var popup = document.getElementById('popup');
     var overlay = document.getElementById('overlay');
-    var corpo = document.querySelector('main'); // Seleziona il main per sfocare il suo contenuto
+    var corpo = document.querySelector('main'); // Select the main to blur its contents
 
-    // Aggiungi un gestore per il clic sul bottone
+    // Add a button click handler
     bottone.addEventListener('click', function () {
-        // Mostra il popup e l'overlay al clic sul bottone
+        // Show popup and overlay on button click
         popup.style.display = 'block';
         overlay.style.display = 'block';
-        // Aggiungi la classe blur al main
+        // Add the blur class to main
         corpo.classList.add('blur-background');
     });
 
-    // Aggiungi un gestore per il messaggio 'closePopup'
+    // Add a handler for the 'closePopup' message
     window.addEventListener('message', function (event) {
-        // Controlla se il messaggio ricevuto è 'closePopup'
+        // Check if the message received is 'closePopup'
         if (event.data === 'closePopup') {
-            // Chiudi il popup e l'overlay
+            // Close the popup and overlay
             popup.style.display = 'none';
             overlay.style.display = 'none';
-            // Rimuovi la classe blur dal main
+            //Remove the blur class from main
             corpo.classList.remove('blur-background');
         }
     });

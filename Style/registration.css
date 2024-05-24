@@ -30,9 +30,9 @@ h3 {
 
 form {
     border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Bordo semi-trasparente */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Semi-transparent edge */
     background-color: rgba(68, 168, 190, 0.7);
-    backdrop-filter: blur(10px); /* Effetto sfocatura */
+    backdrop-filter: blur(10px); /* Blur effect */
     width: 60%;
     height: auto;
     margin-top: 5%;

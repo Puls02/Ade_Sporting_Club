@@ -15,7 +15,7 @@
     session_unset(); //Clears all session variables
     session_destroy(); //Destroys the session
 
-    header("Location: ../index.php"); //Redirects to the login page
-    exit;
+    header("Location: ../index.php"); //Redirects to the home page
+    exit();
     
 ?>

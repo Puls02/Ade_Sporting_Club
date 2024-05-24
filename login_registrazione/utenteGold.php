@@ -59,7 +59,7 @@
 
                 <div class="person flex">
                     <ul class="login_menu">
-                        <!-- Condizione PHP per mostrare il menu di login -->
+                        <!-- PHP condition to show login menu -->
                         <?php if (!$logged) : ?>
                             <li>
                                 <p class="bold"><b>Registrati o Accedi</b></p>
@@ -130,7 +130,7 @@
                     sidebar.style.display = 'none';
                 }
 
-                // funzione per mostrare il menu a tendina
+                // function to show the drop-down menu
 const show_menu = document.querySelector('.login_btn');
   nav = document.querySelector('.person');
 
@@ -146,7 +146,7 @@ const show_menu = document.querySelector('.login_btn');
     <div class="grid_gold">
 <!-- USER PROFILE -->
         <div class="user_profile">
-                <!-- caricamento foto profilo -->
+                <!-- uploading profile photo -->
                 <div class="section">
                     <?php
                         $result = pg_query($conn, "SELECT * FROM Utente WHERE id = '{$_SESSION['id']}'");
@@ -156,16 +156,16 @@ const show_menu = document.querySelector('.login_btn');
                             $row = pg_fetch_assoc($result);
                             $foto_profilo_bytea = $row['foto_profilo'];
 
-                            // Se c'è un'immagine di profilo, la decodifichiamo e la mostriamo
+                            // If there is a profile picture, we decode it and display it
                             if ($foto_profilo_bytea !== null) {
-                                // Decodifica i dati bytea
+                                // Decodes bytea data
                                 $foto_decodata = pg_unescape_bytea($foto_profilo_bytea);
                                 
-                                // Stampa l'immagine 
+                                // Print the image
                                 echo "<img src='data:image/jpeg;base64," . base64_encode($foto_decodata) . "' alt='Foto Profilo' width='auto' height='200'><br>";
                                 echo "<label>Cambia l'immagine</label>";
                             } else {
-                                // Se non c'è un'immagine di profilo, mostra un messaggio
+                                //If there's no profile picture, show a message
                                 echo '<img src="../immagini/photo-camera.png" alt="Immagine di profilo predefinita" width="auto" height="200">';
                                 echo "<label>Inserisci un'immagine</label>";
                             }
@@ -176,9 +176,9 @@ const show_menu = document.querySelector('.login_btn');
                             $data_sottoscrizione= $data_sottoscrizione_intera[0];
                             $tipo_abbonamento=$row2['tipo'];
 
-                            // Assume che $row2['data_sottoscrizione'] contenga la data di inizio dell'abbonamento nel formato "YYYY-MM-DD"
+                            //Assumes $row2['subscription_date'] contains the subscription start date in the format "YYYY-MM-DD"
                             $data_inizio = new DateTime($row2['data_sottoscrizione']);
-                            // Determina la durata dell'abbonamento in base al tipo
+                            // Determine the length of your subscription based on its type
                             switch ($tipo_abbonamento) {
                                 case 'AM':
                                     $durata_abbonamento = new DateInterval('P1M'); // Periodo di 1 mese
@@ -193,13 +193,13 @@ const show_menu = document.querySelector('.login_btn');
                                     $durata_abbonamento = new DateInterval('P1Y'); // Periodo di 1 anno
                                     break;
                                 default:
-                                    // Gestione dell'errore o comportamento predefinito
+                                    // Error handling or default behavior
                                     break;
                             }
 
-                            // Calcola la data di fine dell'abbonamento aggiungendo la durata al data di inizio
+                            //Calculate the end date of your subscription by adding the duration to the start date
                             $data_fine = $data_inizio->add($durata_abbonamento);
-                            // per visualizzarla correttamente va riconvertita nel giusto formato
+                            // to view it correctly it must be reconverted into the right format
                             $data_fine_abbonamento = $data_fine->format('Y-m-d');
                         } 
                     ?>
@@ -208,7 +208,7 @@ const show_menu = document.querySelector('.login_btn');
                         <button type="submit" name="submit">Carica</button>
                     </form>
                 </div>
-                <!-- dettagli utente -->
+                <!-- user details-->
                 
                 <div class="section">
                     <h2>Informazioni personali</h2>
@@ -242,18 +242,18 @@ const show_menu = document.querySelector('.login_btn');
         </div>
         <div class="eventi">
             <div id="event-container" class="grid-view">
-                <!-- Contenuto degli eventi verrà caricato qui -->
+                <!-- Event content will be uploaded here -->
                 <?php
-                // Definisci la query SQL
+                //Define the SQL query
                 $query = "SELECT * FROM evento WHERE giorno >= CURRENT_DATE";
 
-                // Esegui la query
+                // Run the query
                 $result = pg_query($conn, $query) or die('Query failed: ' . pg_last_error());
 
-                // Fetch all the result rows as an associative array
+                //Fetch all the result rows as an associative array
                 $events = pg_fetch_all($result);
 
-                // Mostra gli eventi
+                // Show events
                 if ($events) {
                     foreach ($events as $event) {
                         echo '<div class="event">';
@@ -286,7 +286,7 @@ const show_menu = document.querySelector('.login_btn');
             <div class="schedule-date">
 
             </div>
-            <!-- Qui verrà aggiunta la data e le attività -->
+            <!-- The date and activities will be added here -->
             <div class="schedule-activity">
 
             </div>
@@ -302,13 +302,13 @@ const show_menu = document.querySelector('.login_btn');
                     <div class="content">
                         <?php
                             if ($foto_profilo_bytea !== null) {
-                                // Decodifica i dati bytea
+                                // Decodes bytea data
                                 $foto_decodata = pg_unescape_bytea($foto_profilo_bytea);
                                 
-                                // Stampa l'immagine 
+                                // Print the image
                                 echo "<img src='data:image/jpeg;base64," . base64_encode($foto_decodata) . "' alt='Foto Profilo' width='auto' height='200'><br>";
                             } else {
-                                // Se non c'è un'immagine di profilo, mostra un messaggio
+                                // If there's no profile picture, show a message
                                 echo '<img class="foto-utente" src="../immagini/photo-camera.png" alt="Immagine di profilo predefinita" />';
                             }
                         ?>                        
@@ -333,11 +333,11 @@ const show_menu = document.querySelector('.login_btn');
     </div>
 
     <script>
-    /* BARRA DI PROGRESSO */
+    /* PROGRESS BAR */
     var startDate = new Date("<?php echo $data_sottoscrizione; ?>");
         var endDate = new Date("<?php echo $data_fine_abbonamento; ?>");
 
-        // Stampa le variabili nella console del browser per il debug
+        // Print variables to the browser console for debugging
         console.log('Data sottoscrizione:', startDate);
         console.log('Data fine abbonamento:', endDate);
 

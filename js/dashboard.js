@@ -1,8 +1,8 @@
 function getTimeString(timeString) {
     const [hours, minutes] = timeString.split(':');
-    return hours + ':' + minutes; // Ritorna l'ora nel formato HH:MM
+    return hours + ':' + minutes; // Returns the time in HH:MM format
 }
-// Definizione della classe per le attività
+// Definition of the class for the activities
 class Activity {
     constructor(name) {
         this.name = name;
@@ -25,21 +25,21 @@ function generateCalendar(year, month) {
 
     let html = '';
 
-    // Mostra il nome del mese e l'anno
+    // Shows the name of the month and the year
     const monthNames = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
     currentMonthDisplay.textContent = monthNames[month] + ' ' + year;
 
-    // Aggiungi intestazione dei giorni
+    // Add day header
     const days = ['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'];
     html += '<div class="giorno giorno-header">' + days.join('</div><div class="giorno giorno-header">') + '</div>';
 
-    // Aggiungi giorni del mese precedente
+    // Add days from the previous month
 for (let i = startDay - 1; i >= 0; i--) {
     const prevMonthDay = new Date(year, month, -i);
     html += '<div class="giorno other-month" data-day=""></div>';
 }
 
-// Aggiungi giorni del mese corrente
+// Add days of the current month
 for (let giorno = 1; giorno <= endDate.getDate(); giorno++) {
     if (giorno === new Date().getDate() && year === new Date().getFullYear() && month === new Date().getMonth()) {
         html += '<div class="giorno current-month today" data-day="' + giorno + '">' + giorno + '</div>';
@@ -48,7 +48,7 @@ for (let giorno = 1; giorno <= endDate.getDate(); giorno++) {
     }
 }
 
-// Associazioni tra nomi di attività e colori di sfondo
+// Associations between activity names and background colors
 const activityBackgroundColors = {
     'calcio': '#a7c957',
     'tennis': '#fec89a',
@@ -56,10 +56,10 @@ const activityBackgroundColors = {
     'piscina':'#90e0ef',
     'paddle':'#fff3b0',
     'palestra':'#dee2ff',
-    // Aggiungi altri nomi di attività e colori di sfondo desiderati
+    // Add any other business names and background colors you want
 };
 
-// Funzione per ottenere il colore di sfondo in base al nome dell'attività
+// Function to get background color based on task name
 function getActivityBackgroundColor(activityName) {
     return activityBackgroundColors[activityName.toLowerCase()] || 'gray';
 }
@@ -67,20 +67,20 @@ function getActivityBackgroundColor(activityName) {
 
     calendar.innerHTML = html;
 
-// Aggiungi evento clic per visualizzare la data selezionata nella sezione weekly-schedule
+// Add click event to display the selected date in the weekly-schedule section
 const dayElements = document.querySelectorAll('.current-month');
 dayElements.forEach(dayElement => {
     dayElement.addEventListener('click', function() {
         const selectedDay = this.getAttribute('data-day');
         const currentDate = new Date(Date.UTC(year, month, selectedDay));
-        const formattedDate = currentDate.toISOString().slice(0,10); // Formatta la data nel formato YYYY-MM-DD
+        const formattedDate = currentDate.toISOString().slice(0,10); // Format the date in YYYY-MM-DD format
         scheduleDateDisplay.textContent = formatDate(currentDate);
 
-        // Ottieni la data corrente senza tempo per confronto
+        // Get the current date without time for comparison
         const today = new Date();
         today.setHours(0, 0, 0, 0);
 
-        // Effettua una richiesta AJAX per ottenere i dati delle attività per la data selezionata dal server PHP
+        // Make an AJAX request to get activity data for the selected date from the PHP server
         const xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -104,10 +104,10 @@ dayElements.forEach(dayElement => {
                             const id_reservation =activity.id_prenotazione;
 
                             const activityDate = new Date(activity.data);
-                            // printa giorno attivita:il valore di activityDate
+                            // print activity day: the value of activityDate
                             console.log("giorno attivita",activityDate);
                             
-                            // printa il valore di currentDate
+                            // print the value of currentDate
                             console.log("giorno corrente",today);
                             let deleteButtonHTML = '';
                             if (activityDate >= today) {
@@ -167,7 +167,7 @@ dayElements.forEach(dayElement => {
 });
 
 
-// Funzione per formattare la data nel formato richiesto (es. "MER 15")
+// Function to format the date in the required format (e.g. "WED 15")
 function formatDate(date) {
     const days = ['DOM', 'LUN', 'MAR', 'MER', 'GIO', 'VEN', 'SAB'];
     const dayName = days[date.getDay()];
@@ -176,26 +176,26 @@ function formatDate(date) {
 }
 
 }
-// per eliminare la prenotazione
+// to delete the reservation
 function deleteReservation(id_reservation,user){
-    // Mostra la finestra modale
+    // Show the modal window
     var modal = document.getElementById("myModal");
     modal.style.display = "block";
 
-    // Chiudi la finestra modale quando l'utente clicca sulla 'x'
+    // Close modal window when user clicks 'x'
     var span = document.getElementsByClassName("close")[0];
     span.onclick = function() {
         var modal = document.getElementById("myModal");
         modal.style.display = "none";
     }
-    //bottone no
+    //button no
     var noButton = document.getElementById("noButton");
     noButton.onclick = function(){
         var modal = document.getElementById("myModal");
         modal.style.display = "none";
     };
 
-    //bottone si
+    //yes button
     var siButton = document.getElementById("actionButton");
     siButton.onclick = function(){
         var xhr = new XMLHttpRequest();
@@ -217,7 +217,7 @@ function deleteReservation(id_reservation,user){
         xhr.send(params);
     };
 
-    // Chiudi la finestra modale quando l'utente clicca fuori dalla finestra
+    // Close the modal window when the user clicks out of the window
     window.onclick = function(event) {
         var modal = document.getElementById("myModal");
         if (event.target == modal) {
@@ -227,22 +227,22 @@ function deleteReservation(id_reservation,user){
 
 }
 
-// Genera il calendario per il mese corrente
+// Generate the calendar for the current month
 const currentDate = new Date();
 generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
 
-// Simula il click sul giorno corrente per visualizzare le attività di default
+// Simulate clicking on the current day to view the default activities
 const currentDayElement = document.querySelector('.today');
 if (currentDayElement) {
     currentDayElement.click();
 }
 
-/* PER CAMBIARE VISUALIZZAZIONE */
+/* TO CHANGE VIEW */
 function toggleViewEventi() {
     var eventContainer = document.getElementById('event-container');
     var toggleButton = document.getElementById('toggle-view-btn-eventi');
 
-    // Toggle tra griglia ed elenco
+    // Toggle between grid and list
     if (eventContainer.classList.contains('grid-view')) {
         eventContainer.classList.remove('grid-view');
         eventContainer.classList.add('list-view');

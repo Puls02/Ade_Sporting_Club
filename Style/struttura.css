@@ -48,7 +48,7 @@ hr {
 }
 
 .Services {
-    position: relative; /* Aggiunto per il posizionamento assoluto del pseudo-elemento */
+    position: relative; /* Added for absolute positioning of the pseudo-element*/
     margin-left: 2%;
     height: fit-content;
     background-color: rgba(177, 173, 173, 0.1);
@@ -63,23 +63,23 @@ hr {
     left: 0;
     top: 0;
     bottom: 0;
-    width: 2px; /* Larghezza della linea */
-    background: black; /* Colore della linea */
-    z-index: -1; /* Assicura che la linea sia dietro i contenitori dei servizi */
+    width: 2px; /* Line width */
+    background: black; 
+    z-index: -1;/*Make sure the line is behind the service containers */
 }
 
 .service {
     padding: 1%;
     position: relative;
     transition: height 0.3s;
-    height: 2em; /* Altezza iniziale pari all'altezza del titolo */
+    height: 2em; /* Initial height equal to title height */
 }
 .service h1 {
     color: #333;
     margin: 0;
     border-bottom: 2px solid rgb(0, 0, 0);
     display: inline-block;
-    padding-bottom: 3px; /* Aggiunge un po' di spazio tra il testo e la linea */
+    padding-bottom: 3px; /*Adds some space between the text and the line */
     cursor: pointer;
 }
 .service p {
@@ -98,15 +98,15 @@ hr {
     display: none;
     padding: 2%;
 }
-/* Stile per l'immagine */
+/* Style for the image */
 #descrizione-fissa img {
-    float: left; /* Posiziona l'immagine a sinistra */
-    margin-right: 10px; /* Aggiunge spazio a destra dell'immagine */
-    width: 200px; /* Larghezza dell'immagine */
-    height: auto; /* Altezza automatica per mantenere le proporzioni */
+    float: left; /* Place the image on the left*/
+    margin-right: 10px; /* Adds space to the right of the image*/
+    width: 200px; /* Image width */
+    height: auto; /* Automatic height to maintain aspect ratio */
 }
 
-/* Stile per la galleria */
+/* Style for the gallery */
 .gallery {
     display: flex;
     height: 55vh;
@@ -116,7 +116,7 @@ hr {
 
 .gallery img {
     width: 0px;
-    flex-grow: 1; /* occupa tutto lo spazio che puoi */
+    flex-grow: 1; /* take up as much space as you can */
     object-fit: cover;
     filter: brightness(50%);
     transition: 0.7s ease;

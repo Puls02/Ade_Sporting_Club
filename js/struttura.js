@@ -1,28 +1,28 @@
-// Funzione per mostrare o nascondere la descrizione del servizio
+//Function to show or hide the service description
 function toggleDescrizioneServizio(titolo, descrizione, immagine) {
   var descrizioneFissa = document.getElementById("descrizione-fissa");
   var titoloServizio = document.getElementById("titolo-servizio");
   var immagineServizio = document.getElementById("immagine-servizio");
   var descrizioneServizio = document.getElementById("descrizione-servizio");
 
-  // Se il titolo è lo stesso del servizio aperto, chiudi il div fisso
+  //If the title is the same as the open service, close the fixed div
   if (descrizioneFissa.dataset.servizio === titolo) {
       descrizioneFissa.style.display = "none";
       descrizioneFissa.dataset.servizio = "";
   } else {
-      // Altrimenti, mostra il servizio e aggiorna il contenuto
+      //Otherwise, show the service and update the content
       titoloServizio.textContent = titolo;
       immagineServizio.src = immagine;
-      descrizioneServizio.innerHTML = descrizione; // innerHTML ancihè textContent per prendere anche i br
+      descrizioneServizio.innerHTML = descrizione; //innerHTML also textContent to also take the br
       descrizioneFissa.style.display = "block";
       descrizioneFissa.dataset.servizio = titolo;
 
-      // Cambia lo stile del paragrafo
-      descrizioneServizio.style.fontSize = "14px"; /* Cambia la dimensione del testo */
+      //Change the paragraph style
+      descrizioneServizio.style.fontSize = "14px"; /* Change the text size */
   }
 }
 
-// Aggiungi gestori di eventi ai titoli dei servizi
+//Add event handlers to service titles
 document.getElementById("bar-title").addEventListener("click", function() {
   toggleDescrizioneServizio("Bar", document.getElementById("bar-desc").innerHTML, "immagini/galleria/servizi/bar.jpg");
 });

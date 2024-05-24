@@ -14,6 +14,10 @@
         echo "<p class='conferma' id='messaggiAlto'>" . htmlspecialchars($_SESSION['registrazione']) . "</p>";
         unset($_SESSION['registrazione']);
     }
+    if(isset($_SESSION['logout'])){
+        echo "<p class='conferma' id='messaggiAlto'>" . htmlspecialchars($_SESSION['logout']) . "</p>";
+        unset($_SESSION['logout']);
+    }
     include_once "php/config.php";
 ?>
 
@@ -80,7 +84,7 @@
 
                 <div class="person flex">
                     <ul class="login_menu">
-                        <!-- Condizione PHP per mostrare il menu di login -->
+                        <!-- PHP condition to show login menu -->
                         <?php if (!$logged) : ?>
                             <li>
                                 <p class="bold"><b>Registrati o Accedi</b></p>
@@ -98,7 +102,7 @@
                                 <button class="Sign in" id="mostraPopupButton">Accedi</button>
                             </li>
                         <?php else: ?>
-                            <!-- Condizione PHP per mostrare il profilo -->
+                            <!-- PHP condition to show profile -->
                             <li>
                                 <?php if ($id < 30) : ?>
                                     <a href="login_registrazione/Istruttore.php">
@@ -184,7 +188,7 @@
     </nav>
     </header>
 
-    <!--Banner del sito-->
+    <!--Site banner-->
     <section class="banner container">
         <video class="cover-video" autoplay loop muted>
             <source src="immagini/galleria/Banner.mp4" type="video/mp4">
@@ -193,15 +197,15 @@
 
     <hr size="4" color="black"> 
 
-    <!-- Div per l'overlay -->
+    <!-- Div for the overlay -->
     <div id="overlay" class="overlay"></div>
-    <!-- Div nascosto del popup -->
+    <!-- Hidden popup div -->
     <div id="popup" class="popup">
         <iframe src="login_registrazione/login.php" width="580" height="500" frameborder="0" style="border:0; overflow:hidden;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
     <main>
-        <!--Contenuto della home page-->
+        <!--Home page content-->
         <div class="presentation">
             <h1>ADE Sporting Club Center</h1>
             <p>Se sei alla ricerca di un luogo dove coltivare la tua passione per lo sport, mantenersi in forma e rilassarsi 
@@ -211,7 +215,7 @@
                 fino all'area relax, troverai tutto quello che ti serve per raggiungere i tuoi obiettivi di benessere e salute.
             </p>
         </div>
-        <!--descrizione generale del sito (corsi, ingresso, vantaggi soci) zig-zag layout -->
+        <!--general description of the site (courses, entrance, member benefits) zig-zag layout-->
         <div class="Sezione_1">
             <hr size="4" color="black"> 
             <div class="zig-zag livello 1">
@@ -420,7 +424,7 @@
                     //javascript for manual sliding
                     var manualNav = function(manual)
                     {
-                        //rimuovo dalle classi non selezionate
+                        //removed from unselected classes
                         slides.forEach((slide, i) => 
                         {
                             slide.classList.remove('active');
@@ -435,7 +439,7 @@
                         btns[manual].classList.add('active');
                     }
 
-                    //quando clicco su un bottone si aggiunge la classe 'active' sia al bottone cliccato che alla slide con stesso indice i
+                    //when I click on a button the 'active' class is added both to the clicked button and to the slide with the same index i
                     btns.forEach((btn, i) => 
                     {
                         btn.addEventListener("click", () => 
@@ -460,7 +464,7 @@
         </div>
         <div class="ancora">
             <a href="#beginning"><i class="fas fa-arrow-up"></i></a>		
-            <!-- ancora per tornare all'inizio della pagina -->
+            <!-- again to return to the top of the page -->
         </div>
 
         <div class="contacts">

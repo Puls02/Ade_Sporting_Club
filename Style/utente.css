@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
-    height: 100vh; /* Assicurati che il body occupi l'intera altezza della finestra */
+    height: 100vh; /* Make sure the body fills the entire height of the window */
 }
 .grid {
     display: grid;
@@ -20,13 +20,13 @@ body {
     grid-template-columns: repeat(
         3,
         1fr
-    ); /* Tre colonne di larghezza relativa */
-    grid-template-rows: repeat(3, 1fr); /* Tre righe di altezza relativa */
+    ); /* Three columns of relative width */
+    grid-template-rows: repeat(3, 1fr); /* Three lines of relative height */
     border-radius: 10px;
     margin: 1%;
     gap: 10px;
     background-color: rgba(177, 173, 173, 0.1);
-    height: 100%; /* Imposta l'altezza della griglia al 100% dell'altezza del body */
+    height: 100%; 
 }
 .grid_istruttore {
     display: grid;
@@ -34,8 +34,8 @@ body {
     grid-template-columns: repeat(
         3,
         1fr
-    ); /* Tre colonne di larghezza relativa */
-    grid-template-rows: repeat(2, 0.4fr); /* Due righe di altezza relativa */
+    ); 
+    grid-template-rows: repeat(2, 0.4fr);
     border-radius: 10px;
     margin: 1%;
     padding: 1%;
@@ -49,7 +49,7 @@ body {
     position: relative;
     margin: 1%;
     display: flex;
-    justify-content: space-between; /* Distribuisci gli elementi lungo l'asse principale */
+    justify-content: space-between; /* Distribute the elements along the main axis */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 .instructor_profile {
@@ -58,11 +58,11 @@ body {
     border-radius: 10px;
     position: relative;
     display: flex;
-    justify-content: space-between; /* Distribuisci gli elementi lungo l'asse principale */
+    justify-content: space-between; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     height: calc(
         100% - 10px
-    ); /* Altezza della griglia meno il margine superiore */
+    ); /*Grid height minus top margin */
 }
 .calendario {
     grid-area: b;
@@ -85,7 +85,7 @@ body {
     overflow-y: auto;
     height: calc(
         100% - 40px
-    ); /* Altezza della griglia meno il margine superiore */
+    ); 
 }
 .chat {
     grid-area: d;
@@ -95,7 +95,7 @@ body {
     margin-right: 3%;
     margin-bottom: 2%;
 }
-/* solo per i gold */
+/* gold*/
 .informazioni {
     grid-area: e;
     background-color: white;
@@ -118,21 +118,21 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     min-height: 30vh;
 }
-/*EVENTI*/
-/* Stile per la griglia */
+/*EVENTS*/
+/* Style for the grid */
 .grid-view {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
 }
 
-/* Stile per la visualizzazione a elenco */
+/* List view style */
 .list-view {
     display: flex;
     flex-direction: column;
 }
 
-/* Stile per gli eventi */
+/* Style for events */
 .event {
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -140,7 +140,7 @@ body {
     margin: 1%;
 }
 
-/*PROFILO*/
+/*Profile*/
 .section {
     flex-grow: 1;
     width: 50%;
@@ -149,7 +149,7 @@ body {
 
 .section label {
     margin-top: 200px;
-    margin-right: 10px; /* Margine a destra per separare l'etichetta dall'input */
+    margin-right: 10px; 
 }
 
 .section button {
@@ -162,7 +162,7 @@ body {
     width: 30%;
 }
 
-/* PER LA BARRA DI PROGRESSO */
+/* FOR THE PROGRESS BAR */
 .subscription-progress {
     width: 100%;
     margin-top: 20px;
@@ -178,14 +178,14 @@ body {
 
 .progress-indicator {
     height: 100%;
-    background-color: rgb(18, 143, 80); /* Colore della barra di progresso */
-    border-radius: 10px; /* Arrotondamento degli angoli */
+    background-color: rgb(18, 143, 80); 
+    border-radius: 10px; 
     position: absolute;
     top: 0;
     left: 0;
 }
 
-/* STILE PER LA CHAT */
+/* STYLE FOR CHAT */
 .wrapper {
     background: #ffffff;
     border-radius: 10px;
@@ -232,7 +232,7 @@ body {
     align-items: center;
     justify-content: space-between;
 
-    /* questo bordo dovrebbe sparire una volta che clicchi sulla lente di ingrandimento */
+    
     border: 1px solid #e6e6e6;
     border-radius: 10px;
     padding-left: 6px;
@@ -278,7 +278,7 @@ body {
     color: #000000;
 }
 .search button.active i::before {
-    content: '\f00d'; /* unicode per l'icona x*/
+    content: '\f00d'; /* unicode for the icon x*/
 }
 .users-list {
     max-height: 350px;
@@ -424,11 +424,11 @@ body {
     pointer-events: auto;
 }
 
-/*CALENDARIO*/
+/*Calendar*/
 #calendar {
     display: grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr)); /* Modifica */
-    grid-auto-rows: 70px; /* Altezza delle righe del calendario */
+    grid-template-columns: repeat(7, minmax(0, 1fr)); 
+    grid-auto-rows: 70px; /* Height of the calendar lines */
 }
 
 .giorno {
@@ -437,9 +437,9 @@ body {
     border: none;
     text-align: center;
     position: relative;
-    display: flex; /* Aggiunta */
-    justify-content: center; /* Aggiunta */
-    align-items: center; /* Aggiunta */
+    display: flex; 
+    justify-content: center;
+    align-items: center;
 }
 
 .giorno-header {
@@ -513,19 +513,19 @@ body {
         grid-template-columns: repeat(
             2,
             1fr
-        ); /* Tre colonne di larghezza relativa */
-        grid-template-rows: repeat(4, 1fr); /* Tre righe di altezza relativa */
+        ); 
+        grid-template-rows: repeat(4, 1fr); 
         border-radius: 10px;
         margin: 1%;
         gap: 10px;
         background-color: rgba(177, 173, 173, 0.1);
-        height: 100%; /* Imposta l'altezza della griglia al 100% dell'altezza del body */
+        height: 100%; 
     }
     .grid_istruttore {
         display: grid;
         grid-template-areas: 'g g' 'b c' 'f f' 'd d';
-        grid-template-columns: 1fr 1fr; /* Tre colonne di larghezza relativa */
-        grid-template-rows: 0.4fr 0.4fr 0.4fr 0.4fr; /* Due righe di altezza relativa */
+        grid-template-columns: 1fr 1fr; 
+        grid-template-rows: 0.4fr 0.4fr 0.4fr 0.4fr; 
         border-radius: 10px;
         margin: 1%;
         padding: 1%;
@@ -549,12 +549,12 @@ body {
         grid-template-rows: repeat(
             5,
             0.5fr
-        ); /* Tre righe di altezza relativa */
+        ); 
         border-radius: 10px;
         margin: 1%;
         gap: 10px;
         background-color: rgba(177, 173, 173, 0.1);
-        height: 100%; /* Imposta l'altezza della griglia al 100% dell'altezza del body */
+        height: 100%; 
     }
     .grid_istruttore {
         display: grid;
@@ -562,7 +562,7 @@ body {
         grid-template-rows: repeat(
             5,
             0.5fr
-        ); /* Tre righe di altezza relativa */
+        ); 
         border-radius: 10px;
         margin: 1%;
         padding: 1%;
@@ -579,7 +579,7 @@ body {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
         height: calc(
             100% - 10px
-        ); /* Altezza della griglia meno il margine superiore */
+        ); 
     }
     .user_profile {
         grid-area: a;
@@ -588,7 +588,7 @@ body {
         position: relative;
         margin: 1%;
         display: flex;
-        flex-direction: column; /* Disposizione verticale dei figli */
+        flex-direction: column; 
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     }
     .section {

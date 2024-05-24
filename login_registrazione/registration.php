@@ -64,7 +64,7 @@
 
                 <div class="person flex">
                     <ul class="login_menu">
-                        <!-- Condizione PHP per mostrare il menu di login -->
+                        <!-- PHP condition to show login menu -->
                         <?php if (!$logged) : ?>
                             <li>
                                 <p class="bold"><b>Registrati o Accedi</b></p>
@@ -82,7 +82,7 @@
                                 <button class="Sign in" id="mostraPopupButton">Accedi</button>
                             </li>
                         <?php else: ?>
-                            <!-- Condizione PHP per mostrare il profilo -->
+                            <!-- PHP condition to show profile -->
                             <li>
                                 <?php if ($id < 30) : ?>
                                     <a href="login_registrazione/Istruttore.php">
@@ -165,7 +165,7 @@
                 <br>
                 <div class="space"></div>
                 
-                <!-- sezione 1 -->
+                <!-- section 1 -->
                 <div class="section">
                     <label class="title">INFORMAZIONI PERSONALI</label>
                     <label>Cognome: </label>
@@ -189,7 +189,7 @@
                 </div>
                 <div class="space"></div>
                 
-                <!-- sezione 2 -->
+                <!-- section 2 -->
                 <div class="section">
                     <label class="title">CREDENZIALI ACCESSO</label>
                     <label>E-mail: </label>
@@ -201,7 +201,7 @@
                 </div>
                 <div class="space"></div>
 
-                <!-- sezione 3 -->
+                <!-- section 3 -->
                 <div class="section">
                     <label class="title">INFORMAZIONI ABBONAMENTO</label>
                     <br>
@@ -270,18 +270,18 @@
         <!-- javascript -->
         <script>
             document.addEventListener('DOMContentLoaded', function() {
-            // Ottieni l'elemento con il nome "nata"
+            // Get the item with the name "nata"
             var inputDate = document.getElementsByName("nata")[0];
 
-            // Seleziona la data corrente
+            // Select the current date
             var now = new Date();
 
-            // Imposta la data minima come la data corrente meno 12 anni
+            // Set the minimum date as the current date minus 12 years
             var maxDate = new Date(now.getTime());
             maxDate.setFullYear(maxDate.getFullYear() - 12);
             var maxData = maxDate.toISOString().split('T')[0];
 
-            // Imposta l'attributo max dell'input date
+            // Sets the max attribute of the date input
             inputDate.max = maxData;
             });
         </script>

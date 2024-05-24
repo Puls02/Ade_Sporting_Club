@@ -27,7 +27,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- serve per inserire un'icona nel title. Ho generato l'icona dal sito https://www.favicon-generator.org/ -->
+    <!-- It is used to insert an icon in the title. I generated the icon from the site https://www.favicon-generator.org/ -->
     <link rel="icon" type="image/png" sizes="32x32" href="immagini/logo/favicon2.png">
     <title>Ade Sporting Club</title>
 
@@ -49,13 +49,13 @@
 
     <!--Script javascript-->
     <script>
-        // Funzione per controllare se l'utente è loggato prima di consentire il clic
+        // Function to check if the user is logged in before allowing the click
         function checkLogin() {
             var loggedIn = <?php echo isset($_SESSION['logged_in']) && $_SESSION['logged_in'] ? 'true' : 'false'; ?>;
             if (!loggedIn) {
-                // Se l'utente non è loggato, mostra il messaggio di avviso
+                // If the user is not logged in, show the warning message
                 alert("Devi effettuare l'accesso per visualizzare questa sezione.");
-                return false; // Impedisce l'azione predefinita del clic
+                return false; // Prevents the default click action
             } else {
                 return true;
             }
@@ -371,7 +371,7 @@
             ?>
             </table>
 
-            <!-- Finestra Modale -->
+            <!-- Modal Window -->
             <div id="myModal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
@@ -593,30 +593,30 @@
             var selectOrariList = document.querySelectorAll(".orario");
 
             function populateOrari(datePicker, selectOrario) {
-                // Ottieni l'orario corrente
+                // Get the current time
                 var now = new Date();
                 var currentHour = now.getHours();
                 var currentMinute = now.getMinutes();
                 var today = now.toISOString().split('T')[0];
 
-                // Funzione per controllare se un orario è passato
+                // Function to check if a time has passed
                 function isPast(hour, minute) {
                     return hour < currentHour || (hour === currentHour && minute <= currentMinute);
                 }
 
-                // Svuota l'elemento <select>
+                //Empties the <select> element
                 selectOrario.innerHTML = '';
 
-                // Popola la lista degli orari con i valori appropriati
+                // Populate the times list with the appropriate values
                 for (var hour = 8; hour < 23; hour++) {
-                    for (var minute = 0; minute < 60; minute += 15) { // Solo minuti multipli di 15
-                        if (minute === 0) { // Solo minuti uguali a 00
+                    for (var minute = 0; minute < 60; minute += 15) { // Only minutes in multiples of 15
+                        if (minute === 0) { // Only minutes equal to 00
                             var formattedHour = ('0' + hour).slice(-2);
                             var hourSucc = hour + 1;
                             var formattedHourSucc = ('0' + hourSucc).slice(-2);
                             var optionText = formattedHour + ':00 - ' + formattedHourSucc + ':00';
 
-                            // Disabilita l'opzione se è passata e la data è oggi
+                            // Disable the option if it is past and the date is today
                             var disabled = (datePicker.value === today && isPast(hour, 0)) ? ' disabled' : '';
                             selectOrario.innerHTML += '<option value="' + formattedHour + ':00 - ' + formattedHourSucc + ':00"' + disabled + '>' + optionText + '</option>';
                         }
@@ -624,7 +624,7 @@
                 }
             }
 
-            // Popola gli orari inizialmente e aggiorna ogni volta che la data cambia
+            //Populate times initially and update whenever the date changes
             datePickers.forEach(function(datePicker, index) {
                 var selectOrario = selectOrariList[index];
                 datePicker.addEventListener('change', function() {

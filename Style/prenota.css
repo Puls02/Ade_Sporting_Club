@@ -72,7 +72,7 @@ td {
 }
 
 .toggle-item > input[type='radio'] {
-    display: none; /* per nascondere la scelta dell'attività (bottone) */
+    display: none; /* to hide the activity choice (button)*/
 }
 
 .toggle-item > label {
@@ -90,7 +90,7 @@ td {
 
 .content {
     padding: 2%;
-    display: none; /* nasconde il contenuto delle attività di default */
+    display: none; /* hides the contents of tasks by default */
     transition: display 0.5s ease;
 }
 

@@ -1,6 +1,6 @@
 <?php
 
-    // Connessione al database
+    // Database connection
     include_once "config.php";
 
     $id_prenotazione=$_POST['id_prenotazione'];

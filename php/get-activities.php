@@ -36,11 +36,11 @@
             $dayOfWeekItalian = $daysOfWeekMap[$dayOfWeekEnglish];
 
             if ($_SESSION['id'] < 30) {
-                // istruttore
+                // Instructor
                 $result = pg_query_params($conn, "SELECT * FROM prenotazione WHERE utente = $1 AND data = $2", array($_SESSION['id'], $selectedDate));
                 $result2 = pg_query_params($conn,"SELECT o.Nome AS nome, o.categoria AS categoria, o.giorno_settimana AS giorno, o.ora_inizio AS OraInizio, o.ora_fine AS OraFine FROM Istruttore i JOIN Insegna s ON i.ID = s.Istruttore JOIN Orari o ON s.Corso = o.Nome WHERE i.ID = $1 AND o.giorno_settimana = '".$dayOfWeekItalian."'", array($_SESSION['id']));
     
-                // Verifica se l'istruttore insegna palestra (perchè palestra non è tra i corsi insegnati ma vorrei fargli fa qualcosa)
+                // Check if the instructor teaches gym (because gym is not among the courses taught but I would like him to do something)
                 $isPalestraInstructor = false;
                 $palestraQuery = pg_query_params($conn, "SELECT 1 FROM Istruttore i JOIN Insegna s ON i.ID = s.Istruttore WHERE i.ID = $1 AND s.Corso = 'Palestra'", array($_SESSION['id']));
                 if ($palestraQuery && pg_num_rows($palestraQuery) > 0) {
@@ -58,15 +58,15 @@
             if ($result && $result2) {
                 $prenotazioni = array();
                 $corsi = array();
-                // Fetch dei risultati della prima query e salvataggio in un array
+                // Fetch the results of the first query and save to an array
                 while ($row = pg_fetch_assoc($result)) {
                     $prenotazioni[] = $row;
                 }
-                // Fetch dei risultati della seconda query e salvataggio nello stesso array
+                // Fetch the results of the second query and save to the same array
                 while ($row = pg_fetch_assoc($result2)) {
                     $corsi[] = $row;
                 }
-                // Aggiungi l'attività "Palestra" se l'utente è un istruttore di palestra
+                // Add the "Gym" activity if the user is a gym instructor
                 if (isset($isPalestraInstructor) && $isPalestraInstructor) {
                     $corsi[] = array(
                         'nome' => 'palestra',
@@ -85,7 +85,7 @@
             echo json_encode(array("error" => "Formato data non valido."));
         }
     } else {
-        // Debug: stampa un messaggio di errore se il parametro 'date' manca
+        // Debug: Print error message if 'date' parameter is missing
         error_log("Parametro 'date' mancante nella richiesta.");
         echo json_encode(array("error" => "Parametro 'date' mancante nella richiesta."));
     }

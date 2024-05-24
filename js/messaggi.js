@@ -5,6 +5,6 @@ document.addEventListener('DOMContentLoaded', function () {
         messaggio.style.display = 'block';
         setTimeout(function () {
             messaggio.style.display = 'none';
-        }, 4000); // nasconde il messaggio dopo 4 secondi
+        }, 4000); // hides the message after 4 seconds
     }
 });

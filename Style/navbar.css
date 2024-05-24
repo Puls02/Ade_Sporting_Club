@@ -5,9 +5,9 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /*larghezza variabile della navbar in base alla finestra del browser*/
+    /*variable navbar width based on browser window*/
     padding: 0 20px;
-    /*navbar fissa*/
+    /*fixed navbar*/
     z-index: 10;
     background: var(--nav-color);
     position: relative;
@@ -142,7 +142,7 @@ ul.topBotomBordersOut a:hover:after {
 }
 /*login for small screen*/
 
-/*----------------pulsante login------------------*/
+/*----------------login button------------------*/
 .login_btn {
     display: flex;
     align-items: center;

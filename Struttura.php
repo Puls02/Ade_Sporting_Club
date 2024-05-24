@@ -161,7 +161,7 @@
                     sidebar.style.display = 'none';
                 }
 
-                // funzione per mostrare il menu a tendina
+                // function to show the drop-down menu
 const show_menu = document.querySelector('.login_btn');
   nav = document.querySelector('.person');
 
