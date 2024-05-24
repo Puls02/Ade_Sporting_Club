@@ -138,6 +138,7 @@
         
         } else {
             $corso= $_POST['corso'];
+            echo $corso[1];
             $corso1=$corso[0];
             $query = "INSERT INTO Prevede (corso, Abbonamento) VALUES ('$corso1','$abb_cod')";
             $result = pg_query($conn, $query);
@@ -146,6 +147,7 @@
                 die("Errore durante la registrazione dei corsi:"  . pg_last_error($conn));
             } 
             $corso2=$corso[1];
+
             $query = "INSERT INTO Prevede (corso, Abbonamento) VALUES ('$corso2','$abb_cod')";
             $result = pg_query($conn, $query);
             if (!$result) {

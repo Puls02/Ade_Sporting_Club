@@ -133,15 +133,22 @@ function resetCheckboxes(){
 
 function checkForm(event) {
     if (document.getElementsByName('sesso')[0].checked == false && document.getElementsByName('sesso')[1].checked == false) {
-        event.preventDefault(); //blocks the form from being sent
+        event.preventDefault(); // blocca l'invio del modulo
         alert("Sesso mancante");
         return false;
     }
 
-    // Only check checkboxes if the radio button with name 'corso_campo' and value 'corso' is selected
+    // Abilita la casella di controllo "Palestra" prima della presentazione del modulo
+    let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+        if (checkbox.value === 'Palestra') {
+            checkbox.disabled = false;
+        }
+    });
+
+    // Controlla se il tipo di abbonamento è selezionato se si sceglie di sottoscrivere un abbonamento
     let radioCorso = document.querySelector('input[name="corso_campo"][value="corso"]');
     if (radioCorso.checked) {
-        let checkboxes = document.querySelectorAll('input[type="checkbox"]');
         let check = 0;
         checkboxes.forEach(checkbox => {
             if (checkbox.checked == true) {
@@ -149,18 +156,17 @@ function checkForm(event) {
             }
         });
 
-        // If no checkbox is selected and the radio button is checked, prevent form submission
+        // Se nessuna casella di controllo è selezionata e il pulsante di opzione è selezionato, impedisce l'invio del modulo
         if (check == 0) {
             event.preventDefault();
             alert("Non hai selezionato nessun corso");
             return false;
         }
     }
-
-    // If you need to add code, add it above this line
-    let checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    checkboxes[5].disabled = false;
+    checkboxes.disabled=false;
+    // Se hai bisogno di aggiungere del codice, aggiungilo sopra questa riga
 }
+
 
 
 function checkRegistration(){

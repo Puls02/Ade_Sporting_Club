@@ -159,7 +159,7 @@
 
     <div class="main">
         <div class="fixed-image">
-            <form action="../php/regUtente.php" method="post" name="registr" onsubmit="return checkUsername(); checkForm(event)"> <!-- importante per i comportamenti automatici del form -->
+            <form action="../php/regUtente.php" method="post" name="registr" onsubmit="return checkForm(event)"> <!-- importante per i comportamenti automatici del form -->
                 <h1>REGISTRAZIONE</h1>
                 <h3>compila il form e unisciti alla nostra comunity</h3>
                 <br>
