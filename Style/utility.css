@@ -1,18 +1,3 @@
-/*da telefono a computer*/
-/*io uso un metodo da pc a telefono, cambio max-width*/
-/* xs */
-/* @media (min-width: 475px) {} */
-/* sm */
-/* @media (min-width: 640px) {} */
-/* md */
-/* @media (min-width: 768px) {} */
-/* lg */
-/* @media (min-width: 1024px) {} */
-/* xl */
-/* @media (min-width: 1280px) {} */
-/* 2xl */
-/* @media (min-width: 1536px) {} */
-
 :root {
     /*color palette*/
     --nav-color: rgb(68, 168, 190);

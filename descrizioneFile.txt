@@ -1,0 +1,71 @@
+Descrizione dei file nella cartella del gruppo 50 - Ade_Sporting_Club
+
+Come prima cosa questo è il link per la repository (presente anche nel codice all'interno del footer): https://github.com/Puls02/Ade_Sporting_Club
+
+organizzazione della cartella:
+nella cartella dei font ci sono i font che abbiamo scaricato e usato all'interno del sito.
+idem per la cartella delle immagini.
+
+i file liberi sono le pagine principali del sito, quelle a cui possiamo accedere dalla barra di navigazione. in particolare troviamo:
+- index.php: è la pagina principalle del nostro sito dove possiamo trovare la descrizione delle offerte del sito, uno slider con i vari corsi che ha delle ancore che ti riportano alla pagina delle prenotazioni
+- Struttura.php: una pagina in php che riporta la struttura del nostro centro
+- Attivita.php: è la pagina che descrive le attività fornite dal nstro centro e riporta una tabella, caricata dinamicamente con php dal database, che riporta gli orari delle lezioni
+- Prenota.php: è la pagina che ti permette di prenotare i campi. le prenotazioni vengono salvate nel database
+- chat.php: è l pagina in cui si apre la chat con il singolo utente, questa pagina viene inclusa come i frame all'interno dei profili personali. in questo modo al clic sulla chat non verrai reindirizzato in un altra pagina ma rimarrai li
+
+nella cartella login_registrazione ci sono i file che permettono l'accesso dell'utente e la visuaklizzazione del suo profilo personale
+in particolare per l'accesso
+- login.php: permette l'autenticazione dell'utente. questa pagina non viene visualizzata mai dal sito, non ho un link diretto ma viene incluso come iframe. è un div nascosto presente in tutte le pagine. tramite css la sua visualizzazione è inizialmente impostata su hidden, al clic sul bottone dell apersona si apre e la visualizzazione viene impostata su show
+- registration.php: è il file di registrazione per li sito
+per il profilo personale
+- utenteNonGold.php: è il profilo personale dell'utente normale
+- utenteGold.php: è il profilo personale di un socio gold
+- Istruttore.php: è il profilo personale per gli istruttori
+
+nella cartella php troviamo quei file che all'interno contengono solamente codice php
+- aggiuntaGiocatore.php: 
+- caricaImmagine.php: è il file che seve per caricare o modificare l'immagine all'interno del database. immagine che verrà presa dinamicamente e caricata nella sezione del profilo personale e della chat
+- config.php: è un file che viene richiamato nelle latre pagine e configura la connessione con il database. in questo modo per accedere con diverse credenziali al database dovevamo cambiare solo un file
+- data.php: è un file che serve alla chat. una volta che fail'accesso il file carica automaticamente tramite richieste ajax gli utenti che sono registrati nel database e ti permette di visualizzarne le relative conversazioni. è stato scritto in modo tale che le conversazioni abbiano questo ordine: prima gli utenti online, poi gli utenti offline con cui hai scambiato dei messaggi, infine il resto degli utenti. carica le chat all'interno di un div
+- eliminaPrenotazione.php: ti permette di eliminare la prenotazione dal database
+- get-activities.php: serve per recuperare i dati delle prenotazioni e dei corsi che segue ogni utente. dati che poi vengono caricati nel div di fianco al calendario
+- get-chat.php: carica dal database la conversazione tra due utenti. se nel databse non c'è nessuna riga associata a due utenti stampa un messaggio di default
+- insert-chat.php: è per l'invio del messaggio. una volta inviato viene inserito nel database
+- insert-event.php: inserire evento nel database
+- logIstruttor.php: il file che verifica l'autenticazione degli istruttori. le loro credenziali sono tutte già fornite dall'amministratore quindi non c'è bisogno che si registrino
+- logout.php: file che fa la disconnessione dell'utente e chiude la sessione
+- logUtente.php: file per loggare l'utente
+- modalCreation.php:
+- prenotazione.php: lo script che effettua tutti i controlli per vedere se puoi prenotare, in caso affermativo inserisce la prenotazione nel database
+- regUtente.php: valida i dati inseriti nel form di registrazione e inserisce i dati nelle ralative tabelle
+- search.php: permette la ricerca nella chat per nome e cognome di un utente
+- users.php: prende i dati degli utenti disponibili per la chat, se non c'è nessuno ti stampa un messaggio di default, altrimenti ci sarà lameno un utente che verrà caricato con data.php
+
+nella cartella Style ci sono tutti i file css che vengono usati nelle pagine php
+- attivita.css: file css per la pagina delle attività
+- footer.css: incluso in tutte le pagine ha lo stile per il footer
+- index.css: per lo stile dell'index
+- login.css: per lo stile della pagina di login
+- modal.css:
+- navbar.css: per la barra di navigazione di tutte le pagine tranne della index
+- popup.css: per il div che si apre che contiene il login
+- prenota.css: per la pagina di prenotazione
+- registration.css: per il form di registrazione
+- scorrimentoAlto.css: per i messaggi di allerta
+- Stickynavbar.css: per la barra di navigazione della home page
+- struttura.css: per la pagina della struttura
+- utente.css: ha i css per tutti i profili 
+- utility.css: incluso in tutte le pagine ha gli stili di formattazione che vengono usati praticamente ovunque tipo per i paragrafi, le dimensioni dei font, i font scaricati, i colori
+
+nella cartella js ci sono tutti i file JavaScript
+- chat.js: contiene le richieste ajax per inserire i messaggi nel db e recuperare le chat
+- dashboard.js: contiene gli script per la creazione del calendario, le richiesta ajax per prendere le attività del giorno. codice per eliminare la prenotazione e relativa richiesta ajax. script per aprire la finestra modale. script per cambiare la visulizzazione al div degli eventi.
+- dropdown.js: per il menu della persona nella navbar
+- login.js: funzioni che ti permettono di aprire il popup per il login e la funzione che ti permette di visualizzare o meno il contenuto del campo password. la funzione per cambiare login da utente a istrutttore. apri e chiudi il popup. inibire il comportamento del link e rimandare al link dopo la chiusura del popup
+- messaggi.js: per la visualizzazione dei messaggi di notifica
+- prenotazioni.js: aprire/chiudere form di prenotazione al clic. funzione per mostrare o meno il numero di giocatori nella prenotazione
+- registrazioneU.js: javascript per verificare i dati della registrazione
+- struttura.js: per mostrare o meno le descrizioni dei servizi
+- users.js: ajax per l'aggirnamento chat ogni tot millisecondi. ti permette di cercare l'utente 
+
+

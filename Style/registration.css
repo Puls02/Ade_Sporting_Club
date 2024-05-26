@@ -173,49 +173,20 @@ input:focus {
         font-size: var(--size-xxs);
     }
 }
-
-@media only screen and (max-width: 475px) {
+@media only screen and (max-width: 479px) {
+    h1 {
+        font-size: var(--size-lg);
+    }
+    h3 {
+        font-size: var(--size-xs);
+    }
+    form {
+        width: 90%;
+    }
+    .space {
+        height: 15px;
+    }
+    input {
+        font-size: var(--size-xxs);
+    }
 }
-
-/*--------------------------------------*/
-/*debug*/
-/*
-.main
-{
-    border: 1px solid red;
-}
-.fixed-image
-{
-    border: 1px solid blue;
-}
-
-form
-{
-    border: 1px solid red;
-}
-h1
-{
-    border: 1px solid red;
-}
-h3
-{
-    border: 1px solid red;
-}
-.section
-{
-    border: 1px solid green;
-}
-
-.space
-{
-    border: 1px solid yellow;
-}
-label
-{
-    border: 1px solid pink;
-}
-input
-{
-    border: 1px solid red;
-}
-*/
