@@ -178,6 +178,8 @@
                     const sidebar = document.querySelector('.sidebar');
                     sidebar.style.display = 'none';
                 }
+
+                
             </script>
             <!-- end javascript -->
 

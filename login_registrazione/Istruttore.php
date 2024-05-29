@@ -264,7 +264,21 @@ const show_menu = document.querySelector('.login_btn');
         <input type="submit" value="Crea Evento">
     </form>
 </div>
-        </div>
+</div>
+<script>
+        //Get all date type inputs
+        var inputDateFields = document.querySelectorAll("input[type='date']");
+
+        //Get the current date
+        var now = new Date();
+        //Set the minimum date as the current date (in the format required by the date type input)
+        var minDate = new Date(now.getTime()).toISOString().split('T')[0];
+
+        //Iterate over each date field and set the minimum date
+        inputDateFields.forEach(function(inputData) {
+            inputData.min = minDate;
+        });
+    </script>
 
 <!-- WEEKLY SCHEDULE -->        
         <div class="calendario">
