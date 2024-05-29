@@ -65,7 +65,7 @@ function getActivityBackgroundColor(activityName) {
 }
 
 
-    calendar.innerHTML = html;
+calendar.innerHTML = html;
 
 // Add click event to display the selected date in the weekly-schedule section
 const dayElements = document.querySelectorAll('.current-month');
@@ -237,7 +237,7 @@ if (currentDayElement) {
     currentDayElement.click();
 }
 
-/* TO CHANGE VIEW */
+// Function to chenge view in the event section
 function toggleViewEventi() {
     var eventContainer = document.getElementById('event-container');
     var toggleButton = document.getElementById('toggle-view-btn-eventi');
